@@ -3,14 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CreateNewTaskComponent } from './create-new-task/create-new-task.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CreateNewTaskComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

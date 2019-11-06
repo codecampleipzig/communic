@@ -1,0 +1,9 @@
+<div class="task">
+        <div class="createNewTask" (click)="onClickPlus()" *ngIf="!formVisible">
+        </div>
+        <div class="taskCreator" *ngIf="formVisible">Title, Picture, Description...
+            <button class="closeButton" (click)="onClickAbort()">
+                abort!!!!!!!!
+            </button>
+        </div>
+    </div>
