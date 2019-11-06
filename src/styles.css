@@ -11,3 +11,14 @@
    border: 2px solid #CECECE;
    border-radius: 2px;
 }
+
+.unstyledList {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+.unstyledList>li {
+   margin:0;
+   padding:0;
+}
