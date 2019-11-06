@@ -5,11 +5,7 @@
       <div class="taskCheckbox checkbox status-{{task.status}}"> <!-- Put future taskCheckbox Component here --></div>
       <h4>{{task.name}}</h4>
    </div>
-   <div class="taskTeam">
-      <!-- future Task Join Component here -->
-      <button class="button taskTeamJoin">Join</button>
-      <div class="taskTeamList"> ( :) ) ( :) ) ( :) ) ( :) ) ( +3 )</div>
-   </div>
+   <app-task-list-item-team [teamIDs]="teamIDs"></app-task-list-item-team>
    <p class="taskDescription">
       <!-- Replace this with future taskDescription Component here -->
       {{task.description}}

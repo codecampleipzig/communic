@@ -3,6 +3,7 @@
 :root {
    --taskListItemBG: #FCFCFC;
    --taskListItemShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+   --highlightColor: #655AF3;
 }
 
 .checkbox {
@@ -21,4 +22,13 @@
 .unstyledList>li {
    margin:0;
    padding:0;
+}
+
+button {
+
+}
+
+button.outlined {
+   border: 1px solid var(--highlightColor);
+   border-radius: 20px;
 }
