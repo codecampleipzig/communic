@@ -1,13 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-
-:root {
-   --taskListItemBG: #FCFCFC;
-   --taskListItemShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
-}
-
-.checkbox {
-   width: 1.5em;
-   height: 1.5em;
-   border: 2px solid #CECECE;
-   border-radius: 2px;
-}
