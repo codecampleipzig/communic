@@ -4,6 +4,7 @@
    --taskListItemBG: #FCFCFC;
    --taskListItemShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
    --highlightColor: #655AF3;
+   --warningRed: rgb(206, 26, 26);
 }
 
 .checkbox {

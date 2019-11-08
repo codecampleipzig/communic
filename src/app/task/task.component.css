@@ -23,6 +23,11 @@
       position: absolute;
       top: .5em;
       right: 1em;
+      cursor: pointer;
+   }
+
+   .taskDelete:hover {
+      color: var(--warningRed);
    }
 
    .taskHeader {

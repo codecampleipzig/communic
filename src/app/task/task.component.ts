@@ -8,7 +8,7 @@ import { Task } from '../datatypes/Task';
 })
 export class TaskComponent implements OnInit {
   @Input() task: Task;
-  
+
   constructor() { }
 
   ngOnInit() {
