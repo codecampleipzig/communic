@@ -1,11 +1,8 @@
-<p>this is what I'm currently writing:  {{ name.value }}</p>
-<p>{{ name.status }}</p>
 
-
-<label>
+<label class="mainContainer">
    <input type="text" [formControl]="name" placeholder="Name" required>
    <input type="email" [formControl]="name" placeholder="Email" required>
    <input type="password" [formControl]="name" placeholder="Password" required>
 </label>
 
-<button (click)="onSubmit()" type="submit">Submit</button>
+<button (click)="onSubmit()" type="submit">Join Now!</button>
