@@ -1,17 +1,14 @@
    <div class="taskDelete">
-         Ú <!-- Put future taskDelete Button Component here -->
+      <fa-icon *ngIf="task.status != 'deleted'" [icon]="['fas', 'trash-alt']"></fa-icon>
+      <fa-icon *ngIf="task.status == 'deleted'" [icon]="['fas', 'trash-restore']"></fa-icon>
    </div>
    <div class="taskHeader">
       <div class="taskCheckbox checkbox"> <!-- Put future taskCheckbox Component here --></div>
       <h4>{{task.name}}</h4>
    </div>
-   <div class="taskTeam">
-      <!-- future Task Join Component here -->
-      <button class="button taskTeamJoin">Join</button>
-      <div class="taskTeamList"> ( :) ) ( :) ) ( :) ) ( :) ) ( +3 )</div>
-   </div>
+   <app-task-list-item-team [teamIDs]="task.teamIDs" [status]="task.status"></app-task-list-item-team>
    <p class="taskDescription">
       <!-- Replace this with future taskDescription Component here -->
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.
-      <small class="taskAuthor">created by John Doe</small>
+      {{task.description}}
+      <small class="taskAuthor">created by AuthorID {{task.authorID}}</small>
    </p>

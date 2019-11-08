@@ -15,15 +15,30 @@
       margin-bottom: 1em;
    }
 
-   .taskHeader > *,
-   .taskTeam > * {
+   .taskHeader > * {
       margin-right: 1em;
    }
+
+      .checkbox {
+         width: 1.5em;
+         height: 1.5em;
+         border: 2px solid #CECECE;
+         border-radius: 2px;
+      }
+      
+      .checkbox:hover {
+         background: rgb(218, 218, 218);
+      }
 
    .taskDelete {
       position: absolute;
       top: .5em;
       right: 1em;
+      cursor: pointer;
+   }
+
+   .taskDelete:hover {
+      color: var(--warningRed);
    }
 
    .taskHeader {
@@ -35,14 +50,27 @@
       margin: 0;
    }
 
-   .taskTeam > * {
-      display: inline-block;
-   }
-
    .taskDescription {
-      margin-left: 1em
+      margin-left: 1em;
+      flex-basis: 100%;
    }
 
-@media screen and (min-width: 760px) {
+   
+:host(.status-done),
+:host(.status-deleted) {
+   opacity: .4;
+   transition: opacity .8s;
+}
 
+:host(.status-done):hover,
+:host(.status-deleted):hover {
+   opacity: .9
+}
+
+:host(.status-deleted) > * {
+   text-decoration:line-through;
+}
+
+:host(.status-done) .checkbox {
+   background: rgb(218, 218, 218);
 }
