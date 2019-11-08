@@ -46,3 +46,10 @@ body {
     text-align: center;
     justify-content: center;
 }
+
+.registerCard .signIn{
+    display: flex;
+    font-family: 'Montserrat', sans-serif; 
+    text-align: center;
+    justify-content: center;
+}
