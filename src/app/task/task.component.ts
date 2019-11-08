@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { Task } from '../datatypes/Task';
 
 @Component({
@@ -8,10 +8,19 @@ import { Task } from '../datatypes/Task';
 })
 export class TaskComponent implements OnInit {
   @Input() task: Task;
+  
+  @HostBinding('class')
+    get hostClasses(): string {
+      return [
+        'status-' + this.task.status
+      ].join('');
+    }
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
+
   }
 
 }

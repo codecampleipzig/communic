@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faTrashRestore } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +28,6 @@ import { TaskListItemTeamComponent } from './task-list-item-team/task-list-item-
 })
 export class AppModule {
   constructor(private library: FaIconLibrary) {
-    library.addIcons(faTrashAlt, faPlus);
+    library.addIcons(faTrashRestore, faTrashAlt, faPlus);
   }
 }

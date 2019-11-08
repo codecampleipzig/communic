@@ -7,13 +7,6 @@
    --warningRed: rgb(206, 26, 26);
 }
 
-.checkbox {
-   width: 1.5em;
-   height: 1.5em;
-   border: 2px solid #CECECE;
-   border-radius: 2px;
-}
-
 .unstyledList {
    list-style: none;
    margin: 0;

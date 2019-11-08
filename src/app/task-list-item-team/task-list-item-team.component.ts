@@ -8,6 +8,7 @@ import { Task } from '../datatypes/Task';
 })
 export class TaskListItemTeamComponent implements OnInit {
   @Input() teamIDs: number;
+  @Input() status: string;
 
   constructor() { }
 
