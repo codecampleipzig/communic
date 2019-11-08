@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-new-task.component.css']
 })
 export class CreateNewTaskComponent implements OnInit {
-  private formVisible = false;
+  private formVisible : any = false;
   
   constructor() { }
 
