@@ -25,10 +25,23 @@
 }
 
 button {
+   padding: .5em 1em;
+   cursor: pointer;
+}
 
+button .ng-fa-icon {
+   margin-right: .5em;
 }
 
 button.outlined {
    border: 1px solid var(--highlightColor);
-   border-radius: 20px;
+   border-radius: 1.5em;
+   color: var(--highlightColor);
+   background-color: transparent;
+   transition: border .4s, background-color .4s, color .4s;
+}
+
+button.outlined:hover {
+   color: #fff;
+   background-color: var(--highlightColor);
 }
