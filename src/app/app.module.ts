@@ -2,8 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faTrashAlt, faTrashRestore } from '@fortawesome/free-solid-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faTrashRestore, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +32,6 @@ import { CreateNewTaskComponent } from './create-new-task/create-new-task.compon
 })
 export class AppModule {
   constructor(private library: FaIconLibrary) {
-    library.addIcons(faTrashRestore, faTrashAlt, faPlus);
+    library.addIcons(faTrashRestore, faTrashAlt, faPlus, faTimes);
   }
 }
