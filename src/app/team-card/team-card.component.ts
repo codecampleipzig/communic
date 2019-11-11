@@ -11,11 +11,11 @@ export class TeamCardComponent implements OnInit {
 
   @Input() newUser : string;
   alreadyJoined : boolean = false;
-  selectedUser : User;
+  users : User [];
 
 
   constructor(private store: StoreService) { 
-    this.selectedUser = this.store.retrieveUser(0);
+    this.users = this.store.retrieveUserList();
   }
 
   ngOnInit() {

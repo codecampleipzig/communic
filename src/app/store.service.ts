@@ -24,6 +24,10 @@ export class StoreService {
 
   constructor() { }
 
+  retrieveUserList() : User [] {
+    return this.users;
+  }
+
   retrieveUser(index: number): User {
     return this.users[index];
   }

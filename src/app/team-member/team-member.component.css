@@ -1,0 +1,22 @@
+:host {
+   display: flex;
+}
+
+.user {
+   display: flex;
+   flex-direction: column;
+   margin: 0.5em;
+}
+
+.user h3 {
+   margin: 0em 0em 0.5em 0em;
+}
+
+.user h4 {
+   margin: 0em 0em 0.5em 0em;
+}
+
+img {
+   width: 10%;
+   height: 10%;
+}
