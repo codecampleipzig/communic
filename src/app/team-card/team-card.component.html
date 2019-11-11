@@ -1,0 +1,5 @@
+<h2>Team</h2>
+<app-team-member  [user]="selectedUser"></app-team-member>
+<div *ngIf= "!alreadyJoined ">
+   <button (click)="join()">Join</button>
+</div>
