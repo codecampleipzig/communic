@@ -7,6 +7,10 @@ import { Task } from '../dataTypes';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
+
+  /**
+   * Import task p
+   */
   @Input() task: Task;
   
   @HostBinding('class')

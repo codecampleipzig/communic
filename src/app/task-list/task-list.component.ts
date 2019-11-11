@@ -9,10 +9,10 @@ import { Task } from '../dataTypes';
 })
 export class TaskListComponent implements OnInit {
 
-  private tasks: any[];
+  private tasks: Task[];
 
   constructor(private store: StoreService) { 
-    this.tasks = this.store.TASKS;
+    this.tasks = this.store.retrieveTasks(9435, 'starter');
 
   }
 

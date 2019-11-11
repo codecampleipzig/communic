@@ -5,6 +5,8 @@ export interface Task {
   status: string;
   authorID: number;
   teamIDs: number[];
+  projectID: number;
+  location: string;
  }
 
  export interface Project {

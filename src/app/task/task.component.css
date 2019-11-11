@@ -1,3 +1,8 @@
+/** 
+ * Styling for the whole TaskListItem.
+ * There are some more styles and Variables (like colors) defined in the /src/styles.css that I considered to be useful as global styles.
+ */
+
 :host {
    background: var(--taskListItemBG);
    box-shadow: var(--taskListItemShadow);
@@ -56,6 +61,11 @@
    }
 
    
+/**
+ * Styling the different status states of the Tasks
+ * For example status-deleted with text-decoration: line-through
+ */
+
 :host(.status-done),
 :host(.status-deleted) {
    opacity: .4;
@@ -67,10 +77,10 @@
    opacity: .9
 }
 
-:host(.status-deleted) > * {
-   text-decoration:line-through;
-}
-
 :host(.status-done) .checkbox {
    background: rgb(218, 218, 218);
+}
+
+:host(.status-deleted) > * {
+   text-decoration:line-through;
 }
