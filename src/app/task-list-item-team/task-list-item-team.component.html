@@ -1,3 +1,3 @@
-   <!-- future Task Join Component here -->
-   <button *ngIf="status == 'open'" class="button taskTeamJoin outlined"><fa-icon [icon]="['fas', 'plus']"></fa-icon> Join</button>
+   <button *ngIf="status == 'open' && !userjoined" class="button taskTeamJoin outlined" (click)="JoinTask()"><fa-icon [icon]="['fas', 'plus']"></fa-icon> Join</button>
+   <button *ngIf="status == 'open' && userjoined" class="button taskTeamJoin outlined" (click)="LeaveTask()"><fa-icon [icon]="['fas', 'times']"></fa-icon> Leave</button>
    <div class="taskTeamList">(:)) (:)) (:)) (:)) (+3)</div>

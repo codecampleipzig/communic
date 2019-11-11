@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TASKS } from './mock-tasks';
+import { StoreService } from '../store.service';
+import { Task } from '../dataTypes';
 
 @Component({
   selector: 'app-task-list',
@@ -7,10 +8,13 @@ import { TASKS } from './mock-tasks';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
-  
-  tasks = TASKS;
 
-  constructor() { }
+  private tasks: any[];
+
+  constructor(private store: StoreService) { 
+    this.tasks = this.store.TASKS;
+
+  }
 
   ngOnInit() {
   }

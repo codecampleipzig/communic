@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from '../datatypes/Task';
 
 @Component({
   selector: 'app-task-list-item-team',
@@ -10,9 +9,21 @@ export class TaskListItemTeamComponent implements OnInit {
   @Input() teamIDs: number;
   @Input() status: string;
 
+  userjoined: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  private JoinTask() : void {
+    this.userjoined = true;
+    console.log("User joined");
+  }
+
+  private LeaveTask() : void {
+    this.userjoined = false;
+    console.log("User leaved");
   }
 
 }
