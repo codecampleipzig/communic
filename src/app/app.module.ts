@@ -4,11 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ProjectActionComponent } from './project-action/project-action.component';
+import { UserActionComponent } from './user-action/user-action.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ProjectActionComponent,
+    UserActionComponent
   ],
   imports: [
     BrowserModule,

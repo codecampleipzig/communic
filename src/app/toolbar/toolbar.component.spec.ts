@@ -1,6 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ToolbarComponent } from './toolbar.component';
+import { Component } from '@angular/core';
+
+// mock the child components
+@Component({ selector: 'app-user-action', template: '', })
+class UserActionStubComponent { }
+
+// mock the child components
+@Component({ selector: 'app-project-action', template: '', }) 
+class ProjectActionStubComponent { }
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -8,9 +16,13 @@ describe('ToolbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolbarComponent ]
+      declarations: [
+        ToolbarComponent,
+        UserActionStubComponent,
+        ProjectActionStubComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,23 +35,24 @@ describe('ToolbarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-    // TRIAL
-  // version from app.component.spec.ts
-  // it('should render title in a h1 tag', () => {
-  //   expect.assertions(1);
-  //   return TestBed.compileComponents()
-  //     .then( () => {
-  //     const fixture = TestBed.createComponent(AppComponent);
-  //     fixture.detectChanges();
-  //     const compiled = fixture.debugElement.nativeElement;
-  //     expect(compiled.querySelector('h1').textContent).toContain('Welcome to communic!');
-  //     });
-  //   });
-  // version from app.component.spec.ts
-
+  // verify home button is present
   it('should have home icon in a button tag', () => {
-    const htmlElement = fixture.debugElement.nativeElement
-    expect(htmlElement.querySelector('button')).toBeTruthy();
+    const htmlElement : HTMLElement = fixture.debugElement.nativeElement;
+    expect(htmlElement.querySelector('.homeIcon')).toBeTruthy();
   });
 
+  // TODO: verify home is clickable
+  // Blocked by pending routing implementation 
+
+  // verify project-action is present
+  it('should have project-action tag', () => {
+    const htmlElement = fixture.debugElement.nativeElement
+    expect(htmlElement.querySelector('[data-component="project-action"]')).toBeTruthy();
+  });
+
+  //verify user-action is present
+  it('should have user-action tag', () => {
+    const htmlElement : HTMLElement = fixture.debugElement.nativeElement
+    expect(htmlElement.querySelector('[data-component="user-action"]')).toBeTruthy();
+  });
 });

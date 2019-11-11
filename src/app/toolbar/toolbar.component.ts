@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-
+  homeIconSource: string = "../../assets/home.svg";
+  
   constructor() { }
 
   ngOnInit() {
   }
 
+  navigateHome() {
+    // Implement routing once other components are available and routes are set
+    console.log("Clicked Home!");
+  }
 }
