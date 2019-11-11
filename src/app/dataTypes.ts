@@ -4,7 +4,7 @@ export interface Task {
   description: string;
   status: string;
   authorID: number;
-  teamIDs: number[];
+  userIDs: number[];
   projectID: number;
   location: string;
  }
@@ -14,6 +14,6 @@ export interface Task {
   title: string;
   description: string;
   goal: string;
-  memberIds: number[];
-  teamIDs: number[];
+  authorID: number;
+  userIDs: number[];
  }

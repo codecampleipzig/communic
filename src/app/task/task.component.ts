@@ -9,10 +9,14 @@ import { Task } from '../dataTypes';
 export class TaskComponent implements OnInit {
 
   /**
-   * Import task p
+   * Import task object
    */
   @Input() task: Task;
   
+  /**
+   * Add Task Status as Class to the host Element
+   * could be .status-open, .status-done, .status-deleted
+   */
   @HostBinding('class')
     get hostClasses(): string {
       return [

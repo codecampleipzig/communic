@@ -1,6 +1,7 @@
 <!--
    Delete Button (positioned absolute) in the top right corner of the Task.
    - [ ] Add click-Binding to change task.status
+   - [ ] Only show for users that joined the task?
 -->
 <div class="taskDelete">
    <fa-icon *ngIf="task.status != 'deleted'" [icon]="['fas', 'trash-alt']"></fa-icon>
@@ -11,6 +12,7 @@
    Task Header with the title and the checkbox in front of the title (positioned as a flex-item in a flex row)
    - [ ] Add click-Binding to change task.status
    - [ ] Style the checkbox for different states with fancy layout
+   - [ ] Disable Checkbox for users that didn't join the task?
 -->
 <div class="taskHeader">
    <div class="taskCheckbox checkbox"></div>
