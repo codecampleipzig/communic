@@ -1,11 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+/**
+ * Global Variables
+ */
 
 :root {
    --taskListItemBG: #FCFCFC;
    --taskListItemShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
-   --highlightColor: #655AF3;
+   --primaryColor: #655AF3;
    --warningRed: rgb(206, 26, 26);
 }
+
+
+/**
+ * Lists
+ */
 
 .unstyledList {
    list-style: none;
@@ -13,29 +20,39 @@
    padding: 0;
 }
 
-.unstyledList>li {
-   margin:0;
-   padding:0;
-}
+   .unstyledList>li {
+      margin:0;
+      padding:0;
+   }
+
+   
+/**
+ * Buttons
+ */
 
 button {
    padding: .5em 1em;
    cursor: pointer;
 }
 
-button .ng-fa-icon {
-   margin-right: .5em;
-}
+   /* 
+    * Margin to the right for every Icon inside a button
+    * - [ ] Maybe the Icon is on the right sometimes?
+    */
+   button .ng-fa-icon {
+      margin-right: .5em;
+   }
 
+/* Button Elements without background but rounded border */
 button.outlined {
-   border: 1px solid var(--highlightColor);
+   border: 1px solid var(--primaryColor);
    border-radius: 1.5em;
-   color: var(--highlightColor);
+   color: var(--primaryColor);
    background-color: transparent;
    transition: border .4s, background-color .4s, color .4s;
 }
 
-button.outlined:hover {
-   color: #fff;
-   background-color: var(--highlightColor);
-}
+   button.outlined:hover {
+      color: #fff;
+      background-color: var(--primaryColor);
+   }

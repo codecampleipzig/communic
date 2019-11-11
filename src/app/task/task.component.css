@@ -20,45 +20,49 @@
       margin-bottom: 1em;
    }
 
+
+/* Task Header with Checkbox and Title */
+.taskHeader {
+   display: flex;
+   align-items: center;
+}
+
    .taskHeader > * {
       margin-right: 1em;
-   }
-
-      .checkbox {
-         width: 1.5em;
-         height: 1.5em;
-         border: 2px solid #CECECE;
-         border-radius: 2px;
-      }
-      
-      .checkbox:hover {
-         background: rgb(218, 218, 218);
-      }
-
-   .taskDelete {
-      position: absolute;
-      top: .5em;
-      right: 1em;
-      cursor: pointer;
-   }
-
-   .taskDelete:hover {
-      color: var(--warningRed);
-   }
-
-   .taskHeader {
-      display: flex;
-      align-items: center;
    }
 
    h4 {
       margin: 0;
    }
 
-   .taskDescription {
-      margin-left: 1em;
-      flex-basis: 100%;
+   .checkbox {
+      width: 1.5em;
+      height: 1.5em;
+      border: 2px solid #CECECE;
+      border-radius: 2px;
    }
+   
+   .checkbox:hover {
+      background: rgb(218, 218, 218);
+   }
+
+/* Task Delete */
+.taskDelete {
+   position: absolute;
+   top: .5em;
+   right: 1em;
+   cursor: pointer;
+}
+
+   .taskDelete:hover {
+      color: var(--warningRed);
+   }
+
+   
+.taskDescription {
+   margin-left: 1em;
+   flex-basis: 100%;
+}
 
    
 /**

@@ -6,22 +6,30 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./task-list-item-team.component.css']
 })
 export class TaskListItemTeamComponent implements OnInit {
-  @Input() teamIDs: number;
+  @Input() userIDs: number;
   @Input() status: string;
 
-  userjoined: boolean = false;
+  /* Placeholder. Needs to be replaced with something like task.teamIDs.find(currentUser) */
+  private userjoined: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  private JoinTask() : void {
+  /**
+   * Join Task function
+   * - [ ] Check wheter User has already joined currentProject.userIDs
+   * - [ ] Add current User to task.userIDs
+   */
+  private joinTask() : void {
+    /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
     this.userjoined = true;
     console.log("User joined");
   }
 
-  private LeaveTask() : void {
+  private leaveTask() : void {
+    /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
     this.userjoined = false;
     console.log("User leaved");
   }
