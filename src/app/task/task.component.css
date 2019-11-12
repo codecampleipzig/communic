@@ -1,0 +1,90 @@
+/** 
+ * Styling for the whole TaskListItem.
+ * There are some more styles and Variables (like colors) defined in the /src/styles.css that I considered to be useful as global styles.
+ */
+
+:host {
+   background: var(--taskListItemBG);
+   box-shadow: var(--taskListItemShadow);
+   position: relative;
+   border-radius: 4px;
+   padding: .5em 1em;
+   margin-bottom: 1em;
+   display: flex;
+   flex-flow: wrap;
+   align-items: center;
+}
+
+   :host > * {
+      margin-top: 0;
+      margin-bottom: 1em;
+   }
+
+
+/* Task Header with Checkbox and Title */
+.taskHeader {
+   display: flex;
+   align-items: center;
+}
+
+   .taskHeader > * {
+      margin-right: 1em;
+   }
+
+   h4 {
+      margin: 0;
+   }
+
+   .checkbox {
+      width: 1.5em;
+      height: 1.5em;
+      border: 2px solid #CECECE;
+      border-radius: 2px;
+   }
+   
+   .checkbox:hover {
+      background: rgb(218, 218, 218);
+   }
+
+/* Task Delete */
+.taskDelete {
+   position: absolute;
+   top: .5em;
+   right: 1em;
+   cursor: pointer;
+}
+
+   .taskDelete:hover {
+      color: var(--warningRed);
+   }
+
+   
+.taskDescription {
+   margin-left: 1em;
+   flex-basis: 100%;
+}
+
+   
+/**
+ * Styling the different status states of the Tasks
+ * For example status-deleted with text-decoration: line-through
+ */
+
+:host(.status-done),
+:host(.status-deleted) {
+   opacity: .4;
+   transition: opacity .8s;
+}
+
+:host(.status-done):hover,
+:host(.status-deleted):hover {
+   opacity: .9
+}
+
+:host(.status-done) .checkbox {
+   background: rgb(218, 218, 218);
+}
+
+:host(.status-deleted) > * {
+   text-decoration:line-through;
+}
