@@ -7,6 +7,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProjectActionComponent } from './project-action/project-action.component';
 import { UserActionComponent } from './user-action/user-action.component';
 import { HomeComponent } from './home/home.component';
+import { ProjectListComponent} from './project-list/project-list.component';
+import { ProjectCardComponent} from './project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { HomeComponent } from './home/home.component';
     ToolbarComponent,
     ProjectActionComponent,
     UserActionComponent,
-    HomeComponent
+    HomeComponent,
+    ProjectListComponent,
+    ProjectCardComponent
   ],
   imports: [
     BrowserModule,
