@@ -9,7 +9,7 @@ export class TaskListItemTeamComponent implements OnInit {
   @Input() userIDs: number;
   @Input() status: string;
 
-  /* Placeholder. Needs to be replaced with something like task.teamIDs.find(currentUser) */
+  /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
   private userjoined: boolean = false;
 
   constructor() { }
