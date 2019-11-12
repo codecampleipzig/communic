@@ -1,4 +1,3 @@
-/* Check for better approach in angular */
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 .toolbar {
@@ -15,11 +14,13 @@
    font-family: 'Montserrat', sans-serif;
    font-weight: bold;
    left: 50%;
+   /* TODO: Position toolbar centrally without using transform: translate() */
    transform: translate(-50%, 0);
 }
 
-.toolbar>* {
-   /* margin: .5em 1em; */
+.spacer {
+   width: 100%;
+   height: 80px;
 }
 
 .homeIcon {
@@ -37,7 +38,6 @@
    display: flex;
    justify-content: space-between;
    align-items: center;
-   /* width: 18%; */
    margin-left: 1em;
 }
 

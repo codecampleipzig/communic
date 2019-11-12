@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ProjectActionComponent } from './project-action.component';
 
 describe('ProjectActionComponent', () => {
@@ -47,7 +46,7 @@ describe('ProjectActionComponent', () => {
     }
   });
 
-  // verify create project button has correct label/text?
+  // verify create project button has correct label/text
   it('should have create project button', () => {
     if (!component.projectName) {
       const htmlElement: HTMLElement = fixture.nativeElement;
@@ -68,20 +67,21 @@ describe('ProjectActionComponent', () => {
     });
   });
 
-
-  // const projectName = component.projectName;
-  // // not a good approach - should be failing when .toBeTruthy
-  // if (component.projectName) {
-  //   const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-  //   expect(htmlElement.querySelector('#startProjectButton')).toBeFalsy();
-  // }
+  // verify when project name is NOT defined, create project button exists
+  // it('should have create project button when project name is NOT present', () => {
+  //   if (!component.projectName) {
+  //     const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
+  //     expect(htmlElement.querySelector('#startProjectButton')).toBeTruthy();
+  //   }
   // });
 
-  // verify when project name is NOT defined, create project button exists
   it('should have create project button when project name is NOT present', () => {
-    if (!component.projectName) {
+    component.projectName = '';
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
       const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
       expect(htmlElement.querySelector('#startProjectButton')).toBeTruthy();
-    }
+    });
   });
+  
 });

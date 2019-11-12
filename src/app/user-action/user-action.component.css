@@ -1,3 +1,5 @@
+/* TODO: Apply styles on User Thumbnail such that the image will be properly rendered and shown in circle */
+
 .userActions {
    display: flex;
    justify-content: flex-end;

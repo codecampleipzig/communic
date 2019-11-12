@@ -47,12 +47,12 @@ describe('ToolbarComponent', () => {
   // verify project-action is present
   it('should have project-action tag', () => {
     const htmlElement = fixture.nativeElement
-    expect(htmlElement.querySelector('[data-component="project-action"]')).toBeTruthy();
+    expect(htmlElement.querySelector('#project-action')).toBeTruthy();
   });
 
   //verify user-action is present
   it('should have user-action tag', () => {
     const htmlElement : HTMLElement = fixture.nativeElement
-    expect(htmlElement.querySelector('[data-component="user-action"]')).toBeTruthy();
+    expect(htmlElement.querySelector('#user-action')).toBeTruthy();
   });
 });
