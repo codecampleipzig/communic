@@ -1,7 +1,17 @@
-<label>
-   <input type="text" placeholder="Name" [formControl]="name" required>
-   <input type="email" placeholder="Email" [formControl]="email" required>
-   <input type="password" placeholder="Password" [formControl]="email" required>
-</label>
+<form [formGroup]='profileForm' (ngSubmit)="onSubmit()">
+   <label>
+      <input type="text" placeholder="Name" formControlName="name" required>
+   </label>
+   <label>
+      <input type="email" placeholder="Email" formControlName="email" required>
+   </label>
+   <label>   
+      <input type="password" placeholder="Password" formControlName="password" required>
+   </label>   
 
-<button (click)="onSubmit()" type="submit">Submit</button>
+   <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+
+<p>
+   Form Status: {{ profileForm.status }}
+</p>
