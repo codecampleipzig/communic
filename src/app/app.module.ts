@@ -3,27 +3,22 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { MatFormFieldModule, MatError } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material";
-import { InputFormComponent } from './input-form/input-form.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterCardComponent } from './register-card/register-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputFormComponent
+    LoginFormComponent,
+    RegisterCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule
+    FormsModule
   ],
   providers: [
-    MatError
   ],
   bootstrap: [AppComponent]
 })
