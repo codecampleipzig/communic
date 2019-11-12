@@ -10,6 +10,7 @@ import { TaskListItemTeamComponent } from './task-list-item-team/task-list-item-
 import { CreateNewTaskComponent } from './create-new-task/create-new-task.component';
 import { TeamCardComponent } from './team-card/team-card.component';
 import { TeamMemberComponent } from './team-member/team-member.component';
+import { ProjectTeaserComponent } from './project-teaser/project-teaser.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TeamMemberComponent } from './team-member/team-member.component';
     TaskListItemTeamComponent,
     CreateNewTaskComponent,
     TeamCardComponent,
-    TeamMemberComponent
+    TeamMemberComponent,
+    ProjectTeaserComponent,
   ],
   imports: [
     BrowserModule,
