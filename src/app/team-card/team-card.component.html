@@ -1,0 +1,11 @@
+<h2>Team</h2>
+<ul id="user-list">
+      <li *ngFor="let user of users">
+         <app-team-member [user] = "user">
+            
+         </app-team-member>
+      </li>
+   </ul>
+<div *ngIf= "!alreadyJoined ">
+   <button (click)="join()">Join</button>
+</div>

@@ -1,0 +1,29 @@
+button {
+   background-color:  #655AF3;
+}
+
+h2 {
+   font-family: Montserrat, sans-serif;
+   font-style: normal;
+   color : grey;
+}
+
+#user-list {
+   list-style : none;
+   display : grid;
+   grid-template-columns: repeat(1, 1fr);
+   font-family: Montserrat, sans-serif;
+   font-style: normal;
+   color: grey;
+}
+@media (min-width:800px) {
+   #user-list {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+@media (min-width:1200px) {
+   #user-list {
+      grid-template-columns: repeat(3, 1fr);
+   }
+}
+
