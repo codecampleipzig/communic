@@ -26,25 +26,23 @@ describe('ProjectActionComponent', () => {
   // verify project name is present
   it('should have project name', () => {
     if (component.projectName) {
-      const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
+      const htmlElement: HTMLElement = fixture.nativeElement;
       expect(htmlElement.querySelector('#projectName')).toBeTruthy();
     }
   });
 
-  // verify project name is correct?
+  // verify project name binding is correct
   it('should have correct project name', () => {
-    const expectedValue = component.projectName;
-    if (expectedValue) {
-      const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-      const actualValue = htmlElement.querySelector('#projectName').textContent;
-      expect(actualValue).toBe(expectedValue);
+    if (component.projectName) {
+      const htmlElement: HTMLElement = fixture.nativeElement;
+      expect(htmlElement.querySelector('#projectName').textContent).toEqual(component.projectName);
     }
   });
 
   // verify create project button is present
   it('should have create project button', () => {
     if (!component.projectName) {
-      const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
+      const htmlElement: HTMLElement = fixture.nativeElement;
       expect(htmlElement.querySelector('#startProjectButton')).toBeTruthy();
     }
   });
@@ -52,8 +50,8 @@ describe('ProjectActionComponent', () => {
   // verify create project button has correct label/text?
   it('should have create project button', () => {
     if (!component.projectName) {
-      const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-      expect(htmlElement.querySelector('#startProjectButton').textContent).toBe('Start a new project');
+      const htmlElement: HTMLElement = fixture.nativeElement;
+      expect(htmlElement.querySelector('#startProjectButton').textContent).toEqual('Start a new project');
     }
   });
 
@@ -61,15 +59,26 @@ describe('ProjectActionComponent', () => {
   // Blocked by pending routing implementation 
 
   // verify when project name is defined, create project button does not exist
-  it('should have create project button', () => {
-    if (component.projectName) {
+  it('should NOT have create project button when project name is present', () => {
+    component.projectName = 'Project Name';
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
       const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
       expect(htmlElement.querySelector('#startProjectButton')).toBeFalsy();
-    }
+    });
   });
 
+
+  // const projectName = component.projectName;
+  // // not a good approach - should be failing when .toBeTruthy
+  // if (component.projectName) {
+  //   const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
+  //   expect(htmlElement.querySelector('#startProjectButton')).toBeFalsy();
+  // }
+  // });
+
   // verify when project name is NOT defined, create project button exists
-  it('should have create project button', () => {
+  it('should have create project button when project name is NOT present', () => {
     if (!component.projectName) {
       const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
       expect(htmlElement.querySelector('#startProjectButton')).toBeTruthy();

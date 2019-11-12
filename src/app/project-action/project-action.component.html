@@ -1,9 +1,9 @@
 <div class="projectActionWrapper">
-   <div class="projectNameWrapper" *ngIf="projectName">
+   <div class="projectNameWrapper" *ngIf='projectName'>
       <img [src]="breadcrumbIconSource" alt=">" />
       <span id="projectName" class="projectName">{{projectName}}</span>
    </div>
-   <button id="startProjectButton" class="startProjectButton" (click)="createProject()" *ngIf="!projectName">
+   <button id="startProjectButton" class="startProjectButton" (click)="createProject()" *ngIf='!projectName'>
       <img [src]="plusIconSource" alt="Plus icon">
       <span>Start a new project</span>
    </button>

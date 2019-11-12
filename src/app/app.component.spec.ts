@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { Component } from '@angular/core';
 
-// mmock the child components
+// mock the child components
 @Component({ selector: 'app-toolbar', template: '' })
 class ToolbarStubComponent { }
 

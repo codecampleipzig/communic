@@ -37,7 +37,7 @@ describe('ToolbarComponent', () => {
 
   // verify home button is present
   it('should have home icon in a button tag', () => {
-    const htmlElement : HTMLElement = fixture.debugElement.nativeElement;
+    const htmlElement : HTMLElement = fixture.nativeElement;
     expect(htmlElement.querySelector('.homeIcon')).toBeTruthy();
   });
 
@@ -46,13 +46,13 @@ describe('ToolbarComponent', () => {
 
   // verify project-action is present
   it('should have project-action tag', () => {
-    const htmlElement = fixture.debugElement.nativeElement
+    const htmlElement = fixture.nativeElement
     expect(htmlElement.querySelector('[data-component="project-action"]')).toBeTruthy();
   });
 
   //verify user-action is present
   it('should have user-action tag', () => {
-    const htmlElement : HTMLElement = fixture.debugElement.nativeElement
+    const htmlElement : HTMLElement = fixture.nativeElement
     expect(htmlElement.querySelector('[data-component="user-action"]')).toBeTruthy();
   });
 });
