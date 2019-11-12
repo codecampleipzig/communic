@@ -10,6 +10,12 @@ import { TaskListItemTeamComponent } from './task-list-item-team/task-list-item-
 import { CreateNewTaskComponent } from './create-new-task/create-new-task.component';
 import { TeamCardComponent } from './team-card/team-card.component';
 import { TeamMemberComponent } from './team-member/team-member.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ProjectActionComponent } from './project-action/project-action.component';
+import { UserActionComponent } from './user-action/user-action.component';
+import { HomeComponent } from './home/home.component';
+import { ProjectListComponent} from './project-list/project-list.component';
+import { ProjectCardComponent} from './project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,13 @@ import { TeamMemberComponent } from './team-member/team-member.component';
     TaskListItemTeamComponent,
     CreateNewTaskComponent,
     TeamCardComponent,
-    TeamMemberComponent
+    TeamMemberComponent,
+    ToolbarComponent,
+    ProjectActionComponent,
+    UserActionComponent,
+    HomeComponent,
+    ProjectListComponent,
+    ProjectCardComponent
   ],
   imports: [
     BrowserModule,
