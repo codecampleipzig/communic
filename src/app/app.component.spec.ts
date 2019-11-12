@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 
 describe('AppComponent', () => {
-  beforeEach( () => {
+  beforeEach( async(() => {
      TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -13,37 +13,18 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-    });
-  });
+    }).compileComponents();
+  })) ;
 
   it('should create the app', () => {
-    expect.assertions(1);
-    return TestBed.compileComponents()
-      .then( () => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.debugElement.componentInstance;
-        expect(app).toBeTruthy();
-      });
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
   });
 
   it(`should have as title 'communic'`, () => {
-    expect.assertions(1);
-    return TestBed.compileComponents()
-      .then( () => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.debugElement.componentInstance;
-        expect(app.title).toEqual('communic');
-      });
-  });
-
-  it('should render title in a h1 tag', () => {
-    expect.assertions(1);
-    return TestBed.compileComponents()
-      .then( () => {
-      const fixture = TestBed.createComponent(AppComponent);
-      fixture.detectChanges();
-      const compiled = fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('h1').textContent).toContain('Welcome to communic!');
-      });
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('communic');
   });
 });
