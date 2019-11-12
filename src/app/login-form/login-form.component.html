@@ -1,8 +1,15 @@
 
-<label class="mainContainer">
-   <input type="text" [formControl]="name" placeholder="Name" required>
-   <input type="email" [formControl]="name" placeholder="Email" required>
-   <input type="password" [formControl]="name" placeholder="Password" required>
+<label>
+   <mat-form-field appearance="outline">
+      <!-- <input type="text" [formControl]="name" placeholder="Name" required> -->
+      <input matInput type="text" placeholder="Enter your email" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>    
+      <!-- <input type="email" [formControl]="name" placeholder="Email" required> -->
+      <!-- <input type="password" [formControl]="name" placeholder="Password" required> -->
+   </mat-form-field>
 </label>
 
-<button (click)="onSubmit()" type="submit">Join Now!</button>
+<p>this is what I'm currently writing: {{ email.value }}</p>
+<p>status of the form: {{ email.status }}</p>
+
+<button (click)="onSubmit()" type="submit">Submit</button>

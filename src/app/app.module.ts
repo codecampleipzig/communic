@@ -1,24 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { RegisterCardComponent } from './register-card/register-card.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { MatFormFieldModule, MatError } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material";
+import { InputFormComponent } from './input-form/input-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterCardComponent,
-    LoginFormComponent
+    InputFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [
+    MatError
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

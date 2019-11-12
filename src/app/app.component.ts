@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-export type EditorType = 'name';
+export type EditorType = 'email';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,12 @@ export type EditorType = 'name';
 })
 
 export class AppComponent {
-  title = 'Communic.io';
+  title = 'communic';
 
-  editor: EditorType = 'name';
+  editor: EditorType = 'email';
 
   get showInputForm() {
-    return this.editor === 'name';
+    return this.editor === 'email';
   }
 
 }

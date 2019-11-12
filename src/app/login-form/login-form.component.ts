@@ -7,13 +7,24 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./login-form.component.css']
 })
 
-export class LoginFormComponent {
-  name = new FormControl ('');
+@NgModule({
+  imports: [
+    MatInputModule
+  ]
+})
+
+export class InputFormComponent {
+  email = new FormControl ('', [Validators.required, Validators.email]);
+
+  getErrorMessage (){
+    return this.email.hasError('required') ? 'Email required':
+      this.email.hasError('email') ? 'Enter a valid email':
+      '';
+  }
 
   constructor() { }
 
   onSubmit() {
-    console.log(this.name.value);
   }
 
   ngOnInit() {
