@@ -1,0 +1,39 @@
+:host {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - 120px);
+    padding: 50px 60px;
+  }
+
+
+.image {
+    width: 100%;
+    height: 30vw;
+    background: #F8F8F8;
+    border-radius: 6px;
+}
+
+.textbox1 {
+}
+
+.textbox2 {
+}
+
+
+@media screen and (min-width: 600px) {
+
+:host {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: calc(100% - 120px);
+    padding: 50px 60px;
+    }
+
+.image {
+    background: #F8F8F8;
+    border-radius: 6px;
+    }   
+
+}
