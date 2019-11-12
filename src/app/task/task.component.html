@@ -4,8 +4,8 @@
    - [ ] Only show for users that joined the task?
 -->
 <div class="taskDelete">
-   <fa-icon *ngIf="task.status != 'deleted'" [icon]="['fas', 'trash-alt']"></fa-icon>
-   <fa-icon *ngIf="task.status == 'deleted'" [icon]="['fas', 'trash-restore']"></fa-icon>
+   <i *ngIf="task.status != 'deleted'" class="fas fa-trash-alt"></i>
+   <i *ngIf="task.status == 'deleted'" class="fas fa-trash-restore"></i>
 </div>
 
 <!--

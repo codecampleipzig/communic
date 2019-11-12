@@ -2,15 +2,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskListItemTeamComponent } from './task-list-item-team.component';
 
-describe('TaskListItemTeamComponent', () => {
+describe('TaskListItemTeam Component', () => {
   let component: TaskListItemTeamComponent;
   let fixture: ComponentFixture<TaskListItemTeamComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ TaskListItemTeamComponent ]
-    })
-    .compileComponents();
+    });
   }));
 
   beforeEach(() => {

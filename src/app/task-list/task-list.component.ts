@@ -9,7 +9,7 @@ import { Task } from '../dataTypes';
 })
 export class TaskListComponent implements OnInit {
 
-  private tasks: Task[];
+  public tasks: Task[];
 
   constructor(private store: StoreService) { 
     /**

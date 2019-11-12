@@ -39,7 +39,7 @@ button {
     * Margin to the right for every Icon inside a button
     * - [ ] Maybe the Icon is on the right sometimes?
     */
-   button .ng-fa-icon {
+   button i {
       margin-right: .5em;
    }
 

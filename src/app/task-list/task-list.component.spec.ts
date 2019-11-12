@@ -1,22 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskListComponent } from './task-list.component';
+import { TaskComponent } from '../task/task.component';
+
+import { StoreService } from '../store.service';
 
 describe('TaskListComponent', () => {
   let component: TaskListComponent;
-  let fixture: ComponentFixture<TaskListComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TaskListComponent ]
-    })
-    .compileComponents();
-  }));
+  let storeService: StoreService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TaskListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    storeService = new StoreService();
+    component = new TaskListComponent(storeService);
+  });
+
+  afterEach(() => {
+    storeService = null;
+    component = null;
   });
 
   it('should create', () => {
