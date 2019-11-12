@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Task, Project } from './dataTypes';
+import { Task } from './datatypes/Task';
+import { Project } from './datatypes/Project';
 import { User } from './datatypes/User'
 
 @Injectable({

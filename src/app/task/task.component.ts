@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
-import { Task } from '../dataTypes';
+import { Task } from '../datatypes/Task';
 
 @Component({
   selector: 'app-task',
