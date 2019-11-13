@@ -12,7 +12,7 @@ These Guidlines shall make shure that CSS code we write is understandable and in
 * [Guidelines](#guidelines)
    * [.camelCase](#camelCase)
    * [Refracture](#refracture)
-   * [Global Styles & Utility Classes](#global-styles-utility-classes)
+   * [Global Styles & Utility Classes](#global-styles--utility-classes)
    * [Use the :host Selector](#use-the-host-selector)
    * [Use CSS Variables for Colors,...](#use-css-variables-for-colors)
    * [Font Awesome Icon Font](#font-awesome-icon-font)
