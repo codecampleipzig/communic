@@ -16,6 +16,7 @@ These Guidlines shall make shure that CSS code we write is understandable and in
    * [Use the :host Selector](#use-the-host-selector)
    * [Use CSS Variables for Colors,...](#use-css-variables-for-colors)
    * [Font Awesome Icon Font](#font-awesome-icon-font)
+   * [Montserrat Font](#montserrat-font)
 * [Mozilla's MDN CSS Guidelines](#mozillas-mdn-css-guidelines)
 * [Mozilla's _Organizing your CSS_ Tipps](#mozillas-organizing-your-css-tipps)
 
@@ -97,6 +98,23 @@ This will show the Join Button in the Task List.
    <i class="fas fa-plus"></i> Join
 </button>
 ```
+
+---
+
+### Montserrat Font
+
+The Montserrat Font is included from Google Fonts and added to the body. That means you don't have to set it anywhere else.
+
+But please use the correct font-weight:
+
+```css
+font-weight: 300; /* regular (standard) */
+font-weight: 500; /* medium */
+font-weight: 600; /* semi-bold */
+font-weight: 700; /* bold */
+```
+
+__Warning__: Actually we use the `light` style as regular, while regular would actually be `400`. But `400` looks like shit (at least in Firefox), so we decided to not use it.
 
 ---
 
