@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: 'project/:id', component: ProjectPageComponent},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'login', component: RegisterCardComponent}
+  {path: 'register', component: RegisterCardComponent}
 ];
 
 @NgModule({
