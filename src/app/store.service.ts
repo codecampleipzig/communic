@@ -9,7 +9,7 @@ import { User } from './datatypes/User'
 export class StoreService {
 
   /**
-   * Mock Data for Tasks & Projects
+   * Mock Data for Tasks & Projects & Users
    */
   private TASKS: Task[] = [
     { id: 1,
@@ -58,21 +58,22 @@ export class StoreService {
       authorID: 5678,
       userIDs: [1234, 5678, 9123, 4567, 8901],
     },
-  ]
+  ];
+
   private users : User[] = [
-    { userName : "Mautzi", userEmail : "mausi95@gmail.com", imageURL : "../assets/serveimage.png", userId: 1234},
-    { userName : "Mariana", userEmail : "catFallsOnTheSofaWithFaceFirst@gmail.com", imageURL : "../assets/serveimage.png", userId: 5678},
-    { userName : "Lena", userEmail : "lenintheempress@gmail.com", imageURL : "../assets/serveimage.png", userId: 9123},
-    { userName : "Björn", userEmail : "thPObutNotTheRiver@gmail.com", imageURL : "../assets/serveimage.png", userId: 4567},
-    { userName : "Pauline", userEmail : "DelphineQueen@gmail.com", imageURL : "../assets/serveimage.png", userId: 8901},
-    { userName : "Nick", userEmail : "nickTheSwan@gmail.com", imageURL : "../assets/serveimage.png", userId: 1237},
-    { userName : "Nico", userEmail : "intelligentButBeautiful@gmail.com", imageURL : "../assets/serveimage.png", userId: 2345},
-    { userName : "Simona", userEmail : "deepBeutifulSea@gmail.com", imageURL : "../assets/serveimage.png", userId: 6789},
-    { userName : "Beatriz", userEmail : "womanWhoRockTheWorld@gmail.com", imageURL : "../assets/serveimage.png", userId: 3456},
-    { userName : "Anahita", userEmail : "bestBiologistInTheWorld@gmail.com", imageURL : "../assets/serveimage.png", userId: 7891},
-    { userName : "Kaab", userEmail : "theKricketEnthusiast@gmail.com", imageURL : "../assets/serveimage.png", userId: 4567},
-    { userName : "Andres", userEmail : "krawalloAndi@gmail.com", imageURL : "../assets/serveimage.png", userId: 8912},
-    { userName : "Iko", userEmail : "caretaker3000@gmail.com", imageURL : "../assets/serveimage.png", userId: 1239},
+    { userName : "Mautzi", userEmail : "mauziDong@gmail.com", imageURL : "../assets/mock-user.png", userId: 1234},
+    { userName : "Mariana", userEmail : "marianaTheFrontEndGodess@gmail.com", imageURL : "../assets/mock-user.png", userId: 5678},
+    { userName : "Lena", userEmail : "lenintheempress@gmail.com", imageURL : "../assets/mock-user.png", userId: 9123},
+    { userName : "Björn", userEmail : "thPObutNotTheRiver@gmail.com", imageURL : "../assets/mock-user.png", userId: 4567},
+    { userName : "Pauline", userEmail : "DelphineQueen@gmail.com", imageURL : "../assets/mock-user.png", userId: 8901},
+    { userName : "Nick", userEmail : "nickTheSwan@gmail.com", imageURL : "../assets/mock-user.png", userId: 1237},
+    { userName : "Nico", userEmail : "intelligentButBeautiful@gmail.com", imageURL : "../assets/mock-user.png", userId: 2345},
+    { userName : "Simona", userEmail : "deepBeutifulSea@gmail.com", imageURL : "../assets/mock-user.png", userId: 6789},
+    { userName : "Beatriz", userEmail : "womanWhoRockTheWorld@gmail.com", imageURL : "../assets/mock-user.png", userId: 3456},
+    { userName : "Anahita", userEmail : "bestBiologistInTheWorld@gmail.com", imageURL : "../assets/mock-user.png", userId: 7891},
+    { userName : "Kaab", userEmail : "theKricketEnthusiast@gmail.com", imageURL : "../assets/mock-user.png", userId: 4567},
+    { userName : "Andres", userEmail : "krawalloAndi@gmail.com", imageURL : "../assets/mock-user.png", userId: 8912},
+    { userName : "Iko", userEmail : "caretaker3000@gmail.com", imageURL : "../assets/mock-user.png", userId: 1239},
   ];
 
   constructor() { }
@@ -95,12 +96,20 @@ export class StoreService {
   retrieveTasks(projectID: number, location: string): Task[] {
     return this.TASKS.filter(task => task.projectID == projectID && task.location == location);
   }
+  /**
+   * Get UserList
+   * @returns a list of all the User
+   */
   retrieveUserList() : User [] {
     return this.users;
   }
-
-  retrieveUser(index: number): User {
-    return this.users[index];
+  /**
+   * Get User by Id
+   * @param userId 
+   * @returns User
+   */
+  retrieveUser(userId: number): User {
+    return this.users.find(user => user.userId == userId);
   }
   
 }

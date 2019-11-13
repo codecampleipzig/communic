@@ -1,29 +1,27 @@
-button {
-   background-color:  #655AF3;
-}
-
-h2 {
-   font-family: Montserrat, sans-serif;
-   font-style: normal;
-   color : grey;
-}
-
+/**
+ * User-List in mobile view will dispaly user in 1 column
+ */
 #user-list {
-   list-style : none;
    display : grid;
    grid-template-columns: repeat(1, 1fr);
    font-family: Montserrat, sans-serif;
    font-style: normal;
    color: grey;
 }
+/**
+ * User-List from 800px on will dispaly user in 2 columns
+ */
 @media (min-width:800px) {
    #user-list {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
    }
 }
+/**
+ * User-List from 1200px will dispaly user in 3 columns
+ */
 @media (min-width:1200px) {
    #user-list {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
    }
 }
 
