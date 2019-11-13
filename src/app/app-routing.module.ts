@@ -9,9 +9,8 @@ const routes: Routes = [
   {path: 'project/:id', component: ProjectPageComponent},
   {path: 'home', component: HomeComponent},
   {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'login', component: RegisterCardComponent},
-  {path: 'login', component: UserActionComponent},
-  {path: 'logout', redirectTo: 'login', pathMatch: 'full'}
+  {path: 'register', component: RegisterCardComponent},
+  {path: 'profile', component: UserActionComponent}
 ];
 
 @NgModule({

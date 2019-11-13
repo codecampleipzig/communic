@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { StoreService } from '../store.service';
 
 @Component({
   selector: 'app-user-action',
@@ -10,14 +12,14 @@ export class UserActionComponent implements OnInit {
   public userName: string = "Username";
   public userThumbnail: string = "../../assets/user.png";
   
-  constructor() { }
+  constructor(public router: Router, public store: StoreService) { }
 
   ngOnInit() {
   }
 
   logout() {
-    // Implement routing once other components are available and routes are set
-    console.log("Clicked Logout!");
+    this.store.logout();
+    this.router.navigate(['register']);
    }
 
 }

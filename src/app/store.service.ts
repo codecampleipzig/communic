@@ -6,8 +6,12 @@ import { User } from './datatypes/User'
 @Injectable({
   providedIn: 'root'
 })
+
 export class StoreService {
 
+  logout () {
+    console.log("logout");
+  }
   /**
    * Mock Data for Tasks & Projects
    */
