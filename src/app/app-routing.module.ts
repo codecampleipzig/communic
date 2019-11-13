@@ -7,7 +7,7 @@ import { RegisterCardComponent } from './register-card/register-card.component';
 const routes: Routes = [
   {path: 'project/:id', component: ProjectPageComponent},
   {path: 'home', component: HomeComponent},
-  {path: '', redirectTo: 'register', pathMatch: 'full'},
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
   {path: 'register', component: RegisterCardComponent}
 ];
 
