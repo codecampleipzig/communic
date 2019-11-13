@@ -4,8 +4,6 @@
 #user-list {
    display : grid;
    grid-template-columns: repeat(1, 1fr);
-   font-family: Montserrat, sans-serif;
-   font-style: normal;
    color: grey;
 }
 /**

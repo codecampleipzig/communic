@@ -58,11 +58,17 @@ h4 {
  */
 
 button {
-   padding: .5em 1em;
+   padding: 1em 1em;
    cursor: pointer;
    font-size: .8rem;
    background-color: var(--primaryColor);
    color: #fff;
+   min-width: 150px;
+   width: 15%;
+   border-radius: 10px;
+   line-height: 1.5rem;
+   margin: 1em;
+   appearance: none;
 }
 
 /** 
