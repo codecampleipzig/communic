@@ -2,10 +2,9 @@
 
 _&copy; LSD Code Camp Leipzig Team 1 2019_
 
-## To Do before sending this
-- [ ] Define more global CSS Variables
+These Guidlines shall make shure that CSS code we write is understandable and in the same style & structure, so there is no need to refracture to much and stuff can be reused by everyone.
 
-These Guidlines shall make shure that CSS code we write is understandable and in the same style & structure, so there is no need to refracture too much and stuff can be reused by everyone.
+__Most important__: please try to stick to that, and reach out to LSD Team if you want to change something globally. 
 
 ## Contents
 
