@@ -18,6 +18,8 @@ import { ProjectCardComponent} from './project-card/project-card.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
+import { ExploreProjectsComponent } from './explore-projects/explore-projects.component';
+import { ExploreProjectCardComponent } from './explore-project-card/explore-project-card.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { RegisterCardComponent } from './register-card/register-card.component';
     ProjectCardComponent,
     LoginFormComponent,
     RegisterCardComponent,
+    ExploreProjectsComponent,
+    ExploreProjectCardComponent,
   ],
   imports: [
     BrowserModule,

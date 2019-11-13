@@ -5,4 +5,5 @@ export interface Project {
    goal: string;
    authorID: number;
    userIDs: number[];
+   imageUrl: string;
 }
