@@ -1,3 +1,10 @@
+/**
+ * The store is componed by observables and we are triggering a reaction in our components. Mutation.
+ * We are storing things a string of values.
+ * We are creating a local DB.
+ * We need to find a consensus in this file. How we are all going to work and interact with it.
+ * The mock data will go another services which will be replace by a DB.
+ */
 import { Injectable } from '@angular/core';
 import { Task } from './datatypes/Task';
 import { Project } from './datatypes/Project';
@@ -9,6 +16,9 @@ import { User } from './datatypes/User'
 
 export class StoreService {
 
+  /**
+   * Create the method logout that is linked to the user-action.component.ts
+   */
   logout () {
     console.log("logout");
   }
