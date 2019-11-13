@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
 
-
-@NgModule({
-  imports: [  
-    ReactiveFormsModule
-  ]
-})
 
 @Component({
   selector: 'app-register-card',

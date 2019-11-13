@@ -1,3 +1,4 @@
+<div>
 <form [formGroup]='profileForm' (ngSubmit)="onSubmit()">
    <label>
       <input type="text" placeholder="Name" formControlName="name" required>
@@ -11,7 +12,3 @@
 
    <a routerLink="/home"><button type="submit" [disabled]="!profileForm.valid">Submit</button></a>
 </form>
-
-<p>
-   Form Status: {{ profileForm.status }}
-</p>
