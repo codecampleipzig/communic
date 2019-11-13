@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-project-page',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public route: ActivatedRoute) {
+    route.params.subscribe((params: Params) => {
+      console.log(params.id);
+    })
+   }
 
   ngOnInit() {
   }

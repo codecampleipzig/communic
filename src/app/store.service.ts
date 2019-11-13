@@ -16,7 +16,7 @@ export class StoreService {
       name: 'Some Task Name Placeholder',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
       status: 'open',
-      authorID: 1,
+      authorID: 1234,
       userIDs: [1234, 5678, 9123, 4567, 8901],
       projectID: 9435,
       location: 'starter'
@@ -55,24 +55,24 @@ export class StoreService {
       title: 'Project 1',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
       goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      authorID: 1,
+      authorID: 5678,
       userIDs: [1234, 5678, 9123, 4567, 8901],
     },
   ]
-  users : User[] = [
-    { userName : "Mautzi", userEmail : "mausi95@gmail.com", imageURL : "../assets/serveimage.png", userId: 1},
-    { userName : "Mariana", userEmail : "catFallsOnTheSofaWithFaceFirst@gmail.com", imageURL : "../assets/serveimage.png", userId: 2},
-    { userName : "Lena", userEmail : "lenintheempress@gmail.com", imageURL : "../assets/serveimage.png", userId: 3},
-    { userName : "Björn", userEmail : "thPObutNotTheRiver@gmail.com", imageURL : "../assets/serveimage.png", userId: 4},
-    { userName : "Pauline", userEmail : "DelphineQueen@gmail.com", imageURL : "../assets/serveimage.png", userId: 5},
-    { userName : "Nick", userEmail : "nickTheSwan@gmail.com", imageURL : "../assets/serveimage.png", userId: 6},
-    { userName : "Nico", userEmail : "intelligentButBeautiful@gmail.com", imageURL : "../assets/serveimage.png", userId: 7},
-    { userName : "Simona", userEmail : "deepBeutifulSea@gmail.com", imageURL : "../assets/serveimage.png", userId: 8},
-    { userName : "Beatriz", userEmail : "womanWhoRockTheWorld@gmail.com", imageURL : "../assets/serveimage.png", userId: 9},
-    { userName : "Anahita", userEmail : "bestBiologistInTheWorld@gmail.com", imageURL : "../assets/serveimage.png", userId: 10},
-    { userName : "Kaab", userEmail : "theKricketEnthusiast@gmail.com", imageURL : "../assets/serveimage.png", userId: 11},
-    { userName : "Andres", userEmail : "krawalloAndi@gmail.com", imageURL : "../assets/serveimage.png", userId: 12},
-    { userName : "Iko", userEmail : "caretaker3000@gmail.com", imageURL : "../assets/serveimage.png", userId: 12},
+  private users : User[] = [
+    { userName : "Mautzi", userEmail : "mausi95@gmail.com", imageURL : "../assets/serveimage.png", userId: 1234},
+    { userName : "Mariana", userEmail : "catFallsOnTheSofaWithFaceFirst@gmail.com", imageURL : "../assets/serveimage.png", userId: 5678},
+    { userName : "Lena", userEmail : "lenintheempress@gmail.com", imageURL : "../assets/serveimage.png", userId: 9123},
+    { userName : "Björn", userEmail : "thPObutNotTheRiver@gmail.com", imageURL : "../assets/serveimage.png", userId: 4567},
+    { userName : "Pauline", userEmail : "DelphineQueen@gmail.com", imageURL : "../assets/serveimage.png", userId: 8901},
+    { userName : "Nick", userEmail : "nickTheSwan@gmail.com", imageURL : "../assets/serveimage.png", userId: 1237},
+    { userName : "Nico", userEmail : "intelligentButBeautiful@gmail.com", imageURL : "../assets/serveimage.png", userId: 2345},
+    { userName : "Simona", userEmail : "deepBeutifulSea@gmail.com", imageURL : "../assets/serveimage.png", userId: 6789},
+    { userName : "Beatriz", userEmail : "womanWhoRockTheWorld@gmail.com", imageURL : "../assets/serveimage.png", userId: 3456},
+    { userName : "Anahita", userEmail : "bestBiologistInTheWorld@gmail.com", imageURL : "../assets/serveimage.png", userId: 7891},
+    { userName : "Kaab", userEmail : "theKricketEnthusiast@gmail.com", imageURL : "../assets/serveimage.png", userId: 4567},
+    { userName : "Andres", userEmail : "krawalloAndi@gmail.com", imageURL : "../assets/serveimage.png", userId: 8912},
+    { userName : "Iko", userEmail : "caretaker3000@gmail.com", imageURL : "../assets/serveimage.png", userId: 1239},
   ];
 
   constructor() { }
