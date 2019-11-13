@@ -15,6 +15,6 @@ export class ToolbarComponent implements OnInit {
 
   navigateHome() {
     // Implement routing once other components are available and routes are set
-    console.log("Clicked Home!");
+    location.reload(true);
   }
 }
