@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 /**
  * We importe the Router, a service that provides navigation and URL manipulation capabilities.
  * We import the StoreService serives to import the logout method.
  */
-import { Router } from '@angular/router';
 import { StoreService } from '../store.service';
 
 @Component({
@@ -17,10 +16,9 @@ export class UserActionComponent implements OnInit {
   public userThumbnail: string = "../../../assets/hpotter-512.png";
   
   /**
-   * @param router 
    * @param store 
    */
-  constructor(public router: Router, public store: StoreService) { }
+  constructor( @Inject(StoreService) public store: StoreService) { }
 
   ngOnInit() {
   }
@@ -31,7 +29,6 @@ export class UserActionComponent implements OnInit {
    */
   logout() {
     this.store.logout();
-    this.router.navigate(['register']);
-   }
+  }
 
 }
