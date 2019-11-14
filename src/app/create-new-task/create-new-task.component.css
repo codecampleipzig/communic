@@ -1,10 +1,5 @@
-.createNewTask {
-    display: flex;
-    background-color: blanchedalmond;
-}
-
-.createNewTask::before {
-    content: "+";
-    text-decoration-style: solid;
-    font-size: 300%;
+.createNewTask i {
+    color: var(--fontMediumGrey);
+    font-size: 2rem;
+    margin: .25em .25em .25em 0
 }

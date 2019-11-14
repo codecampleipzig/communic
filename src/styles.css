@@ -49,7 +49,7 @@ p {
 }
 
 /**
- * Lists
+ * Utilities
  */
 
 .unstyledList {
@@ -61,6 +61,12 @@ p {
 .unstyledList>li {
    margin:0;
    padding:0;
+}
+
+.displayFlex {
+   display: flex;
+   flex-flow: wrap;
+   align-items: center;
 }
 
    
@@ -122,9 +128,21 @@ button.outlined:hover {
    padding: 1em 1.5em 2em; /* Space around the content of the cards */
    margin: 3em auto 0; /* Margin to top and center with auto */
    box-sizing: border-box; /* Calculate width with padding */
-   transition: padding .4s, margin .4s, width .4s; /* Nice Transitions when resizing */
+   transition: padding .4s, margin .4s, width .4s, height .4s; /* Nice Transitions when resizing */
    width: calc(100% - 2em); /* Space around the card */
    max-width: 450px;
+}
+
+.card .card {
+   background: var(--backgroundGrey);
+   box-shadow: var(--smallShadow);
+   color: var(--fontDarkGrey);
+   position: relative;
+   border-radius: 4px;
+   padding: .5em 1em;
+   margin: 0 0 1em 0;
+   max-width: 100%;
+   width: 100%;
 }
 
 /* Add this class to .card to make the card full width */
@@ -150,3 +168,17 @@ button.outlined:hover {
       padding: 1.5em;
    }
 }
+
+
+/* Icon in the top right of Cards (e.g. taskDelete) */
+.topRightIcon {
+   position: absolute;
+   top: .5em;
+   right: 1em;
+   cursor: pointer;
+   color: var(--iconColor);
+}
+
+   .topRightIcon:hover {
+      color: var(--warningRed);
+   }
