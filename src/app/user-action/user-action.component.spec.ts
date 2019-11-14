@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserActionComponent } from './user-action.component';
 import { StoreService } from '../store.service';
 import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('UserActionComponent', () => {
   let component: UserActionComponent;
@@ -14,7 +13,7 @@ describe('UserActionComponent', () => {
       declarations: [ UserActionComponent ],
       providers: [
         StoreService,
-        {provide: Router, useClass: class {navigate() {}}}
+        {provide: Router, useClass: class {navigate() {}}},
       ]
     })
     .compileComponents();

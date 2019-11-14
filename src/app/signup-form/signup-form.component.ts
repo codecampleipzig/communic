@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
+import { StoreService } from '../store.service';
 
 
 @NgModule({
@@ -17,8 +18,7 @@ import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angula
 export class SignupFormComponent {
   profileForm: FormGroup;
   
-
-  constructor() { 
+  constructor(private store: StoreService) { 
     this.profileForm = new FormGroup({
     name: new FormControl ('',[Validators.required]),
     email: new FormControl ('',[Validators.required, Validators.email]),
@@ -27,7 +27,9 @@ export class SignupFormComponent {
   }
 
   onSubmit() {
-    console.warn(this.profileForm.value);
+    const {name, email, password} = this.profileForm.value;
+
+    this.store.register (name, email, password);
   }
 
   ngOnInit() {
