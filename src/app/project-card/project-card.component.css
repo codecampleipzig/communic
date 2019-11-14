@@ -28,8 +28,8 @@
  }
 
  .projectPicture > img {
-    width: 350px;
-    height: 275px;
+    width: 80%;
+    height: 80%;
     object-fit: cover;
     border-radius: 6px;
     cursor: pointer;
@@ -41,7 +41,7 @@
     background-color: var(--background-color);
     padding: 1em 0;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.5em;
  }
 
 .projectDescription {
@@ -49,6 +49,7 @@
     text-align: justify;
     background-color: var(--background-color);
     padding: 1em 0;
+    line-height: 1.7rem;
  }
 
  .readMore {

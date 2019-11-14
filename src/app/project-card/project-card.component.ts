@@ -14,14 +14,10 @@ export class ProjectCardComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  readMore(){
-    this.router.navigate(['project/:id']);
-  }
-
   ngOnInit() {
   }
 
-  navigateProject(){
-    this.router.navigate(['project/:id']);
+  public openProject(projectId: number): void {
+    this.router.navigate([`project/${projectId}`]);
   }
 }

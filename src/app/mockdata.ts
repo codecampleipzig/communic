@@ -47,7 +47,7 @@ export const tasks: Task[] = [
 
 export const projects: Project[] = [
    {
-      id: 9435,
+      id: 1,
       title: 'Project 1',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
       goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
@@ -56,7 +56,7 @@ export const projects: Project[] = [
       imageUrl: "./../assets/project-default.png"
    },
    {
-      id: 1,
+      id: 2,
       title: 'Project 2',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
       goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
@@ -64,6 +64,42 @@ export const projects: Project[] = [
       userIDs: [1, 2, 3, 4],
       imageUrl: "./../assets/project-default.png"
    },
+   {
+      id: 3,
+      title: 'Project 3',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
+      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
+      authorID: 1,
+      userIDs: [1, 2, 3, 4],
+      imageUrl: "./../assets/project-default.png"
+   },
+   {
+      id: 4,
+      title: 'Project 4',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
+      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
+      authorID: 7,
+      userIDs: [1, 2, 3, 4],
+      imageUrl: "./../assets/project-default.png"
+   },
+   {
+      id: 5,
+      title: 'Project 5',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
+      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
+      authorID: 9,
+      userIDs: [1, 2, 3, 4],
+      imageUrl: "./../assets/project-default.png"
+   },
+   {
+      id: 6,
+      title: 'Project 6',
+      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
+      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
+      authorID: 10,
+      userIDs: [1, 2, 3, 4],
+      imageUrl: "./../assets/project-default.png"
+   }
 ]
 
 export const users: User[] = [

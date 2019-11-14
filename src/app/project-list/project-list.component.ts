@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { StoreService } from './../store.service';
+import { Project } from '../datatypes/Project';
+import { User } from '../datatypes/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-list',
@@ -8,33 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectListComponent implements OnInit {
   
-  projects = [
-    { 
-      name: "project1", 
-      description: "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
-      image: "../assets/project-food1.jpeg" 
-    }, 
-    { name: "project2", 
-      description: "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
-      image: "../assets/testimage2.jpeg" 
-    }, 
-    { name: "project3", 
-      description: "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
-      image: "../assets/testimage3.jpeg" 
-    }, 
-    { name: "project4", 
-      description: "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
-      image: "../assets/testimage4.jpeg" 
-    }, 
-    { name: "project5", 
-      description: "    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
-      image: "../assets/testimage5.jpeg" 
-    }
-  ];
-  listTitle = "Your Projects";
-  constructor() { }
+  public title: string;
+  public projects: Array<Project>;
+  public currentUser: User;
+  @Input() category: string;
 
+  constructor(private store: StoreService, private router: Router) {
+   
+  }
   ngOnInit() {
+    console.log(`Category before is: ${this.category}`);
+    if (this.category == "exploreProjects") {
+      this.store.projects$.subscribe((projects) => {
+        this.projects = projects;
+        this.title = "Explore Projects";
+      });
+    } else {
+      this.store.projects$.subscribe((projects) => {
+        this.projects = projects;
+        this.title = "Your Projects";
+      });
+    }
+
+    console.log(this.projects);
   }
 
+  public openProject(projectId: number): void {
+    this.router.navigate([`project/${projectId}`]);
+  }
 }
