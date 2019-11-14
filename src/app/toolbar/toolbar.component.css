@@ -3,7 +3,12 @@
    display: flex;
    justify-content: center;
    position: fixed;
-   width: 100vw;
+   width: calc(100vw - 1em);
+   margin: 0.5em;
+}
+
+button {
+   min-width: initial;
 }
 .toolbar {
    width: 95vw;

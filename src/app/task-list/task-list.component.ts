@@ -15,7 +15,7 @@ export class TaskListComponent implements OnInit {
     /**
      * Pass Tasks of Project 9435/starter
      */
-    this.tasks = this.store.retrieveTasks(9435, 'starter');
+    this.tasks = this.store.retrieveTasks(1, 'starter');
   }
 
   ngOnInit() {

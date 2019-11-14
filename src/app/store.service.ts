@@ -27,13 +27,18 @@ export class StoreService {
  
   // Internal State
   _user : BehaviorSubject<UserState>;
+  _projects: BehaviorSubject<Array<Project>>;
 
   // Observable
-  public user$ : Observable<UserState>
+  public user$ : Observable<UserState>;
+  public projects$ : Observable<Array<Project>>;
 
   constructor(@Inject(Router) private router: Router, @Inject(AuthService) private authService: AuthService) { 
     this._user = new BehaviorSubject<UserState>({status: {}, userInformation: null});
     this.user$ = this._user.asObservable();
+
+    this._projects = new BehaviorSubject<Array<Project>>(Mock.projects);
+    this.projects$ = this._projects.asObservable();
   }
 
   // Action

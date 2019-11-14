@@ -17,6 +17,6 @@ export class ProjectActionComponent implements OnInit {
 
   createProject () {
     // Implement routing once other components are available and routes are set
-    console.log("Clicked Start a new project!")
+    //this.router.navigate(['createProject']); 
   }
 }

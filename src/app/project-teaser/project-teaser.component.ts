@@ -15,7 +15,7 @@ export class ProjectTeaserComponent implements OnInit {
     /**
      * Get Project by ID
      */
-    this.project = this.store.retrieveProject(9435);
+    this.project = this.store.retrieveProject(1);
   }
 
   ngOnInit() {

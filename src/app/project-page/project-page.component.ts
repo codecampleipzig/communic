@@ -17,4 +17,12 @@ export class ProjectPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Workaround: Scroll to top.
+   * Note: When user has scrolled to bottom of origin page and then opens Project page, bottom of Project page is shown.
+   */
+  ngAfterViewInit() {
+    window.scrollTo(0, 0);
+  }
+
 }
