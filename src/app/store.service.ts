@@ -98,11 +98,28 @@ export class StoreService {
     return this.tasks.filter(task => task.projectID == projectID && task.location == location);
   }
 
+  /**
+   * Get Project object by Project id
+   * @param id
+   * @returns Project object 
+   */
+  retrieveProject(id: number): Project {
+    return this.projects.find(project => project.id == id);
+  }
+
+  /**
+   * Get UserList
+   * @returns a list of all the User
+   */
   retrieveUserList() : User [] {
     return this.users;
   }
-  
-  retrieveUser(index: number): User {
-    return this.users[index];
+  /**
+   * Get User by Id
+   * @param userId 
+   * @returns User
+   */
+  retrieveUser(userId: number): User {
+    return this.users.find(user => user.userId == userId);
   }
 }

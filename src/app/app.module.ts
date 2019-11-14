@@ -9,6 +9,7 @@ import { TaskListItemTeamComponent } from './task-list-item-team/task-list-item-
 import { CreateNewTaskComponent } from './create-new-task/create-new-task.component';
 import { TeamCardComponent } from './team-card/team-card.component';
 import { TeamMemberComponent } from './team-member/team-member.component';
+import { ProjectTeaserComponent } from './project-teaser/project-teaser.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProjectActionComponent } from './project-action/project-action.component';
 import { UserActionComponent } from './user-action/user-action.component';
@@ -29,6 +30,7 @@ import { RegisterCardComponent } from './register-card/register-card.component';
     CreateNewTaskComponent,
     TeamCardComponent,
     TeamMemberComponent,
+    ProjectTeaserComponent,
     ToolbarComponent,
     ProjectActionComponent,
     UserActionComponent,

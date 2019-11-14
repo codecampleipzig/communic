@@ -75,3 +75,15 @@
     cursor: pointer;
     margin-bottom: 20px;
 }
+
+@media (min-width:800px) {
+    .registerCard {
+       grid-template-columns: repeat(2, 1fr);
+    }
+ }
+ @media (min-width:1200px) {
+    .registerCard {
+       grid-template-columns: repeat(3, 1fr);
+    }
+ }
+ 
