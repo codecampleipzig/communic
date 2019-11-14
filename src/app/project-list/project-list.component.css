@@ -1,12 +1,21 @@
-#project-list {
+.list-wrapper {
     display: flex;
-    overflow: hidden;
+    justify-content: center;
+    margin: 0;
+}
+#project-list {
+    width: 90vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {

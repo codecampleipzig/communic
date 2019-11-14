@@ -9,7 +9,9 @@
    --warningRed: rgb(206, 26, 26);
 }
 
-
+body {
+   margin-left: 0;
+}
 /**
  * Lists
  */
