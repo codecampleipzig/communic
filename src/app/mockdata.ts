@@ -1,32 +1,11 @@
-/**
- * The store is componed by observables and we are triggering a reaction in our components. Mutation.
- * We are storing things a string of values.
- * We are creating a local DB.
- * We need to find a consensus in this file. How we are all going to work and interact with it.
- * The mock data will go another services which will be replace by a DB.
- */
-import { Injectable } from '@angular/core';
 import { Task } from './datatypes/Task';
 import { Project } from './datatypes/Project';
-import { User } from './datatypes/User'
+import { User } from './datatypes/User';
 
-@Injectable({
-  providedIn: 'root'
-})
 
-export class StoreService {
-
-  /**
-   * Create the method logout that is linked to the user-action.component.ts
-   */
-  logout () {
-    console.log("logout");
-  }
-  /**
-   * Mock Data for Tasks & Projects
-   */
-  private TASKS: Task[] = [
-    { id: 1,
+export const tasks: Task[] = [
+    { 
+        id: 1,
       name: 'Some Task Name Placeholder',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
       status: 'open',
@@ -35,7 +14,8 @@ export class StoreService {
       projectID: 9435,
       location: 'starter'
     },
-    { id: 2,
+    { 
+        id: 2,
         name: 'Some Other Task Name Placeholder',
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
         status: 'open',
@@ -44,7 +24,8 @@ export class StoreService {
         projectID: 9435,
         location: 'starter'
     },
-    { id: 3,
+    { 
+        id: 3,
         name: 'Some Task',
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
         status: 'done',
@@ -53,7 +34,8 @@ export class StoreService {
         projectID: 9435,
         location: 'starter'
     },
-    { id: 4,
+    { 
+        id: 4,
         name: 'Some Task',
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
         status: 'deleted',
@@ -64,8 +46,9 @@ export class StoreService {
     },
   ];
 
-  private projects: Project[] = [
-    { id: 9435,
+  export const projects: Project[] = [
+    { 
+      id: 9435,
       title: 'Project 1',
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
       goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
@@ -73,7 +56,7 @@ export class StoreService {
       userIDs: [1234, 5678, 9123, 4567, 8901],
     },
   ]
-  users : User[] = [
+  export const users : User[] = [
     { userName : "Mautzi", userEmail : "mausi95@gmail.com", imageURL : "../assets/serveimage.png", userId: 1},
     { userName : "Mariana", userEmail : "catFallsOnTheSofaWithFaceFirst@gmail.com", imageURL : "../assets/serveimage.png", userId: 2},
     { userName : "Lena", userEmail : "lenintheempress@gmail.com", imageURL : "../assets/serveimage.png", userId: 3},
@@ -88,43 +71,3 @@ export class StoreService {
     { userName : "Andres", userEmail : "krawalloAndi@gmail.com", imageURL : "../assets/serveimage.png", userId: 12},
     { userName : "Iko", userEmail : "caretaker3000@gmail.com", imageURL : "../assets/serveimage.png", userId: 12},
   ];
-
-  constructor() { }
-
-  /**
-   * Get Task object by Task id
-   * @param id
-   * @returns Task object 
-   */
-  retrieveTask(id: number): Task {
-    return this.TASKS.find(task => task.id == id);
-  }
-
-  /**
-   * Get Array of Task Objects by projectID and location
-   * @param projectID ID of the project
-   * @param location location of the Task (starter, main, desert)
-   * @returns Array of Task Objects
-   */
-  retrieveTasks(projectID: number, location: string): Task[] {
-    return this.TASKS.filter(task => task.projectID == projectID && task.location == location);
-  }
-
-  /**
-   * Get Project object by Project id
-   * @param id
-   * @returns Project object 
-   */
-  retrieveProject(id: number): Project {
-    return this.projects.find(project => project.id == id);
-  }
-
-  retrieveUserList() : User [] {
-    return this.users;
-  }
-
-  retrieveUser(index: number): User {
-    return this.users[index];
-  }
-  
-}

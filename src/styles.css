@@ -47,7 +47,14 @@ h4 {
 p {
    line-height: 1.5;
 }
+/**
+ * Resets
+ */
 
+ body {
+    margin: 0;
+    padding: 0;
+ }
 /**
  * Lists
  */
