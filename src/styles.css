@@ -37,6 +37,9 @@ h4 {
    font-size: 1.1rem;
 }
 
+body {
+   margin-left: 0;
+}
 /**
  * Lists
  */

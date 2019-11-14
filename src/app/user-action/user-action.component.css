@@ -1,0 +1,50 @@
+/* TODO: Apply styles on User Thumbnail such that the image will be properly rendered and shown in circle */
+
+.userActions {
+   display: flex;
+   justify-content: flex-end;
+   align-content: center;
+}
+.userDetails {
+   display: flex;
+   flex-direction: column;
+   margin-right: 1em;
+   text-align: right;
+   align-items: center;
+}
+
+.center-wrapper {
+   display: flex;
+   align-items: center;
+}
+
+.userName {
+   font-size: 1.2rem;
+   color: #3A3A3A;
+}
+
+.thumbnail {
+  display: flex;
+}
+
+.thumbnail > img {
+   width: 50px;
+   height: 50px;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   border-radius: 50%;
+}
+
+.logout {
+   font-weight: normal !important;
+   text-decoration: none;
+   font-size: 0.8rem;
+   color: #655AF3;
+   cursor: pointer;
+   background-color: white;
+   padding: 0;
+   width: 50%;
+   align-self: flex-end;
+   text-align: right;
+   border: none;
+ }
+

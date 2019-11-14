@@ -1,92 +1,88 @@
-import { Injectable } from '@angular/core';
+/**
+ * The store is componed by observables and we are triggering a reaction in our components. Mutation.
+ * We are storing things a string of values.
+ * We are creating a local DB.
+ * We need to find a consensus in this file. How we are all going to work and interact with it.
+ * The mock data will go another services which will be replace by a DB.
+ */
+import { Injectable, Inject } from '@angular/core';
 import { Task } from './datatypes/Task';
 import { Project } from './datatypes/Project';
 import { User } from './datatypes/User'
+
+import * as Mock from './mockdata';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
+
+interface UserState {
+  status: any,
+  userInformation: User | null
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
+ 
+  // Internal State
+  _user : BehaviorSubject<UserState>;
+
+  // Observable
+  public user$ : Observable<UserState>
+
+  constructor(@Inject(Router) private router: Router, @Inject(AuthService) private authService: AuthService) { 
+    this._user = new BehaviorSubject<UserState>({status: {}, userInformation: null});
+    this.user$ = this._user.asObservable();
+  }
+
+  // Action
+  register(userName: string, userEmail: string, password: string) {
+    // Talk to Auth Service. It returns a promise of a User object
+    const promise = this.authService.register (userName, userEmail, password);
+
+    // When Promise is resolved successfully, then:
+    promise.then ((user) => {
+      // Put value into observable
+      this._user.next({
+        status: {loggedIn: true},
+        userInformation: user
+      });
+
+      // Navigate to home page
+      this.router.navigate(['home']);
+    })
+  }
+
+  logout () {
+    
+    // Mutation
+    this._user.next({
+      status: {},
+      userInformation: null
+    });
+    // Navigate to register page
+    this.router.navigate(['register']);
+  }
+
+  // Old Store Service
+  // TODO: Refactor
 
   /**
-   * Mock Data for Tasks & Projects & Users
+   * Mock Data for Tasks & Projects
    */
-  private TASKS: Task[] = [
-    { id: 1,
-      name: 'Some Task Name Placeholder',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      status: 'open',
-      authorID: 1234,
-      userIDs: [1234, 5678, 9123, 4567, 8901],
-      projectID: 9435,
-      location: 'starter'
-    },
-    { id: 2,
-        name: 'Some Other Task Name Placeholder',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
-        status: 'open',
-        authorID: 1235,
-        userIDs: [1235, 5678, 9123, 4567, 8901],
-        projectID: 9435,
-        location: 'starter'
-    },
-    { id: 3,
-        name: 'Some Task',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
-        status: 'done',
-        authorID: 1237,
-        userIDs: [1237, 5678, 9123, 4567, 8901],
-        projectID: 9435,
-        location: 'starter'
-    },
-    { id: 4,
-        name: 'Some Task',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
-        status: 'deleted',
-        authorID: 1237,
-        userIDs: [1237, 5678, 9123, 4567, 8901],
-        projectID: 9435,
-        location: 'starter'
-    },
-  ];
-
-  private projects: Project[] = [
-    { id: 9435,
-      title: 'Project 1',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      authorID: 5678,
-      userIDs: [1234, 5678, 9123, 4567, 8901],
-    },
-  ];
-
-  private users : User[] = [
-    { userName : "Mautzi", userEmail : "mauziDong@gmail.com", imageURL : "../assets/mock-user.png", userId: 1234},
-    { userName : "Mariana", userEmail : "marianaTheFrontEndGodess@gmail.com", imageURL : "../assets/mock-user.png", userId: 5678},
-    { userName : "Lena", userEmail : "lenintheempress@gmail.com", imageURL : "../assets/mock-user.png", userId: 9123},
-    { userName : "Björn", userEmail : "thPObutNotTheRiver@gmail.com", imageURL : "../assets/mock-user.png", userId: 4567},
-    { userName : "Pauline", userEmail : "DelphineQueen@gmail.com", imageURL : "../assets/mock-user.png", userId: 8901},
-    { userName : "Nick", userEmail : "nickTheSwan@gmail.com", imageURL : "../assets/mock-user.png", userId: 1237},
-    { userName : "Nico", userEmail : "intelligentButBeautiful@gmail.com", imageURL : "../assets/mock-user.png", userId: 2345},
-    { userName : "Simona", userEmail : "deepBeutifulSea@gmail.com", imageURL : "../assets/mock-user.png", userId: 6789},
-    { userName : "Beatriz", userEmail : "womanWhoRockTheWorld@gmail.com", imageURL : "../assets/mock-user.png", userId: 3456},
-    { userName : "Anahita", userEmail : "bestBiologistInTheWorld@gmail.com", imageURL : "../assets/mock-user.png", userId: 7891},
-    { userName : "Kaab", userEmail : "theKricketEnthusiast@gmail.com", imageURL : "../assets/mock-user.png", userId: 4567},
-    { userName : "Andres", userEmail : "krawalloAndi@gmail.com", imageURL : "../assets/mock-user.png", userId: 8912},
-    { userName : "Iko", userEmail : "caretaker3000@gmail.com", imageURL : "../assets/mock-user.png", userId: 1239},
-  ];
-
-  constructor() { }
-
-  /**
+  private tasks: Task[] = Mock.tasks;
+  private projects: Project[] = Mock.projects;
+  private users : User[] = Mock.users;
+    /**
    * Get Task object by Task id
    * @param id
    * @returns Task object 
    */
   retrieveTask(id: number): Task {
-    return this.TASKS.find(task => task.id == id);
+    return this.tasks.find(task => task.id == id);
   }
-
+  
   /**
    * Get Array of Task Objects by projectID and location
    * @param projectID ID of the project
@@ -94,7 +90,7 @@ export class StoreService {
    * @returns Array of Task Objects
    */
   retrieveTasks(projectID: number, location: string): Task[] {
-    return this.TASKS.filter(task => task.projectID == projectID && task.location == location);
+    return this.tasks.filter(task => task.projectID == projectID && task.location == location);
   }
   /**
    * Get UserList
@@ -111,5 +107,4 @@ export class StoreService {
   retrieveUser(userId: number): User {
     return this.users.find(user => user.userId == userId);
   }
-  
 }
