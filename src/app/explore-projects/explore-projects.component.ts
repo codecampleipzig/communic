@@ -29,7 +29,6 @@ export class ExploreProjectsComponent implements OnInit {
       this.store.projects$.subscribe((projects) => {
         this.projects = projects;
         this.title = "Your Projects";
-
       });
     }
 

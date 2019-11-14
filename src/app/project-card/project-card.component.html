@@ -1,8 +1,11 @@
-<div class="projectCard">
+<div class="projectCard" (click)="navigateProject()">
 
-    <div class="projectPicture">
-        <img src="{{project.image}}">
-    </div>
+    <a routerLink="/cardProject"class="picture-wrapper">   
+        <div class="projectPicture">
+            <img src="{{project.image}}">
+        </div>
+    </a>
+    
 
     <div class="projectName">
         {{project.name}}
@@ -11,9 +14,10 @@
     <div class="projectDescription">
         {{project.description}}
     </div>
-
-    <div class="readMore" (click)="readMore()">
-        Read More
+    <div>
+    <a class="readMore" (click)="readMore()">
+        <span>Read More</span>
+    </a>
     </div>
 
 </div>
