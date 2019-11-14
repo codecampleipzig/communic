@@ -18,6 +18,7 @@
    --smallShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
 }
 
+<<<<<<< HEAD
 body {
    font-family: 'Montserrat', sans-serif;
    font-weight: 300;
@@ -47,7 +48,16 @@ h4 {
 p {
    line-height: 1.5;
 }
+=======
+/**
+ * Resets
+ */
+>>>>>>> projectPageWrapper
 
+ body {
+    margin: 0;
+    padding: 0;
+ }
 /**
  * Lists
  */
@@ -108,9 +118,14 @@ button.outlined:hover {
    background-color: var(--primaryColor);
 }
 
+<<<<<<< HEAD
 
 /**
  * Modules
+=======
+/**
+ * Module  
+>>>>>>> projectPageWrapper
  */
 
 .card {
@@ -118,6 +133,7 @@ button.outlined:hover {
    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
    border-radius: 10px;
    padding: 1em 1.5em 2em; /* Space around the content of the cards */
+<<<<<<< HEAD
    margin: 3em auto 0; /* Margin to top and center with auto */
    box-sizing: border-box; /* Calculate width with padding */
    transition: padding .4s, margin .4s, width .4s; /* Nice Transitions when resizing */
@@ -126,21 +142,46 @@ button.outlined:hover {
 }
 
 /* Add this class to .card to make the card full width */
+=======
+   margin: 3em auto 0; /*margin to top and center with auto */
+   width: calc(100% - 2em); /*space around the card */
+   box-sizing: border-box; /* calculate width with padding */
+   overflow: hidden; /* hide overflowing content */
+   transition: padding .4s, margin .4s, width .4s; /* fancy transitions when resizing */
+   max-width: 450px;
+}
+
+/* Add this to the card class for full width */
+
+>>>>>>> projectPageWrapper
 .cardFull {
    max-width: 1100px;
 }
 
+<<<<<<< HEAD
 /* Overwrites for .cards in the .cardList (e.g. Projects Overview */
+=======
+/* Overrides for .card in the .cardList (e.g. Projects Overview) */
+
+>>>>>>> projectPageWrapper
 .cardList > .card {
    width: 100%;
    padding: 1em;
    margin: 0;
 }
 
+<<<<<<< HEAD
 @media (min-width: 600px) {
    .card {
       padding: 2em 3em 2em; /* Increase space around the content for bigger screens */
       width: calc(100% - 4em); /* Increase space around the card for bigger screens */
+=======
+@media (min-width: 800px) {
+  
+   .card {
+      padding: 2em 3em; /* Increase space around content */
+      width: calc(100% - 4em);
+>>>>>>> projectPageWrapper
    }
 
    .cardList > .card {
