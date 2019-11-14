@@ -16,6 +16,7 @@
 
    /* Dropshadows to use box-shadow: var(--smallShadow); */
    --smallShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+   --bigShadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -47,6 +48,7 @@ h4 {
 p {
    line-height: 1.5;
 }
+
 
 /**
  * Utilities
@@ -96,7 +98,6 @@ button:hover {
  * Margin to the right for every Icon inside a button
  * - [ ] Maybe the Icon is on the right sometimes?
  */
-
 button i {
    margin-right: .5em;
 }
@@ -123,7 +124,7 @@ button.outlined:hover {
 
 .card {
    background: #FFFFFF;
-   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+   box-shadow: var(--bigShadow);
    border-radius: 10px;
    padding: 1em 1.5em 2em; /* Space around the content of the cards */
    margin: 3em auto 0; /* Margin to top and center with auto */
@@ -131,18 +132,6 @@ button.outlined:hover {
    transition: padding .4s, margin .4s, width .4s, height .4s; /* Nice Transitions when resizing */
    width: calc(100% - 2em); /* Space around the card */
    max-width: 450px;
-}
-
-.card .card {
-   background: var(--backgroundGrey);
-   box-shadow: var(--smallShadow);
-   color: var(--fontDarkGrey);
-   position: relative;
-   border-radius: 4px;
-   padding: .5em 1em;
-   margin: 0 0 1em 0;
-   max-width: 100%;
-   width: 100%;
 }
 
 /* Add this class to .card to make the card full width */
@@ -167,6 +156,19 @@ button.outlined:hover {
    .cardList > .card {
       padding: 1.5em;
    }
+}
+
+/* .card in .card looks like a TaskListItem */
+.card .card {
+   background: var(--backgroundGrey);
+   box-shadow: var(--smallShadow);
+   color: var(--fontDarkGrey);
+   position: relative;
+   border-radius: 4px;
+   padding: .5em 1em;
+   margin: 0 0 1em 0;
+   max-width: 100%;
+   width: 100%;
 }
 
 
