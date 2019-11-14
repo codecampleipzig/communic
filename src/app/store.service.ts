@@ -95,6 +95,16 @@ export class StoreService {
   retrieveTasks(projectID: number, location: string): Task[] {
     return this.TASKS.filter(task => task.projectID == projectID && task.location == location);
   }
+
+  /**
+   * Get Project object by Project id
+   * @param id
+   * @returns Project object 
+   */
+  retrieveProject(id: number): Project {
+    return this.projects.find(project => project.id == id);
+  }
+
   retrieveUserList() : User [] {
     return this.users;
   }
