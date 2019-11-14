@@ -4,19 +4,29 @@ import { TaskListComponent } from './task-list.component';
 import { TaskComponent } from '../task/task.component';
 
 import { StoreService } from '../store.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { TaskListItemTeamComponent } from '../task-list-item-team/task-list-item-team.component';
 
 describe('TaskListComponent', () => {
   let component: TaskListComponent;
-  let storeService: StoreService;
+  let fixture: ComponentFixture<TaskListComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ TaskListComponent, TaskComponent, TaskListItemTeamComponent ],
+      providers: [
+        StoreService,
+        {provide: Router, useClass: class {navigate() {}}},
+        AuthService
+      ]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
-    storeService = new StoreService();
-    component = new TaskListComponent(storeService);
-  });
-
-  afterEach(() => {
-    storeService = null;
-    component = null;
+    fixture = TestBed.createComponent(TaskListComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
