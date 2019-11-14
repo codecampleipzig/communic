@@ -48,6 +48,9 @@ p {
    line-height: 1.5;
 }
 
+body {
+   margin-left: 0;
+}
 /**
  * Lists
  */
@@ -78,10 +81,12 @@ button {
    min-width: 130px;
    padding: 1em;
    transition: border .4s, background-color .4s, color .4s;
+   appearance: none;
 }
 
 button:hover {
-   background-color: var(--primaryColorHighlight)
+   background-color: var(--primaryColorHighlight);
+   color: #fff;
 }
 
 /** 

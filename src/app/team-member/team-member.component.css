@@ -1,24 +1,40 @@
+/**
+ * The team-member displays the picture and the userInformation with flex
+ */
 :host {
    display: flex;
+   margin: 1em 1em 1em 0em;
+   overflow: hidden;
 }
-
+/**
+ * Class User
+ */
 .user {
-   display: flex;
-   flex-direction: column;
-   margin: 1em;
+   line-height: 1.7;
 }
 
-.user h3 {
-   font-size: 14px;
-   margin: 0em 0em 0.5em 0em;
+/**
+ * Class UserName
+ */
+.user .userName {
+   font-size: .9rem;
+   font-weight: 600;
+   display: block;
 }
-
-.user h4 {
-   font-size:12px;
-   margin: 0em 0em 0.5em 0em;
+/**
+ * Class UserEmail
+ */
+.user .userEmail {
+   font-size: .8rem;
+   display: block;
+   text-decoration: none;
+   color: var(--fontDarkGrey)
 }
-
-img {
-   width: 10%;
-   height: 10%;
+/**
+ * Class UserThumbnail
+ */
+img.thumbnail {
+   width: 3em;
+   height: 3em;
+   margin-right: 1em;
 }

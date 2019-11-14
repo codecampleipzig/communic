@@ -1,11 +1,23 @@
+<!--
+   Heading for the TeamCard
+-->
 <h2>Team</h2>
-<ul id="user-list">
-      <li *ngFor="let user of users">
-         <app-team-member [user] = "user">
-            
-         </app-team-member>
-      </li>
-   </ul>
-<div *ngIf= "!alreadyJoined ">
-   <button (click)="join()">Join</button>
+<!--
+   uuser list shows a list of User
+   - needs to show user that  belong to a team
+-->
+<ul class="unstyledList" id="user-list">
+   <li *ngFor="let user of users">
+      <app-team-member [user]="user">
+
+      </app-team-member>
+   </li>
+</ul>
+<!--
+   Button disaperas once it is clicked
+   - still needs to have the user added to the userlist of the project (trigger the store)
+   - still needs styling
+-->
+<div *ngIf="!alreadyJoined ">
+   <button class="joinButton" (click)="join()">Join</button>
 </div>
