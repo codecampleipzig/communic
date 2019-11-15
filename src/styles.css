@@ -76,7 +76,7 @@ p {
  * Buttons
  */
 
-button {
+.button {
    cursor: pointer;
    font-size: .8rem;
    background-color: var(--primaryColor);
@@ -89,7 +89,7 @@ button {
    appearance: none;
 }
 
-button:hover {
+.button:hover {
    background-color: var(--primaryColorHighlight);
    color: #fff;
 }
@@ -98,12 +98,12 @@ button:hover {
  * Margin to the right for every Icon inside a button
  * - [ ] Maybe the Icon is on the right sometimes?
  */
-button i {
+.button i {
    margin-right: .5em;
 }
 
 /* Button Elements without background but rounded border */
-button.outlined {
+.button.outlined {
    padding: .5em 1em;
    min-width: auto;
    border: 1px solid var(--primaryColor);
@@ -112,7 +112,7 @@ button.outlined {
    background-color: transparent;
 }
 
-button.outlined:hover {
+.button.outlined:hover {
    color: #fff;
    background-color: var(--primaryColor);
 }
