@@ -1,6 +1,5 @@
 import { Component, NgModule } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
-import { StoreService } from '../store.service';
 
 
 
@@ -19,7 +18,8 @@ import { StoreService } from '../store.service';
 export class SignupFormComponent {
   profileForm: FormGroup;
   
-  constructor(private store: StoreService) { 
+
+  constructor() { 
     this.profileForm = new FormGroup({
     name: new FormControl ('',[Validators.required]),
     email: new FormControl ('',[Validators.required, Validators.email]),
@@ -30,12 +30,6 @@ export class SignupFormComponent {
       Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}') //this is for the letters (both uppercase and lowercase) and numbers validation
    ]))
   });
-  }
-
-  onSubmit() {
-    const {name, email, password} = this.profileForm.value;
-
-    this.store.register (name, email, password);
   }
 
   get name() {
