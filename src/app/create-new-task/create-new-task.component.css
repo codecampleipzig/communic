@@ -1,3 +1,8 @@
+.createNewTask {
+    cursor: pointer;
+    width: 100%;
+}
+
 .createNewTask i {
     color: var(--fontMediumGrey);
     font-size: 2rem;
