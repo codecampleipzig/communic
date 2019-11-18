@@ -1,117 +1,88 @@
+import { User } from './datatypes/User';
 import { Task } from './datatypes/Task';
 import { Project } from './datatypes/Project';
-import { User } from './datatypes/User';
+
+export const users: User[] = [
+   { userId: 1, userName: "Mautzi", userEmail: "MolleMorallo@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 2, userName: "Mariana", userEmail: "BringMarianaBananaToSchool@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 3, userName: "Lena", userEmail: "lenintheempress@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 4, userName: "Björn", userEmail: "thPObutNotTheRiver@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 5, userName: "Pauline", userEmail: "DelphineQueen@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 6, userName: "Nick", userEmail: "nickTheSwan@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 7, userName: "Nico", userEmail: "intelligentButBeautiful@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 8, userName: "Simona", userEmail: "deepBeutifulSea@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 9, userName: "Beatriz", userEmail: "womanWhoRockTheWorld@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 10, userName: "Anahita", userEmail: "bestBiologistInTheWorld@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 11, userName: "Kaab", userEmail: "theCricketEnthusiast@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 12, userName: "Andres", userEmail: "krawalloAndi@gmail.com", userImageURL: "../assets/user_avatar.png" },
+   { userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png" }
+];
 
 export const tasks: Task[] = [
-  {
-    id: 1,
-    name: 'Some Task Name Placeholder',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-    status: 'open',
-    authorID: 1,
-    userIDs: [1234, 5678, 9123, 4567, 8901],
-    projectID: 1,
-    location: 'starter'
-  },
-  {
-    id: 2,
-    name: 'Some Other Task Name Placeholder',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
-    status: 'open',
-    authorID: 1235,
-    userIDs: [1235, 5678, 9123, 4567, 8901],
-    projectID: 1,
-    location: 'starter'
-  },
-  {
-    id: 3,
-    name: 'Some Task',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
-    status: 'done',
-    authorID: 1237,
-    userIDs: [1237, 5678, 9123, 4567, 8901],
-    projectID: 1,
-    location: 'starter'
-  },
-  {
-    id: 4,
-    name: 'Some Task',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. ',
-    status: 'deleted',
-    authorID: 1237,
-    userIDs: [1237, 5678, 9123, 4567, 8901],
-    projectID: 1,
-    location: 'starter'
-  },
+   {
+      taskId: 1,
+      projectId: 1,
+      taskTitle: 'Our first task',
+      taskDescription: 'Recruit some team members. And here some more, to fill up your page: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      taskStatus: 'open',
+      taskCreator: users[1],
+      taskTeam: [users[1], users[2], users[4]],
+      menuSection: 'starter'
+   },
+   {
+      taskId: 2,
+      projectId: 1,
+      taskTitle: 'Our second task',
+      taskDescription: 'Get rid of half the team members.',
+      taskStatus: 'done',
+      taskCreator: users[3],
+      taskTeam: [users[3], users[5], users[13]],
+      menuSection: 'main'
+   },
+   {
+      taskId: 3,
+      projectId: 2,
+      taskTitle: 'A really important task',
+      taskDescription: 'Not sure how important this task really is.',
+      taskStatus: 'deleted',
+      taskCreator: users[6],
+      taskTeam: [users[6], users[8], users[10]],
+      menuSection: 'main'
+   }
 ];
+
 export const projects: Project[] = [
    {
-      id: 1,
-      title: 'Project 1',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      authorID: 1,
-      userIDs: [1234, 5678, 9123, 4567, 8901],
-      imageUrl: "./../assets/project-default.png"
+      projectId: 1,
+      projectTitle: 'Project A',
+      projectImageURL: './../assets/project-default.png',
+      projectDescription: 'An absolute stunner of a project, uniting half the globe. And now some junk text, to look like a full paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut consequat semper viverra nam libero justo laoreet sit. Sed sed risus pretium quam. Nisl purus in mollis nunc sed id semper risus. Cras fermentum odio eu feugiat pretium nibh. Hac habitasse platea dictumst vestibulum. Sit amet nisl suscipit adipiscing bibendum est. Amet aliquam id diam maecenas.',
+      projectGoal: 'Please our stakeholders.',
+      projectStatus: 'done',
+      projectCreator: users[1],
+      projectTeam: [users[1], users[2], users[3], users[4], users[5], users[10], users[13]],
+      projectTasks: [tasks[1], tasks[2]]
    },
    {
-      id: 2,
-      title: 'Project 2',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      authorID: 1,
-      userIDs: [1, 2, 3, 4],
-      imageUrl: "./../assets/project-default.png"
+      projectId: 2,
+      projectTitle: 'Project B',
+      projectImageURL: './../assets/project-default.png',
+      projectDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      projectGoal: 'Save the world',
+      projectStatus: 'open',
+      projectCreator: users[5],
+      projectTeam: [users[5], users[6], users[8], users[10]],
+      projectTasks: [tasks[3]]
    },
    {
-      id: 3,
-      title: 'Project 3',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      authorID: 1,
-      userIDs: [1, 2, 3, 4],
-      imageUrl: "./../assets/project-default.png"
-   },
-   {
-      id: 4,
-      title: 'Project 4',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      authorID: 7,
-      userIDs: [1, 2, 3, 4],
-      imageUrl: "./../assets/project-default.png"
-   },
-   {
-      id: 5,
-      title: 'Project 5',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      authorID: 9,
-      userIDs: [1, 2, 3, 4],
-      imageUrl: "./../assets/project-default.png"
-   },
-   {
-      id: 6,
-      title: 'Project 6',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      authorID: 10,
-      userIDs: [1, 2, 3, 4],
-      imageUrl: "./../assets/project-default.png"
+      projectId: 3,
+      projectTitle: 'Project C',
+      projectImageURL: './../assets/project-default.png',
+      projectDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      projectGoal: 'Save the world',
+      projectStatus: 'open',
+      projectCreator: users[5],
+      projectTeam: [users[5], users[6], users[8], users[10]],
+      projectTasks: [tasks[3]]
    }
-]
-export const users: User[] = [
-  { userName: "Mautzi", userEmail: "MoralloMolle@gmail.com", imageURL: "../assets/mock-user.png", userId: 1 },
-  { userName: "Mariana", userEmail: "bringMarianaBanansToSchool@gmail.com", imageURL: "../assets/mock-user.png", userId: 2 },
-  { userName: "Lena", userEmail: "lenintheempress@gmail.com", imageURL: "../assets/mock-user.png", userId: 3 },
-  { userName: "Björn", userEmail: "thPObutNotTheRiver@gmail.com", imageURL: "../assets/mock-user.png", userId: 4 },
-  { userName: "Pauline", userEmail: "DelphineQueen@gmail.com", imageURL: "../assets/mock-user.png", userId: 5 },
-  { userName: "Nick", userEmail: "nickTheSwan@gmail.com", imageURL: "../assets/mock-user.png", userId: 6 },
-  { userName: "Nico", userEmail: "intelligentButBeautiful@gmail.com", imageURL: "../assets/mock-user.png", userId: 7 },
-  { userName: "Simona", userEmail: "deepBeutifulSea@gmail.com", imageURL: "../assets/mock-user.png", userId: 8 },
-  { userName: "Beatriz", userEmail: "womanWhoRockTheWorld@gmail.com", imageURL: "../assets/mock-user.png", userId: 9 },
-  { userName: "Anahita", userEmail: "bestBiologistInTheWorld@gmail.com", imageURL: "../assets/mock-user.png", userId: 10 },
-  { userName: "Kaab", userEmail: "theKricketEnthusiast@gmail.com", imageURL: "../assets/mock-user.png", userId: 11 },
-  { userName: "Andres", userEmail: "krawalloAndi@gmail.com", imageURL: "../assets/mock-user.png", userId: 12 },
-  { userName: "Iko", userEmail: "caretaker3000@gmail.com", imageURL: "../assets/mock-user.png", userId: 12 },
 ];
