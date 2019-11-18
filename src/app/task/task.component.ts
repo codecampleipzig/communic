@@ -27,4 +27,12 @@ export class TaskComponent implements OnInit {
 
   }
 
+  public delete () {
+    console.log("Delete!");
+  }
+
+  public restore () {
+    console.log("Restore!");
+  }
+
 }
