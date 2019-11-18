@@ -85,7 +85,7 @@ export class StoreService {
    * @returns Task object 
    */
   retrieveTask(id: number): Task {
-    return this.tasks.find(task => task.id == id);
+    return this.tasks.find(task => task.taskId == id);
   }
   
   /**
@@ -95,7 +95,7 @@ export class StoreService {
    * @returns Array of Task Objects
    */
   retrieveTasks(projectID: number, location: string): Task[] {
-    return this.tasks.filter(task => task.projectID == projectID && task.location == location);
+    return this.tasks.filter(task => task.projectId == projectID);
   }
 
   /**
@@ -104,7 +104,7 @@ export class StoreService {
    * @returns Project object 
    */
   retrieveProject(id: number): Project {
-    return this.projects.find(project => project.id == id);
+    return this.projects.find(project => project.projectId == id);
   }
 
   /**

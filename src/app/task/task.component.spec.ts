@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskComponent } from './task.component';
 import { TaskListItemTeamComponent } from '../task-list-item-team/task-list-item-team.component';
+import * as Mock from '../mockdata'
 
 describe('Task Component', () => {
   let component: TaskComponent;
@@ -18,16 +19,7 @@ describe('Task Component', () => {
     component = fixture.componentInstance;
     
     /* Give it some mock data for a task */
-    component.task = {
-      id: 1,
-      name: 'string',
-      description: 'string',
-      status: 'string',
-      authorID: 1,
-      userIDs: [1,2],
-      projectID: 1,
-      location: 'string'
-     }
+    component.task = Mock.tasks[0];
      
      component.ngOnInit()
     fixture.detectChanges();
