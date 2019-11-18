@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../datatypes/User'
+import { Project } from '../datatypes/Project'
 import { StoreService } from '../store.service'
 
 @Component({
@@ -11,11 +12,12 @@ export class TeamCardComponent implements OnInit {
 
   @Input() newUser : string;
   alreadyJoined : boolean = false;
-  users : User [];
+  projectTeam : User [];
+  projectId : number = 1;
 
 
   constructor(private store: StoreService) { 
-    this.users = this.store.retrieveUserList();
+    this.projectTeam = this.store.retrieveProjectTeam(this.projectId);
   }
 
   ngOnInit() {

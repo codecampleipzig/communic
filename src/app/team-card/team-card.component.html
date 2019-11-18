@@ -7,8 +7,8 @@
    - needs to show user that  belong to a team
 -->
 <ul class="unstyledList" id="user-list">
-   <li *ngFor="let user of users">
-      <app-team-member [user]="user">
+   <li *ngFor="let member of projectTeam">
+      <app-team-member [user]="member">
 
       </app-team-member>
    </li>
