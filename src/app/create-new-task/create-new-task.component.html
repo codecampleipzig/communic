@@ -1,10 +1,16 @@
-<div class="topRightIcon" *ngIf="formVisible">
-    <i class="fas fa-times"></i>
- </div>
 
-<div class="createNewTask" *ngIf="!formVisible">
+<div class="topRightIcon" *ngIf="formVisible" (click)="closeForm()">
+    <i class="fas fa-times"></i>
+</div>
+
+<div class="createNewTask" *ngIf="!formVisible" (click)="openForm()">
     <i class="fas fa-plus"></i>
 </div>
-<div class="taskCreator" *ngIf="formVisible">
-    Title, <br>Picture,<br> Description...
+
+<div class="taskHeader" *ngIf="formVisible">
+    <div class="taskCheckbox checkbox"></div>
+    <input class="task-title" placeholder="Please describe the task that needs doing." />
 </div>
+
+<textarea *ngIf="formVisible" class="taskDescription" placeholder="Was ist zu tun?">
+</textarea>

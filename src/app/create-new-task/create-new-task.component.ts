@@ -4,9 +4,6 @@ import { Component, OnInit, HostBinding} from '@angular/core';
   selector: 'app-create-new-task',
   templateUrl: './create-new-task.component.html',
   styleUrls: ['./create-new-task.component.css'],
-  host: {
-    "(click)": "toggleForm()"
-  }
 })
 export class CreateNewTaskComponent implements OnInit {
   private formVisible : any = false;
@@ -19,11 +16,22 @@ export class CreateNewTaskComponent implements OnInit {
   
   constructor() { }
 
-  toggleForm() {
-    if (this.formVisible == true ) {
-      this.formVisible = false;
-    } else {
-      this.formVisible = true;
+  openForm () {
+    if (!this.formVisible == true) {
+      this.formVisible = true
+    }
+    else {
+      return
+    }
+
+  }
+
+  closeForm () {
+    if (this.formVisible == true) {
+      this.formVisible = false
+    }
+    else {
+      return
     }
   }
 

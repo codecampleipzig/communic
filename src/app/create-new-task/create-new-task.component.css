@@ -8,3 +8,25 @@
     font-size: 2rem;
     margin: .25em .25em .25em 0
 }
+
+textarea.taskDescription {
+    width: 100%;
+    padding: .5em;
+    font-size: 1rem;
+    border: 1px solid rgba(0,0,0,.05);
+    background: transparent;
+    border-radius: 5px;
+    transition: border-color .4s, background .4s, box-shadow .4s;
+}
+
+textarea.taskDescription:hover {
+    background: rgba(255,255,255,.5);
+    border-color: rgba(0,0,0,.2);
+}
+
+textarea.taskDescription:focus {
+    background: #fff;
+    border-color: rgba(0,0,0,.2);
+    outline: 0 none;
+    box-shadow: var(--smallShadow);
+}
