@@ -1,14 +1,12 @@
-<div class="wrapper">
-    <app-toolbar></app-toolbar>
-    <div class="card">
-        Project Name
-    </div>
-    <div class="card">
-        <app-team-card [newUser]="userName"></app-team-card>
-    </div>
-    <div class="card">
-        <h2>Starter</h2>
-        <app-task-list></app-task-list>
-        <app-create-new-task></app-create-new-task>
-    </div>
+<app-toolbar></app-toolbar>    
+<div class="card cardFull">
+    <app-project-teaser></app-project-teaser>
+</div>
+<div class="card cardFull">
+    <app-team-card [newUser]="userName"></app-team-card>
+</div>
+<div class="card cardFull">
+    <h2>Starter</h2>
+    <app-task-list></app-task-list>
+    <app-create-new-task></app-create-new-task>
 </div>

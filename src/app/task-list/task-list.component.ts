@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { StoreService } from '../store.service';
 import { Task } from '../datatypes/Task';
 
@@ -11,11 +11,11 @@ export class TaskListComponent implements OnInit {
 
   public tasks: Task[];
 
-  constructor(private store: StoreService) { 
+  constructor(@Inject(StoreService) private store: StoreService) { 
     /**
      * Pass Tasks of Project 9435/starter
      */
-    this.tasks = this.store.retrieveTasks(9435, 'starter');
+    this.tasks = this.store.retrieveTasks(1, 'starter');
   }
 
   ngOnInit() {

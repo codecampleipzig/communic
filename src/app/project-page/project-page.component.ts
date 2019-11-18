@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-project-page',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public route: ActivatedRoute) {
+    route.params.subscribe((params: Params) => {
+      console.log(params.id);
+    })
+   }
 
   ngOnInit() {
+  }
+
+  /**
+   * Workaround: Scroll to top.
+   * Note: When user has scrolled to bottom of origin page and then opens Project page, bottom of Project page is shown.
+   */
+  ngAfterViewInit() {
+    window.scrollTo(0, 0);
   }
 
 }

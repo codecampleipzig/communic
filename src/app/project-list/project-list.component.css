@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     margin: 0;
+    padding-bottom: 2em;
 }
 #project-list {
     width: 90vw;
@@ -20,6 +21,17 @@ ul {
 
 h1 {
     padding: 0 50px;
-    font-family: arial;
     font-size: 2em;
+}
+
+
+@media (max-width:900px) {
+    #project-list {
+       grid-template-columns: repeat(2, 1fr);
+    }
+ }
+ @media (max-width:600px) {
+    #project-list {
+       grid-template-columns: repeat(1, 1fr);
+    }
 }
