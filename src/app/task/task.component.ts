@@ -28,10 +28,12 @@ export class TaskComponent implements OnInit {
   }
 
   public delete () {
+    this.task.status = 'deleted';
     console.log("Delete!");
   }
 
   public restore () {
+    this.task.status = 'open';
     console.log("Restore!");
   }
 

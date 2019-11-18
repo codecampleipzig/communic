@@ -2,7 +2,7 @@
    Delete Button (positioned absolute) in the top right corner of the Task.
    - [ ] Add click-Binding to change task.status
    - [ ] Only show for users that joined the task?
--->
+--> 
 <div class="topRightIcon taskDelete">
    <i *ngIf="task.status != 'deleted'" class="fas fa-trash-alt" (click)="delete()"></i> 
    <i *ngIf="task.status == 'deleted'" class="fas fa-trash-restore" (click)="restore()"></i>
