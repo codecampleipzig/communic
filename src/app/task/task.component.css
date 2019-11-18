@@ -43,19 +43,6 @@
       background: #dadada;
    }
 
-/* Task Delete */
-.taskDelete {
-   position: absolute;
-   top: .5em;
-   right: 1em;
-   cursor: pointer;
-   color: var(--iconColor);
-}
-
-   .taskDelete:hover {
-      color: var(--warningRed);
-   }
-
    
 .taskDescription {
    margin-left: 1em;

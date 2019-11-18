@@ -7,6 +7,7 @@ import { ProjectCardComponent } from './../project-card/project-card.component';
 
 
 import { HomeComponent } from './home.component';
+import { Router } from '@angular/router';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -14,7 +15,10 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent, ToolbarComponent, ProjectListComponent, ProjectActionComponent, UserActionComponent, ProjectCardComponent]
+      declarations: [HomeComponent, ToolbarComponent, ProjectListComponent, ProjectActionComponent, UserActionComponent, ProjectCardComponent],
+      providers: [
+        {provide: Router, useClass: class {navigate() {}}},
+      ]
     })
       .compileComponents();
   }));
