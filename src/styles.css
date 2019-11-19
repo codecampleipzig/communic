@@ -49,6 +49,15 @@ p {
    line-height: 1.5;
 }
 
+a {
+   line-height: 1.5;
+   text-decoration: none;
+   color: var(--primaryColor);
+}
+
+a:hover{
+   color: var(--primaryColorHighlight);
+}
 
 /**
  * Utilities

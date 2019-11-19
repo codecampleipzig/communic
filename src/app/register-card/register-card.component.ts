@@ -1,6 +1,7 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @NgModule({
   imports: [  
@@ -48,14 +49,15 @@ export class RegisterCardComponent implements OnInit {
     this.route.url.subscribe(data => {
       // Get the last piece of the URL (it's either 'login' or 'register')
       this.authType = data[data.length - 1].path;
-   // Get the last piece of the URL (it's either 'login' or 'register')
-      this.authType = data[data.length - 1].path;
       // Set a title for the page accordingly
       this.title = (this.authType === 'login') ? 'Sign in' : 'Sign up';
       // add form control for username if this is the register page
       if (this.authType === 'register') {
-        this.profileForm.addControl('username', new FormControl());
+        this.profileForm.addControl('name', new FormControl());
       }
     });
   }
 }
+
+
+

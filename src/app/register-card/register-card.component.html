@@ -1,45 +1,49 @@
+<body>
 <div class="mainContainer">
     <div class="registerCard">
         <h2>Communic.io</h2>
-        <h3>Join your community!</h3>
-        <div class="signIn">
-                <p>Have an account? <a *ngIf="profileForm == 'register'" routerLink=""> Sign in </a></p>
-            </div>
-            <div class="forgotPassword">
-                <p>Forgot your password? Don't fret, <a *ngIf="profileForm == 'login'" routerLink=""> click here </a></p>
-            </div>
-
-            <a [routerLink]="['/login']" *ngIf="authType == 'register'">Have an account?</a>
-            <a [routerLink]="['/register']" *ngIf="authType == 'login'">Need an account?</a>
-         
+        <h3 *ngIf="authType == 'register'">Join your community!</h3>
+        <h3 *ngIf="authType == 'login'">Meet your community!</h3>
         <div class="avatar">
-            <img src="../../../assets/hpotter-512.png" class="avatarimg">
-            <button (click)="onSubmit()" type="submit">Upload Image</button>
+            <img src="../../../assets/hpotter-512.png" class="avatarimg" *ngIf="authType == 'register'">
+            <button (click)="onSubmit()" type="submit" *ngIf="authType == 'register'">Upload Image</button>
         </div>
         <div>
             <form [formGroup]='profileForm' (ngSubmit)="onSubmit()">
                 <label>
-                    <input type="text" placeholder="Name" formControlName="name" required  *ngIf="authType == 'login'">
+                    <input type="text" placeholder="Name" formControlName="name" required  *ngIf="authType == 'register'" >
                 </label>
                 <span class="formrule" *ngIf="(name.dirty || name.touched) && name.invalid && name.errors.required">
                     <p>No name, no fun.</p>
                 </span>
                 <label>
-                    <input type="email" placeholder="Email" formControlName="email" required  *ngIf="authType == 'login'">
+                    <input type="email" placeholder="Email" formControlName="email" required>
                 </label>
-                <span class="formrule" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required" >
+                <span class="formrule" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required && authType == 'register'" >
                     <p>We promise not to spam you. Maybe.</p>
                 </span>
+                <span class="formrule" *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required && authType == 'login'" >
+                        <p>Please use the e-mail you used to register your account.</p>
+                    </span>
                 <label>
-                    <input type="password" placeholder="Password" formControlName="password" required  *ngIf="authType == 'login'">
+                    <input type="password" placeholder="Password" formControlName="password" required>
                 </label>
-                <span class="formrule" *ngIf="(password.dirty || password.touched) && password.invalid">
+                <span class="formrule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'register'" >
                     <p>Safety first! Your password must contain an uppercase, a lowercase, a special character and a
                         number.</p>
                 </span>
-                <a routerLink="/home"><button type="submit" [disabled]="!profileForm.valid">Join now!</button></a>
-                <a routerLink="/home"><button type="submit" [disabled]="!profileForm.valid">Login</button></a>
+                <span class="formrule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'login'" >
+                        <p>Forgot your password? Don't fret. You can reset it by clicking <a routerLink="">here</a>.</p>
+                    </span>
+                <a [routerLink]="['/home']"><button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'register'">Join now!</button></a>
+                <a [routerLink]="['/home']"><button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'login'">Login</button></a>
             </form>
+            <br>
+            <div class="link">
+                    <p *ngIf="authType == 'register'"> Have an account? <a [routerLink]="['/login']">Login here</a></p>
+                    <p *ngIf="authType == 'login'" > Need an account? <a [routerLink]="['/register']">Register here</a></p>
+            </div>
         </div>
     </div>
 </div>
+</body>
