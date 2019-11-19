@@ -19,14 +19,14 @@ describe('Task Component', () => {
     
     /* Give it some mock data for a task */
     component.task = {
-      id: 1,
-      name: 'string',
-      description: 'string',
-      status: 'string',
-      authorID: 1,
-      userIDs: [1,2],
-      projectID: 1,
-      location: 'string'
+      taskId: 3,
+      projectId: 2,
+      taskTitle: 'A really important task',
+      taskDescription: 'Not sure how important this task really is.',
+      taskStatus: 'deleted',
+      taskCreator: { userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png" },
+      taskTeam: [{ userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png" }, { userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png" }],
+      menuSection: 'main'
      }
      
      component.ngOnInit()

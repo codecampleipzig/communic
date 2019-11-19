@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { StoreService } from '../store.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../datatypes/Task';
+import { Project } from '../datatypes/Project';
 
 @Component({
   selector: 'app-task-list',
@@ -8,17 +8,21 @@ import { Task } from '../datatypes/Task';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
+  /**
+   * Get project's object by parent component app-project-page
+   */
+  @Input() public project: Project;
 
   public tasks: Task[];
 
-  constructor(@Inject(StoreService) private store: StoreService) { 
-    /**
-     * Pass Tasks of Project 9435/starter
-     */
-    this.tasks = this.store.retrieveTasks(1, 'starter');
+  constructor() { 
   }
 
   ngOnInit() {
+    /**
+     * Get Tasks from project Object
+     */
+    this.tasks = this.project.projectTasks;
   }
 
 }
