@@ -27,14 +27,15 @@ export class TaskComponent implements OnInit {
 
   }
 
+/**
+ * Change task object status to deleted/open on click of delete/restore button
+ */
   private delete () {
     this.task.status = 'deleted';
-    console.log("Delete!");
-  }
+   }
 
   private restore () {
     this.task.status = 'open';
-    console.log("Restore!");
   }
 
 }
