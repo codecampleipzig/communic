@@ -36,7 +36,7 @@ export const tasks: Task[] = [
       taskDescription: 'Get rid of half the team members.',
       taskStatus: 'done',
       taskCreator: users[3],
-      taskTeam: [users[3], users[5], users[13]],
+      taskTeam: [users[3], users[5], users[12]],
       menuSection: 'main'
    },
    {
@@ -60,7 +60,7 @@ export const projects: Project[] = [
       projectGoal: 'Please our stakeholders.',
       projectStatus: 'done',
       projectCreator: users[1],
-      projectTeam: [users[1], users[2], users[3], users[4], users[5], users[10], users[13]],
+      projectTeam: [users[1], users[2], users[3], users[4], users[5], users[10], users[12]],
       projectTasks: [tasks[1], tasks[2]]
    },
    {
