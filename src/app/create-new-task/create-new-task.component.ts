@@ -16,6 +16,9 @@ export class CreateNewTaskComponent implements OnInit {
   
   constructor() { }
 
+  /**
+   * Create a function for opening and closing a form to bind to objects in the HTML.
+   */
   openForm () {
     if (!this.formVisible == true) {
       this.formVisible = true
