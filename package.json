@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
+    "dev": "ng serve",
     "build": "ng build",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -35,6 +36,7 @@
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
     "@fortawesome/fontawesome-free": "^5.11.2",
+    "express": "^4.17.1",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
