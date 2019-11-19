@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../datatypes/Project';
-import { StoreService } from '../store.service';
 
 @Component({
   selector: 'app-project-teaser',
@@ -8,14 +7,12 @@ import { StoreService } from '../store.service';
   styleUrls: ['./project-teaser.component.css']
 })
 export class ProjectTeaserComponent implements OnInit {
+  /**
+   * Get project's object by parent component app-project-page
+   */
+  @Input() public project: Project
 
-  private project: Project;
-
-  constructor( private store: StoreService) {
-    /**
-     * Get Project by ID
-     */
-    this.project = this.store.retrieveProject(1);
+  constructor() {
   }
 
   ngOnInit() {
