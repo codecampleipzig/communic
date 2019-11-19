@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../datatypes/User';
 import { Project } from '../datatypes/Project';
-import { StoreService } from '../store.service';
 
 @Component({
   selector: 'app-team-card',
@@ -13,19 +12,20 @@ export class TeamCardComponent implements OnInit {
    * Get project's object by parent component app-project-page
    */
   @Input() public project: Project
-
   @Input() newUser : string;
   alreadyJoined : boolean = false;
-  projectTeam : User [];
-  projectId : number = 1;
+  public team : User [];
 
-
-  constructor(private store: StoreService) { 
-    this.projectTeam = this.store.retrieveProjectTeam(this.projectId);
+  constructor() { 
   }
 
   ngOnInit() {
+    /**
+     * Get projectTeam from project Object
+     */
+    this.team = this.project.projectTeam;
   }
+
   private join(): void{
     this.alreadyJoined = true;
   }

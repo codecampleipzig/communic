@@ -3,11 +3,11 @@
 -->
 <h2>Team</h2>
 <!--
-   uuser list shows a list of User
-   - needs to show user that  belong to a team
+   User list shows a list of User
+   - [ ] needs to show user that  belong to a team
 -->
 <ul class="unstyledList" id="user-list">
-   <li *ngFor="let member of projectTeam">
+   <li *ngFor="let member of team">
       <app-team-member [user]="member">
 
       </app-team-member>
@@ -15,8 +15,8 @@
 </ul>
 <!--
    Button disaperas once it is clicked
-   - still needs to have the user added to the userlist of the project (trigger the store)
-   - still needs styling
+   - [ ] still needs to have the user added to the userlist of the project (trigger the store)
+   - [ ] still needs styling
 -->
 <div *ngIf="!alreadyJoined ">
    <button class="button joinButton" (click)="join()">Join</button>
