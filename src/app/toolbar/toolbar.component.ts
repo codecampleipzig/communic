@@ -18,3 +18,6 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['home']);
   }
 }
+
+
+// add two properties set to something static

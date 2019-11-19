@@ -55,6 +55,7 @@ export const projects: Project[] = [
    {
       projectId: 1,
       projectTitle: 'Project A',
+      projectDate: 'Added: 11/15/1989',
       projectImageURL: './../assets/project-default.png',
       projectDescription: 'An absolute stunner of a project, uniting half the globe. And now some junk text, to look like a full paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut consequat semper viverra nam libero justo laoreet sit. Sed sed risus pretium quam. Nisl purus in mollis nunc sed id semper risus. Cras fermentum odio eu feugiat pretium nibh. Hac habitasse platea dictumst vestibulum. Sit amet nisl suscipit adipiscing bibendum est. Amet aliquam id diam maecenas.',
       projectGoal: 'Please our stakeholders.',
@@ -66,6 +67,7 @@ export const projects: Project[] = [
    {
       projectId: 2,
       projectTitle: 'Project B',
+      projectDate: 'Added: 02/07/2009',
       projectImageURL: './../assets/project-default.png',
       projectDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       projectGoal: 'Save the world',
@@ -77,8 +79,9 @@ export const projects: Project[] = [
    {
       projectId: 3,
       projectTitle: 'Project C',
+      projectDate: 'Added: 16/02/2019',
       projectImageURL: './../assets/project-default.png',
-      projectDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      projectDescription: 'Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem vvLorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem vvLorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem vvLorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem vvLorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem vvLorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem vvLorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem vv.',
       projectGoal: 'Save the world',
       projectStatus: 'open',
       projectCreator: users[5],

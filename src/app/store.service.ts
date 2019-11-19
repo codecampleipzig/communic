@@ -48,6 +48,7 @@ export class StoreService {
 
     // When Promise is resolved successfully, then:
     promise.then ((user) => {
+      console.log (user); 
       // Put value into observable
       this._user.next({
         status: {loggedIn: true},
