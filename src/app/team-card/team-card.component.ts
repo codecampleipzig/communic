@@ -25,7 +25,11 @@ export class TeamCardComponent implements OnInit {
      */
     this.team = this.project.projectTeam;
   }
-
+  /**
+   * function that makes the button disapear when joined,
+   * - [ ] needs to compare if user already member
+   * - [ ] needs to add the user when button is clicked
+   */
   private join(): void{
     this.alreadyJoined = true;
   }
