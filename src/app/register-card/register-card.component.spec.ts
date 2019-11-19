@@ -1,17 +1,16 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RegisterCardComponent } from './register-card.component';
-import { SignupFormComponent } from '../signup-form/signup-form.component';
+import { RegisterCardComponent } from "./register-card.component";
+import { SignupFormComponent } from "../signup-form/signup-form.component";
 
-xdescribe('RegisterCardComponent', () => {
+xdescribe("RegisterCardComponent", () => {
   let component: RegisterCardComponent;
   let fixture: ComponentFixture<RegisterCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterCardComponent, SignupFormComponent ]
-    })
-    .compileComponents();
+      declarations: [RegisterCardComponent, SignupFormComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -20,7 +19,7 @@ xdescribe('RegisterCardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

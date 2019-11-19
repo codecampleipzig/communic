@@ -1,21 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params} from '@angular/router';
+import { Component, OnInit, AfterViewInit } from "@angular/core";
+import { ActivatedRoute, Params } from "@angular/router";
 
 @Component({
-  selector: 'app-project-page',
-  templateUrl: './project-page.component.html',
-  styleUrls: ['./project-page.component.css']
+  selector: "app-project-page",
+  templateUrl: "./project-page.component.html",
+  styleUrls: ["./project-page.component.css"]
 })
-export class ProjectPageComponent implements OnInit {
-
+export class ProjectPageComponent implements OnInit, AfterViewInit {
   constructor(public route: ActivatedRoute) {
     route.params.subscribe((params: Params) => {
       console.log(params.id);
-    })
-   }
-
-  ngOnInit() {
+    });
   }
+
+  ngOnInit() {}
 
   /**
    * Workaround: Scroll to top.
@@ -24,5 +22,4 @@ export class ProjectPageComponent implements OnInit {
   ngAfterViewInit() {
     window.scrollTo(0, 0);
   }
-
 }
