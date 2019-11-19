@@ -28,13 +28,13 @@ export class TaskComponent implements OnInit {
   }
 
 /**
- * Change task object status to deleted/open on click of delete/restore button
+ * Change task object @status to deleted/open on click of delete/restore button
  */
-  private delete () {
+  public delete () {
     this.task.status = 'deleted';
    }
 
-  private restore () {
+  public restore () {
     this.task.status = 'open';
   }
 

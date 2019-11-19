@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TaskComponent } from './task.component';
 import { TaskListItemTeamComponent } from '../task-list-item-team/task-list-item-team.component';
+import { By } from '@angular/platform-browser';
 
 describe('Task Component', () => {
   let component: TaskComponent;
@@ -36,4 +37,15 @@ describe('Task Component', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change task.status to deleted after delete method is run', () => {
+    component.delete();
+    expect(component.task.status).toBe('deleted');
+  });
+
+  it('should change task.status to open after restore method is run', () => {
+    component.restore();
+    expect(component.task.status).toBe('open');
+  });
+ 
 });
