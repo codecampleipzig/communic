@@ -1,21 +1,38 @@
  body {
-     background-image: url("../../assets/email-pattern.png");
      width: 100%;
      margin: 0;  
      padding-top: 20px;
-     padding-bottom: 20px;
-     
+     padding-bottom: 20px;   
  }
+
+ .background{
+    position: relative;
+    height: 100vh;
+ }
+
+ .background::after {
+    content: "";
+    background-image: url("../../assets/backgroundimg.png");
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+    background-size: cover;
+    background-repeat: repeat;
+  }
 
  .mainContainer{
      display: flex;
-     
-     justify-content: space-around;
+     justify-content: center;
      flex-direction: row;
      flex-wrap: wrap;
-     /* margin-bottom: 20px;
-     margin-top: 20px; */
+     align-items: center;
+     height: 100%;
  }
+
 
 .registerCard{
     position: relative;
