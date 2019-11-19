@@ -13,7 +13,7 @@ export class TaskListComponent implements OnInit {
    */
   @Input() public project: Project;
 
-  public tasks: Task[];
+  public tasks: Task[] = [];
 
   constructor() { 
   }

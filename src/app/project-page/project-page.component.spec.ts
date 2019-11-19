@@ -5,6 +5,20 @@ import { ProjectTeaserComponent } from '../project-teaser/project-teaser.compone
 import { TeamCardComponent } from '../team-card/team-card.component';
 import { TaskListComponent } from '../task-list/task-list.component';
 import { CreateNewTaskComponent } from '../create-new-task/create-new-task.component';
+import { StoreService } from '../store.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { TeamMemberComponent } from '../team-member/team-member.component';
+import { TaskComponent } from '../task/task.component';
+import { Component } from '@angular/core';
+import { TaskListItemTeamComponent } from '../task-list-item-team/task-list-item-team.component';
+
+@Component({
+  selector: 'app-toolbar',
+  template: ''
+})
+class ToolbarTestComponent {}
 
 describe('ProjectPageComponent', () => {
   let component: ProjectPageComponent;
@@ -12,7 +26,13 @@ describe('ProjectPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProjectPageComponent, ProjectTeaserComponent, TeamCardComponent, TaskListComponent, CreateNewTaskComponent ]
+      declarations: [ ProjectPageComponent, ProjectTeaserComponent, TeamCardComponent, TaskListComponent, CreateNewTaskComponent, TeamMemberComponent, TaskComponent, ToolbarTestComponent, TaskListItemTeamComponent ],
+      providers: [
+        StoreService,
+        {provide: Router, useClass: class {navigate() {}}},
+        AuthService,
+        {provide: ActivatedRoute, useClass: class { params = new BehaviorSubject<any>({id: 1}).asObservable()}},
+      ]
     })
     .compileComponents();
   }));
@@ -20,30 +40,6 @@ describe('ProjectPageComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProjectPageComponent);
     component = fixture.componentInstance;
-
-    /**
-     * Setup Mockdata
-     */
-    component.project = {
-      projectId: 1,
-      projectTitle: 'Project A',
-      projectImageURL: './../assets/project-default.png',
-      projectDescription: 'An absolute stunner of a project, uniting half the globe. And now some junk text, to look like a full paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut consequat semper viverra nam libero justo laoreet sit. Sed sed risus pretium quam. Nisl purus in mollis nunc sed id semper risus. Cras fermentum odio eu feugiat pretium nibh. Hac habitasse platea dictumst vestibulum. Sit amet nisl suscipit adipiscing bibendum est. Amet aliquam id diam maecenas.',
-      projectGoal: 'Please our stakeholders.',
-      projectStatus: 'done',
-      projectCreator: {userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png"},
-      projectTeam: [{userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png"}],
-      projectTasks: [{
-        taskId: 1,
-        projectId: 1,
-        taskTitle: 'Our first task',
-        taskDescription: 'Recruit some team members. And here some more, to fill up your page: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        taskStatus: 'open',
-        taskCreator: {userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png"},
-        taskTeam: [{userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png"}],
-        menuSection: 'starter'
-     }]
-   }
     fixture.detectChanges();
   });
 

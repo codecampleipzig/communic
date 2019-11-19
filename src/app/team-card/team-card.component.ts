@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { User } from '../datatypes/User';
 import { Project } from '../datatypes/Project';
 import { StoreService } from '../store.service';
@@ -19,7 +19,7 @@ export class TeamCardComponent implements OnInit {
   users : User [];
 
 
-  constructor(private store: StoreService) { 
+  constructor( @Inject(StoreService) private store: StoreService) { 
     this.users = this.store.retrieveUserList();
   }
 
