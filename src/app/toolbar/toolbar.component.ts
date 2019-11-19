@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Inject } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 export class ToolbarComponent implements OnInit {
   homeIconSource = "../../assets/home.svg";
 
-  constructor(private router: Router) {}
+  constructor(@Inject(Router) private router: Router) {}
 
   ngOnInit() {}
 

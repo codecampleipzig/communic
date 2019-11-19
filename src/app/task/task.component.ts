@@ -18,7 +18,7 @@ export class TaskComponent implements OnInit {
    */
   @HostBinding("class")
   get hostClasses(): string {
-    return "status-" + this.task.taskStatus;
+    return this.task ? "status-" + this.task.taskStatus : "";
   }
 
   constructor() {}

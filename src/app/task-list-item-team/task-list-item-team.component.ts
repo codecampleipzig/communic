@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { Task } from "../datatypes/Task";
 
 @Component({
   selector: "app-task-list-item-team",
@@ -6,8 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./task-list-item-team.component.css"]
 })
 export class TaskListItemTeamComponent implements OnInit {
-  @Input() userIDs: number;
-  @Input() status: string;
+  @Input() task: Task;
 
   /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
   private userjoined = false;

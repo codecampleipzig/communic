@@ -19,6 +19,7 @@ import { ProjectCardComponent } from "./project-card/project-card.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { SignupFormComponent } from "./signup-form/signup-form.component";
 import { RegisterCardComponent } from "./register-card/register-card.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [

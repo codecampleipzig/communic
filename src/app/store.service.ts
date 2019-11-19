@@ -97,6 +97,7 @@ export class StoreService {
    * Get Project object by Project id
    */
   retrieveProject(id: number): Project {
+    // console.log(this.projects);
     return Mock.projects.find(project => project.projectId == id);
   }
 

@@ -19,9 +19,35 @@ describe("Task Component", () => {
     component = fixture.componentInstance;
 
     /* Give it some mock data for a task */
-    component.task = Mock.tasks[0];
+    component.task = {
+      taskId: 3,
+      projectId: 2,
+      taskTitle: "A really important task",
+      taskDescription: "Not sure how important this task really is.",
+      taskStatus: "deleted",
+      taskCreator: {
+        userId: 13,
+        userName: "Iko",
+        userEmail: "caretaker3000@gmail.com",
+        userImageURL: "../assets/user_avatar.png"
+      },
+      taskTeam: [
+        {
+          userId: 13,
+          userName: "Iko",
+          userEmail: "caretaker3000@gmail.com",
+          userImageURL: "../assets/user_avatar.png"
+        },
+        {
+          userId: 13,
+          userName: "Iko",
+          userEmail: "caretaker3000@gmail.com",
+          userImageURL: "../assets/user_avatar.png"
+        }
+      ],
+      menuSection: "main"
+    };
 
-    component.ngOnInit();
     fixture.detectChanges();
   });
 

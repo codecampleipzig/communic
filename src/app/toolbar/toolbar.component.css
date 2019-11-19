@@ -29,18 +29,18 @@ button {
    height: 80px;
 }
 
-.homeIcon {
+.home-icon {
    background-color: white;
    cursor: pointer;
    border: none;
    padding: .1em .1em;
 }
 
-.homeIcon img {
+.home-icon img {
    width: 40px;
 }
 
-.homeProject {
+.home-project {
    display: flex;
    justify-content: space-between;
    align-items: center;

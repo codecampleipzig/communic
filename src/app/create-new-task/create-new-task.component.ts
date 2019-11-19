@@ -13,16 +13,27 @@ export class CreateNewTaskComponent implements OnInit {
    */
   @HostBinding("class")
   get hostClasses(): string {
-    return "card displayFlex";
+    return "card display-flex";
   }
 
   constructor() {}
 
-  toggleForm() {
+  /**
+   * Create a function for opening and closing a form to bind to objects in the HTML.
+   */
+  openForm() {
+    if (!this.formVisible == true) {
+      this.formVisible = true;
+    } else {
+      return;
+    }
+  }
+
+  closeForm() {
     if (this.formVisible == true) {
       this.formVisible = false;
     } else {
-      this.formVisible = true;
+      return;
     }
   }
 
