@@ -5,11 +5,9 @@
 <!--
    User list shows a list of User that belong to the team 
 -->
-<ul class="unstyledList" id="user-list">
+<ul class="unstyled-list" id="user-list">
    <li *ngFor="let member of team">
-      <app-team-member [user]="member">
-
-      </app-team-member>
+      <app-team-member [user]="member"></app-team-member>
    </li>
 </ul>
 <!--
