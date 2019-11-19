@@ -8,3 +8,49 @@
     font-size: 2rem;
     margin: .25em .25em .25em 0
 }
+
+textarea.task-description {
+    width: 100%;
+    padding: .5em;
+    font-size: 0.9rem;
+    border: 1px solid rgba(0,0,0,.05);
+    background: transparent;
+    border-radius: 5px;
+    transition: border-color .4s, background .4s, box-shadow .4s;
+}
+
+textarea.task-description:hover {
+    background: rgba(255,255,255,.5);
+    border-color: rgba(0,0,0,.2);
+}
+
+textarea.task-description:focus {
+    background: #fff;
+    border-color: rgba(0,0,0,.2);
+    outline: 0 none;
+    box-shadow: var(--smallShadow);
+}
+
+input.task-title {
+    font-weight: 500;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: .5em;
+    font-size: 1rem;
+    border: 1px solid rgba(0,0,0,.05);
+    background: transparent;
+    border-radius: 5px;
+    transition: border-color .4s, background .4s, box-shadow .4s;
+}
+
+input.task-title:hover {
+    background: rgba(255,255,255,.5);
+    border-color: rgba(0,0,0,.2);
+}
+
+input.task-title:focus {
+    background: #fff;
+    border-color: rgba(0,0,0,.2);
+    outline: 0 none;
+    box-shadow: var(--smallShadow);
+}

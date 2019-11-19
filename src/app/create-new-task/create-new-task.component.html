@@ -1,13 +1,22 @@
-<div (click)="toggleForm()">
-  <div class="top-right-icon" *ngIf="formVisible">
+<!--
+Close item x displayed in the create task form.
+//-->
+<div class="top-right-icon" *ngIf="formVisible" (click)="closeForm()">
     <i class="fas fa-times"></i>
-  </div>
-
-  <div class="create-new-task" *ngIf="!formVisible">
-    <i class="fas fa-plus"></i>
-  </div>
-  <div class="task-creator" *ngIf="formVisible">
-    Title, <br />Picture,<br />
-    Description...
-  </div>
 </div>
+<!--
+Opening up the form and just show a plus, whole area clickable to create a new task.
+//-->
+<div class="create-new-task" *ngIf="!formVisible" (click)="openForm()">
+    <i class="fas fa-plus"></i>
+</div>
+<!--
+Input Fields/Textarea reflecting the individual tasks style and made editable.
+//-->
+<div class="task-header" *ngIf="formVisible">
+    <div class="task-checkbox checkbox"></div>
+    <input class="task-title" placeholder="Task Name Please"/>
+</div>
+
+<textarea *ngIf="formVisible" class="task-description" placeholder="Please describe the task that needs doing.">
+</textarea>
