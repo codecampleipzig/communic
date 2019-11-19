@@ -1,10 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { TeamCardComponent } from './team-card.component';
 import { TeamMemberComponent } from '../team-member/team-member.component';
 import { ProjectPageComponent } from '../project-page/project-page.component';
 
-xdescribe('TeamCardComponent', () => {
+xdescribe("TeamCardComponent", () => {
   let component: TeamCardComponent;
   let fixture: ComponentFixture<TeamCardComponent>;
 

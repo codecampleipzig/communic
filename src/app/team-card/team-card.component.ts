@@ -3,9 +3,9 @@ import { User } from '../datatypes/User';
 import { Project } from '../datatypes/Project';
 
 @Component({
-  selector: 'app-team-card',
-  templateUrl: './team-card.component.html',
-  styleUrls: ['./team-card.component.css']
+  selector: "app-team-card",
+  templateUrl: "./team-card.component.html",
+  styleUrls: ["./team-card.component.css"]
 })
 export class TeamCardComponent implements OnInit {
   /**
@@ -33,5 +33,4 @@ export class TeamCardComponent implements OnInit {
   private join(): void{
     this.alreadyJoined = true;
   }
-
 }

@@ -3,9 +3,9 @@ import { Task } from '../datatypes/Task';
 import { Project } from '../datatypes/Project';
 
 @Component({
-  selector: 'app-task-list',
-  templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  selector: "app-task-list",
+  templateUrl: "./task-list.component.html",
+  styleUrls: ["./task-list.component.css"]
 })
 export class TaskListComponent implements OnInit {
   /**
@@ -25,4 +25,5 @@ export class TaskListComponent implements OnInit {
     this.tasks = this.project.projectTasks;
   }
 
+  ngOnInit() {}
 }

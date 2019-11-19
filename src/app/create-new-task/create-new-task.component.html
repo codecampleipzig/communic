@@ -1,10 +1,13 @@
-<div class="topRightIcon" *ngIf="formVisible">
+<div (click)="toggleForm()">
+  <div class="topRightIcon" *ngIf="formVisible">
     <i class="fas fa-times"></i>
- </div>
+  </div>
 
-<div class="createNewTask" *ngIf="!formVisible">
+  <div class="createNewTask" *ngIf="!formVisible">
     <i class="fas fa-plus"></i>
-</div>
-<div class="taskCreator" *ngIf="formVisible">
-    Title, <br>Picture,<br> Description...
+  </div>
+  <div class="taskCreator" *ngIf="formVisible">
+    Title, <br />Picture,<br />
+    Description...
+  </div>
 </div>

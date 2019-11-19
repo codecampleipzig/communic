@@ -10,7 +10,18 @@
     "test:ci": "jest --runInBand",
     "test:coverage": "jest --coverage",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "autofix": "ng lint --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run lint && npm test"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,json}": [
+      "prettier --write '**/*.{ts,json}'",
+      "git add"
+    ]
   },
   "private": true,
   "main": "main.js",
@@ -37,8 +48,12 @@
     "@types/node": "~8.9.4",
     "canvas": "^2.6.0",
     "codelyzer": "^5.0.0",
+    "husky": "^3.1.0",
     "jest": "^24.9.0",
     "jest-preset-angular": "^8.0.0",
+    "lint-staged": "^9.4.3",
+    "ng-lint-staged": "^0.1.6",
+    "prettier": "^1.19.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"

@@ -1,21 +1,86 @@
-import { User } from './datatypes/User';
-import { Task } from './datatypes/Task';
-import { Project } from './datatypes/Project';
+import { User } from "./datatypes/User";
+import { Task } from "./datatypes/Task";
+import { Project } from "./datatypes/Project";
 
 export const users: User[] = [
-   { userId: 1, userName: "Mautzi", userEmail: "MolleMorallo@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 2, userName: "Mariana", userEmail: "BringMarianaBananaToSchool@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 3, userName: "Lena", userEmail: "lenintheempress@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 4, userName: "Björn", userEmail: "thPObutNotTheRiver@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 5, userName: "Pauline", userEmail: "DelphineQueen@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 6, userName: "Nick", userEmail: "nickTheSwan@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 7, userName: "Nico", userEmail: "intelligentButBeautiful@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 8, userName: "Simona", userEmail: "deepBeutifulSea@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 9, userName: "Beatriz", userEmail: "womanWhoRockTheWorld@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 10, userName: "Anahita", userEmail: "bestBiologistInTheWorld@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 11, userName: "Kaab", userEmail: "theCricketEnthusiast@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 12, userName: "Andres", userEmail: "krawalloAndi@gmail.com", userImageURL: "../assets/user_avatar.png" },
-   { userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png" }
+  {
+    userId: 1,
+    userName: "Mautzi",
+    userEmail: "MolleMorallo@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 2,
+    userName: "Mariana",
+    userEmail: "BringMarianaBananaToSchool@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 3,
+    userName: "Lena",
+    userEmail: "lenintheempress@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 4,
+    userName: "Björn",
+    userEmail: "thPObutNotTheRiver@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 5,
+    userName: "Pauline",
+    userEmail: "DelphineQueen@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 6,
+    userName: "Nick",
+    userEmail: "nickTheSwan@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 7,
+    userName: "Nico",
+    userEmail: "intelligentButBeautiful@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 8,
+    userName: "Simona",
+    userEmail: "deepBeutifulSea@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 9,
+    userName: "Beatriz",
+    userEmail: "womanWhoRockTheWorld@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 10,
+    userName: "Anahita",
+    userEmail: "bestBiologistInTheWorld@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 11,
+    userName: "Kaab",
+    userEmail: "theCricketEnthusiast@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 12,
+    userName: "Andres",
+    userEmail: "krawalloAndi@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  },
+  {
+    userId: 13,
+    userName: "Iko",
+    userEmail: "caretaker3000@gmail.com",
+    userImageURL: "../assets/user_avatar.png"
+  }
 ];
 
 export const tasks: Task[] = [

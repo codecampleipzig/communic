@@ -4,9 +4,9 @@ import { StoreService } from '../store.service';
 import { Project } from '../datatypes/Project';
 
 @Component({
-  selector: 'app-project-page',
-  templateUrl: './project-page.component.html',
-  styleUrls: ['./project-page.component.css']
+  selector: "app-project-page",
+  templateUrl: "./project-page.component.html",
+  styleUrls: ["./project-page.component.css"]
 })
 export class ProjectPageComponent implements OnInit {
 
@@ -25,6 +25,8 @@ export class ProjectPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnInit() {}
+
   /**
    * Workaround: Scroll to top.
    * Note: When user has scrolled to bottom of origin page and then opens Project page, bottom of Project page is shown.
@@ -32,5 +34,4 @@ export class ProjectPageComponent implements OnInit {
   ngAfterViewInit() {
     window.scrollTo(0, 0);
   }
-
 }

@@ -1,23 +1,23 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TaskComponent } from './task.component';
-import { TaskListItemTeamComponent } from '../task-list-item-team/task-list-item-team.component';
-import * as Mock from '../mockdata'
+import { TaskComponent } from "./task.component";
+import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item-team.component";
+import * as Mock from "../mockdata";
 
-describe('Task Component', () => {
+describe("Task Component", () => {
   let component: TaskComponent;
   let fixture: ComponentFixture<TaskComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TaskComponent, TaskListItemTeamComponent ]
+      declarations: [TaskComponent, TaskListItemTeamComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TaskComponent);
     component = fixture.componentInstance;
-    
+
     /* Give it some mock data for a task */
     component.task = {
       taskId: 3,
@@ -34,7 +34,7 @@ describe('Task Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

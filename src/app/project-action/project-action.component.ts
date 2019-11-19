@@ -1,22 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
 
 @Component({
-  selector: 'app-project-action',
-  templateUrl: './project-action.component.html',
-  styleUrls: ['./project-action.component.css']
+  selector: "app-project-action",
+  templateUrl: "./project-action.component.html",
+  styleUrls: ["./project-action.component.css"]
 })
 export class ProjectActionComponent implements OnInit {
   projectName = "";
-  plusIconSource: string = "./../../assets/plus.svg";
-  breadcrumbIconSource: string = "../../assets/breadcrumb.svg";
-  constructor() { }
+  plusIconSource = "./../../assets/plus.svg";
+  breadcrumbIconSource = "../../assets/breadcrumb.svg";
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  createProject () {
+  createProject() {
     // Implement routing once other components are available and routes are set
-    //this.router.navigate(['createProject']); 
+    // this.router.navigate(['createProject']);
   }
 }
