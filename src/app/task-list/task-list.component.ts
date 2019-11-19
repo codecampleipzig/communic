@@ -13,7 +13,7 @@ export class TaskListComponent implements OnInit {
    */
   @Input() public project: Project;
 
-  public tasks: Task[];
+  public tasks: Task[] = [];
 
   constructor() { 
   }
@@ -24,6 +24,4 @@ export class TaskListComponent implements OnInit {
      */
     this.tasks = this.project.projectTasks;
   }
-
-  ngOnInit() {}
 }

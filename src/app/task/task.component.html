@@ -3,7 +3,7 @@
    - [ ] Add click-Binding to change task.status
    - [ ] Only show for users that joined the task?
 -->
-<div class="topRightIcon taskDelete">
+<div class="top-right-icon task-delete">
    <i *ngIf="task.taskStatus != 'deleted'" class="fas fa-trash-alt"></i>
    <i *ngIf="task.taskStatus == 'deleted'" class="fas fa-trash-restore"></i>
 </div>
@@ -14,8 +14,8 @@
    - [ ] Style the checkbox for different states with fancy layout
    - [ ] Disable Checkbox for users that didn't join the task?
 -->
-<div class="taskHeader">
-   <div class="taskCheckbox checkbox"></div>
+<div class="task-header">
+   <div class="task-checkbox checkbox"></div>
    <h4>{{task.taskTitle}}</h4>
 </div>
 

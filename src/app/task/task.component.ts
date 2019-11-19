@@ -16,10 +16,8 @@ export class TaskComponent implements OnInit {
    * Add Task Status as Class to the host Element
    * could be .status-open, .status-done, .status-deleted
    */
-  @HostBinding("class")
-  get hostClasses(): string {
-    return "status-" + this.task.taskStatus;
-  }
+  @HostBinding('class')
+    get hostClasses(): string { return this.task ? 'status-' + this.task.taskStatus : ''; }
 
   constructor() {}
 

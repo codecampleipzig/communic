@@ -13,7 +13,7 @@ export class CreateNewTaskComponent implements OnInit {
    */
   @HostBinding("class")
   get hostClasses(): string {
-    return "card displayFlex";
+    return "card display-flex";
   }
 
   constructor() {}

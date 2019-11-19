@@ -98,7 +98,7 @@ export class StoreService {
    */
   retrieveProject(id: number): Project {
     // console.log(this.projects);
-    return this.projects.find(project => project.projectId == id);
+    return Mock.projects.find(project => project.projectId == id);
   }
 
   /**
@@ -112,19 +112,7 @@ export class StoreService {
    * Get User by Id
    */
   retrieveUser(userId: number): User {
-    const user = this.users.find(user => user.userId == userId);
+    const user = Mock.users.find(user => user.userId == userId);
     return user;
-  }
-
-  retrieveProjectTeam(projectID: number) : User [] {
-    console.log(projectID);
-    // console.log(this.retrieveProject(projectID))
-    const projectTeam = this.retrieveProject(projectID).projectTeam;
-    console.log (projectTeam);
-    return projectTeam;
-  }
-
-  retrieveTaskTeam(taskId: number) : User [] {
-    return this.retrieveTask(taskId).taskTeam;
   }
 }

@@ -29,8 +29,7 @@ describe("Task Component", () => {
       taskTeam: [{ userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png" }, { userId: 13, userName: "Iko", userEmail: "caretaker3000@gmail.com", userImageURL: "../assets/user_avatar.png" }],
       menuSection: 'main'
      }
-     
-     component.ngOnInit()
+
     fixture.detectChanges();
   });
 

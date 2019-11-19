@@ -15,7 +15,6 @@ export class TaskListItemTeamComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log(this.task);
   }
 
   /**

@@ -1,9 +1,9 @@
-.createNewTask {
+.create-new-task {
     cursor: pointer;
     width: 100%;
 }
 
-.createNewTask i {
+.create-new-task i {
     color: var(--fontMediumGrey);
     font-size: 2rem;
     margin: .25em .25em .25em 0
