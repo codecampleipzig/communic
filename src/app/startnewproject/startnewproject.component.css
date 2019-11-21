@@ -1,0 +1,105 @@
+.card {
+    display: flex;
+    position: relative;
+}
+
+p {
+    line-height: 1.5;
+    font-size: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input {
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 0.9em;
+    font-family: 'Montserrat', sans-serif;
+    width: 35vw;  
+}
+
+textarea {
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 0.9em;
+    font-family: 'Montserrat', sans-serif;
+    width: 35vw;  
+
+}
+
+h1 {
+    padding: 0 50px;
+    font-size: 2em;
+}
+
+.projectImage {
+    width: 100%;
+    height: 30vw; /* placeholder height. Not needed for an actual picture */
+    background: var(--placeholderGrey);
+    border-radius: 6px;
+    justify-content: space-around;
+    display: flex;
+}
+
+.projectImage button {
+    display: flex;
+    margin-top: 15px;
+    line-height: 2rem;
+    background-color: #ffff;
+    border-radius: 5px;
+    border:1px solid #655af3;
+    justify-content: center;
+    color: #655af3;
+    padding: 0.3em 2em;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.topRightIcon {
+    position: relative;
+    top: .5em;
+    right: 1em;
+    cursor: pointer;
+    color: var(--iconColor);
+    display: inline-block;
+    margin-right: 1em;
+ }
+ 
+ .topRightIcon:hover {
+       color: var(--warningRed);
+}
+ 
+
+@media screen and (max-width: 1100px) {
+    .card {        
+        position: relative;
+        display: grid;
+        grid-template-columns: 30% 70%;
+        grid-template-areas: 
+            "title bin"
+            "title image"
+            "description image";
+        grid-gap: 1rem;
+    }
+
+    h2 {
+        grid-area: title;
+    }
+
+    .projectImage {
+        grid-area: image;
+        height: auto;
+    }
+
+    .projectDescription {
+        grid-area: description;
+    }
+
+    .taskDelete {
+        grid-area: bin;
+        position: relative;
+    }
+
+}

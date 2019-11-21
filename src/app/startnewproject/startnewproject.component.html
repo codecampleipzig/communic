@@ -1,14 +1,21 @@
-
-    <app-toolbar></app-toolbar>
-  <div>  
-    <div class="card cardFull">
-        <app-project-teaser></app-project-teaser>
-        <h2>title</h2>
-        <div class="projectImage"></div>
-        <div class="projectDescription">
-            <p>description</p>
-            <h3>Goal</h3>
-            <button class="button">Join</button>
-        </div>
+<app-toolbar></app-toolbar>
+<h1>Project title</h1>
+<div class="card cardFull">
+    <div class="topRightIcon taskDelete">
+        <i class="fas fa-trash-alt"></i>
     </div>
+    <div class="projectDescription">
+        <form>
+            <h3>Project Title</h3>
+            <div class="projectImage">
+                <button class="button">Upload Image</button>
+            </div>
+            <input size="35" type="text" name="Project Title" placeholder="Fries 4 ALL">
+            <h3>Project description</h3><textarea placeholder="This is the best project of the world because it makes sure absolutely everybody gets free fries for dinner once a week."
+                rows='4'></textarea>
+            <h3>Project goal</h3><textarea placeholder="This is important for humankind because it is scientifically proven fries make people 2x happier than broccoli and spinach put together. In the long run, this project aims to achieve world peace by multiplying individual happiness through fries consumption." rows='4'></textarea>
+            <button class="button">Create!</button>
+        </form>
+    </div>
+
 </div>
