@@ -33,7 +33,7 @@ button {
    background-color: white;
 }
 
-.homeIcon {
+.home-icon {
    background-color: white;
    cursor: pointer;
    border: none;
@@ -44,7 +44,7 @@ button {
    width: 3em;
 }
 
-.homeProject {
+.home-project {
    display: flex;
    justify-content: space-between;
    align-items: center;
