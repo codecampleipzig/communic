@@ -3,7 +3,12 @@
    display: flex;
    justify-content: center;
    position: fixed;
-   width: 100vw;
+   width: calc(100vw - 1em);
+   margin: 0.5em;
+}
+
+button {
+   min-width: initial;
 }
 .toolbar {
    width: 95vw;
@@ -24,18 +29,18 @@
    height: 80px;
 }
 
-.homeIcon {
+.home-icon {
    background-color: white;
    cursor: pointer;
    border: none;
    padding: .1em .1em;
 }
 
-.homeIcon img {
+.home-icon img {
    width: 40px;
 }
 
-.homeProject {
+.home-project {
    display: flex;
    justify-content: space-between;
    align-items: center;

@@ -23,12 +23,12 @@
 
 
 /* Task Header with Checkbox and Title */
-.taskHeader {
+.task-header {
    display: flex;
    align-items: center;
 }
 
-   .taskHeader > * {
+   .task-header > * {
       margin-right: 1em;
    }
 
@@ -44,13 +44,13 @@
    }
 
    
-.taskDescription {
+.task-description {
    margin-left: 1em;
    flex-basis: 100%;
    font-size: .9rem;
 }
 
-.taskAuthor {
+.task-author {
    color: var(--fontLightGrey);
 }
 
