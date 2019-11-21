@@ -1,20 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { StoreService } from './../store.service';
-import { ProjectCategoryEnum } from './../datatypes/enums/ProjectCategoryEnum';
+import { Component, OnInit } from "@angular/core";
+import { StoreService } from "./../store.service";
+import { ProjectCategoryEnum } from "./../datatypes/enums/ProjectCategoryEnum";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
   category = ProjectCategoryEnum;
 
-  constructor(private store: StoreService) { }
+  constructor(private store: StoreService) {}
 
   ngOnInit() {
     this.store.retrieveYourProjects();
     this.store.retrieveExploreProjects();
   }
-
 }

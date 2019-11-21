@@ -1,49 +1,69 @@
-import { TestBed } from '@angular/core/testing';
-import { Project } from './datatypes/Project';
-import * as Mock from './mockdata';
+import { TestBed } from "@angular/core/testing";
+import { Project } from "./datatypes/Project";
+import * as Mock from "./mockdata";
 
-import { ProjectsService } from './projects.service';
+import { ProjectsService } from "./projects.service";
 
-describe('ProjectsService', () => {
+describe("ProjectsService", () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', () => {
+  it("should be created", () => {
     const service: ProjectsService = TestBed.get(ProjectsService);
     expect(service).toBeTruthy();
   });
 
-
-  test('retrieveYourProjects should return an array of projects where the user is member', () => {
-    var expected: Project[] = [
+  test("retrieveYourProjects should return an array of projects where the user is member", () => {
+    const expected: Project[] = [
       {
-        id: 2,
-        title: 'Project 2',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-        goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-        authorID: 1,
-        userIDs: [1, 2, 3, 4],
-        imageUrl: "./../assets/project-default.png"
+        projectId: 2,
+        projectTitle: "Project 2",
+        projectDescription:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+        projectGoal:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+        projectCreator: Mock.users[0],
+        projectTeam: [
+          Mock.users[0],
+          Mock.users[1],
+          Mock.users[2],
+          Mock.users[3]
+        ],
+        projectImageURL: "./../assets/project-default.png",
+        projectTasks: [],
+        projectStatus: "open"
       },
       {
-        id: 3,
-        title: 'Project 3',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-        goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-        authorID: 1,
-        userIDs: [1, 2, 3, 4],
-        imageUrl: "./../assets/project-default.png"
+        projectId: 3,
+        projectTitle: "Project 3",
+        projectDescription:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+        projectGoal:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+        projectCreator: Mock.users[1],
+        projectTeam: [
+          Mock.users[1],
+          Mock.users[2],
+          Mock.users[3],
+          Mock.users[4]
+        ],
+        projectImageURL: "./../assets/project-default.png",
+        projectTasks: [],
+        projectStatus: "open"
       }
     ];
 
-    var notExpected: Project =
-    {
-      id: 1,
-      title: 'Project 1',
-      description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-      authorID: 1,
-      userIDs: [1234, 5678, 9123, 4567, 8901],
-      imageUrl: "./../assets/project-default.png"
+    const notExpected: Project = {
+      projectId: 1,
+      projectTitle: "Project 1",
+      projectDescription:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+      projectGoal:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+      projectCreator: Mock.users[3],
+      projectTeam: [Mock.users[4], Mock.users[5], Mock.users[6]],
+      projectImageURL: "./../assets/project-default.png",
+      projectTasks: [],
+      projectStatus: "open"
     };
 
     Mock.ExposeForTesting.projects = [];
@@ -52,42 +72,66 @@ describe('ProjectsService', () => {
 
     const service: ProjectsService = TestBed.get(ProjectsService);
 
-    service.retrieveYourProjects(1)
+    service
+      .retrieveYourProjects(Mock.users[1].userId)
       .then(actual => expect(actual).toStrictEqual(expected))
       .catch(error => console.log(error));
   });
 
-  test('retrieveExploreProjects should return an array of projects where the user is NOT member', () => {
-    var expected: Project[] = [
+  test("retrieveExploreProjects should return an array of projects where the user is NOT member", () => {
+    const expected: Project[] = [
       {
-        id: 1,
-        title: 'Project 1',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-        goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-        authorID: 1,
-        userIDs: [1234, 5678, 9123, 4567, 8901],
-        imageUrl: "./../assets/project-default.png"
+        projectId: 1,
+        projectTitle: "Project 1",
+        projectDescription:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+        projectGoal:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+        projectCreator: Mock.users[1],
+        projectTeam: [
+          Mock.users[1],
+          Mock.users[2],
+          Mock.users[3],
+          Mock.users[4],
+          Mock.users[5]
+        ],
+        projectImageURL: "./../assets/project-default.png",
+        projectTasks: [],
+        projectStatus: "open"
       }
     ];
 
-    var notExpected: Project[] = [
+    const notExpected: Project[] = [
       {
-        id: 2,
-        title: 'Project 2',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-        goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-        authorID: 1,
-        userIDs: [1, 2, 3, 4],
-        imageUrl: "./../assets/project-default.png"
+        projectId: 2,
+        projectTitle: "Project 2",
+        projectDescription:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+        projectGoal:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+        projectCreator: Mock.users[6],
+        projectTeam: [Mock.users[2], Mock.users[3], Mock.users[4]],
+        projectImageURL: "./../assets/project-default.png",
+        projectStatus: "open",
+        projectTasks: []
       },
       {
-        id: 3,
-        title: 'Project 3',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-        goal: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.',
-        authorID: 1,
-        userIDs: [1, 2, 3, 4],
-        imageUrl: "./../assets/project-default.png"
+        projectId: 3,
+        projectTitle: "Project 3",
+        projectDescription:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+        projectGoal:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
+        projectCreator: Mock.users[3],
+        projectTeam: [
+          Mock.users[2],
+          Mock.users[4],
+          Mock.users[5],
+          Mock.users[6]
+        ],
+        projectImageURL: "./../assets/project-default.png",
+        projectTasks: [],
+        projectStatus: "open"
       }
     ];
 
@@ -96,13 +140,9 @@ describe('ProjectsService', () => {
     Mock.ExposeForTesting.projects.concat(notExpected); // concat does work properly when array has some elements
     const service: ProjectsService = TestBed.get(ProjectsService);
 
-    service.retrieveExploreProjects(1)
+    service
+      .retrieveExploreProjects(Mock.users[1].userId)
       .then(result => expect(result).toEqual(expected))
       .catch(error => console.log(error));
-
   });
-
 });
-
-
-
