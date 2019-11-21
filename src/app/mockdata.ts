@@ -114,6 +114,16 @@ export const tasks: Task[] = [
     taskCreator: users[6],
     taskTeam: [users[6], users[8], users[10]],
     menuSection: "main"
+  },
+  {
+    taskId: 4,
+    projectId: 1,
+    taskTitle: "Some Task",
+    taskDescription: "Not sure how important this task really is.",
+    taskStatus: "deleted",
+    taskCreator: users[6],
+    taskTeam: [users[6], users[8], users[10]],
+    menuSection: "main"
   }
 ];
 
@@ -163,3 +173,8 @@ export const projects: Project[] = [
     projectTasks: [tasks[3]]
   }
 ];
+
+// Class needed for testing, please do not remove
+export class ExposeForTesting {
+  public static projects: Project[] = projects;
+}
