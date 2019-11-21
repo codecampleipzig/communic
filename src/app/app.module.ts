@@ -18,7 +18,7 @@ import { ProjectListComponent} from './project-list/project-list.component';
 import { ProjectCardComponent} from './project-card/project-card.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterCardComponent } from './register-card/register-card.component';
-import { LoginformComponent } from './loginform/loginform.component';
+import { StartnewprojectComponent } from './startnewproject/startnewproject.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { LoginformComponent } from './loginform/loginform.component';
     ProjectListComponent,
     ProjectCardComponent,
     RegisterCardComponent,
-    LoginformComponent,
+    StartnewprojectComponent,
   ],
   imports: [
     BrowserModule,

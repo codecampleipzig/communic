@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginformComponent } from './loginform.component';
+import { StartnewprojectComponent } from './startnewproject.component';
 
-describe('LoginformComponent', () => {
-  let component: LoginformComponent;
-  let fixture: ComponentFixture<LoginformComponent>;
+describe('StartnewprojectComponent', () => {
+  let component: StartnewprojectComponent;
+  let fixture: ComponentFixture<StartnewprojectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginformComponent ]
+      declarations: [ StartnewprojectComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginformComponent);
+    fixture = TestBed.createComponent(StartnewprojectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
