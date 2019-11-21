@@ -81,7 +81,7 @@ export class StoreService {
     this.router.navigate(["register"]);
   }
 
-  // Action - retrieve projects based on usedId
+  // Action - retrieve projects based on userId
 
   retrieveYourProjects() {
     let userId: number;
