@@ -1,20 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
+  constructor() {}
 
-  constructor() { }
-
-  register (userName: string, userEmail: string, password: string): Promise<any> {
-    return new Promise<any> ((resolve, reject) => {
-      resolve ({
+  register(
+    userName: string,
+    userEmail: string,
+    password: string
+  ): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      resolve({
         userName,
         userEmail,
-        imageURL : '',
-        userId : 4561723,
-     });
+        imageURL: "",
+        userId: 1234
+      });
     });
   }
 }

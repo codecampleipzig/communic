@@ -37,8 +37,16 @@ While & after writing CSS, refracture it and try to make the structure and the n
 Check if some of the properties you wrote could be needed somewhere else.
 These are utility classes that everyone can make use of to not write basic stuff over and over again.
 
-#### For example
-We often use `ul` & `li` Elements for Lists. Those get a bullet-point and margin & padding,... by default. Let's create a class `.unstyledList` to reset that style easyly.
+#### Globals Example
+Let's change the default behaviour of plain HTML Elements globally, so we may not need any classes for example for headings.
+```css
+p {
+   line-height: 1.5;
+}
+```
+
+#### Utility Example
+We often use `ul` & `li` Elements for Lists. Those get a bullet-point and margin & padding,... by default. Let's create a class `.unstyledList` to reset that style easyly. It's a nice utility.
 
 ```css
 .unstyledList {
@@ -53,7 +61,29 @@ We often use `ul` & `li` Elements for Lists. Those get a bullet-point and margin
 }
 ```
 
-Put these classes at the start of your .css File in an extra Section. We will take care, that those classes will be available globaly by placing them in the `/src/styles.css` file. Check this file to get an idea what is already available.
+#### Module Example
+We all need the Card Style for the Login Card, the Project Cards, or the Projects Sections. We can use a global .card Class to share a equal the styling.
+
+```css
+.card {
+  ...
+  /* Adds Standard behavior and behavior for the signup card */
+}
+.cardFull {
+  ...
+  /* Extends the Card to be full width */
+}
+.cardList > .card {
+  ...
+  /* Overwrites to use Cards in a .cardList (Project List) */
+}
+.card .card {
+  ...
+  /* Cards inside Cards are styled a bit different (like tasks), without the need of a seperate class */
+}
+```
+
+Put these classes at the start of your .css File in an extra Section and give us a hint. We will take care, that those classes will be available globaly by placing them in the `/src/styles.css` file. Check this file to get an idea what is already available.
 
 ---
 
@@ -73,7 +103,7 @@ Check the `/src/app/task`-Component as a good example.
 ---
 
 ### Use CSS Variables for Colors,...
-By declaring CSS Variables we can easyly change the primary Color or the font-family in the whole project or the whole component.
+By declaring CSS Variables we can easyly change the primary color or the font-family in the whole project or the whole component.
 
 So whenever you use a color, or a specifiy font-size, or a font, or some other property you can name a variable for that makes sense to declare, do it!
 

@@ -1,20 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  selector: "app-toolbar",
+  templateUrl: "./toolbar.component.html",
+  styleUrls: ["./toolbar.component.css"]
 })
 export class ToolbarComponent implements OnInit {
-  homeIconSource: string = "../../assets/home.svg";
-  
-  constructor() { }
+  homeIconSource = "../../assets/home.svg";
 
-  ngOnInit() {
-  }
+  constructor(@Inject(Router) private router: Router) {}
+
+  ngOnInit() {}
 
   navigateHome() {
-    // Implement routing once other components are available and routes are set
-    location.reload(true);
+    this.router.navigate(["home"]);
   }
 }
