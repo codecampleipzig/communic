@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import axios from "axios";
 
 @Injectable({
   providedIn: "root"
@@ -6,18 +7,16 @@ import { Injectable } from "@angular/core";
 export class AuthService {
   constructor() {}
 
-  register(
+  async register(
     userName: string,
     userEmail: string,
     password: string
   ): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      resolve({
-        userName,
-        userEmail,
-        imageURL: "",
-        userId: 1234
-      });
-    });
+    try {
+      const response = await axios.post("http://localhost:3001/api/register");
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
