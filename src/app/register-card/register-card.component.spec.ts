@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { RegisterCardComponent } from "./register-card.component";
-import { SignupFormComponent } from "../signup-form/signup-form.component";
 
 xdescribe("RegisterCardComponent", () => {
   let component: RegisterCardComponent;
@@ -9,7 +8,7 @@ xdescribe("RegisterCardComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RegisterCardComponent, SignupFormComponent]
+      declarations: [RegisterCardComponent]
     }).compileComponents();
   }));
 
