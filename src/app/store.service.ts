@@ -14,6 +14,7 @@ import * as Mock from "./mockdata";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
+import { ProjectService } from './project.service';
 
 interface UserState {
   status: any;
@@ -24,9 +25,11 @@ interface UserState {
   providedIn: "root"
 })
 export class StoreService {
+  
   constructor(
     @Inject(Router) private router: Router,
-    @Inject(AuthService) private authService: AuthService
+    @Inject(AuthService) private authService: AuthService,
+    @Inject(ProjectService) private projectService: ProjectService
   ) {
     this.user = new BehaviorSubject<UserState>({
       status: {},
@@ -36,15 +39,20 @@ export class StoreService {
 
     this.projects = new BehaviorSubject<Array<Project>>(Mock.projects);
     this.projects$ = this.projects.asObservable();
+
+    this.project = new BehaviorSubject<any>({});
+    this.project$ = this.project.asObservable();
   }
 
   // Internal State
   user: BehaviorSubject<UserState>;
   projects: BehaviorSubject<Array<Project>>;
+  project: BehaviorSubject<Project>;
 
   // Observable
   public user$: Observable<UserState>;
   public projects$: Observable<Array<Project>>;
+  public project$: Observable<Project>;
 
   // Old Store Service
   // TODO: Refactor
@@ -76,30 +84,6 @@ export class StoreService {
     // Navigate to register page
     this.router.navigate(["register"]);
   }
-  /**
-   * Get Task object by Task id
-   */
-  retrieveTask(id: number): Task {
-    return Mock.tasks.find(task => task.taskId == id);
-  }
-
-  /**
-   * Get Array of Task Objects by projectID and location
-   * @param projectID ID of the project
-   * @param location location of the Task (starter, main, desert)
-   * @returns Array of Task Objects
-   */
-  retrieveTasks(projectID: number, location: string): Task[] {
-    return Mock.tasks.filter(task => task.projectId == projectID);
-  }
-
-  /**
-   * Get Project object by Project id
-   */
-  retrieveProject(id: number): Project {
-    // console.log(this.projects);
-    return Mock.projects.find(project => project.projectId == id);
-  }
 
   /**
    * Get UserList
@@ -113,5 +97,19 @@ export class StoreService {
    */
   retrieveUser(userId: number): User {
     return Mock.users.find(user => user.userId == userId);
+  }
+
+  retrieveProject(id: number) {
+    console.log("retrieve: " + id);
+
+    // Talk to Auth Service. It returns a promise of a User object
+    const promise = this.projectService.getProject(id);
+
+    // When Promise is resolved successfully, then:
+    promise.then(project => {
+      console.log("retrieved: " + project);
+      // Put value into observable
+      this.project.next(project);
+    });
   }
 }
