@@ -15,10 +15,13 @@ export class TaskComponent implements OnInit {
   /**
    * Add Task Status as Class to the host Element
    * could be .status-open, .status-done, .status-deleted
+   * 
+   * Add joined Class to the host Element to enable CSS hover/focus Interactions
+   * - [ ] #102 Add Joined Class based on if user is in the team.
    */
   @HostBinding("class")
   get hostClasses(): string {
-    return this.task ? "status-" + this.task.taskStatus : "";
+    return this.task ? "joined status-" + this.task.taskStatus : "";
   }
 
   constructor() {}

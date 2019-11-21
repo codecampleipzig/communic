@@ -136,7 +136,7 @@ export const projects: Project[] = [
       users[10],
       users[12]
     ],
-    projectTasks: [tasks[1], tasks[2]]
+    projectTasks: [tasks[0], tasks[1], tasks[2]]
   },
   {
     projectId: 2,

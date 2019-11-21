@@ -89,9 +89,11 @@ p {
    appearance: none;
 }
 
-.button:hover {
+.button:hover,
+.button:focus {
    background-color: var(--primaryColorHighlight);
    color: #fff;
+   outline: 0 none;
 }
 
 /** 

@@ -14,6 +14,8 @@
    display: flex;
    flex-flow: wrap;
    align-items: center;
+
+   --checkboxGreen: rgb(51, 132, 51);
 }
 
    :host > * {
@@ -33,14 +35,63 @@
    }
 
    .checkbox {
-      width: 1.5em;
-      height: 1.5em;
+      width: 1em;
+      height: 1em;
       border: 2px solid var(--borderGrey);
       border-radius: 2px;
+      font-size: 1.5em;
+      text-align: center;
+      line-height: 1.05;
+      color: var(--fontLightGrey);
    }
-   
-   .checkbox:hover {
-      background: #dadada;
+
+   .checkbox i {
+      transform: translate3d(0em, -.05em, 0);
+      font-size: .9em;
+      color: inherit;
+      opacity: .2;
+      transition: transform .2s, font-size .2s, color .2s, opacity .2s;
+   }
+
+   /**
+    * CSS Interactions if task is .joined
+    */
+   :host(.joined:not(.status-deleted)) .checkbox {
+      cursor: pointer;
+   }
+
+   :host(.joined:not(.status-deleted)) .checkbox:hover,
+   :host(.joined:not(.status-deleted)) .checkbox:focus {
+      color: var(--checkboxGreen);
+   }
+
+   :host(.joined:not(.status-deleted):not(.status-done)) .checkbox:hover i,
+   :host(.joined:not(.status-deleted):not(.status-done)) .checkbox:focus i {
+      transform: translate3d(0em, -.1em, 0);
+      font-size: 1.3em;
+   }
+
+   :host(.joined:not(.status-deleted)) .checkbox:hover i,
+   :host(.joined:not(.status-deleted)) .checkbox:focus i {
+      opacity: 1
+   }
+
+   :host(.joined:not(.status-deleted)) .checkbox:active,
+   :host(.joined:not(.status-deleted)) .checkbox:focus {
+      border-color: var(--checkboxGreen);
+   }
+
+   /**
+    * CSS Interactions if task is .joined and ment to be undone.
+    */
+   :host(.joined.status-done) .checkbox:hover,
+   :host(.joined.status-done) .checkbox:focus {
+      color: var(--fontLightGrey);
+   }
+
+   :host(.joined.status-done) .checkbox:active,
+   :host(.joined.status-done) .checkbox:focus {
+      border-color: var(--checkboxGreen);
    }
 
    
@@ -72,7 +123,12 @@
 }
 
 :host(.status-done) .checkbox {
-   background: #dadada;
+   color: var(--checkboxGreen);
+   border-color: var(--checkboxGreen);
+}
+
+:host(.status-done) .checkbox i {
+   opacity: 1
 }
 
 :host(.status-deleted) > * {
