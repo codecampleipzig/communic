@@ -16,7 +16,7 @@ import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { ProjectsService } from "./projects.service";
 
-interface UserState {
+export interface UserState {
   status: any;
   userInformation: User | null;
 }
