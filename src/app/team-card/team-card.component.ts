@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Inject } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  Inject,
+  EventEmitter,
+  Output
+} from "@angular/core";
 import { User } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
 
@@ -12,8 +19,9 @@ export class TeamCardComponent implements OnInit {
    * Get project's object by parent component app-project-page
    */
   @Input() public project: Project;
-  @Input() newUser: string;
-  alreadyJoined = false;
+  @Input() public currentUser: User;
+  @Output() public userJoinEmitter = new EventEmitter<string>();
+  public alreadyJoined = false;
   public team: User[];
 
   constructor() {}
@@ -26,10 +34,12 @@ export class TeamCardComponent implements OnInit {
   }
   /**
    * function that makes the button disapear when joined,
-   * - [ ] needs to compare if user already member
-   * - [ ] needs to add the user when button is clicked
+   * - [ ] needs to compare if user already member and than make te button disappear
    */
+
   private join(): void {
     this.alreadyJoined = true;
+    this.userJoinEmitter.emit("userJoined");
+    this.team.push(this.currentUser);
   }
 }
