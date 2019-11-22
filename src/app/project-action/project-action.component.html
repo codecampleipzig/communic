@@ -4,7 +4,8 @@
       <span id="projectName" class="projectName">{{projectName}}</span>
    </div>
    <button id="startProjectButton" class="startProjectButton" (click)="createProject()" *ngIf='!projectName'>
-      <img [src]="plusIconSource" alt="Plus icon">
-      <span>Start a new project</span>
+      <i class="fa fa-plus"></i>
+      <span class="mobhide">Start a new project</span>
+      
    </button>
 </div>

@@ -23,5 +23,16 @@ export class TaskComponent implements OnInit {
 
   constructor() {}
 
+/**
+ * Change task object @status to deleted/open on click of delete/restore button
+ */
+  public delete () {
+    this.task.taskStatus = 'deleted';
+   }
+
+  public restore () {
+    this.task.taskStatus = 'open';
+  }
+
   ngOnInit() {}
 }
