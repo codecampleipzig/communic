@@ -49,12 +49,10 @@ export class TaskComponent implements OnInit {
     const status = this.task.taskStatus;
 
     if (!this.joined() || status == "deleted") {
-      console.log("You're not part of the task force or this task is deleted");
       return false
     }
 
     if (status == "done") {
-      console.log("mark it as open again");
       this.store.updateTaskStatus(this.task.projectId, this.task.taskId, 'open')
     }
     else if (status == "open") {

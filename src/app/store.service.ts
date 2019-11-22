@@ -20,6 +20,15 @@ import { ProjectService } from './project.service';
   providedIn: "root"
 })
 export class StoreService {
+  // Internal State
+  user: BehaviorSubject<UserState>;
+  projects: BehaviorSubject<Array<Project>>;
+  project: BehaviorSubject<Project>;
+
+  // Observable
+  public user$: Observable<UserState>;
+  public projects$: Observable<Array<Project>>;
+  public project$: Observable<Project>;
   
   constructor(
     @Inject(Router) private router: Router,
@@ -38,19 +47,6 @@ export class StoreService {
     this.project = new BehaviorSubject<any>({});
     this.project$ = this.project.asObservable();
   }
-
-  // Internal State
-  user: BehaviorSubject<UserState>;
-  projects: BehaviorSubject<Array<Project>>;
-  project: BehaviorSubject<Project>;
-
-  // Observable
-  public user$: Observable<UserState>;
-  public projects$: Observable<Array<Project>>;
-  public project$: Observable<Project>;
-
-  // Old Store Service
-  // TODO: Refactor
 
   // Action
   register(userName: string, userEmail: string, password: string) {
@@ -94,6 +90,10 @@ export class StoreService {
     return Mock.users.find(user => user.userId == userId);
   }
 
+  /**
+   * resolves GET request and passes project Data into project observable
+   * @param id: project ID
+   */
   retrieveProject(id: number) {
     const promise = this.projectService.getProject(id);
 
@@ -103,17 +103,22 @@ export class StoreService {
     });
   }
 
+  /**
+   * resolves GET request and passes newTasks via newProject into project observable.
+   * @param projectId 
+   * @param taskId 
+   * @param status 
+   */
   updateTaskStatus(projectId: number, taskId: number, status: string) {
     const promise = this.projectService.updateTaskStatus(taskId,status);
 
     promise.then(newTasks => {
       const newState = [...Mock.projects];
-      console.log("News Project State: " + newState);
-      console.log("New Tasks State: " + newTasks);
-      // newState.find(task => task.taskId == taskId).taskStatus = status;
+      const newProject = newState.find(project => project.projectId == projectId);
+      newProject.projectTasks = newTasks;
 
       // Put value into observable
-      //this.project.next(project);
+      this.project.next(newProject);
     });
   }
 }
