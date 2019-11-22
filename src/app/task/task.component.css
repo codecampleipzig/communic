@@ -43,10 +43,12 @@
       text-align: center;
       line-height: 1.05;
       color: var(--fontLightGrey);
+      background: transparent;
+      padding: 0;
    }
 
    .checkbox i {
-      transform: translate3d(0em, -.05em, 0);
+      transform: translate3d(0em, -.1em, 0);
       font-size: .9em;
       color: inherit;
       opacity: .2;
@@ -76,8 +78,7 @@
       opacity: 1
    }
 
-   :host(.joined:not(.status-deleted)) .checkbox:active,
-   :host(.joined:not(.status-deleted)) .checkbox:focus {
+   :host(.joined:not(.status-deleted)) .checkbox:active {
       border-color: var(--checkboxGreen);
    }
 
@@ -89,8 +90,7 @@
       color: var(--fontLightGrey);
    }
 
-   :host(.joined.status-done) .checkbox:active,
-   :host(.joined.status-done) .checkbox:focus {
+   :host(.joined.status-done) .checkbox:active {
       border-color: var(--checkboxGreen);
    }
 
@@ -103,6 +103,7 @@
 
 .task-author {
    color: var(--fontLightGrey);
+   white-space: nowrap;
 }
 
    

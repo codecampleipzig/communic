@@ -13,7 +13,16 @@ export class ProjectService {
     return new Promise<any>((resolve, reject) => {
       resolve(Mock.projects.find(project => project.projectId == id));
     });
+  }
 
+  updateTaskStatus(taskId: number, status: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      const newState = [...Mock.tasks];
+      newState.find(task => task.taskId == taskId).taskStatus = status;
+      resolve(
+        newState
+      )
+    })
   }
 
 }

@@ -8,18 +8,13 @@
 import { Injectable, Inject } from "@angular/core";
 import { Task } from "./datatypes/Task";
 import { Project } from "./datatypes/Project";
-import { User } from "./datatypes/User";
+import { User, UserState } from "./datatypes/User";
 
 import * as Mock from "./mockdata";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { ProjectService } from './project.service';
-
-interface UserState {
-  status: any;
-  userInformation: User | null;
-}
 
 @Injectable({
   providedIn: "root"
@@ -100,16 +95,25 @@ export class StoreService {
   }
 
   retrieveProject(id: number) {
-    console.log("retrieve: " + id);
-
-    // Talk to Auth Service. It returns a promise of a User object
     const promise = this.projectService.getProject(id);
 
-    // When Promise is resolved successfully, then:
     promise.then(project => {
-      console.log("retrieved: " + project);
       // Put value into observable
       this.project.next(project);
+    });
+  }
+
+  updateTaskStatus(projectId: number, taskId: number, status: string) {
+    const promise = this.projectService.updateTaskStatus(taskId,status);
+
+    promise.then(newTasks => {
+      const newState = [...Mock.projects];
+      console.log("News Project State: " + newState);
+      console.log("New Tasks State: " + newTasks);
+      // newState.find(task => task.taskId == taskId).taskStatus = status;
+
+      // Put value into observable
+      //this.project.next(project);
     });
   }
 }

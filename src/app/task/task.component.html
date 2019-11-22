@@ -1,23 +1,16 @@
-<!--
-   Task Header with the title and the checkbox in front of the title (positioned as a flex-item in a flex row)
-   - [ ] Add click-Binding to change task.status
-   - [ ] Style the checkbox for different states with fancy layout
-   - [ ] Disable Checkbox for users that didn't join the task?
--->
 <div class="task-header">
-   <div class="task-checkbox checkbox" tabindex="0"><i class="fas fa-check"></i></div>
+   <button class="task-checkbox checkbox" (click)="toggleStatus()" [disabled]="!joined()"><i class="fas fa-check"></i></button>
    <h4>{{task.taskTitle}}</h4>
 </div>
 
 <!--
    Delete Button (positioned absolute) in the top right corner of the Task.
    - [ ] Add click-Binding to change task.status
-   - [ ] Only show for users that joined the task?
 -->
-<div class="top-right-icon task-delete" tabindex="0">
+<button *ngIf="joined()" class="top-right-icon task-delete">
    <i *ngIf="task.taskStatus != 'deleted'" class="fas fa-trash-alt"></i>
    <i *ngIf="task.taskStatus == 'deleted'" class="fas fa-trash-restore"></i>
-</div>
+</button>
 
 <!--
    Task List Item's Team-element
@@ -28,10 +21,9 @@
 
 <!--
    Task Description (only one paragraph possible).
-   - [ ] Get Username instead of authorID: create service for that.
    - [ ] Multi Paragraph Description needed?
 -->
 <p class="task-description">
    {{task.taskDescription}}
-   <small class="task-author">created by AuthorID {{task.taskCreator.userId}}</small>
+   <small class="task-author">created by {{task.taskCreator.userName}}</small>
 </p>
