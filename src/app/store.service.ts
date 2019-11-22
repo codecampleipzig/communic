@@ -15,6 +15,7 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { ProjectService } from './project.service';
+import { ProjectsService } from "./projects.service";
 
 @Injectable({
   providedIn: "root"
@@ -22,17 +23,20 @@ import { ProjectService } from './project.service';
 export class StoreService {
   // Internal State
   user: BehaviorSubject<UserState>;
-  projects: BehaviorSubject<Array<Project>>;
+  yourProjects: BehaviorSubject<Array<Project>>;
+  exploreProjects: BehaviorSubject<Array<Project>>;
   project: BehaviorSubject<Project>;
 
   // Observable
   public user$: Observable<UserState>;
-  public projects$: Observable<Array<Project>>;
+  public yourProjects$: Observable<Array<Project>>;
+  public exploreProjects$: Observable<Array<Project>>;
   public project$: Observable<Project>;
-  
+
   constructor(
     @Inject(Router) private router: Router,
     @Inject(AuthService) private authService: AuthService,
+    @Inject(ProjectsService) private projectsService: ProjectsService,
     @Inject(ProjectService) private projectService: ProjectService
   ) {
     this.user = new BehaviorSubject<UserState>({
@@ -41,8 +45,11 @@ export class StoreService {
     });
     this.user$ = this.user.asObservable();
 
-    this.projects = new BehaviorSubject<Array<Project>>(Mock.projects);
-    this.projects$ = this.projects.asObservable();
+    this.yourProjects = new BehaviorSubject<Array<Project>>([]);
+    this.yourProjects$ = this.yourProjects.asObservable();
+
+    this.exploreProjects = new BehaviorSubject<Array<Project>>([]);
+    this.exploreProjects$ = this.exploreProjects.asObservable();
 
     this.project = new BehaviorSubject<any>({});
     this.project$ = this.project.asObservable();
@@ -74,6 +81,42 @@ export class StoreService {
     });
     // Navigate to register page
     this.router.navigate(["register"]);
+  }
+
+  // Action - retrieve projects based on userId
+
+  retrieveYourProjects() {
+    let userId: number;
+    if (!this.user.getValue().userInformation) {
+      userId = 1; // TODO: Modify/remove this once we have auth in place
+    } else {
+      userId = this.user.getValue().userInformation.userId;
+    }
+    console.log(`Your Projects - userId: ${userId}`);
+    const promise = this.projectsService.retrieveYourProjects(userId);
+
+    promise
+      .then(projects => {
+        this.yourProjects.next(projects);
+      })
+      .catch();
+  }
+
+  retrieveExploreProjects() {
+    let userId: number;
+    if (!this.user.getValue().userInformation) {
+      userId = 1; // TODO: Modify/remove this once we have auth in place
+    } else {
+      userId = this.user.getValue().userInformation.userId;
+    }
+    console.log(`Explore Projects - userId: ${userId}`);
+    const promise = this.projectsService.retrieveExploreProjects(userId);
+
+    promise
+      .then(projects => {
+        this.exploreProjects.next(projects);
+      })
+      .catch();
   }
 
   /**
