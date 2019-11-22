@@ -1,12 +1,10 @@
 .card {
-    display: flex;
     position: relative;
 }
 
 p {
     line-height: 1.5;
     font-size: 1.5em;
-    font-family: 'Montserrat', sans-serif;
 }
 
 input {
@@ -14,8 +12,8 @@ input {
     outline: none;
     resize: none;
     font-size: 0.9em;
-    font-family: 'Montserrat', sans-serif;
-    width: 35vw;  
+    font-family: inherit;
+    width: 100%;  
 }
 
 textarea {
@@ -23,8 +21,8 @@ textarea {
     outline: none;
     resize: none;
     font-size: 0.9em;
-    font-family: 'Montserrat', sans-serif;
-    width: 35vw;  
+    font-family: inherit;
+    width: 100%;  
 
 }
 
@@ -38,12 +36,12 @@ h1 {
     height: 30vw; /* placeholder height. Not needed for an actual picture */
     background: var(--placeholderGrey);
     border-radius: 6px;
-    justify-content: space-around;
+    justify-content: center;
     display: flex;
+    align-items: center;
 }
 
 .projectImage button {
-    display: flex;
     margin-top: 15px;
     line-height: 2rem;
     background-color: #ffff;
@@ -57,23 +55,10 @@ h1 {
     font-family: 'Montserrat', sans-serif;
 }
 
-.topRightIcon {
-    position: relative;
-    top: .5em;
-    right: 1em;
-    cursor: pointer;
-    color: var(--iconColor);
-    display: inline-block;
-    margin-right: 1em;
- }
- 
- .topRightIcon:hover {
-       color: var(--warningRed);
-}
  
 
-@media screen and (max-width: 1100px) {
-    .card {        
+@media screen and (min-width: 1100px) {
+    .card .cardFull {        
         position: relative;
         display: grid;
         grid-template-columns: 30% 70%;
@@ -100,6 +85,10 @@ h1 {
     .taskDelete {
         grid-area: bin;
         position: relative;
+    }
+     
+     .topRightIcon:hover {
+           color: var(--warningRed);
     }
 
 }
