@@ -37,5 +37,9 @@ export class CreateNewTaskComponent implements OnInit {
     }
   }
 
+  public addTask () {
+    console.log ("NEW TASK!")
+  }
+
   ngOnInit() {}
 }
