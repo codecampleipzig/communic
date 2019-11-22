@@ -38,7 +38,7 @@ import { StartnewprojectComponent } from './startnewproject/startnewproject.comp
     ProjectListComponent,
     ProjectCardComponent,
     RegisterCardComponent,
-    StartnewprojectComponent,
+    StartnewprojectComponent
   ],
   imports: [
     BrowserModule,

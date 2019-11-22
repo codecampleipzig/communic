@@ -55,22 +55,29 @@ h1 {
     font-family: 'Montserrat', sans-serif;
 }
 
- 
+#myFileInput {
+    display:none;
+}
 
 @media screen and (min-width: 1100px) {
     .card .cardFull {        
-        position: relative;
+        position: absolute;
         display: grid;
         grid-template-columns: 30% 70%;
         grid-template-areas: 
             "title bin"
             "title image"
+            "input image"
             "description image";
         grid-gap: 1rem;
     }
 
-    h2 {
+    h1 {
         grid-area: title;
+    }
+
+    input {
+        grid-area: input;
     }
 
     .projectImage {
@@ -84,11 +91,11 @@ h1 {
 
     .taskDelete {
         grid-area: bin;
-        position: relative;
+        position: absolute;
     }
      
-     .topRightIcon:hover {
-           color: var(--warningRed);
+    .topRightIcon:hover {
+        color: var(--warningRed);
     }
 
 }
