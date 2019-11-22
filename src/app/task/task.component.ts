@@ -40,15 +40,15 @@ export class TaskComponent implements OnInit {
     this.store.user$.subscribe(user => this.userState = user);
   }
 
-/**
- * Change task object @status to deleted/open on click of delete/restore button
- */
-  public delete () {
-    this.task.taskStatus = 'deleted';
-   }
+  /**
+   * Change task object @status to deleted/open on click of delete/restore button
+   */
+  public delete() {
+    this.task.taskStatus = "deleted";
+  }
 
-  public restore () {
-    this.task.taskStatus = 'open';
+  public restore() {
+    this.task.taskStatus = "open";
   }
 
   ngOnInit() {}

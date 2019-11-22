@@ -16,20 +16,17 @@ export class UserActionComponent implements OnInit {
 
   constructor(@Inject(StoreService) public store: StoreService) {}
 
-//Subscribe to store for username and thumbnail
-
   ngOnInit() {
     this.store.user$.subscribe(userState => {
-      console.log("subscribe",userState);
       if (userState.userInformation == null) {
-        return
-      } 
+        return;
+      }
       this.userName = userState.userInformation.userName;
       this.userThumbnail = userState.userInformation.userImageURL;
-    });  
+    });
   }
-  
-/* Quick test calling register
+
+  /* Quick test calling register
 this.store.register("Gabe", "blabla@gmail.com", "blabla");
 }
 */
@@ -37,7 +34,7 @@ this.store.register("Gabe", "blabla@gmail.com", "blabla");
    * Method logout() from the .html logout anchor.
    *
    */
-  logout () {
+  logout() {
     this.store.logout();
   }
 }

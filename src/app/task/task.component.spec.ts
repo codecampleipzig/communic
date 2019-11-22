@@ -86,14 +86,14 @@ describe("Task Component", () => {
     expect(component).toBeTruthy();
   });
 
-  it('should change task.status to deleted after delete method is run', () => {
+  it("should change task.status to deleted after delete method is run", () => {
     component.delete();
-    expect(component.task.taskStatus).toBe('deleted');
+    expect(component.task.taskStatus).toBe("deleted");
   });
 
-  it('should change task.status to open after restore method is run', () => {
+  it("should change task.status to open after restore method is run", () => {
     component.restore();
-    expect(component.task.taskStatus).toBe('open');
+    expect(component.task.taskStatus).toBe("open");
   });
 
   it('should call restore method on click of restore button', () => {
@@ -103,7 +103,7 @@ describe("Task Component", () => {
     const button = fixture.debugElement.nativeElement.querySelector(".task-delete i");
     button.dispatchEvent(new Event('click'));
     expect(component.restore).toHaveBeenCalled();
-  }); 
+  });
 
   it('should call delete method on click of delete button', () => {
 
@@ -113,6 +113,5 @@ describe("Task Component", () => {
     const button = fixture.debugElement.nativeElement.querySelector(".task-delete i");
     button.dispatchEvent(new Event('click'));
     expect(component.delete).toHaveBeenCalled();
-  });  
-
+  });
 });
