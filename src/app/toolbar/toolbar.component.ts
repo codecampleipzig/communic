@@ -18,5 +18,4 @@ export class ToolbarComponent implements OnInit {
   }
 }
 
-
 // add two properties set to something static
