@@ -16,8 +16,6 @@ export class UserActionComponent implements OnInit {
 
   constructor(@Inject(StoreService) public store: StoreService) {}
 
-  //Subscribe to store for username and thumbnail
-
   ngOnInit() {
     this.store.user$.subscribe(userState => {
       if (userState.userInformation == null) {

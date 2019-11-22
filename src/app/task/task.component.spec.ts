@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { TaskComponent } from "./task.component";
 import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item-team.component";
 import * as Mock from "../mockdata";
-import { By } from '@angular/platform-browser';
+import { By } from "@angular/platform-browser";
 
 describe("Task Component", () => {
   let component: TaskComponent;
@@ -55,30 +55,29 @@ describe("Task Component", () => {
     expect(component).toBeTruthy();
   });
 
-  it('should change task.status to deleted after delete method is run', () => {
+  it("should change task.status to deleted after delete method is run", () => {
     component.delete();
-    expect(component.task.taskStatus).toBe('deleted');
+    expect(component.task.taskStatus).toBe("deleted");
   });
 
-  it('should change task.status to open after restore method is run', () => {
+  it("should change task.status to open after restore method is run", () => {
     component.restore();
-    expect(component.task.taskStatus).toBe('open');
+    expect(component.task.taskStatus).toBe("open");
   });
 
-  it('should call restore method on click of restore button', () => {
-    spyOn(component, 'restore')
-    const button = fixture.debugElement.query(By.css('i'));
-    button.triggerEventHandler('click', {});
+  it("should call restore method on click of restore button", () => {
+    spyOn(component, "restore");
+    const button = fixture.debugElement.query(By.css("i"));
+    button.triggerEventHandler("click", {});
     expect(component.restore).toHaveBeenCalled();
-  }); 
+  });
 
-  it('should call delete method on click of delete button', () => {
-    component.task.taskStatus = 'open';
+  it("should call delete method on click of delete button", () => {
+    component.task.taskStatus = "open";
     fixture.detectChanges();
-    spyOn(component, 'delete');
-    const button = fixture.debugElement.query(By.css('i'));
-    button.triggerEventHandler('click', {});
+    spyOn(component, "delete");
+    const button = fixture.debugElement.query(By.css("i"));
+    button.triggerEventHandler("click", {});
     expect(component.delete).toHaveBeenCalled();
-  });  
-
+  });
 });
