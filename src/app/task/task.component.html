@@ -3,13 +3,9 @@
    <h4>{{task.taskTitle}}</h4>
 </div>
 
-<!--
-   Delete Button (positioned absolute) in the top right corner of the Task.
-   - [ ] Add click-Binding to change task.status
--->
 <button *ngIf="joined()" class="top-right-icon task-delete">
-   <i *ngIf="task.taskStatus != 'deleted'" class="fas fa-trash-alt"></i>
-   <i *ngIf="task.taskStatus == 'deleted'" class="fas fa-trash-restore"></i>
+   <i *ngIf="task.taskStatus == 'open'" class="fas fa-trash-alt" (click)="delete()"></i> 
+   <i *ngIf="task.taskStatus == 'deleted'" class="fas fa-trash-restore" (click)="restore()"></i>
 </button>
 
 <!--
