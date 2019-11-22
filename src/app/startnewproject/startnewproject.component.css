@@ -1,10 +1,13 @@
-.card {
-    position: relative;
+.wrapper {
+    display: flex;
+    justify-content: center;
 }
 
-p {
-    line-height: 1.5;
-    font-size: 1.5em;
+.card {
+    position: absolute;
+}
+.topRightIcon{
+    position: absolute;
 }
 
 input {
@@ -15,6 +18,7 @@ input {
     font-family: inherit;
     width: 100%;  
 }
+ 
 
 textarea {
     border: none;
@@ -30,6 +34,7 @@ h1 {
     padding: 0 50px;
     font-size: 2em;
 }
+    
 
 .projectImage {
     width: 100%;
@@ -60,7 +65,13 @@ h1 {
 }
 
 @media screen and (min-width: 1100px) {
-    .card .cardFull {        
+    
+
+    .cardFull {
+        position: center;
+    }
+
+    .card{
         position: absolute;
         display: grid;
         grid-template-columns: 30% 70%;
@@ -83,6 +94,7 @@ h1 {
     .projectImage {
         grid-area: image;
         height: auto;
+        width: 100%;
     }
 
     .projectDescription {
@@ -93,9 +105,9 @@ h1 {
         grid-area: bin;
         position: absolute;
     }
-     
-    .topRightIcon:hover {
-        color: var(--warningRed);
+        
+     .topRightIcon:hover {
+           color: var(--warningRed);
     }
 
 }

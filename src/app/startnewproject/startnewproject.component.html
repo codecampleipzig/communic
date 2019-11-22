@@ -1,24 +1,28 @@
 <app-toolbar></app-toolbar>
 <h1>Project title</h1>
 
-<form class="card cardFull">
-    <div class="topRightIcon taskDelete">
-        <i class="fas fa-trash-alt"></i>
+<div class="wrapper">
+    <form class="card cardFull">
+        <div class="topRightIcon taskDelete">
+            <i class="fas fa-trash-alt"></i>
+        </div>
+        <h3>Project Title</h3>
+        <input size="35" type="text" name="Project Title" placeholder="Fries 4 ALL">
+        <div class="projectImage">
+            <input type="file" id="myFileInput" accept="image/*">
+            <button class="button" onclick="document.getElementById('myFileInput').click()" value="Select a File" (change)  ="preview(file.files)">Upload Image</button>
+            <img [src]="imgURL" height="200" *ngIf="imgURL">
+            <span style="color:red;" *ngIf="message">{{message}}</span>
+        </div>
+        <div class="projectDescription">
+          <h3>Project description</h3>
+            <textarea placeholder="This is the best project of the world because it makes sure absolutely everybody gets free fries for dinner once a week." rows="4"></textarea>
+      <h3>Project goal</h3>
+      <textarea
+        placeholder="This is important for humankind because it is scientifically proven fries make people 2x happier than broccoli and spinach put together. In the long run, this project aims to achieve world peace by multiplying individual happiness through fries consumption."
+        rows="4"
+      ></textarea>
+      <button class="button">Create!</button>
     </div>
-    
-    <h3>Project Title</h3>
-    <input size="35" type="text" name="Project Title" placeholder="Fries 4 ALL">
-    <div class="projectImage">
-        <input type="file" id="myFileInput" accept="image/*">
-        <button class="button" onclick="document.getElementById('myFileInput').click()" value="Select a File" (change)="preview(file.files)">Upload Image</button>
-        <img [src]="imgURL" height="200" *ngIf="imgURL">
-        <span style="color:red;" *ngIf="message">{{message}}</span>
-    </div>
-    <div class="projectDescription">
-            <h3>Project description</h3>
-            <textarea placeholder="This is the best project of the world because it makes sure absolutely everybody gets free fries for dinner once a week."
-                rows='4'></textarea>
-            <h3>Project goal</h3><textarea placeholder="This is important for humankind because it is scientifically proven fries make people 2x happier than broccoli and spinach put together. In the long run, this project aims to achieve world peace by multiplying individual happiness through fries consumption." rows='4'></textarea>
-            <button class="button">Create!</button>
-    </div>
-</form>
+  </form>
+</div>
