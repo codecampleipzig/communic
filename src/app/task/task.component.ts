@@ -26,7 +26,7 @@ export class TaskComponent implements OnInit {
    */
   @HostBinding("class")
   get hostClasses(): string {
-    return this.task ? "status-" + this.task.taskStatus : "" + this.joined() ? " joined" : "";
+    return (this.task ? "status-" + this.task.taskStatus : "") + (this.joined() ? " joined" : "");
   }
 
   constructor(@Inject(StoreService) private store: StoreService) {
