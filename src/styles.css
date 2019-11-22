@@ -183,6 +183,13 @@ p {
    color: var(--iconColor);
 }
 
+/* Reset .top-right-icon if it is a button */
+button.top-right-icon {
+   background:transparent;
+   border: 0 none;
+   font-size: 1em;
+}
+
    .top-right-icon:hover {
       color: var(--warningRed);
    }
