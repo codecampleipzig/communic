@@ -2,7 +2,9 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { TaskComponent } from "./task.component";
 import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item-team.component";
-import * as Mock from "../mockdata";
+import { StoreService } from '../store.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 describe("Task Component", () => {
   let component: TaskComponent;
@@ -10,7 +12,22 @@ describe("Task Component", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TaskComponent, TaskListItemTeamComponent]
+      declarations: [TaskComponent, TaskListItemTeamComponent],
+      providers: [ 
+        StoreService,
+        {
+          provide: Router,
+          useClass: class {
+            navigate() {}
+          }
+        },
+        {
+          provide: ActivatedRoute,
+          useClass: class {
+            params = new BehaviorSubject<any>({ id: 1}).asObservable();
+          }
+        }
+      ]
     }).compileComponents();
   }));
 

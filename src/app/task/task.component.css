@@ -58,27 +58,28 @@
    /**
     * CSS Interactions if task is .joined
     */
-   :host(.joined:not(.status-deleted)) .checkbox {
+   .checkbox:not(:disabled) {
       cursor: pointer;
    }
 
-   :host(.joined:not(.status-deleted)) .checkbox:hover,
-   :host(.joined:not(.status-deleted)) .checkbox:focus {
+   .checkbox:not(:disabled):hover,
+   .checkbox:not(:disabled):focus {
       color: var(--checkboxGreen);
    }
 
-   :host(.joined:not(.status-deleted):not(.status-done)) .checkbox:hover i,
-   :host(.joined:not(.status-deleted):not(.status-done)) .checkbox:focus i {
-      transform: translate3d(0em, -.1em, 0);
+   .checkbox:not(:disabled):focus {
+      outline: 1px dashed var(--borderGrey);
+      outline-offset: 2px;
+   }
+
+   .checkbox:not(:disabled):hover i,
+   .checkbox:not(:disabled):focus i {
+      transform: translate3d(.05em, -.3em, 0);
       font-size: 1.3em;
+      opacity: 1;
    }
 
-   :host(.joined:not(.status-deleted)) .checkbox:hover i,
-   :host(.joined:not(.status-deleted)) .checkbox:focus i {
-      opacity: 1
-   }
-
-   :host(.joined:not(.status-deleted)) .checkbox:active {
+   .checkbox:not(:disabled):active {
       border-color: var(--checkboxGreen);
    }
 
@@ -88,6 +89,12 @@
    :host(.joined.status-done) .checkbox:hover,
    :host(.joined.status-done) .checkbox:focus {
       color: var(--fontLightGrey);
+   }
+
+   :host(.joined.status-done) .checkbox:hover i {
+      transform: translate3d(0, 0, 0);
+      font-size: .9em;
+      opacity: .5;
    }
 
    :host(.joined.status-done) .checkbox:active {
@@ -125,11 +132,12 @@
 
 :host(.status-done) .checkbox {
    color: var(--checkboxGreen);
-   border-color: var(--checkboxGreen);
 }
 
 :host(.status-done) .checkbox i {
-   opacity: 1
+   opacity: 1;
+   transform: translate3d(.05em, -.3em, 0);
+   font-size: 1.3em;
 }
 
 :host(.status-deleted) > * {
