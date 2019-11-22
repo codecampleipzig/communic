@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { StoreService } from "./../store.service";
 import { ProjectCategoryEnum } from "./../datatypes/enums/ProjectCategoryEnum";
 
@@ -10,7 +10,7 @@ import { ProjectCategoryEnum } from "./../datatypes/enums/ProjectCategoryEnum";
 export class HomeComponent implements OnInit {
   category = ProjectCategoryEnum;
 
-  constructor(private store: StoreService) {}
+  constructor(@Inject(StoreService) private store: StoreService) {}
 
   ngOnInit() {
     this.store.retrieveYourProjects();
