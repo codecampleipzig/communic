@@ -17,3 +17,7 @@
 <div *ngIf="!alreadyJoined ">
    <button class="button" (click)="join()" >Join</button>
 </div>
+
+<div *ngIf="alreadyJoined ">
+   <button class="button" (click)="leave()" >Leave</button>
+</div>

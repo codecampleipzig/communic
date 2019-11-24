@@ -39,7 +39,12 @@ export class TeamCardComponent implements OnInit {
 
   private join(): void {
     this.alreadyJoined = true;
-    this.userJoinEmitter.emit("userJoined");
+    // this.userJoinEmitter.emit("userJoined");
     this.team.push(this.currentUser);
+  }
+
+  private leave(): void {
+    this.alreadyJoined = false;
+    this.team.splice(this.team.length - 1, 1);
   }
 }
