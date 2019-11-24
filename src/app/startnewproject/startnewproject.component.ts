@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
+import { throwStatement } from '@babel/types';
 
 
 @Component({
@@ -8,6 +9,8 @@ import { Router} from '@angular/router';
   styleUrls: ['./startnewproject.component.css']
 })
 export class StartnewprojectComponent implements OnInit {
+  public projectTitle: string = 'FRIES 4 ALL PEACE PROJECT';
+ 
   public imagePath;
   imgURL: any;
   public message: string;
@@ -19,7 +22,7 @@ export class StartnewprojectComponent implements OnInit {
     var mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
       this.message = "Only images are supported.";
-      return;
+      return this.message;
     }
  
     var reader = new FileReader();
@@ -30,8 +33,10 @@ export class StartnewprojectComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor() {
+   
+  }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 }
