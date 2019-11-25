@@ -25,7 +25,7 @@ export class RegisterCardComponent implements OnInit {
    * Add .container Class to the Host
    */
   @HostBinding("class")
-  get hostClasses(): string { return "container background"; }
+  get hostClasses(): string { return "container"; }
 
   constructor(private route: ActivatedRoute, @Inject(Router) private router: Router) {
     this.profileForm = new FormGroup({
