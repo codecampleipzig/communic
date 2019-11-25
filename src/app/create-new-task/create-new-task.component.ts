@@ -44,7 +44,7 @@ export class CreateNewTaskComponent implements OnInit {
     }
   }
 
-  public addTask () {
+  onSubmit(form: any): void {
     console.log ("NEW TASK!")
   }
 
