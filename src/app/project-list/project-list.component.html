@@ -1,11 +1,6 @@
-
-<h1>{{title}}</h1>
-<div class="list-wrapper">
-    <ul id="project-list">
-        <li *ngFor="let project of projects">
-            <app-project-card [project]="project">
-                
-            </app-project-card>
-        </li>
-    </ul>
-</div>
+<h2>{{title}}</h2>
+<ul class="list-wrapper card-list unstyled-list">
+    <li *ngFor="let project of projects" class="card">
+        <app-project-card [project]="project"></app-project-card>
+    </li>
+</ul>

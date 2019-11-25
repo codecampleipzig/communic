@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Inject } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit, HostBinding } from "@angular/core";
 
 @Component({
   selector: "app-toolbar",
@@ -7,15 +6,16 @@ import { Router } from "@angular/router";
   styleUrls: ["./toolbar.component.css"]
 })
 export class ToolbarComponent implements OnInit {
-  homeIconSource = "../../assets/home.svg";
 
-  constructor(@Inject(Router) private router: Router) {}
+  /**
+   * Add CSS Class .card to the Host
+   */
+  @HostBinding("class")
+  get hostClasses(): string {
+    return "card";
+  }
+  constructor() {}
 
   ngOnInit() {}
 
-  navigateHome() {
-    this.router.navigate(["home"]);
-  }
 }
-
-// add two properties set to something static
