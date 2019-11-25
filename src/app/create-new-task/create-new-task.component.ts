@@ -1,4 +1,15 @@
-import { Component, OnInit, HostBinding } from "@angular/core";
+import { Component, OnInit, HostBinding, NgModule } from "@angular/core";
+import {
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+  FormGroup
+} from "@angular/forms"; 
+import { ActivatedRoute, Router } from "@angular/router";
+
+@NgModule({
+  imports: [ReactiveFormsModule]
+})
 
 @Component({
   selector: "app-create-new-task",
