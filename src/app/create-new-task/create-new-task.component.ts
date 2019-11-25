@@ -69,7 +69,6 @@ export class CreateNewTaskComponent implements OnInit {
     }];
 
   onSubmit(value: any): void {
-    console.log ("NEW TASK!", value);
     const newTask: Task [] = [
     {
       taskId: 1,
@@ -77,7 +76,7 @@ export class CreateNewTaskComponent implements OnInit {
       taskTitle: value.title,
       taskDescription: value.description,
       taskStatus: "open",
-      taskCreator: this.users[1],
+      taskCreator: this.users[0],
       taskTeam: [],
       menuSection: "starter"
     }];
