@@ -71,6 +71,9 @@ export class CreateNewTaskComponent implements OnInit {
   onSubmit(value: any): void {
     const newTask: Task [] = [
     {
+      /**
+       * All values apart from taskTitle, taskDescription and taskStatus are placeholders
+       */
       taskId: 1,
       projectId: 1,
       taskTitle: value.title,
