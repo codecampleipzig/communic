@@ -17,6 +17,8 @@ import { User } from "../datatypes/User";
   templateUrl: "./create-new-task.component.html",
   styleUrls: ["./create-new-task.component.css"]
 })
+
+
 export class CreateNewTaskComponent implements OnInit {
   private formVisible: any = false;
   newTaskForm: FormGroup;
@@ -54,6 +56,14 @@ export class CreateNewTaskComponent implements OnInit {
       return; 
     }
   }
+
+  users: User[] = [
+    {
+      userId: 1,
+      userName: "Mautzi",
+      userEmail: "MolleMorallo@gmail.com",
+      userImageURL: "../assets/user_avatar.png"
+    }];
 
   onSubmit(value: any): void {
     console.log ("NEW TASK!", value);
