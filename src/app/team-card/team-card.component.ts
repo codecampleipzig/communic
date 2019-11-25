@@ -33,7 +33,7 @@ export class TeamCardComponent implements OnInit {
    * Function that adds the user to the ProjecTeam
    *  -[ ] need to comunicate with store
    */
-  private join(): void {
+  join(): void {
     this.alreadyJoined = true;
     this.team.push(this.currentUser);
   }

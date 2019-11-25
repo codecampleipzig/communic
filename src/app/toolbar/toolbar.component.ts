@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
 import { Router } from "@angular/router";
+import { StoreService } from "../store.service";
 
 @Component({
   selector: "app-toolbar",
@@ -9,7 +10,14 @@ import { Router } from "@angular/router";
 export class ToolbarComponent implements OnInit {
   homeIconSource = "../../assets/home.svg";
 
-  constructor(@Inject(Router) private router: Router) {}
+  public projectTitle;
+
+  constructor(
+    @Inject(Router) private router: Router,
+    @Inject(StoreService) private store: StoreService
+  ) {
+    this.store.toolbar$.subscribe(title => (this.projectTitle = title));
+  }
 
   ngOnInit() {}
 
