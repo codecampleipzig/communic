@@ -12,6 +12,7 @@ export class ProjectCardComponent implements OnInit {
   private projectName = "Project Name";
   private image = "../assets/project-food1.jpeg";
   private projectDescription = "Project Description";
+  private projectDate = "Project Date";
 
   constructor(private router: Router) {}
 

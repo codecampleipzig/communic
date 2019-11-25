@@ -14,6 +14,8 @@
    display: flex;
    flex-flow: wrap;
    align-items: center;
+
+   --checkboxGreen: rgb(51, 132, 51);
 }
 
    :host > * {
@@ -33,14 +35,70 @@
    }
 
    .checkbox {
-      width: 1.5em;
-      height: 1.5em;
+      width: 1em;
+      height: 1em;
       border: 2px solid var(--borderGrey);
       border-radius: 2px;
+      font-size: 1.5em;
+      text-align: center;
+      line-height: 1.05;
+      color: var(--fontLightGrey);
+      background: transparent;
+      padding: 0;
    }
-   
-   .checkbox:hover {
-      background: #dadada;
+
+   .checkbox i {
+      transform: translate3d(0em, -.1em, 0);
+      font-size: .9em;
+      color: inherit;
+      opacity: .2;
+      transition: transform .2s, font-size .2s, color .2s, opacity .2s;
+   }
+
+   /**
+    * CSS Interactions if task is .joined
+    */
+   .checkbox:not(:disabled) {
+      cursor: pointer;
+   }
+
+   .checkbox:not(:disabled):hover,
+   .checkbox:not(:disabled):focus {
+      color: var(--checkboxGreen);
+   }
+
+   .checkbox:not(:disabled):focus {
+      outline: 1px dashed var(--borderGrey);
+      outline-offset: 2px;
+   }
+
+   .checkbox:not(:disabled):hover i,
+   .checkbox:not(:disabled):focus i {
+      transform: translate3d(.05em, -.3em, 0);
+      font-size: 1.3em;
+      opacity: 1;
+   }
+
+   .checkbox:not(:disabled):active {
+      border-color: var(--checkboxGreen);
+   }
+
+   /**
+    * CSS Interactions if task is .joined and ment to be undone.
+    */
+   :host(.joined.status-done) .checkbox:hover,
+   :host(.joined.status-done) .checkbox:focus {
+      color: var(--fontLightGrey);
+   }
+
+   :host(.joined.status-done) .checkbox:hover i {
+      transform: translate3d(0, 0, 0);
+      font-size: .9em;
+      opacity: .5;
+   }
+
+   :host(.joined.status-done) .checkbox:active {
+      border-color: var(--checkboxGreen);
    }
 
    
@@ -52,6 +110,7 @@
 
 .task-author {
    color: var(--fontLightGrey);
+   white-space: nowrap;
 }
 
    
@@ -72,7 +131,13 @@
 }
 
 :host(.status-done) .checkbox {
-   background: #dadada;
+   color: var(--checkboxGreen);
+}
+
+:host(.status-done) .checkbox i {
+   opacity: 1;
+   transform: translate3d(.05em, -.3em, 0);
+   font-size: 1.3em;
 }
 
 :host(.status-deleted) > * {
