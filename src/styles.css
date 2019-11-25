@@ -15,6 +15,7 @@
    --backgroundGrey: #FCFCFC; /* Used for the TaskListIcons */
    --borderGrey: #CECECE; /* Used for the Checkbox */
    --borderMediumGrey: #adadad;
+   --borderPlaceholderGrey: #d8d8d8;
 
    /* Dropshadows to use box-shadow: var(--smallShadow); */
    --smallShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
@@ -28,7 +29,7 @@ html, body {
 body {
    font-family: 'Montserrat', sans-serif;
    font-weight: 300;
-   padding: 0;
+   padding: 0 0 3em 0;
    margin: 0;
 }
 

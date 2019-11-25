@@ -4,9 +4,10 @@
     <h3 *ngIf="authType == 'login'">Meet your community!</h3>
 
     <div class="avatar" *ngIf="authType == 'register'">
-        <img src="../../../assets/hpotter-512.png">
-        <button class="button outlined">Upload Image</button>
+        <i class="fas fa-camera"></i>
     </div>
+
+    <button class="button outlined">Upload Image</button>
 
     <label>
         <input type="text" placeholder="Name" formControlName="name" required *ngIf="authType == 'register'">
