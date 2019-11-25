@@ -13,6 +13,7 @@ import { ReactiveFormsModule, FormGroup } from "@angular/forms";
 })
 export class CreateNewTaskComponent implements OnInit {
   private formVisible: any = false;
+  newTaskForm: FormGroup;
 
   /**
    * Add Task .card Class to :host Element
