@@ -53,8 +53,9 @@ export class CreateNewTaskComponent implements OnInit {
     }
   }
 
-  onSubmit(form: any): void {
-    console.log ("NEW TASK!", form)
+  onSubmit(value: any): void {
+    console.log ("NEW TASK!", value);
+    this.closeForm();
   }
 
   ngOnInit() {}
