@@ -1,13 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { ToolbarComponent } from "./../toolbar/toolbar.component";
-import { ProjectListComponent } from "./../project-list/project-list.component";
-import { ProjectActionComponent } from "./../project-action/project-action.component";
-import { UserActionComponent } from "./../user-action/user-action.component";
-import { ProjectCardComponent } from "./../project-card/project-card.component";
 import { HomeComponent } from "./home.component";
-import { Router } from "@angular/router";
+import { Component, Input } from "@angular/core";
+import { TestingStoreService } from "../test-utilities/testing-store.service";
+import { StoreService } from "../store.service";
 
-xdescribe("HomeComponent", () => {
+@Component({ selector: "app-toolbar", template: "" })
+class ToolbarStubComponent {}
+
+@Component({ selector: "app-project-list", template: "" })
+class ProjectListStubComponent {
+  @Input() title;
+  @Input() projects;
+}
+
+describe("HomeComponent", () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
@@ -15,18 +21,13 @@ xdescribe("HomeComponent", () => {
     TestBed.configureTestingModule({
       declarations: [
         HomeComponent,
-        ToolbarComponent,
-        ProjectListComponent,
-        ProjectActionComponent,
-        UserActionComponent,
-        ProjectCardComponent
+        ToolbarStubComponent,
+        ProjectListStubComponent
       ],
       providers: [
         {
-          provide: Router,
-          useClass: class {
-            navigate() {}
-          }
+          provide: StoreService,
+          useClass: TestingStoreService
         }
       ]
     }).compileComponents();

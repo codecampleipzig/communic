@@ -16,8 +16,20 @@ export class UserActionComponent implements OnInit {
 
   constructor(@Inject(StoreService) public store: StoreService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.user$.subscribe(userState => {
+      if (userState.userInformation == null) {
+        return;
+      }
+      this.userName = userState.userInformation.userName;
+      this.userThumbnail = userState.userInformation.userImageURL;
+    });
+  }
 
+  /* Quick test calling register
+this.store.register("Gabe", "blabla@gmail.com", "blabla");
+}
+*/
   /**
    * Method logout() from the .html logout anchor.
    *
