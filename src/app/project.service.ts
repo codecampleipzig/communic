@@ -1,17 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 import * as Mock from "./mockdata";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ProjectService {
-
-  constructor() { }
+  constructor() {}
 
   /**
    * Poseing GET request, returning project by id.
-   * @param id 
+   * @param id
    * @returns new Promise
    */
   getProject(id: number): Promise<any> {
@@ -22,18 +21,15 @@ export class ProjectService {
 
   /**
    * Poseing GET request, returning newState of the tasks after status was updated.
-   * @param taskId 
-   * @param status 
+   * @param taskId
+   * @param status
    * @returns new Promise
    */
   updateTaskStatus(taskId: number, status: string): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       const newState = [...Mock.tasks];
       newState.find(task => task.taskId == taskId).taskStatus = status;
-      resolve(
-        newState
-      )
-    })
+      resolve(newState);
+    });
   }
-
 }
