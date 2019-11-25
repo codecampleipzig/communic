@@ -1,16 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { StartnewprojectComponent } from './startnewproject.component';
+import { StartnewprojectComponent } from "./startnewproject.component";
+import { Component } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 
-describe('StartnewprojectComponent', () => {
+@Component({
+  selector: "app-toolbar",
+  template: ""
+})
+class ToolbarStubComponent {}
+
+describe("StartnewprojectComponent", () => {
   let component: StartnewprojectComponent;
   let fixture: ComponentFixture<StartnewprojectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StartnewprojectComponent ]
-    })
-    .compileComponents();
+      declarations: [StartnewprojectComponent, ToolbarStubComponent],
+      imports: [FormsModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +27,7 @@ describe('StartnewprojectComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

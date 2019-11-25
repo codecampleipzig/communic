@@ -1,11 +1,12 @@
 <!--
    Delete Button (positioned absolute) in the top right corner of the Task.
-   - [ ] Add click-Binding to change task.status
+   Delete/Restore button does not show for tasks with status 'done'
+   - [X] Add click-Binding to change task.status
    - [ ] Only show for users that joined the task?
--->
-<div class="topRightIcon taskDelete">
-   <i *ngIf="task.taskStatus != 'deleted'" class="fas fa-trash-alt"></i>
-   <i *ngIf="task.taskStatus == 'deleted'" class="fas fa-trash-restore"></i>
+--> 
+<div class="top-right-icon task-delete">
+   <i *ngIf="task.taskStatus == 'open'" class="fas fa-trash-alt" (click)="delete()"></i> 
+   <i *ngIf="task.taskStatus == 'deleted'" class="fas fa-trash-restore" (click)="restore()"></i>
 </div>
 
 <!--
@@ -14,8 +15,8 @@
    - [ ] Style the checkbox for different states with fancy layout
    - [ ] Disable Checkbox for users that didn't join the task?
 -->
-<div class="taskHeader">
-   <div class="taskCheckbox checkbox"></div>
+<div class="task-header">
+   <div class="task-checkbox checkbox"></div>
    <h4>{{task.taskTitle}}</h4>
 </div>
 
@@ -24,14 +25,14 @@
    - [ ] get the userIDs & status with the store.service with task.id
    see: /src/app/task-list-item-team/
 -->
-<app-task-list-item-team [userIDs]="task.userIDs" [status]="task.taskStatus"></app-task-list-item-team>
+<app-task-list-item-team [task]="task"></app-task-list-item-team>
 
 <!--
    Task Description (only one paragraph possible).
    - [ ] Get Username instead of authorID: create service for that.
    - [ ] Multi Paragraph Description needed?
 -->
-<p class="taskDescription">
+<p class="task-description">
    {{task.taskDescription}}
-   <small class="taskAuthor">created by AuthorID {{task.taskCreator.userId}}</small>
+   <small class="task-author">created by AuthorID {{task.taskCreator.userId}}</small>
 </p>

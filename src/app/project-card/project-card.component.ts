@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule, Routes, Router } from "@angular/router";
 
 @Component({
   selector: "app-project-card",
@@ -11,11 +11,11 @@ export class ProjectCardComponent implements OnInit {
   private projectName = "Project Name";
   private image = "../assets/project-food1.jpeg";
   private projectDescription = "Project Description";
+  private projectDate = "Project Date";
 
   constructor(private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   public openProject(projectId: number): void {
     this.router.navigate([`project/${projectId}`]);

@@ -1,5 +1,8 @@
 # Communic
 
+master: [![Build Status](https://travis-ci.com/codecampleipzig/communic.svg?branch=master)](https://travis-ci.com/codecampleipzig/communic)
+  develop: [![Build Status](https://travis-ci.com/codecampleipzig/communic.svg?branch=develop)](https://travis-ci.com/codecampleipzig/communic)
+
 This README will be filled by the project teams, supervised and coordinated by the documentation guru of team Wingardium Codiosaaaa
 
 ## Testing

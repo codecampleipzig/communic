@@ -1,21 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input, Inject } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css']
+  selector: "app-toolbar",
+  templateUrl: "./toolbar.component.html",
+  styleUrls: ["./toolbar.component.css"]
 })
 export class ToolbarComponent implements OnInit {
-  homeIconSource: string = "../../assets/home.svg";
+  homeIconSource = "../../assets/home.svg";
 
-  constructor(private router: Router) { }
+  constructor(@Inject(Router) private router: Router) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   navigateHome() {
-    this.router.navigate(['home']);
+    this.router.navigate(["home"]);
   }
-
 }
+
+// add two properties set to something static

@@ -2,9 +2,11 @@
 .toolbar-wrapper {
    display: flex;
    justify-content: center;
-   position: fixed;
+   position: sticky;
    width: calc(100vw - 1em);
-   margin: 0.5em;
+   margin: 0.5em auto;
+   top: 0;
+   max-width: 1200px;
 }
 
 button {
@@ -22,14 +24,16 @@ button {
    font-family: 'Montserrat', sans-serif;
    font-weight: bold;
    background-color: white;
+   overflow: auto;
 }
 
 .spacer {
    width: 100%;
    height: 80px;
+   background-color: white;
 }
 
-.homeIcon {
+.home-icon {
    background-color: white;
    cursor: pointer;
    border: none;
@@ -37,10 +41,10 @@ button {
 }
 
 .homeIcon img {
-   width: 40px;
+   width: 3em;
 }
 
-.homeProject {
+.home-project {
    display: flex;
    justify-content: space-between;
    align-items: center;

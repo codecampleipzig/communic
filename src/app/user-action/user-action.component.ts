@@ -1,34 +1,40 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from "@angular/core";
 /**
  * We importe the Router, a service that provides navigation and URL manipulation capabilities.
  * We import the StoreService serives to import the logout method.
  */
-import { StoreService } from '../store.service';
+import { StoreService } from "../store.service";
 
 @Component({
-  selector: 'app-user-action',
-  templateUrl: './user-action.component.html',
-  styleUrls: ['./user-action.component.css']
+  selector: "app-user-action",
+  templateUrl: "./user-action.component.html",
+  styleUrls: ["./user-action.component.css"]
 })
 export class UserActionComponent implements OnInit {
+  public userName = "Username";
+  public userThumbnail = "../../../assets/hpotter-512.png";
 
-  public userName: string = "Username";
-  public userThumbnail: string = "../../../assets/hpotter-512.png";
-  
-  /**
-   * @param store 
-   */
-  constructor( @Inject(StoreService) public store: StoreService) { }
+  constructor(@Inject(StoreService) public store: StoreService) {}
 
   ngOnInit() {
+    this.store.user$.subscribe(userState => {
+      if (userState.userInformation == null) {
+        return;
+      }
+      this.userName = userState.userInformation.userName;
+      this.userThumbnail = userState.userInformation.userImageURL;
+    });
   }
 
+  /* Quick test calling register
+this.store.register("Gabe", "blabla@gmail.com", "blabla");
+}
+*/
   /**
    * Method logout() from the .html logout anchor.
-   * 
+   *
    */
   logout() {
     this.store.logout();
   }
-
 }

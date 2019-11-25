@@ -1,4 +1,4 @@
-.projectImage {
+.project-image {
     width: 100%;
     height: 30vw; /* placeholder height. Not needed for an actual picture */
     background: var(--placeholderGrey);
@@ -23,12 +23,12 @@ text-align: start;
         grid-area: title;
     }
 
-    .projectImage {
+    .project-image {
         grid-area: image;
         height: auto;
     }
 
-    .projectDescription {
+    .project-description {
         grid-area: description
     }
 

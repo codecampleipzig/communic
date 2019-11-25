@@ -1,16 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ToolbarComponent } from './toolbar.component';
-import { Component } from '@angular/core';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { ToolbarComponent } from "./toolbar.component";
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { TestingRouter } from "../test-utilities/testing-router";
 
 // mock the child components
-@Component({ selector: 'app-user-action', template: '', })
-class UserActionStubComponent { }
+@Component({ selector: "app-user-action", template: "" })
+class UserActionStubComponent {}
 
 // mock the child components
-@Component({ selector: 'app-project-action', template: '', }) 
-class ProjectActionStubComponent { }
+@Component({ selector: "app-project-action", template: "" })
+class ProjectActionStubComponent {}
 
-xdescribe('ToolbarComponent', () => {
+describe("ToolbarComponent", () => {
   let component: ToolbarComponent;
   let fixture: ComponentFixture<ToolbarComponent>;
 
@@ -20,9 +22,14 @@ xdescribe('ToolbarComponent', () => {
         ToolbarComponent,
         UserActionStubComponent,
         ProjectActionStubComponent
+      ],
+      providers: [
+        {
+          provide: Router,
+          useClass: TestingRouter
+        }
       ]
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -31,28 +38,28 @@ xdescribe('ToolbarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 
   // verify home button is present
-  it('should have home icon in a button tag', () => {
-    const htmlElement : HTMLElement = fixture.nativeElement;
-    expect(htmlElement.querySelector('.homeIcon')).toBeTruthy();
+  it("should have home icon in a button tag", () => {
+    const htmlElement: HTMLElement = fixture.nativeElement;
+    expect(htmlElement.querySelector(".home-icon")).toBeTruthy();
   });
 
   // TODO: verify home is clickable
-  // Blocked by pending routing implementation 
+  // Blocked by pending routing implementation
 
   // verify project-action is present
-  it('should have project-action tag', () => {
-    const htmlElement = fixture.nativeElement
-    expect(htmlElement.querySelector('#project-action')).toBeTruthy();
+  it("should have project-action tag", () => {
+    const htmlElement = fixture.nativeElement;
+    expect(htmlElement.querySelector("#project-action")).toBeTruthy();
   });
 
-  //verify user-action is present
-  it('should have user-action tag', () => {
-    const htmlElement : HTMLElement = fixture.nativeElement
-    expect(htmlElement.querySelector('#user-action')).toBeTruthy();
+  // verify user-action is present
+  it("should have user-action tag", () => {
+    const htmlElement: HTMLElement = fixture.nativeElement;
+    expect(htmlElement.querySelector("#user-action")).toBeTruthy();
   });
 });

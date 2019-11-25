@@ -49,32 +49,23 @@ p {
    line-height: 1.5;
 }
 
-a {
-   line-height: 1.5;
-   text-decoration: none;
-   color: var(--primaryColor);
-}
-
-a:hover{
-   color: var(--primaryColorHighlight);
-}
 
 /**
  * Utilities
  */
 
-.unstyledList {
+.unstyled-list {
    list-style: none;
    margin: 0;
    padding: 0;
 }
 
-.unstyledList>li {
+.unstyled-list>li {
    margin:0;
    padding:0;
 }
 
-.displayFlex {
+.display-flex {
    display: flex;
    flex-flow: wrap;
    align-items: center;
@@ -144,12 +135,12 @@ a:hover{
 }
 
 /* Add this class to .card to make the card full width */
-.cardFull {
+.card-full {
    max-width: 1100px;
 }
 
 /* Overrides for .card in the .cardList (e.g. Projects Overview) */
-.cardList > .card {
+.card-list > .card {
    width: 100%;
    padding: 1em;
    margin: 0;
@@ -162,7 +153,7 @@ a:hover{
       width: calc(100% - 4em);
    }
 
-   .cardList > .card {
+   .card-list > .card {
       padding: 1.5em;
    }
 }
@@ -182,7 +173,7 @@ a:hover{
 
 
 /* Icon in the top right of Cards (e.g. taskDelete) */
-.topRightIcon {
+.top-right-icon {
    position: absolute;
    top: .5em;
    right: 1em;
@@ -190,6 +181,6 @@ a:hover{
    color: var(--iconColor);
 }
 
-   .topRightIcon:hover {
+   .top-right-icon:hover {
       color: var(--warningRed);
    }

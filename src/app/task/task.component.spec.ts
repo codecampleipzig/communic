@@ -1,39 +1,83 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { TaskComponent } from "./task.component";
+import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item-team.component";
+import * as Mock from "../mockdata";
+import { By } from "@angular/platform-browser";
 
-import { TaskComponent } from './task.component';
-import { TaskListItemTeamComponent } from '../task-list-item-team/task-list-item-team.component';
-
-describe('Task Component', () => {
+describe("Task Component", () => {
   let component: TaskComponent;
   let fixture: ComponentFixture<TaskComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TaskComponent, TaskListItemTeamComponent ]
+      declarations: [TaskComponent, TaskListItemTeamComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TaskComponent);
     component = fixture.componentInstance;
-    
+
     /* Give it some mock data for a task */
     component.task = {
-      id: 1,
-      name: 'string',
-      description: 'string',
-      status: 'string',
-      authorID: 1,
-      userIDs: [1,2],
-      projectID: 1,
-      location: 'string'
-     }
-     
-     component.ngOnInit()
+      taskId: 3,
+      projectId: 2,
+      taskTitle: "A really important task",
+      taskDescription: "Not sure how important this task really is.",
+      taskStatus: "deleted",
+      taskCreator: {
+        userId: 13,
+        userName: "Iko",
+        userEmail: "caretaker3000@gmail.com",
+        userImageURL: "../assets/user_avatar.png"
+      },
+      taskTeam: [
+        {
+          userId: 13,
+          userName: "Iko",
+          userEmail: "caretaker3000@gmail.com",
+          userImageURL: "../assets/user_avatar.png"
+        },
+        {
+          userId: 13,
+          userName: "Iko",
+          userEmail: "caretaker3000@gmail.com",
+          userImageURL: "../assets/user_avatar.png"
+        }
+      ],
+      menuSection: "main"
+    };
+
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should change task.status to deleted after delete method is run", () => {
+    component.delete();
+    expect(component.task.taskStatus).toBe("deleted");
+  });
+
+  it("should change task.status to open after restore method is run", () => {
+    component.restore();
+    expect(component.task.taskStatus).toBe("open");
+  });
+
+  it("should call restore method on click of restore button", () => {
+    spyOn(component, "restore");
+    const button = fixture.debugElement.query(By.css("i"));
+    button.triggerEventHandler("click", {});
+    expect(component.restore).toHaveBeenCalled();
+  });
+
+  it("should call delete method on click of delete button", () => {
+    component.task.taskStatus = "open";
+    fixture.detectChanges();
+    spyOn(component, "delete");
+    const button = fixture.debugElement.query(By.css("i"));
+    button.triggerEventHandler("click", {});
+    expect(component.delete).toHaveBeenCalled();
   });
 });
