@@ -114,6 +114,16 @@ export const tasks: Task[] = [
     taskCreator: users[6],
     taskTeam: [users[6], users[8], users[10]],
     menuSection: "main"
+  },
+  {
+    taskId: 4,
+    projectId: 1,
+    taskTitle: "Some Task",
+    taskDescription: "Not sure how important this task really is.",
+    taskStatus: "deleted",
+    taskCreator: users[6],
+    taskTeam: [users[6], users[8], users[10]],
+    menuSection: "main"
   }
 ];
 
@@ -136,7 +146,7 @@ export const projects: Project[] = [
       users[10],
       users[12]
     ],
-    projectTasks: [tasks[1], tasks[2]]
+    projectTasks: [tasks[0], tasks[1], tasks[2]]
   },
   {
     projectId: 2,
@@ -148,7 +158,7 @@ export const projects: Project[] = [
     projectStatus: "open",
     projectCreator: users[5],
     projectTeam: [users[5], users[6], users[8], users[10]],
-    projectTasks: [tasks[3]]
+    projectTasks: [tasks[2]]
   },
   {
     projectId: 3,
@@ -160,6 +170,11 @@ export const projects: Project[] = [
     projectStatus: "open",
     projectCreator: users[5],
     projectTeam: [users[5], users[6], users[8], users[10]],
-    projectTasks: [tasks[3]]
+    projectTasks: [tasks[2]]
   }
 ];
+
+// Class needed for testing, please do not remove
+export class ExposeForTesting {
+  public static projects: Project[] = projects;
+}
