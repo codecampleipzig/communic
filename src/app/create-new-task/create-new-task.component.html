@@ -15,8 +15,11 @@ Input Fields/Textarea reflecting the individual tasks style and made editable.
 //-->
 <form #f="ngForm" (ngSubmit)="onSubmit(f.value)"><div class="task-header" *ngIf="formVisible">
     <div class="task-checkbox checkbox"></div>
-    <input class="task-title" placeholder="Task Name Please"/> 
+  <label for ="title"></label>
+  <input class="task-title" placeholder="Task Name Please" name="title" ngModel> 
 </div>
-<textarea *ngIf="formVisible" class="task-description" placeholder="Please describe the task that needs doing.">
+<label for ="description"></label>
+<textarea *ngIf="formVisible" class="task-description" placeholder="Please describe the task that needs doing."
+name ="description" ngModel>
       </textarea>  
 <button *ngIf="formVisible" class="button" type="submit">Add task</button></form>
