@@ -27,6 +27,8 @@
     float: center;
     color: var(--fontDarkGrey);
     font-weight: 600;
+    padding: 0 4em;
+    font-size: 2em;
 }
 
 input {
@@ -38,7 +40,6 @@ input {
     font-size: 1.2em;
     font-family: inherit;
     width: 100%;
-    word-wrap: break-word;
 }
  
 
@@ -49,14 +50,15 @@ textarea {
     font-size: 0.9em;
     font-family: inherit;
     width: 100%;  
+    padding-top: 0.5rem;
 
 }
 
-.h1 {
-    padding: 0 4em;
-    font-size: 2em;
+
+h3 {
+    margin-top: 0.3rem;
+    padding: 0.rem;
 }
-    
 
 .project-image {
     width: 100%;

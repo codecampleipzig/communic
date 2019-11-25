@@ -4,9 +4,9 @@
 <div class="wrapper">
     <form class="card card-full">
         <div class="top-right-icon task-delete">
-            <i class="fas fa-trash-alt"></i>
+            <i (click)="navigateHome()" class="fas fa-trash-alt"></i>
         </div>
-        <div class="title"> <h3>Give your project a heart-warming title</h3> 
+        <div class="title"> <h3>Give your project a heart-warming title:</h3> 
         </div>
      <input [(ngModel)] = "projectTitle" size="20" type="text" name="Project Title">
         <div class="project-image">
@@ -16,7 +16,7 @@
             <span style="color:red;" *ngIf="message">{{message}}</span>
         </div>
         <div class="project-description">
-          <h3>Now, explain what it's all about</h3>
+          <h3>Now, explain what it's all about:</h3>
             <textarea placeholder="This is the best project of the world because it makes sure absolutely everybody gets free fries for dinner once a week." rows="4"></textarea>
       <h3>Have you set any goals for it?</h3>
       <textarea
