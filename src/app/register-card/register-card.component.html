@@ -28,7 +28,7 @@
                         </span>
                         <span class="formrule"
                             *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required && authType == 'login'">
-                            <p>Please use the e-mail you used to register your account.</p>
+                            <p>This should be the same e-mail you used to register your account.</p>
                         </span>
                         <label>
                             <input type="password" placeholder="Password" formControlName="password" required>

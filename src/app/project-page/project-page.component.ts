@@ -22,10 +22,9 @@ export class ProjectPageComponent implements OnInit {
 
     route.params.subscribe((params: Params) => {
       this.store.retrieveProject(params.id);
-      this.store.project$.subscribe(project => this.project = project);
+      this.store.project$.subscribe(project => (this.project = project));
     });
   }
 
   ngOnInit() {}
-
 }
