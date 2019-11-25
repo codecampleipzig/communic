@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: "", redirectTo: "register", pathMatch: "full" },
   { path: "register", component: RegisterCardComponent },
   { path: "login", component: RegisterCardComponent },
-  { path: "startnewproject", component: StartnewprojectComponent }
+  { path: "startnewproject", component: StartnewprojectComponent },
+  { path: "login", component: RegisterCardComponent }
 ];
 
 @NgModule({

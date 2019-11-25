@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { Router } from "@angular/router";
 import { throwStatement } from "@babel/types";
 import { RouterModule, Routes, Router } from "@angular/router";
 
