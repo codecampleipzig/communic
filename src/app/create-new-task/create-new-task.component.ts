@@ -57,6 +57,9 @@ export class CreateNewTaskComponent implements OnInit {
     }
   }
 
+  /**
+   * Mock user for use in new task - this should be imported
+   */
   users: User[] = [
     {
       userId: 1,
@@ -67,6 +70,18 @@ export class CreateNewTaskComponent implements OnInit {
 
   onSubmit(value: any): void {
     console.log ("NEW TASK!", value);
+    const newTask: Task [] = [
+    {
+      taskId: 1,
+      projectId: 1,
+      taskTitle: value.title,
+      taskDescription: value.description,
+      taskStatus: "open",
+      taskCreator: this.users[1],
+      taskTeam: [],
+      menuSection: "starter"
+    }];
+    console.log ("New task!", newTask)
     this.closeForm();
   }
 
