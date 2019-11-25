@@ -75,7 +75,7 @@ export class CreateNewTaskComponent implements OnInit {
     const newTask: Task = 
     {
       /**
-       * All values apart from taskTitle, taskDescription and taskStatus are placeholders
+       * Creates a newTask object of type Task using title and description from form, projectId and mock user id
        */
       taskId: 1,
       projectId: this.project.projectId,
@@ -86,7 +86,9 @@ export class CreateNewTaskComponent implements OnInit {
       taskTeam: [],
       menuSection: "starter"
     };
-    console.log ("New task!", newTask);
+    /**
+     * Pushes newTask to projectTasks and closes the form
+     */
     this.project.projectTasks.push(newTask);
     this.closeForm();
   }
