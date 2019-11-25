@@ -27,7 +27,12 @@ export class CreateNewTaskComponent implements OnInit {
     return "card display-flex";
   }
 
-  constructor() {}
+  constructor(fb: FormBuilder) {
+    this.newTaskForm = fb.group({
+      'title': [''],
+      'description': ['']
+    })
+  }
 
   /**
    * Create a function for opening and closing a form to bind to objects in the HTML.
