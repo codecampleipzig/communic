@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { throwStatement } from "@babel/types";
 import { RouterModule, Routes, Router } from "@angular/router";
+import { StoreService } from "../store.service";
 
 @Component({
   selector: "app-startnewproject",
@@ -33,7 +34,12 @@ export class StartnewprojectComponent implements OnInit {
     };
   }
 
-  constructor(@Inject(Router) private router: Router) {}
+  constructor(
+    @Inject(Router) private router: Router,
+    @Inject(StoreService) private store: StoreService
+  ) {
+    this.store.toolbar.next(this.projectTitle);
+  }
 
   ngOnInit() {}
 

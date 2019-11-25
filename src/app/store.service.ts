@@ -8,18 +8,14 @@
 import { Injectable, Inject } from "@angular/core";
 import { Task } from "./datatypes/Task";
 import { Project } from "./datatypes/Project";
-import { User } from "./datatypes/User";
+import { User, UserState } from "./datatypes/User";
 
 import * as Mock from "./mockdata";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
+import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
-
-export interface UserState {
-  status: any;
-  userInformation: User | null;
-}
 
 @Injectable({
   providedIn: "root"
@@ -29,16 +25,21 @@ export class StoreService {
   user: BehaviorSubject<UserState>;
   yourProjects: BehaviorSubject<Array<Project>>;
   exploreProjects: BehaviorSubject<Array<Project>>;
+  project: BehaviorSubject<Project>;
+  toolbar: BehaviorSubject<any>;
 
   // Observable
   public user$: Observable<UserState>;
   public yourProjects$: Observable<Array<Project>>;
   public exploreProjects$: Observable<Array<Project>>;
+  public project$: Observable<Project>;
+  public toolbar$: Observable<any>;
 
   constructor(
     @Inject(Router) private router: Router,
     @Inject(AuthService) private authService: AuthService,
-    @Inject(ProjectsService) private projectsService: ProjectsService
+    @Inject(ProjectsService) private projectsService: ProjectsService,
+    @Inject(ProjectService) private projectService: ProjectService
   ) {
     this.user = new BehaviorSubject<UserState>({
       status: {},
@@ -51,6 +52,12 @@ export class StoreService {
 
     this.exploreProjects = new BehaviorSubject<Array<Project>>([]);
     this.exploreProjects$ = this.exploreProjects.asObservable();
+
+    this.project = new BehaviorSubject<any>({});
+    this.project$ = this.project.asObservable();
+
+    this.toolbar = new BehaviorSubject<any>("");
+    this.toolbar$ = this.toolbar.asObservable();
   }
 
   // Action
@@ -81,7 +88,7 @@ export class StoreService {
     this.router.navigate(["register"]);
   }
 
-  // Action - retrieve projects based on usedId
+  // Action - retrieve projects based on userId
 
   retrieveYourProjects() {
     let userId: number;
@@ -118,31 +125,6 @@ export class StoreService {
   }
 
   /**
-   * Get Task object by Task id
-   */
-  retrieveTask(id: number): Task {
-    return Mock.tasks.find(task => task.taskId == id);
-  }
-
-  /**
-   * Get Array of Task Objects by projectID and location
-   * @param projectID ID of the project
-   * @param location location of the Task (starter, main, desert)
-   * @returns Array of Task Objects
-   */
-  retrieveTasks(projectID: number, location: string): Task[] {
-    return Mock.tasks.filter(task => task.projectId == projectID);
-  }
-
-  /**
-   * Get Project object by Project id
-   */
-  retrieveProject(id: number): Project {
-    // console.log(this.projects);
-    return Mock.projects.find(project => project.projectId == id);
-  }
-
-  /**
    * Get UserList
    * @returns a list of all the User
    */
@@ -154,5 +136,39 @@ export class StoreService {
    */
   retrieveUser(userId: number): User {
     return Mock.users.find(user => user.userId == userId);
+  }
+
+  /**
+   * resolves GET request and passes project Data into project observable
+   * @param id: project ID
+   */
+  retrieveProject(id: number) {
+    const promise = this.projectService.getProject(id);
+
+    promise.then(project => {
+      // Put value into observable
+      this.project.next(project);
+    });
+  }
+
+  /**
+   * resolves GET request and passes newTasks via newProject into project observable.
+   * @param projectId
+   * @param taskId
+   * @param status
+   */
+  updateTaskStatus(projectId: number, taskId: number, status: string) {
+    const promise = this.projectService.updateTaskStatus(taskId, status);
+
+    promise.then(newTasks => {
+      const newState = [...Mock.projects];
+      const newProject = newState.find(
+        project => project.projectId == projectId
+      );
+      newProject.projectTasks = newTasks;
+
+      // Put value into observable
+      this.project.next(newProject);
+    });
   }
 }

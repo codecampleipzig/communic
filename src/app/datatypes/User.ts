@@ -4,3 +4,8 @@ export interface User {
   userEmail: string;
   userImageURL: string;
 }
+
+export interface UserState {
+  status: any;
+  userInformation: User | null;
+}
