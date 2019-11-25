@@ -72,7 +72,7 @@ export class CreateNewTaskComponent implements OnInit {
     }];
 
   onSubmit(value: any): void {
-    const newTask: Task [] = [
+    const newTask: Task = 
     {
       /**
        * All values apart from taskTitle, taskDescription and taskStatus are placeholders
@@ -85,8 +85,9 @@ export class CreateNewTaskComponent implements OnInit {
       taskCreator: this.users[0],
       taskTeam: [],
       menuSection: "starter"
-    }];
+    };
     console.log ("New task!", newTask);
+    this.project.projectTasks.push(newTask);
     this.closeForm();
   }
 
