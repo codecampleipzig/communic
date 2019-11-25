@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Inject,
-  EventEmitter,
-  Output
-} from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { User } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
 
@@ -31,26 +24,24 @@ export class TeamCardComponent implements OnInit {
      * - [ ] check if user is already part of the team
      */
     this.team = this.project.projectTeam;
+    // filter if team contains current user and set already joined to true if so
+    // this.alreadyJoined = this.team.filter(this.currentUser);
   }
+
   /**
    * Function that adds the user to the ProjecTeam
    *  -[ ] need to comunicate with store
    */
-
   private join(): void {
-    if (!this.team.includes(this.currentUser)) {
-      this.alreadyJoined = true;
-      this.team.push(this.currentUser);
-    }
+    this.alreadyJoined = true;
+    this.team.push(this.currentUser);
   }
   /**
    * Function that deletes the user from the ProjecTeam
    *  -[ ] need to comunicate with store
    */
   private leave(): void {
-    if (this.team.includes(this.currentUser)) {
-      this.alreadyJoined = false;
-      this.team.splice(this.team.length - 1, 1);
-    }
+    this.alreadyJoined = false;
+    this.team.splice(this.team.length - 1, 1);
   }
 }

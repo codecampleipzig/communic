@@ -30,6 +30,6 @@ export class TaskListItemTeamComponent implements OnInit {
   private leaveTask(): void {
     /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
     this.userjoined = false;
-    console.log("User leaved");
+    console.log("User left");
   }
 }

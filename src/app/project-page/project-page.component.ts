@@ -12,9 +12,9 @@ import { User } from "../datatypes/User";
 export class ProjectPageComponent implements OnInit {
   public project: Project;
   public currentUser: User = {
-    userId: 7,
-    userName: "Nico",
-    userEmail: "intelligentButBeautiful@gmail.com",
+    userId: 13,
+    userName: "Iko",
+    userEmail: "caretaker3000@gmail.com",
     userImageURL: "../assets/user_avatar.png"
   };
 
