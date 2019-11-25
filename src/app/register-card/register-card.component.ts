@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, Inject, HostBinding } from "@angular/core";
+import { Component, OnInit, NgModule, Inject, HostBinding, ViewEncapsulation } from "@angular/core";
 import {
   FormControl,
   ReactiveFormsModule,
@@ -25,7 +25,7 @@ export class RegisterCardComponent implements OnInit {
    * Add .container Class to the Host
    */
   @HostBinding("class")
-  get hostClasses(): string { return "container"; }
+  get hostClasses(): string { return "container background"; }
 
   constructor(private route: ActivatedRoute, @Inject(Router) private router: Router) {
     this.profileForm = new FormGroup({

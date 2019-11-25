@@ -1,5 +1,11 @@
 :host {
-    text-align: center;
+    display: flex;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+:host > * {
+    margin: auto;
 }
 
 .background::after {

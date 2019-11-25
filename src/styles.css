@@ -111,6 +111,10 @@ small,
    align-items: center;
 }
 
+.text-center {
+   text-align: center;
+}
+
 /* Icon in the top right of Cards (e.g. taskDelete) */
 .top-right-icon {
    position: absolute;
