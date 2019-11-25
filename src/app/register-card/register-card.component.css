@@ -46,14 +46,13 @@
  
 .avatar {
     padding: 1em 0;
-    margin-bottom: .5em;
 }
 
 .avatar .user-image {
-    font-size: 5rem;
+    font-size: 3rem;
 }
 
-.avatar ~ * {
+.avatar ~ .button {
     margin-bottom: 1.5em;
 }
 
@@ -86,5 +85,16 @@ button[type="submit"] {
 @media (min-width: 400px) {
     .register-card h2 {
         font-size: 3rem;
+    }
+}
+
+@media (min-height: 650px) and (min-width: 480px) {
+
+    .avatar {
+        margin-bottom: 0.5em
+    }
+
+    .avatar .user-image {
+        font-size: 5rem;
     }
 }
