@@ -3,11 +3,12 @@
    display: flex;
    flex-direction: column;
    height: 100%;
-   align-items: start;
+   align-items: flex-start;
 }
 
 .project-picture {
    text-align: center;
+   align-self: stretch;
 }
 
 .project-description {

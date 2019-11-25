@@ -8,8 +8,7 @@ import { RouterModule, Routes } from "@angular/router";
 })
 export class ProjectActionComponent implements OnInit {
   projectName = "";
-  plusIconSource = "./../../assets/plus.svg";
-  breadcrumbIconSource = "../../assets/breadcrumb.svg";
+  
   constructor() {}
 
   ngOnInit() {}

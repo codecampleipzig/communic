@@ -4,7 +4,9 @@
     <h3 *ngIf="authType == 'login'">Meet your community!</h3>
 
     <div class="avatar" *ngIf="authType == 'register'">
-        <i class="fas fa-camera"></i>
+        <div class="user-image">
+            <i class="fas fa-camera"></i>
+        </div>
     </div>
 
     <button class="button outlined">Upload Image</button>

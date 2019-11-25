@@ -33,13 +33,13 @@ describe("UserActionComponent", () => {
   // verify username is present
   it("should have username", () => {
     const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-    expect(htmlElement.querySelector("#userName")).toBeTruthy();
+    expect(htmlElement.querySelector(".user-name")).toBeTruthy();
   });
 
   // verify correct username is present
   it("should have correct username", () => {
     const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-    expect(htmlElement.querySelector("#userName").textContent).toBe(
+    expect(htmlElement.querySelector(".user-name").textContent).toBe(
       component.userName
     );
   });
@@ -47,14 +47,14 @@ describe("UserActionComponent", () => {
   // verify user thumbnail is present
   it("should have user thumbnail", () => {
     const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-    expect(htmlElement.querySelector("#userThumbnail")).toBeTruthy();
+    expect(htmlElement.querySelector(".user-image")).toBeTruthy();
   });
 
   // verify correct thumbnail is present
   xit("should have correct username", () => {
     const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
     const imgElement: HTMLImageElement = htmlElement.querySelector(
-      "#userThumbnail"
+      ".user-image img"
     );
     // TODO: use regex or find another way (localhost is the problem)
     // should not be a problem with real url
@@ -67,13 +67,13 @@ describe("UserActionComponent", () => {
   // verify logout button is present
   it("should have logout button", () => {
     const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-    expect(htmlElement.querySelector("#logout")).toBeTruthy();
+    expect(htmlElement.querySelector(".logout")).toBeTruthy();
   });
 
   // verify logout button has correct label/text
   it("should have correct logout button text", () => {
     const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-    expect(htmlElement.querySelector("#logout").textContent).toBe("Logout");
+    expect(htmlElement.querySelector(".logout").textContent).toBe("Logout");
   });
 
   // TODO: verify logout button is clickable

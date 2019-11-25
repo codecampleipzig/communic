@@ -1,16 +1,9 @@
-<div class="userActions">
-   <div class="center-wrapper">
-   <div class="userDetails">
-      <div class="userName">
-         <span id="userName">{{userName}}</span>
-      </div>
-      <a id="logout" class="logout" (click)="logout()">
-         <span>Logout</span>
-      </a>
-   </div>
+<div class="user">
+   <span class="user-name">{{userName}}</span>
+   <a class="logout small" (click)="logout()">Logout</a>
 </div>
 
-   <div class="thumbnail">
-      <img id="userThumbnail" [src]="userThumbnail" alt="User Thumbnail">
-   </div>
+<div class="user-image">
+   <img *ngIf="userThumbnail" [src]="userThumbnail" alt="User Thumbnail">
+   <i *ngIf="!userThumbnail" class="fas fa-user"></i>
 </div>

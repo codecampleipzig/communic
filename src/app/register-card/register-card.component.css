@@ -46,28 +46,15 @@
  
 .avatar {
     padding: 1em 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.5em;
+    margin-bottom: .5em;
+}
+
+.avatar .user-image {
+    font-size: 5rem;
 }
 
 .avatar ~ * {
     margin-bottom: 1.5em;
-}
-
-.avatar > * {
-    width: 40%;
-    border: 1px solid var(--borderPlaceholderGrey);
-    border-radius: 50%;
-    color: var(--borderPlaceholderGrey);
-}
-
-.avatar i {
-    font-size: 600%;
-    padding: .5em;
-    width: 1em;
-    height: 1em;
 }
 
 .ng-valid[required], .ng-valid.required  {

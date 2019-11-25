@@ -25,7 +25,7 @@ describe("ProjectActionComponent", () => {
   it("should have project name", () => {
     if (component.projectName) {
       const htmlElement: HTMLElement = fixture.nativeElement;
-      expect(htmlElement.querySelector("#projectName")).toBeTruthy();
+      expect(htmlElement.querySelector("#project-name .item")).toBeTruthy();
     }
   });
 
@@ -33,7 +33,7 @@ describe("ProjectActionComponent", () => {
   it("should have correct project name", () => {
     if (component.projectName) {
       const htmlElement: HTMLElement = fixture.nativeElement;
-      expect(htmlElement.querySelector("#projectName").textContent).toEqual(
+      expect(htmlElement.querySelector("#project-name .item").textContent).toEqual(
         component.projectName
       );
     }
@@ -43,7 +43,7 @@ describe("ProjectActionComponent", () => {
   it("should have create project button", () => {
     if (!component.projectName) {
       const htmlElement: HTMLElement = fixture.nativeElement;
-      expect(htmlElement.querySelector("#startProjectButton")).toBeTruthy();
+      expect(htmlElement.querySelector("#start-project-button")).toBeTruthy();
     }
   });
 
@@ -52,7 +52,7 @@ describe("ProjectActionComponent", () => {
     if (!component.projectName) {
       const htmlElement: HTMLElement = fixture.nativeElement;
       expect(
-        htmlElement.querySelector("#startProjectButton").textContent
+        htmlElement.querySelector("#start-project-button span").textContent
       ).toEqual("Start a new project");
     }
   });
@@ -66,7 +66,7 @@ describe("ProjectActionComponent", () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-      expect(htmlElement.querySelector("#startProjectButton")).toBeFalsy();
+      expect(htmlElement.querySelector("#start-project-button")).toBeFalsy();
     });
   });
 
@@ -83,7 +83,7 @@ describe("ProjectActionComponent", () => {
     fixture.detectChanges();
     fixture.whenStable().then(() => {
       const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-      expect(htmlElement.querySelector("#startProjectButton")).toBeTruthy();
+      expect(htmlElement.querySelector("#start-project-button")).toBeTruthy();
     });
   });
 });

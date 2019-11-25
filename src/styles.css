@@ -71,6 +71,11 @@ img {
    max-width: 100%;
 }
 
+small,
+.small {
+   font-size: .9em;
+}
+
 /**
  * Utilities
  */
@@ -90,6 +95,15 @@ img {
    display: flex;
    flex-flow: wrap;
    align-items: center;
+}
+
+/* Icon in the top right of Cards (e.g. taskDelete) */
+.top-right-icon {
+   position: absolute;
+   top: .5em;
+   right: 1em;
+   cursor: pointer;
+   color: var(--iconColor);
 }
 
    
@@ -117,6 +131,7 @@ textarea {
    min-width: 130px;
    padding: .9em 1.5em;
    appearance: none;
+   white-space: nowrap;
 }
 
 .button:hover,
@@ -124,6 +139,7 @@ textarea {
    background-color: var(--primaryColorHighlight);
    color: #fff;
    outline: 0 none;
+   text-decoration: none;
 }
 
 /** 
@@ -134,11 +150,24 @@ textarea {
    margin-right: .5em;
 }
 
+/** 
+ * Hide the caption and reset margin right for the icon
+ */
+@media (max-width: 480px) {
+   .caption-mobile-hidden i {
+      margin-right: 0;
+   }
+   .caption-mobile-hidden span {
+      display: none;
+   } 
+}
+
 /* Button Elements without background but border */
 .button.outlined {
    border: 1px solid var(--primaryColor);
    color: var(--primaryColor);
    background-color: transparent;
+   padding: .5em 1em;
 }
 
 .button.outlined:hover {
@@ -235,13 +264,40 @@ label {
    width: calc(100% - 2em); /* Space around the card */
 }
 
-/* Icon in the top right of Cards (e.g. taskDelete) */
-.top-right-icon {
-   position: absolute;
-   top: .5em;
-   right: 1em;
-   cursor: pointer;
-   color: var(--iconColor);
+/**
+ * User-Image containing an image or an font-awesome icon as placeholder
+ * Change the size via font-size on .user-image
+ * Or change height & width & change font-size to adjust placeholder-icon size
+ */
+.user-image {
+   border: 1px solid var(--borderPlaceholderGrey);
+   border-radius: 50%;
+   color: var(--borderPlaceholderGrey);
+   height: 2em;
+   width: 2em;
+   font-size: 2rem;
+   display: inline-block;
+   overflow: hidden;
+   box-shadow: var(--smallShadow);
+   position: relative;
+   line-height: 1;
+}
+
+.user-image img {
+   object-fit: cover;
+   object-position: center;
+   width: 100%;
+   height: 100%;
+   position: relative;
+   z-index: 1
+}
+
+.user-image i {
+   width: 1em;
+   height: 1em;
+   position: relative;
+   top: 50%;
+   transform: translateY(-50%);
 }
 
 /* Reset .top-right-icon if it is a button */

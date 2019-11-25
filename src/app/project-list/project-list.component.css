@@ -5,9 +5,7 @@
 
 @media (min-width:450px) {
     .list-wrapper {
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        
     }
  }
 
