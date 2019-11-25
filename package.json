@@ -11,7 +11,8 @@
     "test:ci": "jest --runInBand",
     "test:coverage": "jest --coverage",
     "lint": "ng lint",
-    "autofix": "ng lint --fix"
+    "autofix": "ng lint --fix",
+    "compodoc": "npx compodoc -p tsconfig.app.json --coverageTest --coverageTestThresholdFail false"
   },
   "husky": {
     "hooks": {
@@ -46,6 +47,7 @@
     "@angular/cli": "^8.3.18",
     "@angular/compiler-cli": "~8.2.0",
     "@angular/language-service": "~8.2.0",
+    "@compodoc/compodoc": "^1.1.11",
     "@types/jest": "^24.0.21",
     "@types/node": "~8.9.4",
     "canvas": "^2.6.0",

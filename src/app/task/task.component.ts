@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, HostBinding, Inject } from "@angular/core";
 import { Task } from "../datatypes/Task";
-import { StoreService } from '../store.service';
-import { UserState } from '../datatypes/User';
+import { StoreService } from "../store.service";
+import { UserState } from "../datatypes/User";
 
 @Component({
   selector: "app-task",
@@ -9,7 +9,6 @@ import { UserState } from '../datatypes/User';
   styleUrls: ["./task.component.css"]
 })
 export class TaskComponent implements OnInit {
-
   public userState: UserState;
 
   /**
@@ -23,7 +22,10 @@ export class TaskComponent implements OnInit {
    */
   @HostBinding("class")
   get hostClasses(): string {
-    return (this.task ? "status-" + this.task.taskStatus : "") + (this.joined() ? " joined" : "");
+    return (
+      (this.task ? "status-" + this.task.taskStatus : "") +
+      (this.joined() ? " joined" : "")
+    );
   }
 
   constructor(@Inject(StoreService) private store: StoreService) {
@@ -37,7 +39,7 @@ export class TaskComponent implements OnInit {
         userImageURL: "../assets/user_avatar.png"
       }
     });
-    this.store.user$.subscribe(user => this.userState = user);
+    this.store.user$.subscribe(user => (this.userState = user));
   }
 
   /**
@@ -57,21 +59,31 @@ export class TaskComponent implements OnInit {
     const status = this.task.taskStatus;
 
     if (!this.joined() || status == "deleted") {
-      return false
+      return false;
     }
 
     if (status == "done") {
-      this.store.updateTaskStatus(this.task.projectId, this.task.taskId, 'open')
+      this.store.updateTaskStatus(
+        this.task.projectId,
+        this.task.taskId,
+        "open"
+      );
+    } else if (status == "open") {
+      this.store.updateTaskStatus(
+        this.task.projectId,
+        this.task.taskId,
+        "done"
+      );
     }
-    else if (status == "open") {
-      this.store.updateTaskStatus(this.task.projectId, this.task.taskId, 'done');
-    }
-    
   }
 
   joined() {
-    if (this.task.taskTeam.find(taskTeam => taskTeam.userId == this.userState.userInformation.userId)) {
-      return true
+    if (
+      this.task.taskTeam.find(
+        taskTeam => taskTeam.userId == this.userState.userInformation.userId
+      )
+    ) {
+      return true;
     }
     return false;
   }
