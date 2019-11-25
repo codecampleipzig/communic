@@ -89,9 +89,11 @@ p {
    appearance: none;
 }
 
-.button:hover {
+.button:hover,
+.button:focus {
    background-color: var(--primaryColorHighlight);
    color: #fff;
+   outline: 0 none;
 }
 
 /** 
@@ -179,6 +181,13 @@ p {
    right: 1em;
    cursor: pointer;
    color: var(--iconColor);
+}
+
+/* Reset .top-right-icon if it is a button */
+button.top-right-icon {
+   background:transparent;
+   border: 0 none;
+   font-size: 1em;
 }
 
    .top-right-icon:hover {

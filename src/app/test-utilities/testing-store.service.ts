@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable } from "rxjs";
-import { UserState } from "../store.service";
+import { UserState } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
 import * as Mock from "../mockdata";
 import { Task } from "../datatypes/Task";
