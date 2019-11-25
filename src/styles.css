@@ -27,6 +27,20 @@ html, body {
    font-size: 14px;
 }
 
+* {
+   transition: 
+      width .4s,
+      height .4s,
+      padding .4s,
+      margin .4s,
+      transform .4s,
+      opacity .4s,
+      box-shadow .4s,
+      border .4s,
+      background-color .4s,
+      color .4s;
+}
+
 body {
    font-family: 'Montserrat', sans-serif;
    font-weight: 300;
@@ -57,12 +71,12 @@ p {
    line-height: 1.5;
 }
 
-a {
+a, button {
    color: var(--primaryColor);
    text-decoration: none;
 }
 
-a:hover {
+a:hover, button:hover {
    color: var(--primaryColorHighlight);
    text-decoration: underline;
 }
@@ -111,13 +125,22 @@ small,
  * Buttons & Forms
  */
 
+/* Reset Buttons */
+button {
+   background: transparent;
+   cursor: pointer;
+   border: 0 none;
+   padding: 0;
+   font-family: inherit;
+   font-size: 1em;
+}
+
 .button,
 input,
 textarea {
    font-size: 1rem;
    line-height: 1.5;
    border-radius: 5px;
-   transition: border .4s, background-color .4s, color .4s;
    box-sizing: border-box;
    font-family: inherit;
 }
@@ -146,7 +169,7 @@ textarea {
  * Margin to the right for every Icon inside a button
  * - [ ] Maybe the Icon is on the right sometimes?
  */
-.button i {
+.button i:not(:last-child) {
    margin-right: .5em;
 }
 
@@ -179,7 +202,8 @@ textarea {
 .button.round {
    border-radius: 1.5em;
    min-width: auto;
-   padding: .5em 1em;
+   font-size: .9rem;
+   padding: .3em 1em;
 }
 
 input[type="text"],
@@ -213,11 +237,15 @@ label {
    box-shadow: var(--bigShadow);
    border-radius: 10px;
    padding: 1em 1.5em 2em; /* Space around the content of the cards */
-   margin: 3em auto 0; /* Margin to top and center with auto */
+   margin: 1em auto 0; /* Margin to top and center with auto */
    box-sizing: border-box; /* Calculate width with padding */
-   transition: padding .4s, margin .4s, width .4s, height .4s; /* Nice Transitions when resizing */
    max-width: 450px;
-   transition: box-shadow .4s;
+}
+
+@media (min-height: 650px) and (min-width: 480px)  {
+   .card {
+      margin-top: 3em;
+   }
 }
 
 /* Overrides for .card in the .cardList (e.g. Projects Overview) */
@@ -259,9 +287,15 @@ label {
 /* Wrapper for content */
 .container {
    max-width: 1100px;
-   margin: 3em auto 0;
+   margin: 1em auto 0;
    display: block;
    width: calc(100% - 2em); /* Space around the card */
+}
+
+@media (min-height: 650px) and (min-width: 480px)  {
+   .container {
+      margin-top: 3em;
+   }
 }
 
 /**
