@@ -1,8 +1,8 @@
-import { Component, OnInit, HostBinding, NgModule } from "@angular/core";
+import { Component, OnInit, HostBinding, NgModule, Input } from "@angular/core";
 import { ReactiveFormsModule, FormGroup, FormBuilder } from "@angular/forms"; 
 import { Task } from "../datatypes/Task";
 import { User } from "../datatypes/User";
-
+import { Project } from "../datatypes/Project";
 
 @NgModule({
   imports: [
@@ -22,6 +22,9 @@ import { User } from "../datatypes/User";
 export class CreateNewTaskComponent implements OnInit {
   private formVisible: any = false;
   newTaskForm: FormGroup;
+  @Input() public project: Project;
+
+  public tasks: Task[] = [];
 
   /**
    * Add Task .card Class to :host Element
