@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule } from "@angular/core";
+import { Component, OnInit, NgModule, Inject } from "@angular/core";
 import {
   FormControl,
   ReactiveFormsModule,
@@ -6,6 +6,7 @@ import {
   FormGroup
 } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Route } from '@angular/compiler/src/core';
 
 @NgModule({
   imports: [ReactiveFormsModule]
@@ -20,7 +21,7 @@ export class RegisterCardComponent implements OnInit {
   authType: string;
   title: string;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, @Inject(Router) private router: Router) {
     this.profileForm = new FormGroup({
       name: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required, Validators.email]),
@@ -59,5 +60,9 @@ export class RegisterCardComponent implements OnInit {
         this.profileForm.addControl("name", new FormControl());
       }
     });
+  }
+
+  onSubmit() {
+    this.router.navigate(["home"]);
   }
 }

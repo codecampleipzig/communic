@@ -5,7 +5,8 @@
 :root {
    --primaryColor: #655AF3;
    --primaryColorHighlight: #667ee7;
-   --warningRed: rgb(206, 26, 26);
+   --warningRed: #a94442;
+   --successGreen: #42A948;
    --fontDarkGrey: #3A3A3A;
    --fontMediumGrey: #7A7A7A;
    --fontLightGrey: #AFAFAF;
@@ -13,10 +14,15 @@
    --placeholderGrey: #F8F8F8; /* Used for placeholder Picture Backgrounds */
    --backgroundGrey: #FCFCFC; /* Used for the TaskListIcons */
    --borderGrey: #CECECE; /* Used for the Checkbox */
+   --borderMediumGrey: #adadad;
 
    /* Dropshadows to use box-shadow: var(--smallShadow); */
    --smallShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
    --bigShadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+html, body {
+   font-size: 14px;
 }
 
 body {
@@ -30,6 +36,16 @@ body {
  * Text & Headlines
  */
 
+a {
+   color: var(--primaryColor);
+   text-decoration: none;
+}
+
+a:hover {
+   color: var(--primaryColorHighlight);
+   text-decoration: underline;
+}
+
 h2 {
    color: var(--fontDarkGrey);
    font-weight: 600;
@@ -42,7 +58,7 @@ h3 {
 h4 {
    margin: 0;
    font-weight: 500;
-   font-size: 1.1rem;
+   font-size: 1.2rem;
 }
 
 p {
@@ -73,19 +89,28 @@ p {
 
    
 /**
- * Buttons
+ * Buttons & Forms
  */
+
+.button,
+input,
+textarea {
+   font-size: 1rem;
+   line-height: 1.5;
+   border-radius: 5px;
+   transition: border .4s, background-color .4s, color .4s;
+   box-sizing: border-box;
+   font-family: inherit;
+}
+
 
 .button {
    cursor: pointer;
-   font-size: .8rem;
    background-color: var(--primaryColor);
-   border-radius: 5px;
    color: #fff;
    border: 0 none;
    min-width: 130px;
-   padding: 1em;
-   transition: border .4s, background-color .4s, color .4s;
+   padding: .9em 1.5em;
    appearance: none;
 }
 
@@ -104,12 +129,9 @@ p {
    margin-right: .5em;
 }
 
-/* Button Elements without background but rounded border */
+/* Button Elements without background but border */
 .button.outlined {
-   padding: .5em 1em;
-   min-width: auto;
    border: 1px solid var(--primaryColor);
-   border-radius: 1.5em;
    color: var(--primaryColor);
    background-color: transparent;
 }
@@ -117,6 +139,34 @@ p {
 .button.outlined:hover {
    color: #fff;
    background-color: var(--primaryColor);
+}
+
+/* And make the border round */
+.button.round {
+   border-radius: 1.5em;
+   min-width: auto;
+   padding: .5em 1em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+   border: 1px solid var(--borderGrey);
+   width: 100%;
+   padding: .9em 1.5em;
+}
+
+input[type="text"]:not(:focus):placeholder-shown,
+input[type="email"]:not(:focus):placeholder-shown,
+input[type="password"]:not(:focus):placeholder-shown,
+textarea:not(:focus):placeholder-shown {
+   color: var(--borderGrey);
+}
+
+label {
+   display:block;
+   margin-bottom: 1em;
 }
 
 
@@ -148,7 +198,7 @@ p {
    margin: 0;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 500px) {
   
    .card {
       padding: 2em 3em; /* Increase space around content */
