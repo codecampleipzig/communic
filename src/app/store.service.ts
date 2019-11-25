@@ -14,7 +14,7 @@ import * as Mock from "./mockdata";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
-import { ProjectService } from './project.service';
+import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
 
 @Injectable({
@@ -148,16 +148,15 @@ export class StoreService {
 
   /**
    * resolves GET request and passes newTasks via newProject into project observable.
-   * @param projectId 
-   * @param taskId 
-   * @param status 
    */
   updateTaskStatus(projectId: number, taskId: number, status: string) {
-    const promise = this.projectService.updateTaskStatus(taskId,status);
+    const promise = this.projectService.updateTaskStatus(taskId, status);
 
     promise.then(newTasks => {
       const newState = [...Mock.projects];
-      const newProject = newState.find(project => project.projectId == projectId);
+      const newProject = newState.find(
+        project => project.projectId == projectId
+      );
       newProject.projectTasks = newTasks;
 
       // Put value into observable
