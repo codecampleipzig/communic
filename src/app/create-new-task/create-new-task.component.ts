@@ -78,7 +78,7 @@ export class CreateNewTaskComponent implements OnInit {
        * All values apart from taskTitle, taskDescription and taskStatus are placeholders
        */
       taskId: 1,
-      projectId: 1,
+      projectId: this.project.projectId,
       taskTitle: value.title,
       taskDescription: value.description,
       taskStatus: "open",
@@ -87,7 +87,6 @@ export class CreateNewTaskComponent implements OnInit {
       menuSection: "starter"
     }];
     console.log ("New task!", newTask);
-    console.log ("Project", this.project);
     this.closeForm();
   }
 
