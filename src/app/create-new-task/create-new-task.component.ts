@@ -86,7 +86,8 @@ export class CreateNewTaskComponent implements OnInit {
       taskTeam: [],
       menuSection: "starter"
     }];
-    console.log ("New task!", newTask)
+    console.log ("New task!", newTask);
+    console.log ("Project", this.project);
     this.closeForm();
   }
 
