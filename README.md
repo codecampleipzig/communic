@@ -12,6 +12,7 @@ This README will be filled by the project teams, supervised and coordinated by t
 - npm test:watch
 - npm test:ci
 - npm test:coverage
+- npm run compodoc
 
 ### Notes
 - Use of the TestBed.compileComponents() method is only required when Webpack
