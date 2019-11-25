@@ -29,7 +29,7 @@ export class TeamCardComponent implements OnInit {
    * - [ ] needs to compare if user already member
    * - [ ] needs to add the user when button is clicked
    */
-  private join(): void {
+  join(): void {
     this.alreadyJoined = true;
   }
 }
