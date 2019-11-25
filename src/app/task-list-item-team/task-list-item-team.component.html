@@ -5,10 +5,10 @@
    - [ ] Replace userjoined bool with something like task.userIDs.find(currentUser)
  -->
 <button *ngIf="task.taskStatus == 'open' && !userjoined" class="button taskTeamJoin outlined round" (click)="joinTask()">
-   <i class="fas fa-plus"></i> Join
+   <i class="fas fa-plus"></i><span>Join</span>
 </button>
 <button *ngIf="task.taskStatus == 'open' && userjoined" class="button taskTeamJoin outlined round" (click)="leaveTask()">
-   <i class="fas fa-times"></i> Leave
+   <i class="fas fa-times"></i><span>Leave</span>
 </button>
 
 <!-- taskTeamList Placeholder

@@ -14,8 +14,6 @@
    display: flex;
    flex-flow: wrap;
    align-items: center;
-
-   --checkboxGreen: rgb(51, 132, 51);
 }
 
    :host > * {
@@ -28,6 +26,7 @@
 .task-header {
    display: flex;
    align-items: center;
+   line-height: 2;
 }
 
    .task-header > * {
@@ -64,7 +63,7 @@
 
    .checkbox:not(:disabled):hover,
    .checkbox:not(:disabled):focus {
-      color: var(--checkboxGreen);
+      color: var(--successGreen);
    }
 
    .checkbox:not(:disabled):focus {
@@ -80,7 +79,7 @@
    }
 
    .checkbox:not(:disabled):active {
-      border-color: var(--checkboxGreen);
+      border-color: var(--successGreen);
    }
 
    /**
@@ -98,7 +97,7 @@
    }
 
    :host(.joined.status-done) .checkbox:active {
-      border-color: var(--checkboxGreen);
+      border-color: var(--successGreen);
    }
 
    
@@ -131,7 +130,7 @@
 }
 
 :host(.status-done) .checkbox {
-   color: var(--checkboxGreen);
+   color: var(--successGreen);
 }
 
 :host(.status-done) .checkbox i {
