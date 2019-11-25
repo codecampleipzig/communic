@@ -20,7 +20,6 @@ export class TeamCardComponent implements OnInit {
    */
   @Input() public project: Project;
   @Input() public currentUser: User;
-  @Output() public userJoinEmitter = new EventEmitter<string>();
   public alreadyJoined = false;
   public team: User[];
 
@@ -29,22 +28,29 @@ export class TeamCardComponent implements OnInit {
   ngOnInit() {
     /**
      * Get projectTeam from project Object
+     * - [ ] check if user is already part of the team
      */
     this.team = this.project.projectTeam;
   }
   /**
-   * function that makes the button disapear when joined,
-   * - [ ] needs to compare if user already member and than make te button disappear
+   * Function that adds the user to the ProjecTeam
+   *  -[ ] need to comunicate with store
    */
 
   private join(): void {
-    this.alreadyJoined = true;
-    // this.userJoinEmitter.emit("userJoined");
-    this.team.push(this.currentUser);
+    if (!this.team.includes(this.currentUser)) {
+      this.alreadyJoined = true;
+      this.team.push(this.currentUser);
+    }
   }
-
+  /**
+   * Function that deletes the user from the ProjecTeam
+   *  -[ ] need to comunicate with store
+   */
   private leave(): void {
-    this.alreadyJoined = false;
-    this.team.splice(this.team.length - 1, 1);
+    if (this.team.includes(this.currentUser)) {
+      this.alreadyJoined = false;
+      this.team.splice(this.team.length - 1, 1);
+    }
   }
 }
