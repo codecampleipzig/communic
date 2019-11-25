@@ -1,9 +1,13 @@
 import { Component, OnInit, HostBinding, NgModule } from "@angular/core";
-import { ReactiveFormsModule, FormGroup } from "@angular/forms"; 
+import { ReactiveFormsModule, FormGroup, FormBuilder } from "@angular/forms"; 
 
 
 @NgModule({
-  imports: [ReactiveFormsModule, FormGroup]
+  imports: [
+    ReactiveFormsModule,
+    FormGroup,
+    FormBuilder
+  ]
 })
 
 @Component({
@@ -40,12 +44,12 @@ export class CreateNewTaskComponent implements OnInit {
     if (this.formVisible == true) {
       this.formVisible = false;
     } else {
-      return;
+      return; 
     }
   }
 
   onSubmit(form: any): void {
-    console.log ("NEW TASK!" + form.title + form.description)
+    console.log ("NEW TASK!", form)
   }
 
   ngOnInit() {}
