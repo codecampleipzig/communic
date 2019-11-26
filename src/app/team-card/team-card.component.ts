@@ -31,7 +31,7 @@ export class TeamCardComponent implements OnInit {
   }
 
   /**
-   * Function that adds the user to the ProjecTeam
+   * Function that adds the user to the ProjectTeam
    *  -[ ] need to comunicate with store
    */
   join(): void {
@@ -39,11 +39,11 @@ export class TeamCardComponent implements OnInit {
     this.team.push(this.currentUser);
   }
   /**
-   * Function that deletes the user from the ProjecTeam
+   * Function that deletes the user from the ProjectTeam
    *  -[ ] need to comunicate with store
    */
   leave(): void {
     this.alreadyJoined = false;
-    this.team.splice(this.team.length - 1, 1);
+    this.team = this.team.filter(x => x.userId !== this.currentUser.userId);
   }
 }

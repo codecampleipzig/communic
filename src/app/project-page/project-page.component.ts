@@ -12,10 +12,10 @@ import { User } from "../datatypes/User";
 export class ProjectPageComponent implements OnInit {
   public project: Project;
   public currentUser: User = {
-    userId: 13,
-    userName: "Iko",
-    userEmail: "caretaker3000@gmail.com",
-    userImageUrl: "../assets/user_avatar.png",
+    userId: 2,
+    userName: "Mariana",
+    userEmail: "BringMarianaBananaToSchool@gmail.com",
+    userImageUrl: "../assets/user_avatar.png"
   };
 
   constructor(@Inject(ActivatedRoute) public route: ActivatedRoute, @Inject(StoreService) private store: StoreService) {
@@ -23,12 +23,11 @@ export class ProjectPageComponent implements OnInit {
      * Subscribe to id param in the ActivatedRoute
      * and get project's object from store.service
      */
-
     route.params.subscribe((params: Params) => {
       this.store.retrieveProject(params.id);
       this.store.project$.subscribe(project => (this.project = project));
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }
