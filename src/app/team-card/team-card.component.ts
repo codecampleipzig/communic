@@ -43,7 +43,7 @@ export class TeamCardComponent implements OnInit {
    * Function that deletes the user from the ProjecTeam
    *  -[ ] need to comunicate with store
    */
-  private leave(): void {
+  leave(): void {
     this.alreadyJoined = false;
     this.team.splice(this.team.length - 1, 1);
   }
