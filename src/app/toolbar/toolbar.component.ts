@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from "@angular/core";
+import { Component, OnInit, HostBinding, Inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { StoreService } from "../store.service";
 
@@ -8,7 +8,13 @@ import { StoreService } from "../store.service";
   styleUrls: ["./toolbar.component.css"]
 })
 export class ToolbarComponent implements OnInit {
-  homeIconSource = "../../assets/home.svg";
+  /**
+   * Add CSS Class .card to the Host
+   */
+  @HostBinding("class")
+  get hostClasses(): string {
+    return "card";
+  }
 
   public projectTitle;
 
@@ -16,14 +22,10 @@ export class ToolbarComponent implements OnInit {
     @Inject(Router) private router: Router,
     @Inject(StoreService) private store: StoreService
   ) {
-    this.store.toolbar$.subscribe(title => (this.projectTitle = title));
+    /** Commented as it throws errors.
+     * this.store.toolbar$.subscribe(title => (this.projectTitle = title));
+     */
   }
 
   ngOnInit() {}
-
-  navigateHome() {
-    this.router.navigate(["home"]);
-  }
 }
-
-// add two properties set to something static
