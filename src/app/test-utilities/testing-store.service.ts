@@ -35,7 +35,7 @@ export class TestingStoreService {
     setTimeout(() => {
       this.user.next({
         status: { loggedIn: true },
-        userInformation: { userName, userEmail, userImageURL: "", userId: 1234 }
+        userInformation: { userName, userEmail, userImageUrl: "", userId: 1234 }
       });
     });
   }

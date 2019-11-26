@@ -27,20 +27,20 @@ describe("TaskListItemTeam Component", () => {
         userId: 13,
         userName: "Iko",
         userEmail: "caretaker3000@gmail.com",
-        userImageURL: "../assets/user_avatar.png"
+        userImageUrl: "../assets/user_avatar.png"
       },
       taskTeam: [
         {
           userId: 13,
           userName: "Iko",
           userEmail: "caretaker3000@gmail.com",
-          userImageURL: "../assets/user_avatar.png"
+          userImageUrl: "../assets/user_avatar.png"
         },
         {
           userId: 13,
           userName: "Iko",
           userEmail: "caretaker3000@gmail.com",
-          userImageURL: "../assets/user_avatar.png"
+          userImageUrl: "../assets/user_avatar.png"
         }
       ],
       menuSection: "main"

@@ -36,7 +36,7 @@ export class TaskComponent implements OnInit {
         userId: 2,
         userName: "Mariana",
         userEmail: "BringMarianaBananaToSchool@gmail.com",
-        userImageURL: "../assets/user_avatar.png"
+        userImageUrl: "../assets/user_avatar.png"
       }
     });
     this.store.user$.subscribe(user => (this.userState = user));

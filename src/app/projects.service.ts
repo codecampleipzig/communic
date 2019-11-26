@@ -12,10 +12,7 @@ export class ProjectsService {
 
   retrieveYourProjects(userId: number): Promise<Project[]> {
     return axios.get(`${environment.api_url}/myprojects/1`).then(response => {
-      return response.data.projects.map(project => ({
-        ...project,
-        projectImageURL: project.projectImageUrl
-      }));
+      return response.data.projects;
     });
   }
 
@@ -23,10 +20,7 @@ export class ProjectsService {
     return axios
       .get(`${environment.api_url}/exploreprojects/1`)
       .then(response => {
-        return response.data.projects.map(project => ({
-          ...project,
-          projectImageURL: project.projectImageUrl
-        }));
+        return response.data.projects;
       });
   }
 }
