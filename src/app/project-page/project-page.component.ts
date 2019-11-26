@@ -15,7 +15,7 @@ export class ProjectPageComponent implements OnInit {
     userId: 13,
     userName: "Iko",
     userEmail: "caretaker3000@gmail.com",
-    userImageURL: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png"
   };
 
   constructor(
