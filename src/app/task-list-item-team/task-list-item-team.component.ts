@@ -10,7 +10,7 @@ export class TaskListItemTeamComponent implements OnInit {
   @Input() task: Task;
 
   /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
-  private userjoined = false;
+  userjoined = false;
 
   constructor() {}
 
@@ -21,13 +21,13 @@ export class TaskListItemTeamComponent implements OnInit {
    * - [ ] Check wheter User has already joined currentProject.userIDs
    * - [ ] Add current User to task.userIDs
    */
-  private joinTask(): void {
+  joinTask(): void {
     /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
     this.userjoined = true;
     console.log("User joined");
   }
 
-  private leaveTask(): void {
+  leaveTask(): void {
     /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
     this.userjoined = false;
     console.log("User left");
