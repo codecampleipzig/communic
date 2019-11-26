@@ -1,12 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
   selector: "app-searchtool",
   templateUrl: "./searchtool.component.html",
   styleUrls: ["./searchtool.component.css"],
 })
-export class SearchtoolComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+export class SearchtoolComponent {
+  active = false;
 }
