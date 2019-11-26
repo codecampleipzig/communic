@@ -24,9 +24,11 @@ export class TeamCardComponent implements OnInit {
      * - [ ] check if user is already part of the team
      */
     this.team = this.project.projectTeam;
-    // filter if team contains current user and set already joined to true if so
-    // make this better with the type conversion
-    this.alreadyJoined = !!this.team.filter(() => this.currentUser);
+    // Filter if team contains current user and set already joined to true if so
+    if (this.team && this.team != []) {
+      this.alreadyJoined =
+        this.team.filter(() => this.currentUser) != [] ? true : false;
+    }
   }
 
   /**
