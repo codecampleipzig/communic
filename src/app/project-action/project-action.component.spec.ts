@@ -7,7 +7,7 @@ describe("ProjectActionComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectActionComponent]
+      declarations: [ProjectActionComponent],
     }).compileComponents();
   }));
 
@@ -33,9 +33,7 @@ describe("ProjectActionComponent", () => {
   it("should have correct project name", () => {
     if (component.projectName) {
       const htmlElement: HTMLElement = fixture.nativeElement;
-      expect(htmlElement.querySelector("#projectName").textContent).toEqual(
-        component.projectName
-      );
+      expect(htmlElement.querySelector("#projectName").textContent).toEqual(component.projectName);
     }
   });
 
@@ -51,9 +49,7 @@ describe("ProjectActionComponent", () => {
   it("should have create project button", () => {
     if (!component.projectName) {
       const htmlElement: HTMLElement = fixture.nativeElement;
-      expect(
-        htmlElement.querySelector("#startProjectButton").textContent
-      ).toEqual("Start a new project");
+      expect(htmlElement.querySelector("#startProjectButton").textContent).toEqual("Start a new project");
     }
   });
 

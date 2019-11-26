@@ -7,7 +7,7 @@ import { ProjectCategoryEnum } from "./../datatypes/enums/ProjectCategoryEnum";
 @Component({
   selector: "app-project-list",
   templateUrl: "./project-list.component.html",
-  styleUrls: ["./project-list.component.css"]
+  styleUrls: ["./project-list.component.css"],
 })
 export class ProjectListComponent implements OnInit {
   @Input() title: ProjectCategoryEnum;

@@ -3,7 +3,7 @@ import { Project } from "./datatypes/Project";
 import * as Mock from "./mockdata";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ProjectsService {
   constructor() {}
@@ -15,7 +15,7 @@ export class ProjectsService {
       // Logic for filtering yourProjects:
       // Assumption: When the user creates a project, they are automatically a member in it (projects.authorID is not checked)
       const yourProjects = Mock.ExposeForTesting.projects.filter(project =>
-        project.projectTeam.some(user => user.userId == userId)
+        project.projectTeam.some(user => user.userId == userId),
       );
       resolve(yourProjects);
       reject([]);
@@ -27,7 +27,7 @@ export class ProjectsService {
     // change this to axios.get('/exploreprojects/:userId')
     return new Promise<any>((resolve, reject) => {
       const exploreProjects = Mock.ExposeForTesting.projects.filter(
-        project => !project.projectTeam.some(user => user.userId == userId)
+        project => !project.projectTeam.some(user => user.userId == userId),
       );
       resolve(exploreProjects);
       reject([]);

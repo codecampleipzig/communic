@@ -19,7 +19,7 @@ export class TestingStoreService {
   constructor() {
     this.user = new BehaviorSubject<UserState>({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
     this.user$ = this.user.asObservable();
 
@@ -35,7 +35,7 @@ export class TestingStoreService {
     setTimeout(() => {
       this.user.next({
         status: { loggedIn: true },
-        userInformation: { userName, userEmail, userImageURL: "", userId: 1234 }
+        userInformation: { userName, userEmail, userImageURL: "", userId: 1234 },
       });
     });
   }
@@ -44,7 +44,7 @@ export class TestingStoreService {
     // Mutation
     this.user.next({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
   }
 
@@ -58,10 +58,8 @@ export class TestingStoreService {
 
     this.yourProjects.next(
       Mock.projects.filter(project =>
-        project.projectTeam.some(
-          user => user.userId == currentUserState.userInformation.userId
-        )
-      )
+        project.projectTeam.some(user => user.userId == currentUserState.userInformation.userId),
+      ),
     );
   }
 

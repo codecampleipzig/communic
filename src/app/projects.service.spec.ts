@@ -22,15 +22,10 @@ describe("ProjectsService", () => {
         projectGoal:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
         projectCreator: Mock.users[0],
-        projectTeam: [
-          Mock.users[0],
-          Mock.users[1],
-          Mock.users[2],
-          Mock.users[3]
-        ],
+        projectTeam: [Mock.users[0], Mock.users[1], Mock.users[2], Mock.users[3]],
         projectImageURL: "./../assets/project-default.png",
         projectTasks: [],
-        projectStatus: "open"
+        projectStatus: "open",
       },
       {
         projectId: 3,
@@ -40,16 +35,11 @@ describe("ProjectsService", () => {
         projectGoal:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
         projectCreator: Mock.users[1],
-        projectTeam: [
-          Mock.users[1],
-          Mock.users[2],
-          Mock.users[3],
-          Mock.users[4]
-        ],
+        projectTeam: [Mock.users[1], Mock.users[2], Mock.users[3], Mock.users[4]],
         projectImageURL: "./../assets/project-default.png",
         projectTasks: [],
-        projectStatus: "open"
-      }
+        projectStatus: "open",
+      },
     ];
 
     const notExpected: Project = {
@@ -63,7 +53,7 @@ describe("ProjectsService", () => {
       projectTeam: [Mock.users[4], Mock.users[5], Mock.users[6]],
       projectImageURL: "./../assets/project-default.png",
       projectTasks: [],
-      projectStatus: "open"
+      projectStatus: "open",
     };
 
     Mock.ExposeForTesting.projects = [];
@@ -88,17 +78,11 @@ describe("ProjectsService", () => {
         projectGoal:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
         projectCreator: Mock.users[1],
-        projectTeam: [
-          Mock.users[1],
-          Mock.users[2],
-          Mock.users[3],
-          Mock.users[4],
-          Mock.users[5]
-        ],
+        projectTeam: [Mock.users[1], Mock.users[2], Mock.users[3], Mock.users[4], Mock.users[5]],
         projectImageURL: "./../assets/project-default.png",
         projectTasks: [],
-        projectStatus: "open"
-      }
+        projectStatus: "open",
+      },
     ];
 
     const notExpected: Project[] = [
@@ -113,7 +97,7 @@ describe("ProjectsService", () => {
         projectTeam: [Mock.users[2], Mock.users[3], Mock.users[4]],
         projectImageURL: "./../assets/project-default.png",
         projectStatus: "open",
-        projectTasks: []
+        projectTasks: [],
       },
       {
         projectId: 3,
@@ -123,16 +107,11 @@ describe("ProjectsService", () => {
         projectGoal:
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
         projectCreator: Mock.users[3],
-        projectTeam: [
-          Mock.users[2],
-          Mock.users[4],
-          Mock.users[5],
-          Mock.users[6]
-        ],
+        projectTeam: [Mock.users[2], Mock.users[4], Mock.users[5], Mock.users[6]],
         projectImageURL: "./../assets/project-default.png",
         projectTasks: [],
-        projectStatus: "open"
-      }
+        projectStatus: "open",
+      },
     ];
 
     Mock.ExposeForTesting.projects = [];

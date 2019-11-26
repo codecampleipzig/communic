@@ -10,11 +10,7 @@ xdescribe("TaskListComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TaskListComponent,
-        TaskComponent,
-        TaskListItemTeamComponent
-      ]
+      declarations: [TaskListComponent, TaskComponent, TaskListItemTeamComponent],
     }).compileComponents();
   }));
 

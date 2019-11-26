@@ -4,7 +4,7 @@ import { RouterModule, Routes } from "@angular/router";
 @Component({
   selector: "app-project-action",
   templateUrl: "./project-action.component.html",
-  styleUrls: ["./project-action.component.css"]
+  styleUrls: ["./project-action.component.css"],
 })
 export class ProjectActionComponent implements OnInit {
   projectName = "";

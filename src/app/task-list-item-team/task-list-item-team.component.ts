@@ -4,7 +4,7 @@ import { Task } from "../datatypes/Task";
 @Component({
   selector: "app-task-list-item-team",
   templateUrl: "./task-list-item-team.component.html",
-  styleUrls: ["./task-list-item-team.component.css"]
+  styleUrls: ["./task-list-item-team.component.css"],
 })
 export class TaskListItemTeamComponent implements OnInit {
   @Input() task: Task;

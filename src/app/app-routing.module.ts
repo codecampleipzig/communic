@@ -9,11 +9,11 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "", redirectTo: "register", pathMatch: "full" },
   { path: "register", component: RegisterCardComponent },
-  { path: "login", component: RegisterCardComponent }
+  { path: "login", component: RegisterCardComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "top" })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

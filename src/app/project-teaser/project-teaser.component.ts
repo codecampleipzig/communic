@@ -4,7 +4,7 @@ import { Project } from "../datatypes/Project";
 @Component({
   selector: "app-project-teaser",
   templateUrl: "./project-teaser.component.html",
-  styleUrls: ["./project-teaser.component.css"]
+  styleUrls: ["./project-teaser.component.css"],
 })
 export class ProjectTeaserComponent implements OnInit {
   /**

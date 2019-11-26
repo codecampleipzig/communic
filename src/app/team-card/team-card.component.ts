@@ -5,7 +5,7 @@ import { Project } from "../datatypes/Project";
 @Component({
   selector: "app-team-card",
   templateUrl: "./team-card.component.html",
-  styleUrls: ["./team-card.component.css"]
+  styleUrls: ["./team-card.component.css"],
 })
 export class TeamCardComponent implements OnInit {
   /**

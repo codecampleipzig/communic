@@ -16,7 +16,7 @@ import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item
 
 @Component({
   selector: "app-toolbar",
-  template: ""
+  template: "",
 })
 class ToolbarTestComponent {}
 
@@ -35,7 +35,7 @@ describe("ProjectPageComponent", () => {
         TeamMemberComponent,
         TaskComponent,
         ToolbarTestComponent,
-        TaskListItemTeamComponent
+        TaskListItemTeamComponent,
       ],
       providers: [
         StoreService,
@@ -43,16 +43,16 @@ describe("ProjectPageComponent", () => {
           provide: Router,
           useClass: class {
             navigate() {}
-          }
+          },
         },
         AuthService,
         {
           provide: ActivatedRoute,
           useClass: class {
             params = new BehaviorSubject<any>({ id: 1 }).asObservable();
-          }
-        }
-      ]
+          },
+        },
+      ],
     }).compileComponents();
   }));
 

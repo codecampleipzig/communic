@@ -11,10 +11,10 @@ describe("StoreService", () => {
           provide: Router,
           useClass: class {
             navigate() {}
-          }
-        }
-      ]
-    })
+          },
+        },
+      ],
+    }),
   );
 
   it("should be created", () => {

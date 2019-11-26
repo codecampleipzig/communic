@@ -10,11 +10,7 @@ xdescribe("TeamCardComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TeamCardComponent,
-        TeamMemberComponent,
-        ProjectPageComponent
-      ]
+      declarations: [TeamCardComponent, TeamMemberComponent, ProjectPageComponent],
     }).compileComponents();
   }));
 
@@ -27,32 +23,32 @@ xdescribe("TeamCardComponent", () => {
         userId: 1,
         userName: "Mautzi",
         userEmail: "MolleMorallo@gmail.com",
-        userImageURL: "../assets/user_avatar.png"
+        userImageURL: "../assets/user_avatar.png",
       },
       {
         userId: 2,
         userName: "Mariana",
         userEmail: "BringMarianaBananaToSchool@gmail.com",
-        userImageURL: "../assets/user_avatar.png"
+        userImageURL: "../assets/user_avatar.png",
       },
       {
         userId: 3,
         userName: "Lena",
         userEmail: "lenintheempress@gmail.com",
-        userImageURL: "../assets/user_avatar.png"
+        userImageURL: "../assets/user_avatar.png",
       },
       {
         userId: 4,
         userName: "Björn",
         userEmail: "thPObutNotTheRiver@gmail.com",
-        userImageURL: "../assets/user_avatar.png"
+        userImageURL: "../assets/user_avatar.png",
       },
       {
         userId: 13,
         userName: "Iko",
         userEmail: "caretaker3000@gmail.com",
-        userImageURL: "../assets/user_avatar.png"
-      }
+        userImageURL: "../assets/user_avatar.png",
+      },
     ];
 
     fixture.detectChanges();
