@@ -23,7 +23,7 @@ describe("Task Component", () => {
                 userId: 13,
                 userName: "Iko",
                 userEmail: "caretaker3000@gmail.com",
-                userImageURL: "../assets/user_avatar.png"
+                userImageUrl: "../assets/user_avatar.png"
               }
             });
             user$ = this.user.asObservable();
@@ -60,20 +60,20 @@ describe("Task Component", () => {
         userId: 13,
         userName: "Iko",
         userEmail: "caretaker3000@gmail.com",
-        userImageURL: "../assets/user_avatar.png"
+        userImageUrl: "../assets/user_avatar.png"
       },
       taskTeam: [
         {
           userId: 2,
           userName: "Iko",
           userEmail: "caretaker3000@gmail.com",
-          userImageURL: "../assets/user_avatar.png"
+          userImageUrl: "../assets/user_avatar.png"
         },
         {
           userId: 14,
           userName: "Iko",
           userEmail: "caretaker3000@gmail.com",
-          userImageURL: "../assets/user_avatar.png"
+          userImageUrl: "../assets/user_avatar.png"
         }
       ],
       menuSection: "main"
