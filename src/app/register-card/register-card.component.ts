@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, Inject, HostBinding, ViewEncapsulation } from "@angular/core";
+import { Component, OnInit, NgModule, Inject, HostBinding } from "@angular/core";
 import {
   FormControl,
   ReactiveFormsModule,
@@ -6,7 +6,6 @@ import {
   FormGroup
 } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Route } from '@angular/compiler/src/core';
 
 @NgModule({
   imports: [ReactiveFormsModule]

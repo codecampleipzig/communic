@@ -84,17 +84,18 @@
 
    /**
     * CSS Interactions if task is .joined and ment to be undone.
+    *
+    * :host(.joined.status-done) .checkbox:hover,
+    * :host(.joined.status-done) .checkbox:focus {
+    *    color: var(--fontLightGrey);
+    * }
+    * 
+    * :host(.joined.status-done) .checkbox:hover i {
+    *    transform: translate3d(0, 0, 0);
+    *    font-size: .9em;
+    *    opacity: .5;
+    * } 
     */
-   :host(.joined.status-done) .checkbox:hover,
-   :host(.joined.status-done) .checkbox:focus {
-      color: var(--fontLightGrey);
-   }
-
-   :host(.joined.status-done) .checkbox:hover i {
-      transform: translate3d(0, 0, 0);
-      font-size: .9em;
-      opacity: .5;
-   }
 
    :host(.joined.status-done) .checkbox:active {
       border-color: var(--successGreen);
