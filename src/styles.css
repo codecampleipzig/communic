@@ -23,10 +23,16 @@
    --biggerShadow: 0px 4px 30px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+/**
+ * Document & Body
+ */
+
 html, body {
    font-size: 14px;
 }
 
+/* Add Transition on everything */
 * {
    transition: 
       width .4s,
@@ -48,8 +54,9 @@ body {
    margin: 0;
 }
 
+
 /**
- * Text & Headlines
+ * Text, Headlines, Plain HTML Elements
  */
 
 h2 {
@@ -90,46 +97,12 @@ small,
    font-size: .9em;
 }
 
-/**
- * Utilities
- */
 
-.unstyled-list {
-   list-style: none;
-   margin: 0;
-   padding: 0;
-}
-
-.unstyled-list>li {
-   margin:0;
-   padding:0;
-}
-
-.display-flex {
-   display: flex;
-   flex-flow: wrap;
-   align-items: center;
-}
-
-.text-center {
-   text-align: center;
-}
-
-/* Icon in the top right of Cards (e.g. taskDelete) */
-.top-right-icon {
-   position: absolute;
-   top: 1em;
-   right: 1em;
-   cursor: pointer;
-   color: var(--iconColor);
-}
-
-   
 /**
  * Buttons & Forms
  */
 
-/* Reset Buttons */
+/* Reset Button Styles */
 button {
    background: transparent;
    cursor: pointer;
@@ -139,6 +112,7 @@ button {
    font-size: 1em;
 }
 
+/* Fundamentals for Buttons, Input & Textareas */
 .button,
 input,
 textarea {
@@ -148,7 +122,6 @@ textarea {
    box-sizing: border-box;
    font-family: inherit;
 }
-
 
 .button {
    cursor: pointer;
@@ -169,20 +142,15 @@ textarea {
    text-decoration: none;
 }
 
-/** 
- * Margin to the right for every Icon inside a button
- * - [ ] Maybe the Icon is on the right sometimes?
- */
+/* Margin to the right for every Icon inside a button. Caption needs to be placed in a span-Element then! */
 .button i:not(:last-child) {
    margin-right: .5em;
 }
 
-/** 
- * Hide the caption and reset margin right for the icon
- */
+/* Hide the caption and reset margin right for the icon. Caption needs to be in a span-Element */
 @media (max-width: 480px) {
    .caption-mobile-hidden i {
-      margin-right: 0;
+      margin-right: 0 !important;
    }
    .caption-mobile-hidden span {
       display: none;
@@ -219,6 +187,7 @@ textarea {
    padding: .9em 1.5em;
 }
 
+/* Change Fontcolor if theres no value yet. */
 input[type="text"]:not(:focus):placeholder-shown,
 input[type="email"]:not(:focus):placeholder-shown,
 input[type="password"]:not(:focus):placeholder-shown,
@@ -226,16 +195,79 @@ textarea:not(:focus):placeholder-shown {
    color: var(--borderGrey);
 }
 
+/* Place form fields inside a label-element for spacing */
 label {
    display:block;
    margin-bottom: 1em;
 }
 
+/* Error Messages next to input & textarea */ 
+.form-rule {
+   color: var(--warningRed);
+   text-align: start;
+   display: block;
+}
+
+
+/**
+ * Utilities
+ */
+
+.unstyled-list {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+.unstyled-list>li {
+   margin:0;
+   padding:0;
+}
+
+/* Make a fast flex-row with standard-behaviour `align-items: center` */
+.display-flex {
+   display: flex;
+   flex-flow: wrap;
+   align-items: center;
+}
+
+.text-center {
+   text-align: center;
+}
+
+/* absolute positioned icon in the top right of .card. Should be a button Element with an i.fa-icon Element inside. Make sure the icon won't overlap content! */
+.top-right-icon {
+   position: absolute;
+   top: 1em;
+   right: 1em;
+   cursor: pointer;
+   color: var(--iconColor);
+}
+
+.top-right-icon:hover {
+   color: var(--warningRed);
+}
 
 /**
  * Modules
  */
 
+/* Position Content in the middle of the page with a maximum width */
+.container {
+   position: relative;
+   max-width: 1100px;
+   margin: 1em auto 0;
+   display: block;
+   width: calc(100% - 2em); /* Space around the card */
+}
+
+@media (min-height: 650px) and (min-width: 480px)  {
+   .container {
+      margin-top: 3em;
+   }
+}
+
+/* Adds background for different content sections. Usually inside or together with a .container */
 .card {
    position: relative;
    background: #FFFFFF;
@@ -253,6 +285,13 @@ label {
    }
 }
 
+@media (min-width: 500px) {
+   .card {
+      padding: 2em 3em; /* Increase space around content */
+      width: calc(100% - 4em);
+   }
+}
+
 /* Overrides for .card in the .cardList (e.g. Projects Overview) */
 .card-list > .card {
    width: 100%;
@@ -265,12 +304,6 @@ label {
 }
 
 @media (min-width: 500px) {
-  
-   .card {
-      padding: 2em 3em; /* Increase space around content */
-      width: calc(100% - 4em);
-   }
-
    .card-list > .card {
       padding: 1.5em;
    }
@@ -287,21 +320,6 @@ label {
    margin: 0 0 1em 0;
    max-width: 100%;
    width: 100%;
-}
-
-/* Wrapper for content */
-.container {
-   position: relative;
-   max-width: 1100px;
-   margin: 1em auto 0;
-   display: block;
-   width: calc(100% - 2em); /* Space around the card */
-}
-
-@media (min-height: 650px) and (min-width: 480px)  {
-   .container {
-      margin-top: 3em;
-   }
 }
 
 /**
@@ -340,14 +358,3 @@ label {
    top: 50%;
    transform: translateY(-50%);
 }
-
-/* Reset .top-right-icon if it is a button */
-button.top-right-icon {
-   background:transparent;
-   border: 0 none;
-   font-size: 1em;
-}
-
-   .top-right-icon:hover {
-      color: var(--warningRed);
-   }
