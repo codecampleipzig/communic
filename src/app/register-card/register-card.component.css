@@ -2,10 +2,15 @@
     display: flex;
     height: 100vh;
     box-sizing: border-box;
+    position: static;
 }
 
 :host > * {
     margin: auto;
+}
+
+.background {
+    position: static;
 }
 
 .background::after {

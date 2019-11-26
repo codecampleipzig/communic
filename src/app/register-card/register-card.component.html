@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <button class="button outlined">Upload Image</button>
+    <button class="button outlined" *ngIf="authType == 'register'">Upload Image</button>
 
     <label>
         <input type="text" placeholder="Name" formControlName="name" required *ngIf="authType == 'register'">
