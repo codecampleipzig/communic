@@ -19,6 +19,8 @@ import { ProjectCardComponent } from "./project-card/project-card.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { RegisterCardComponent } from "./register-card/register-card.component";
 import { RouterModule } from "@angular/router";
+import { SearchtoolComponent } from "./searchtool/searchtool.component";
+import { IconComponent } from "./icon/icon.component";
 
 @NgModule({
   declarations: [
@@ -37,10 +39,12 @@ import { RouterModule } from "@angular/router";
     HomeComponent,
     ProjectListComponent,
     ProjectCardComponent,
-    RegisterCardComponent
+    RegisterCardComponent,
+    SearchtoolComponent,
+    IconComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

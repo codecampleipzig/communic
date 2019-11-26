@@ -37,6 +37,7 @@
     "@angular/router": "~8.2.0",
     "@fortawesome/fontawesome-free": "^5.11.2",
     "express": "^4.17.1",
+    "normalize.css": "^8.0.1",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

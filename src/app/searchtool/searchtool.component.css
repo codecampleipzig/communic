@@ -1,0 +1,10 @@
+input {
+    border: none;
+    border-bottom: 1px var(--borderGrey) solid;
+}
+
+.columns {
+    display: grid;
+    grid-gap: .5em;
+    grid-auto-flow: column;
+}

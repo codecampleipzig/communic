@@ -48,7 +48,6 @@
 }
 
 .registerCard h2 {
-    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     color: #655AF3;
     text-align: center;
@@ -60,7 +59,6 @@
 
 .registerCard h3{
     display: flex;
-    font-family: 'Montserrat', sans-serif; 
     text-align: center;
     justify-content: center;
     margin-top: 0px;
@@ -128,7 +126,6 @@
     box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
     margin: 0 0 10px 0;
     line-height: 2rem;
-    font-family: 'Montserrat', sans-serif;
     width: 100%;
     box-sizing: border-box;
     padding: 0.3em 2em; 
@@ -138,7 +135,6 @@
 button {
     margin-top: 10px;
     line-height: 2rem;
-    font-family: 'Montserrat', sans-serif;
     background-color: #655AF3;
     border-radius: 5px;
     border:1px solid #655af3;
@@ -163,7 +159,6 @@ input.ng-untouched {
 }
 
 .formrule{
-    font-family: 'Montserrat', sans-serif;
     font-size: 0.8em;
     font-weight: light;
     color: #a94442;

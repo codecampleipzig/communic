@@ -14,11 +14,11 @@ import * as Mock from "./mockdata";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
-import { ProjectService } from './project.service';
+import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class StoreService {
   // Internal State
@@ -37,11 +37,11 @@ export class StoreService {
     @Inject(Router) private router: Router,
     @Inject(AuthService) private authService: AuthService,
     @Inject(ProjectsService) private projectsService: ProjectsService,
-    @Inject(ProjectService) private projectService: ProjectService
+    @Inject(ProjectService) private projectService: ProjectService,
   ) {
     this.user = new BehaviorSubject<UserState>({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
     this.user$ = this.user.asObservable();
 
@@ -65,7 +65,7 @@ export class StoreService {
       // Put value into observable
       this.user.next({
         status: { loggedIn: true },
-        userInformation: user
+        userInformation: user,
       });
 
       // Navigate to home page
@@ -77,7 +77,7 @@ export class StoreService {
     // Mutation
     this.user.next({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
     // Navigate to register page
     this.router.navigate(["register"]);
@@ -148,12 +148,9 @@ export class StoreService {
 
   /**
    * resolves GET request and passes newTasks via newProject into project observable.
-   * @param projectId 
-   * @param taskId 
-   * @param status 
    */
   updateTaskStatus(projectId: number, taskId: number, status: string) {
-    const promise = this.projectService.updateTaskStatus(taskId,status);
+    const promise = this.projectService.updateTaskStatus(taskId, status);
 
     promise.then(newTasks => {
       const newState = [...Mock.projects];
