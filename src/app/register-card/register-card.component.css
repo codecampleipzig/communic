@@ -63,7 +63,7 @@
     font-size: 3rem;
 }
 
-.avatar ~ .button {
+.avatar + .button {
     margin-bottom: 1.5em;
 }
 
