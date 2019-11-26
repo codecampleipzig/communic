@@ -1,0 +1,4 @@
+diff a/src/app/searchtool/searchtool.component.spec.ts b/src/app/searchtool/searchtool.component.spec.ts	(rejected hunks)
+@@ -11 +11 @@ describe("SearchtoolComponent", () => {
+-      declarations: [SearchtoolComponent]
++      declarations: [SearchtoolComponent],
