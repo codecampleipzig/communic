@@ -1,27 +1,17 @@
-<div class="projectCard">
-
-    <a class="picture-wrapper">   
-        <div (click)="openProject(project.projectId)" class="projectPicture">
-            <img [src]="project.projectImageUrl">
- 
-        </div>
-    </a>
-
-    <div class="projectName">
-        {{project.projectTitle}}
-    </div>
-
-    <div class="projectDate">
-        {{project.projectDate}}
-    </div>
-
-    <div class="projectDescription">
-        {{project.projectDescription}}
-    </div>
-    <div>
-    <a class="readMore" (click)="openProject(project.projectId)">
-        <span>Read More</span>
-    </a>
-    </div>
-
+<div class="project-picture">
+    <img [src]="project.projectImageUrl">
 </div>
+
+<h3 class="project-title">
+    {{project.projectTitle}}
+</h3>
+
+<div class="project-date" *ngIf="project.projectDate">
+    {{project.projectDate}}
+</div>
+
+<p class="project-description">
+    {{project.projectDescription}}
+</p>
+
+<button class="button outlined round">Read More <i class="fas fa-angle-right"></i></button>

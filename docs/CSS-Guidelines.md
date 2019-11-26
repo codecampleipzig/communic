@@ -24,7 +24,7 @@ __Most important__: please try to stick to that, and reach out to LSD Team if yo
 Please read the following rules for writing CSS. Feel free to ask if something is unclear.
 
 ### .kebab-case
-Use kebab-case styling for classNames. Make sure your classNames are easy understandable!
+Use kebab-case styling for class-names. Make sure your class-names are easy understandable!
 
 ---
 

@@ -1,11 +1,11 @@
-<app-toolbar></app-toolbar>
-<div class="card card-full">
-  <app-project-teaser [project]="project"></app-project-teaser>
+<app-toolbar></app-toolbar>    
+<div class="card container">
+    <app-project-teaser [project]="project"></app-project-teaser>
 </div>
-<div class="card card-full">
-  <app-team-card [project]="project" [newUser]="'userName'"></app-team-card>
+<div class="card container">
+    <app-team-card [project]="project" [newUser]="'userName'"></app-team-card>
 </div>
-<div class="card card-full">
-  <h2>Starter</h2>
-  <app-task-list [project]="project"></app-task-list>
+<div class="card container">
+    <h2>Starter</h2>
+    <app-task-list [project]="project"></app-task-list>
 </div>
