@@ -2,9 +2,6 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { TaskComponent } from "./task.component";
 import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item-team.component";
 import { StoreService } from "../store.service";
-import { Router, ActivatedRoute } from "@angular/router";
-import { BehaviorSubject } from "rxjs";
-import { UserState } from "../datatypes/User";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
 
 describe("Task Component", () => {
@@ -18,18 +15,6 @@ describe("Task Component", () => {
         {
           provide: StoreService,
           useClass: TestingStoreService
-        },
-        {
-          provide: Router,
-          useClass: class {
-            navigate() {}
-          }
-        },
-        {
-          provide: ActivatedRoute,
-          useClass: class {
-            params = new BehaviorSubject<any>({ id: 1 }).asObservable();
-          }
         }
       ]
     }).compileComponents();

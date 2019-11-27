@@ -12,6 +12,7 @@ describe("TestingStoreService", () => {
     expect(storeService.user$).toBeTruthy();
     expect(storeService.yourProjects$).toBeTruthy();
     expect(storeService.exploreProjects$).toBeTruthy();
+    expect(storeService.project$).toBeTruthy();
 
     storeService.retrieveYourProjects();
     storeService.retrieveExploreProjects();
