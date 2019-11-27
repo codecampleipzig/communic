@@ -95,16 +95,40 @@ export class TestingStoreService {
   }
 
   /**
-   * Get UserList
-   * @returns a list of all the User
+   * triggers projectService.updateTaskStatus and resolves its GET request to pass newTasks via newProject into project observable.
    */
-  retrieveUserList(): User[] {
-    return Mock.users;
+  updateTaskStatus(projectId: number, taskId: number, status: string) {
+    const newTasks = [...Mock.tasks];
+    newTasks.find(task => task.taskId == taskId).taskStatus = status;
+
+    const newState = [...Mock.projects];
+    const newProject = newState.find(project => project.projectId == projectId);
+    newProject.projectTasks = newTasks;
+
+    // Put value into observable
+    this.project.next(newProject);
   }
+
   /**
-   * Get User by Id
+   * triggers projectService.joinProjectTeam and resolves its GET request to pass newProject into project observable.
    */
-  retrieveUser(userId: number): User {
-    return Mock.users.find(user => user.userId == userId);
+  joinProjectTeam(projectId: number, userId: number) {
+    const newState = [...Mock.projects];
+    const project = newState.find(p => p.projectId == projectId);
+    const user = Mock.users.find(u => u.userId == userId);
+    project.projectTeam.push(user);
+
+    this.project.next(project);
+  }
+
+  /**
+   * triggers projectService.joinProjectTeam and resolves its GET request to pass newProject into project observable.
+   */
+  leaveProjectTeam(projectId: number, userId: number) {
+    const newState = [...Mock.projects];
+    const project = newState.find(p => p.projectId == projectId);
+    const userIndex = project.projectTeam.findIndex(u => u.userId == userId);
+    project.projectTeam.splice(userIndex, 1);
+    this.project.next(project);
   }
 }

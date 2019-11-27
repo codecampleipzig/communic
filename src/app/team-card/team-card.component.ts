@@ -53,7 +53,7 @@ export class TeamCardComponent implements OnInit {
    */
   joined(): boolean {
     return Boolean(
-      this.project.projectTeam.find(
+      this.team.find(
         team => team.userId == this.userState.userInformation.userId
       )
     );

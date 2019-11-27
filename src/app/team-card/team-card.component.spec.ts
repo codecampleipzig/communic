@@ -33,17 +33,27 @@ describe("TeamCardComponent", () => {
     expect(component).toBeTruthy();
   });
 
-  xit("should return the teamMember Array with the currentMember added at the end", () => {
-    component.join();
-    expect(component.team[component.team.length - 1]).toBe(
-      component.userState.userInformation.userId
-    );
+  it("CurrentUser should not have joined the task yet", () => {
+    // empty the team
+    component.team = [];
+    fixture.detectChanges();
+    expect(component.joined()).toBeFalsy();
   });
 
-  xit("should return the teamMember Array without the currentMember", () => {
-    component.leave();
-    expect(component.team).not.toContain(
-      component.userState.userInformation.userId
+  it("CurrentUser should not be part of the team", () => {
+    component.join();
+    const user = component.team.find(
+      t => t.userId == component.userState.userInformation.userId
     );
+
+    expect(user).toBeTruthy();
+  });
+
+  it("CurrentUser should be part of the team", () => {
+    component.leave();
+    const user = component.team.find(
+      t => t.userId == component.userState.userInformation.userId
+    );
+    expect(user).toBeFalsy();
   });
 });
