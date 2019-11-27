@@ -59,4 +59,46 @@ export class ProjectService {
       resolve(project);
     });
   }
+
+  /**
+   * Poseing POST request, returning newState of the project after user was added to taskTeam by userId.
+   * @returns new Promise
+   */
+  joinTaskTeam(
+    projectId: number,
+    taskId: number,
+    userId: number
+  ): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      const newState = [...Mock.projects];
+      const project = newState.find(p => p.projectId == projectId);
+      const user = Mock.users.find(u => u.userId == userId);
+
+      project.projectTasks.find(t => t.taskId == taskId).taskTeam.push(user);
+      resolve(project);
+    });
+  }
+
+  /**
+   * Poseing POST request, returning newState of the project after user was removed of taskTeam by userId.
+   * @returns new Promise
+   */
+  leaveTaskTeam(
+    projectId: number,
+    taskId: number,
+    userId: number
+  ): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      const newState = [...Mock.projects];
+      const project = newState.find(p => p.projectId == projectId);
+      const userIndex = project.projectTasks
+        .find(t => t.taskId == taskId)
+        .taskTeam.findIndex(u => u.userId == userId);
+
+      project.projectTasks
+        .find(t => t.taskId == taskId)
+        .taskTeam.splice(userIndex, 1);
+      resolve(project);
+    });
+  }
 }

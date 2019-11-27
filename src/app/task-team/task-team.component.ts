@@ -20,18 +20,28 @@ export class TaskTeamComponent implements OnInit {
   ngOnInit() {}
 
   /**
-   * Join Task function
-   * - [ ] Check wheter User has already joined currentProject.userIDs
-   * - [ ] Add current User to task.userIDs
+   * Function that adds the user to the ProjectTeam
    */
-  joinTask(): void {
-    /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
-    console.log("User joined");
+  join(): void {
+    if (!this.joined()) {
+      this.store.joinTaskTeam(
+        this.task.projectId,
+        this.task.taskId,
+        this.userState.userInformation.userId
+      );
+    }
   }
-
-  leaveTask(): void {
-    /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
-    console.log("User left");
+  /**
+   * Function that deletes the user from the ProjectTeam
+   */
+  leave(): void {
+    if (this.joined()) {
+      this.store.leaveTaskTeam(
+        this.task.projectId,
+        this.task.taskId,
+        this.userState.userInformation.userId
+      );
+    }
   }
 
   joined(): boolean {

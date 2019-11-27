@@ -1,11 +1,11 @@
-<button *ngIf="task.taskStatus == 'open' && !this.joined()" class="button taskTeamJoin outlined round" (click)="joinTask()">
-   <i class="fas fa-plus"></i><span>Join</span>
-</button>
-<button *ngIf="task.taskStatus == 'open' && this.joined()" class="button taskTeamJoin outlined round" (click)="leaveTask()">
-   <i class="fas fa-times"></i><span>Leave</span>
-</button>
-
 <div *ngFor="let user of task.taskTeam" class="user-image">
    <img *ngIf="user.userImageUrl" [src]="user.userImageUrl" alt="">
    <i *ngIf="!user.userImageUrl" class="fas fa-user"></i>
 </div>
+
+<button *ngIf="task.taskStatus == 'open' && !this.joined()" class="button taskTeamJoin outlined round" (click)="join()">
+   <i class="fas fa-plus"></i><span>Join</span>
+</button>
+<button *ngIf="task.taskStatus == 'open' && this.joined()" class="button taskTeamJoin outlined round" (click)="leave()">
+   <i class="fas fa-times"></i><span>Leave</span>
+</button>
