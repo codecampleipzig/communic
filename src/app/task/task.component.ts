@@ -29,16 +29,6 @@ export class TaskComponent implements OnInit {
   }
 
   constructor(@Inject(StoreService) private store: StoreService) {
-    // Current user placeholder
-    this.store.user.next({
-      status: { loggedIn: true },
-      userInformation: {
-        userId: 2,
-        userName: "Mariana",
-        userEmail: "BringMarianaBananaToSchool@gmail.com",
-        userImageUrl: "../assets/user_avatar.png"
-      }
-    });
     this.store.user$.subscribe(user => (this.userState = user));
   }
 
@@ -55,7 +45,7 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() {}
 
-  toggleStatus() {
+  toggleStatus(): void | boolean {
     const status = this.task.taskStatus;
 
     if (!this.joined() || status == "deleted") {
@@ -77,7 +67,7 @@ export class TaskComponent implements OnInit {
     }
   }
 
-  joined() {
+  joined(): boolean {
     if (
       this.task.taskTeam.find(
         taskTeam => taskTeam.userId == this.userState.userInformation.userId

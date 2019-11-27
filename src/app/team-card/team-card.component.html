@@ -14,12 +14,12 @@
    Button appears when user has not yet joined
    - [ ] still needs to have the user added to the userlist of the project (trigger the store)
 -->
-<div *ngIf="!alreadyJoined ">
-   <button class="button" (click)="join()" >Join</button>
+<div *ngIf="!joined()">
+   <button class="button" (click)="join()">Join</button>
 </div>
 <!--
    Button appears when user has joined
 -->
-<div *ngIf="alreadyJoined ">
-   <button class="button" (click)="leave()" >Leave</button>
+<div *ngIf="joined()">
+   <button class="button" (click)="leave()">Leave</button>
 </div>

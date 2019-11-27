@@ -252,21 +252,6 @@ label {
  * Modules
  */
 
-/* Position Content in the middle of the page with a maximum width */
-.container {
-   position: relative;
-   max-width: 1100px;
-   margin: 1em auto 0;
-   display: block;
-   width: calc(100% - 2em); /* Space around the card */
-}
-
-@media (min-height: 650px) and (min-width: 480px)  {
-   .container {
-      margin-top: 3em;
-   }
-}
-
 /* Adds background for different content sections. Usually inside or together with a .container */
 .card {
    position: relative;
@@ -320,6 +305,21 @@ label {
    margin: 0 0 1em 0;
    max-width: 100%;
    width: 100%;
+}
+
+/* Position Content in the middle of the page with a maximum width */
+.container {
+   position: relative;
+   max-width: 1100px;
+   margin: 1em auto 0;
+   display: block;
+   width: calc(100% - 2em); /* Space around the card */
+}
+
+@media (min-height: 650px) and (min-width: 480px)  {
+   .container {
+      margin-top: 3em;
+   }
 }
 
 /**

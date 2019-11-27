@@ -5,6 +5,7 @@ import { StoreService } from "../store.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
 import { UserState } from "../datatypes/User";
+import { TestingStoreService } from "../test-utilities/testing-store.service";
 
 describe("Task Component", () => {
   let component: TaskComponent;
@@ -16,18 +17,7 @@ describe("Task Component", () => {
       providers: [
         {
           provide: StoreService,
-          useClass: class {
-            user = new BehaviorSubject<UserState>({
-              status: { loggedIn: true },
-              userInformation: {
-                userId: 13,
-                userName: "Iko",
-                userEmail: "caretaker3000@gmail.com",
-                userImageUrl: "../assets/user_avatar.png"
-              }
-            });
-            user$ = this.user.asObservable();
-          }
+          useClass: TestingStoreService
         },
         {
           provide: Router,

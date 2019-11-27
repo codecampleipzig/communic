@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { User } from "../datatypes/User";
+import { Component, OnInit, Input, Inject } from "@angular/core";
+import { User, UserState } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
+import { StoreService } from "../store.service";
 
 @Component({
   selector: "app-team-card",
@@ -8,43 +9,56 @@ import { Project } from "../datatypes/Project";
   styleUrls: ["./team-card.component.css"]
 })
 export class TeamCardComponent implements OnInit {
+  public userState: UserState;
   /**
    * Get project's object by parent component app-project-page
    */
   @Input() public project: Project;
-  @Input() public currentUser: User;
-  public alreadyJoined = false;
+
   public team: User[];
 
-  constructor() {}
+  constructor(@Inject(StoreService) private store: StoreService) {
+    this.store.user$.subscribe(user => (this.userState = user));
+  }
 
   ngOnInit() {
-    /**
-     * Get projectTeam from project Object
-     * - [ ] check if user is already part of the team
-     */
     this.team = this.project.projectTeam;
-    // Filter if team contains current user and set already joined to true if so
-    if (this.team && this.team != []) {
-      this.alreadyJoined =
-        this.team.filter(() => this.currentUser) != [] ? true : false;
+  }
+
+  /**
+   * Function that adds the user to the ProjectTeam
+   */
+  join(): void {
+    if (!this.joined()) {
+      this.store.joinProjectTeam(
+        this.project.projectId,
+        this.userState.userInformation.userId
+      );
+    }
+  }
+  /**
+   * Function that deletes the user from the ProjectTeam
+   */
+  leave(): void {
+    if (this.joined()) {
+      this.store.leaveProjectTeam(
+        this.project.projectId,
+        this.userState.userInformation.userId
+      );
     }
   }
 
   /**
-   * Function that adds the user to the ProjecTeam
-   *  -[ ] need to comunicate with store
+   * Check if userState is part of the project
    */
-  join(): void {
-    this.alreadyJoined = true;
-    this.team.push(this.currentUser);
-  }
-  /**
-   * Function that deletes the user from the ProjecTeam
-   *  -[ ] need to comunicate with store
-   */
-  leave(): void {
-    this.alreadyJoined = false;
-    this.team.splice(this.team.length - 1, 1);
+  joined() {
+    if (
+      this.project.projectTeam.find(
+        team => team.userId == this.userState.userInformation.userId
+      )
+    ) {
+      return true;
+    }
+    return false;
   }
 }

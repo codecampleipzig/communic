@@ -8,11 +8,14 @@ import { CreateNewTaskComponent } from "../create-new-task/create-new-task.compo
 import { StoreService } from "../store.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { AuthService } from "../auth.service";
-import { Observable, BehaviorSubject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { TeamMemberComponent } from "../team-member/team-member.component";
 import { TaskComponent } from "../task/task.component";
 import { Component } from "@angular/core";
 import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item-team.component";
+import { UserState } from "../datatypes/User";
+import { Project } from "../datatypes/Project";
+import { TestingStoreService } from "../test-utilities/testing-store.service";
 
 @Component({
   selector: "app-toolbar",
@@ -38,7 +41,10 @@ describe("ProjectPageComponent", () => {
         TaskListItemTeamComponent
       ],
       providers: [
-        StoreService,
+        {
+          provide: StoreService,
+          useClass: TestingStoreService
+        },
         {
           provide: Router,
           useClass: class {

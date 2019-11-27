@@ -10,11 +10,13 @@ export class TestingStoreService {
   user: BehaviorSubject<UserState>;
   yourProjects: BehaviorSubject<Array<Project>>;
   exploreProjects: BehaviorSubject<Array<Project>>;
+  project: BehaviorSubject<Project>;
 
   // Observable
   public user$: Observable<UserState>;
   public yourProjects$: Observable<Array<Project>>;
   public exploreProjects$: Observable<Array<Project>>;
+  public project$: Observable<Project>;
 
   constructor() {
     this.user = new BehaviorSubject<UserState>({
@@ -28,6 +30,20 @@ export class TestingStoreService {
 
     this.exploreProjects = new BehaviorSubject<Array<Project>>([]);
     this.exploreProjects$ = this.exploreProjects.asObservable();
+
+    this.project = new BehaviorSubject<any>({});
+    this.project$ = this.project.asObservable();
+
+    /* Mock Current User. Replace with login Action */
+    this.user.next({
+      status: { loggedIn: true },
+      userInformation: {
+        userId: 2,
+        userName: "TestUser",
+        userEmail: "email@gmail.com",
+        userImageUrl: ""
+      }
+    });
   }
 
   // Action
@@ -72,28 +88,10 @@ export class TestingStoreService {
   }
 
   /**
-   * Get Task object by Task id
-   */
-  retrieveTask(id: number): Task {
-    return Mock.tasks.find(task => task.taskId == id);
-  }
-
-  /**
-   * Get Array of Task Objects by projectID and location
-   * @param projectID ID of the project
-   * @param location location of the Task (starter, main, desert)
-   * @returns Array of Task Objects
-   */
-  retrieveTasks(projectID: number, location: string): Task[] {
-    return Mock.tasks.filter(task => task.projectId == projectID);
-  }
-
-  /**
    * Get Project object by Project id
    */
-  retrieveProject(id: number): Project {
-    // console.log(this.projects);
-    return Mock.projects.find(project => project.projectId == id);
+  retrieveProject(id: number): void {
+    this.project.next(Mock.projects.find(p => p.projectId == id));
   }
 
   /**
