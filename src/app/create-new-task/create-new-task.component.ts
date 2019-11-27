@@ -15,7 +15,7 @@ import { Project } from "../datatypes/Project";
 @Component({
   selector: "app-create-new-task",
   templateUrl: "./create-new-task.component.html",
-  styleUrls: ["./create-new-task.component.css"]
+  styleUrls: ["./create-new-task.component.css"] 
 })
 
 
@@ -23,7 +23,7 @@ export class CreateNewTaskComponent implements OnInit {
   private formVisible: any = false;
   newTaskForm: FormGroup;
   @Input() public project: Project;
-
+  @Input() public currentUser: User;
   public tasks: Task[] = [];
 
   /**
@@ -60,29 +60,18 @@ export class CreateNewTaskComponent implements OnInit {
     }
   }
 
-  /**
-   * Mock user for use in new task - this should be imported
-   */
-  users: User[] = [
-    {
-      userId: 1, 
-      userName: "Mautzi",
-      userEmail: "MolleMorallo@gmail.com",
-      userImageUrl: "../assets/user_avatar.png"
-    }];
-
   onSubmit(value: any): void {
     const newTask: Task = 
     {
       /**
-       * Creates a newTask object of type Task using title and description from form, projectId and mock user id
+       * Creates a newTask object of type Task using title and description from form, projectId and current user
        */
       taskId: 1,
       projectId: this.project.projectId,
       taskTitle: value.title,
       taskDescription: value.description,
       taskStatus: "open",
-      taskCreator: this.users[0],
+      taskCreator: this.currentUser,
       taskTeam: [],
       menuSection: "starter"
     };
