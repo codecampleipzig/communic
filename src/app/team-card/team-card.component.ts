@@ -9,13 +9,13 @@ import { StoreService } from "../store.service";
   styleUrls: ["./team-card.component.css"]
 })
 export class TeamCardComponent implements OnInit {
-  public userState: UserState;
   /**
    * Get project's object by parent component app-project-page
    */
   @Input() public project: Project;
 
   public team: User[];
+  public userState: UserState;
 
   constructor(@Inject(StoreService) private store: StoreService) {
     this.store.user$.subscribe(user => (this.userState = user));
@@ -51,14 +51,11 @@ export class TeamCardComponent implements OnInit {
   /**
    * Check if userState is part of the project
    */
-  joined() {
-    if (
+  joined(): boolean {
+    return Boolean(
       this.project.projectTeam.find(
         team => team.userId == this.userState.userInformation.userId
       )
-    ) {
-      return true;
-    }
-    return false;
+    );
   }
 }

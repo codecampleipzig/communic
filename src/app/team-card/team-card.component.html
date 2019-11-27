@@ -10,16 +10,6 @@
       <app-team-member [user]="member"></app-team-member>
    </li>
 </ul>
-<!--
-   Button appears when user has not yet joined
-   - [ ] still needs to have the user added to the userlist of the project (trigger the store)
--->
-<div *ngIf="!joined()">
-   <button class="button" (click)="join()">Join</button>
-</div>
-<!--
-   Button appears when user has joined
--->
-<div *ngIf="joined()">
-   <button class="button" (click)="leave()">Leave</button>
-</div>
+
+<button class="button" (click)="join()" *ngIf="!joined()">Join</button>
+<button class="button" (click)="leave()" *ngIf="joined()">Leave</button>

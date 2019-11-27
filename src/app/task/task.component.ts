@@ -68,13 +68,10 @@ export class TaskComponent implements OnInit {
   }
 
   joined(): boolean {
-    if (
+    return Boolean(
       this.task.taskTeam.find(
         taskTeam => taskTeam.userId == this.userState.userInformation.userId
       )
-    ) {
-      return true;
-    }
-    return false;
+    );
   }
 }
