@@ -3,29 +3,25 @@
  */
 
 :root {
-   --primaryColor: #655AF3;
-   --primaryColorHighlight: #667ee7;
-   --warningRed: rgb(206, 26, 26);
-   --fontDarkGrey: #3A3A3A;
-   --fontMediumGrey: #7A7A7A;
-   --fontLightGrey: #AFAFAF;
-   --iconColor: #878787; /* Used for the trash Icon in the Tasklist */
-   --placeholderGrey: #F8F8F8; /* Used for placeholder Picture Backgrounds */
-   --backgroundGrey: #FCFCFC; /* Used for the TaskListIcons */
-   --borderGrey: #CECECE; /* Used for the Checkbox */
+  --primaryColor: #655af3;
+  --primaryColorHighlight: #667ee7;
+  --warningRed: rgb(206, 26, 26);
+  --fontDarkGrey: #3a3a3a;
+  --fontMediumGrey: #7a7a7a;
+  --fontLightGrey: #afafaf;
+  --iconColor: #878787; /* Used for the trash Icon in the Tasklist */
+  --placeholderGrey: #f8f8f8; /* Used for placeholder Picture Backgrounds */
+  --backgroundGrey: #fcfcfc; /* Used for the TaskListIcons */
+  --borderGrey: #cecece; /* Used for the Checkbox */
 
-   /* Dropshadows to use box-shadow: var(--smallShadow); */
-   --smallShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
-   --bigShadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
-}
-
-.small-gap-right {
-   margin-right: .5em;
+  /* Dropshadows to use box-shadow: var(--smallShadow); */
+  --smallShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+  --bigShadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
 }
 
 body {
-   font-family: 'Montserrat', sans-serif;
-   font-weight: 300;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
 }
 
 /**
@@ -33,69 +29,67 @@ body {
  */
 
 h2 {
-   color: var(--fontDarkGrey);
-   font-weight: 600;
+  color: var(--fontDarkGrey);
+  font-weight: 600;
 }
 
 h3 {
-   font-weight: 500;
+  font-weight: 500;
 }
 
 h4 {
-   margin: 0;
-   font-weight: 500;
-   font-size: 1.1rem;
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
 p {
-   line-height: 1.5;
+  line-height: 1.5;
 }
-
 
 /**
  * Utilities
  */
 
 .unstyled-list {
-   list-style: none;
-   margin: 0;
-   padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.unstyled-list>li {
-   margin:0;
-   padding:0;
+.unstyled-list > li {
+  margin: 0;
+  padding: 0;
 }
 
 .display-flex {
-   display: flex;
-   flex-flow: wrap;
-   align-items: center;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
 }
 
-   
 /**
  * Buttons
  */
 
 .button {
-   cursor: pointer;
-   font-size: .8rem;
-   background-color: var(--primaryColor);
-   border-radius: 5px;
-   color: #fff;
-   border: 0 none;
-   min-width: 130px;
-   padding: 1em;
-   transition: border .4s, background-color .4s, color .4s;
-   appearance: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  background-color: var(--primaryColor);
+  border-radius: 5px;
+  color: #fff;
+  border: 0 none;
+  min-width: 130px;
+  padding: 1em;
+  transition: border 0.4s, background-color 0.4s, color 0.4s;
+  appearance: none;
 }
 
 .button:hover,
 .button:focus {
-   background-color: var(--primaryColorHighlight);
-   color: #fff;
-   outline: 0 none;
+  background-color: var(--primaryColorHighlight);
+  color: #fff;
+  outline: 0 none;
 }
 
 /** 
@@ -103,96 +97,92 @@ p {
  * - [ ] Maybe the Icon is on the right sometimes?
  */
 .button i {
-   margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 /* Button Elements without background but rounded border */
 .button.outlined {
-   padding: .5em 1em;
-   min-width: auto;
-   border: 1px solid var(--primaryColor);
-   border-radius: 1.5em;
-   color: var(--primaryColor);
-   background-color: transparent;
+  padding: 0.5em 1em;
+  min-width: auto;
+  border: 1px solid var(--primaryColor);
+  border-radius: 1.5em;
+  color: var(--primaryColor);
+  background-color: transparent;
 }
 
 .button.outlined:hover {
-   color: #fff;
-   background-color: var(--primaryColor);
+  color: #fff;
+  background-color: var(--primaryColor);
 }
-
 
 /**
  * Modules
  */
 
 .card {
-   background: #FFFFFF;
-   box-shadow: var(--bigShadow);
-   border-radius: 10px;
-   padding: 1em 1.5em 2em; /* Space around the content of the cards */
-   margin: 3em auto 0; /* Margin to top and center with auto */
-   box-sizing: border-box; /* Calculate width with padding */
-   transition: padding .4s, margin .4s, width .4s, height .4s; /* Nice Transitions when resizing */
-   width: calc(100% - 2em); /* Space around the card */
-   max-width: 450px;
+  background: #ffffff;
+  box-shadow: var(--bigShadow);
+  border-radius: 10px;
+  padding: 1em 1.5em 2em; /* Space around the content of the cards */
+  margin: 3em auto 0; /* Margin to top and center with auto */
+  box-sizing: border-box; /* Calculate width with padding */
+  transition: padding 0.4s, margin 0.4s, width 0.4s, height 0.4s; /* Nice Transitions when resizing */
+  width: calc(100% - 2em); /* Space around the card */
+  max-width: 450px;
 }
 
 /* Add this class to .card to make the card full width */
 .card-full {
-   max-width: 1100px;
+  max-width: 1100px;
 }
 
 /* Overrides for .card in the .cardList (e.g. Projects Overview) */
 .card-list > .card {
-   width: 100%;
-   padding: 1em;
-   margin: 0;
+  width: 100%;
+  padding: 1em;
+  margin: 0;
 }
 
 @media (min-width: 800px) {
-  
-   .card {
-      padding: 2em 3em; /* Increase space around content */
-      width: calc(100% - 4em);
-   }
+  .card {
+    padding: 2em 3em; /* Increase space around content */
+    width: calc(100% - 4em);
+  }
 
-   .card-list > .card {
-      padding: 1.5em;
-   }
+  .card-list > .card {
+    padding: 1.5em;
+  }
 }
 
 /* .card in .card looks like a TaskListItem */
 .card .card {
-   background: var(--backgroundGrey);
-   box-shadow: var(--smallShadow);
-   color: var(--fontDarkGrey);
-   position: relative;
-   border-radius: 4px;
-   padding: .5em 1em;
-   margin: 0 0 1em 0;
-   max-width: 100%;
-   width: 100%;
+  background: var(--backgroundGrey);
+  box-shadow: var(--smallShadow);
+  color: var(--fontDarkGrey);
+  position: relative;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  margin: 0 0 1em 0;
+  max-width: 100%;
+  width: 100%;
 }
-
 
 /* Icon in the top right of Cards (e.g. taskDelete) */
 .top-right-icon {
-   position: absolute;
-   top: .5em;
-   right: 1em;
-   cursor: pointer;
-   color: var(--iconColor);
+  position: absolute;
+  top: 0.5em;
+  right: 1em;
+  cursor: pointer;
+  color: var(--iconColor);
 }
 
 /* Reset .top-right-icon if it is a button */
 button.top-right-icon {
-   background:transparent;
-   border: 0 none;
-   font-size: 1em;
+  background: transparent;
+  border: 0 none;
+  font-size: 1em;
 }
 
-   .top-right-icon:hover {
-      color: var(--warningRed);
-   }
-
+.top-right-icon:hover {
+  color: var(--warningRed);
+}
