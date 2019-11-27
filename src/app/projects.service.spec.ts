@@ -28,7 +28,7 @@ describe("ProjectsService", () => {
           Mock.users[2],
           Mock.users[3]
         ],
-        projectImageURL: "./../assets/project-default.png",
+        projectImageUrl: "./../assets/project-default.png",
         projectTasks: [],
         projectStatus: "open"
       },
@@ -46,7 +46,7 @@ describe("ProjectsService", () => {
           Mock.users[3],
           Mock.users[4]
         ],
-        projectImageURL: "./../assets/project-default.png",
+        projectImageUrl: "./../assets/project-default.png",
         projectTasks: [],
         projectStatus: "open"
       }
@@ -61,7 +61,7 @@ describe("ProjectsService", () => {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
       projectCreator: Mock.users[3],
       projectTeam: [Mock.users[4], Mock.users[5], Mock.users[6]],
-      projectImageURL: "./../assets/project-default.png",
+      projectImageUrl: "./../assets/project-default.png",
       projectTasks: [],
       projectStatus: "open"
     };
@@ -95,7 +95,7 @@ describe("ProjectsService", () => {
           Mock.users[4],
           Mock.users[5]
         ],
-        projectImageURL: "./../assets/project-default.png",
+        projectImageUrl: "./../assets/project-default.png",
         projectTasks: [],
         projectStatus: "open"
       }
@@ -111,7 +111,7 @@ describe("ProjectsService", () => {
           "Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum corporis aperiam, totam nemo magnam ab labore vitae natus tempora obcaecati fuga, consequatur odit autem nobis eius deserunt accusantium aspernatur. Placeat.",
         projectCreator: Mock.users[6],
         projectTeam: [Mock.users[2], Mock.users[3], Mock.users[4]],
-        projectImageURL: "./../assets/project-default.png",
+        projectImageUrl: "./../assets/project-default.png",
         projectStatus: "open",
         projectTasks: []
       },
@@ -129,7 +129,7 @@ describe("ProjectsService", () => {
           Mock.users[5],
           Mock.users[6]
         ],
-        projectImageURL: "./../assets/project-default.png",
+        projectImageUrl: "./../assets/project-default.png",
         projectTasks: [],
         projectStatus: "open"
       }

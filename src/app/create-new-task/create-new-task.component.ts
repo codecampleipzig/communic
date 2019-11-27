@@ -20,11 +20,15 @@ import { Project } from "../datatypes/Project";
 
 
 export class CreateNewTaskComponent implements OnInit {
+<<<<<<< HEAD
   private formVisible: any = false;
   newTaskForm: FormGroup;
   @Input() public project: Project;
 
   public tasks: Task[] = [];
+=======
+  formVisible: any = false;
+>>>>>>> develop
 
   /**
    * Add Task .card Class to :host Element

@@ -1,0 +1,49 @@
+<app-toolbar></app-toolbar>
+<div class="container">
+  <input
+    class="h1"
+    [(ngModel)]="projectTitle"
+    size="35"
+    type="text"
+    name="Project Title"
+  />
+</div>
+
+<form class="card container">
+  <div class="top-right-icon task-delete">
+    <i (click)="navigateHome()" class="fas fa-trash-alt"></i>
+  </div>
+  <div class="title"><h3>Give your project a heart-warming title:</h3></div>
+  <input
+    [(ngModel)]="projectTitle"
+    size="20"
+    type="text"
+    name="Project Title"
+  />
+  <div class="project-image">
+    <input type="file" id="myFileInput" accept="image/*" />
+    <button
+      class="button"
+      onclick="document.getElementById('myFileInput').click()"
+      value="Select a File"
+      (change)="preview([])"
+    >
+      Upload Image
+    </button>
+    <img [src]="imgURL" height="200" *ngIf="imgURL" />
+    <span style="color:red;" *ngIf="message">{{ message }}</span>
+  </div>
+  <div class="project-description">
+    <h3>Now, explain what it's all about:</h3>
+    <textarea
+      placeholder="This is the best project of the world because it makes sure absolutely everybody gets free fries for dinner once a week."
+      rows="4"
+    ></textarea>
+    <h3>Have you set any goals for it?</h3>
+    <textarea
+      placeholder="This is project is important for humankind because it is scientifically proven fries make people 2x happier than broccoli and spinach put together. In the long run, this project aims to achieve world peace by multiplying individual happiness through increased fries consumption."
+      rows="8"
+    ></textarea>
+    <button class="button">GET STARTED</button>
+  </div>
+</form>

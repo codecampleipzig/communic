@@ -1,68 +1,24 @@
-.projectCard{
-    position: center;
-    display: flex;
-    flex-direction: column;             /* is this the way to show several cards? */
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    padding: 22px;
-    top: 0.5em;
-    left: 0.5em;
-    width: auto;
-    height: auto;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    transition: box-shadow 500ms;
+:host {
+   cursor: pointer;
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   align-items: flex-start;
 }
 
-.projectCard:hover {
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  }
+.project-picture {
+   text-align: center;
+   align-self: stretch;
+}
 
-.projectPicture {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
- }
+.project-description {
+   flex-grow: 1;
+   display: -webkit-box;
+   -webkit-line-clamp: 10;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+}
 
- .projectPicture > img {
-    width: 80%;
-    height: 80%;
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: pointer;
- }
-
-.projectName {
-    color: black;
-    text-align: center;
-    background-color: var(--background-color);
-    padding: 1em 0;
-    font-weight: bold;
-    font-size: 1.5em;
- }
-
-.projectDescription {
-    color: black;
-    text-align: justify;
-    background-color: var(--background-color);
-    padding: 1em 0;
-    line-height: 1.7rem;
- }
-
- .readMore {
-    font-weight: normal !important;
-    text-decoration: none;
-    font-size: 0.8rem;
-    color: #655AF3;
-    cursor: pointer;
-    background-color: white;
-    padding: 0;
-    width: 50%;
-    align-self: flex-end;
-    text-align: right;
-    border: none;
- }
-
+.project-picture img {
+   max-height: 250px;
+}

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { ToolbarComponent } from "./toolbar.component";
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { TestingRouter } from "../test-utilities/testing-router";
 
 // mock the child components
 @Component({ selector: "app-user-action", template: "" })
@@ -10,7 +12,7 @@ class UserActionStubComponent {}
 @Component({ selector: "app-project-action", template: "" })
 class ProjectActionStubComponent {}
 
-xdescribe("ToolbarComponent", () => {
+describe("ToolbarComponent", () => {
   let component: ToolbarComponent;
   let fixture: ComponentFixture<ToolbarComponent>;
 
@@ -20,6 +22,12 @@ xdescribe("ToolbarComponent", () => {
         ToolbarComponent,
         UserActionStubComponent,
         ProjectActionStubComponent
+      ],
+      providers: [
+        {
+          provide: Router,
+          useClass: TestingRouter
+        }
       ]
     }).compileComponents();
   }));
@@ -37,7 +45,7 @@ xdescribe("ToolbarComponent", () => {
   // verify home button is present
   it("should have home icon in a button tag", () => {
     const htmlElement: HTMLElement = fixture.nativeElement;
-    expect(htmlElement.querySelector(".homeIcon")).toBeTruthy();
+    expect(htmlElement.querySelector(".home")).toBeTruthy();
   });
 
   // TODO: verify home is clickable
