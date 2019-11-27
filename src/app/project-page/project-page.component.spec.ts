@@ -11,7 +11,7 @@ import { BehaviorSubject } from "rxjs";
 import { TeamMemberComponent } from "../team-member/team-member.component";
 import { TaskComponent } from "../task/task.component";
 import { Component } from "@angular/core";
-import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item-team.component";
+import { TaskTeamComponent } from "../task-team/task-team.component";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
 
 @Component({
@@ -35,7 +35,7 @@ describe("ProjectPageComponent", () => {
         TeamMemberComponent,
         TaskComponent,
         ToolbarTestComponent,
-        TaskListItemTeamComponent
+        TaskTeamComponent
       ],
       providers: [
         {

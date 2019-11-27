@@ -8,12 +8,7 @@
    <i *ngIf="task.taskStatus == 'deleted'" class="fas fa-trash-restore" (click)="restore()"></i>
 </button>
 
-<!--
-   Task List Item's Team-element
-   - [ ] get the userIDs & status with the store.service with task.id
-   see: /src/app/task-list-item-team/
--->
-<app-task-list-item-team [task]="task"></app-task-list-item-team>
+<app-task-team [task]="task"></app-task-team>
 
 <!--
    Task Description (only one paragraph possible).

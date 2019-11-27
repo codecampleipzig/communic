@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TaskListItemTeamComponent } from "./task-list-item-team.component";
+import { TaskTeamComponent } from "./task-team.component";
 
-describe("TaskListItemTeam Component", () => {
-  let component: TaskListItemTeamComponent;
-  let fixture: ComponentFixture<TaskListItemTeamComponent>;
+describe("TaskTeam Component", () => {
+  let component: TaskTeamComponent;
+  let fixture: ComponentFixture<TaskTeamComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TaskListItemTeamComponent]
+      declarations: [TaskTeamComponent]
     });
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TaskListItemTeamComponent);
+    fixture = TestBed.createComponent(TaskTeamComponent);
     component = fixture.componentInstance;
 
     /* Give it some mock data for a task */

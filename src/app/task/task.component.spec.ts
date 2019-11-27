@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { TaskComponent } from "./task.component";
-import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item-team.component";
+import { TaskTeamComponent } from "../task-team/task-team.component";
 import { StoreService } from "../store.service";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
 
@@ -10,7 +10,7 @@ describe("Task Component", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TaskComponent, TaskListItemTeamComponent],
+      declarations: [TaskComponent, TaskTeamComponent],
       providers: [
         {
           provide: StoreService,
