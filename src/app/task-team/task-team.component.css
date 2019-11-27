@@ -1,4 +1,14 @@
+:host {
+   display: flex;
+   align-items: center;
+   line-height: 2;
+}
+
 :host > * {
-   display: inline-block;
    margin-right: 1em
+}
+
+.user-image {
+   font-size: 1em;
+   margin-right: .5em;
 }

@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Inject } from "@angular/core";
 import { Task } from "../datatypes/Task";
+import { UserState } from "../datatypes/User";
+import { StoreService } from "../store.service";
 
 @Component({
   selector: "app-task-team",
@@ -7,12 +9,13 @@ import { Task } from "../datatypes/Task";
   styleUrls: ["./task-team.component.css"]
 })
 export class TaskTeamComponent implements OnInit {
+  public userState: UserState;
+
   @Input() task: Task;
 
-  /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
-  userjoined = false;
-
-  constructor() {}
+  constructor(@Inject(StoreService) private store: StoreService) {
+    this.store.user$.subscribe(user => (this.userState = user));
+  }
 
   ngOnInit() {}
 
@@ -23,13 +26,19 @@ export class TaskTeamComponent implements OnInit {
    */
   joinTask(): void {
     /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
-    this.userjoined = true;
     console.log("User joined");
   }
 
   leaveTask(): void {
     /* Placeholder. Needs to be replaced with something like task.userIDs.find(currentUser) */
-    this.userjoined = false;
     console.log("User left");
+  }
+
+  joined(): boolean {
+    return Boolean(
+      this.task.taskTeam.find(
+        taskTeam => taskTeam.userId == this.userState.userInformation.userId
+      )
+    );
   }
 }

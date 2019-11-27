@@ -1,17 +1,11 @@
-<!-- 
-   Join & Leave Buttons with FontAwesome Icon & click Binding
-   - [ ] Only show if project already joined
-   - [ ] Add current user to taskTeamList
-   - [ ] Replace userjoined bool with something like task.userIDs.find(currentUser)
- -->
-<button *ngIf="task.taskStatus == 'open' && !userjoined" class="button taskTeamJoin outlined round" (click)="joinTask()">
+<button *ngIf="task.taskStatus == 'open' && !this.joined()" class="button taskTeamJoin outlined round" (click)="joinTask()">
    <i class="fas fa-plus"></i><span>Join</span>
 </button>
-<button *ngIf="task.taskStatus == 'open' && userjoined" class="button taskTeamJoin outlined round" (click)="leaveTask()">
+<button *ngIf="task.taskStatus == 'open' && this.joined()" class="button taskTeamJoin outlined round" (click)="leaveTask()">
    <i class="fas fa-times"></i><span>Leave</span>
 </button>
 
-<!-- taskTeamList Placeholder
-   - [ ] Create Component for taskTeamList that lists Task Team by ID and get's update with Join Button
--->
-<div *ngIf="task.taskTeam" class="task-team-list">(:)) (:)) (:)) (:)) (+3)</div>
+<div *ngFor="let user of task.taskTeam" class="user-image">
+   <img *ngIf="user.userImageUrl" [src]="user.userImageUrl" alt="">
+   <i *ngIf="!user.userImageUrl" class="fas fa-user"></i>
+</div>
