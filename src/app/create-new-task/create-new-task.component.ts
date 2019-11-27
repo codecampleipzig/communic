@@ -20,15 +20,11 @@ import { Project } from "../datatypes/Project";
 
 
 export class CreateNewTaskComponent implements OnInit {
-<<<<<<< HEAD
   private formVisible: any = false;
   newTaskForm: FormGroup;
   @Input() public project: Project;
 
   public tasks: Task[] = [];
-=======
-  formVisible: any = false;
->>>>>>> develop
 
   /**
    * Add Task .card Class to :host Element
@@ -69,10 +65,10 @@ export class CreateNewTaskComponent implements OnInit {
    */
   users: User[] = [
     {
-      userId: 1,
+      userId: 1, 
       userName: "Mautzi",
       userEmail: "MolleMorallo@gmail.com",
-      userImageURL: "../assets/user_avatar.png"
+      userImageUrl: "../assets/user_avatar.png"
     }];
 
   onSubmit(value: any): void {
