@@ -11,7 +11,7 @@ export class AuthService {
       resolve({
         userName,
         userEmail,
-        imageURL: "",
+        ImageUrl: "",
         userId: 1234,
       });
     });

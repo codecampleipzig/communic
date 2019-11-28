@@ -6,7 +6,7 @@ import { Component, OnInit, HostBinding } from "@angular/core";
   styleUrls: ["./create-new-task.component.css"],
 })
 export class CreateNewTaskComponent implements OnInit {
-  private formVisible: any = false;
+  formVisible: any = false;
 
   /**
    * Add Task .card Class to :host Element

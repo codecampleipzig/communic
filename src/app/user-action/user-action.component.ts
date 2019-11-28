@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
 /**
- * We importe the Router, a service that provides navigation and URL manipulation capabilities.
  * We import the StoreService serives to import the logout method.
  */
 import { StoreService } from "../store.service";
@@ -22,7 +21,7 @@ export class UserActionComponent implements OnInit {
         return;
       }
       this.userName = userState.userInformation.userName;
-      this.userThumbnail = userState.userInformation.userImageURL;
+      this.userThumbnail = userState.userInformation.userImageUrl;
     });
   }
 

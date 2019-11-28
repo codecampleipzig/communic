@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
+=======
+  api_url: "http://localhost:3001/api"
+>>>>>>> develop
 };
 
 /*

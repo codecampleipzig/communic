@@ -22,7 +22,7 @@ describe("TeamMemberComponent", () => {
       userId: 1,
       userName: "Mautzi",
       userEmail: "MolleMorallo@gmail.com",
-      userImageURL: "../assets/user_avatar.png",
+      userImageUrl: "../assets/user_avatar.png",
     };
 
     fixture.detectChanges();

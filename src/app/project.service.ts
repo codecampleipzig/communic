@@ -10,6 +10,7 @@ export class ProjectService {
 
   /**
    * Poseing GET request, returning project by id.
+   * @returns new Promise
    */
   getProject(id: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
@@ -19,6 +20,7 @@ export class ProjectService {
 
   /**
    * Poseing GET request, returning newState of the tasks after status was updated.
+   * @returns new Promise
    */
   updateTaskStatus(taskId: number, status: string): Promise<any> {
     return new Promise<any>((resolve, reject) => {

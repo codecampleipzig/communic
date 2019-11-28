@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { StoreService } from "../store.service";
 import { Project } from "../datatypes/Project";
+import { User } from "../datatypes/User";
 
 @Component({
   selector: "app-project-page",
@@ -10,6 +11,12 @@ import { Project } from "../datatypes/Project";
 })
 export class ProjectPageComponent implements OnInit {
   public project: Project;
+  public currentUser: User = {
+    userId: 13,
+    userName: "Iko",
+    userEmail: "caretaker3000@gmail.com",
+    userImageUrl: "../assets/user_avatar.png",
+  };
 
   constructor(@Inject(ActivatedRoute) public route: ActivatedRoute, @Inject(StoreService) private store: StoreService) {
     /**

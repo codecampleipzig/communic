@@ -4,6 +4,7 @@ import { ProjectPageComponent } from "./project-page/project-page.component";
 import { HomeComponent } from "./home/home.component";
 import { RegisterCardComponent } from "./register-card/register-card.component";
 import { SearchresultsComponent } from "./searchresults/searchresults.component";
+import { StartnewprojectComponent } from "./startnewproject/startnewproject.component";
 
 const routes: Routes = [
   { path: "project/:id", component: ProjectPageComponent },
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: "register", component: RegisterCardComponent },
   { path: "login", component: RegisterCardComponent },
   { path: "searchresults", component: SearchresultsComponent },
+  { path: "startnewproject", component: StartnewprojectComponent },
+  { path: "login", component: RegisterCardComponent },
 ];
 
 @NgModule({
