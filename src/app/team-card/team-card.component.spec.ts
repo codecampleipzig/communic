@@ -2,18 +2,22 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { TeamCardComponent } from "./team-card.component";
 import { TeamMemberComponent } from "../team-member/team-member.component";
-import { ProjectPageComponent } from "../project-page/project-page.component";
+import { StoreService } from "../store.service";
+import { TestingStoreService } from "../test-utilities/testing-store.service";
+import * as Mock from "../mockdata";
 
-xdescribe("TeamCardComponent", () => {
+describe("TeamCardComponent", () => {
   let component: TeamCardComponent;
   let fixture: ComponentFixture<TeamCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        TeamCardComponent,
-        TeamMemberComponent,
-        ProjectPageComponent
+      declarations: [TeamCardComponent, TeamMemberComponent],
+      providers: [
+        {
+          provide: StoreService,
+          useClass: TestingStoreService
+        }
       ]
     }).compileComponents();
   }));
@@ -21,44 +25,35 @@ xdescribe("TeamCardComponent", () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TeamCardComponent);
     component = fixture.componentInstance;
-
-    component.team = [
-      {
-        userId: 1,
-        userName: "Mautzi",
-        userEmail: "MolleMorallo@gmail.com",
-        userImageUrl: "../assets/user_avatar.png"
-      },
-      {
-        userId: 2,
-        userName: "Mariana",
-        userEmail: "BringMarianaBananaToSchool@gmail.com",
-        userImageUrl: "../assets/user_avatar.png"
-      },
-      {
-        userId: 3,
-        userName: "Lena",
-        userEmail: "lenintheempress@gmail.com",
-        userImageUrl: "../assets/user_avatar.png"
-      },
-      {
-        userId: 4,
-        userName: "Björn",
-        userEmail: "thPObutNotTheRiver@gmail.com",
-        userImageUrl: "../assets/user_avatar.png"
-      },
-      {
-        userId: 13,
-        userName: "Iko",
-        userEmail: "caretaker3000@gmail.com",
-        userImageUrl: "../assets/user_avatar.png"
-      }
-    ];
-
+    component.project = Mock.projects[0];
     fixture.detectChanges();
   });
 
   it("should create", () => {
     expect(component).toBeTruthy();
+  });
+
+  it("CurrentUser should not have joined the task yet", () => {
+    // empty the team
+    component.team = [];
+    fixture.detectChanges();
+    expect(component.joined()).toBeFalsy();
+  });
+
+  it("CurrentUser should not be part of the team", () => {
+    component.join();
+    const user = component.team.find(
+      t => t.userId == component.userState.userInformation.userId
+    );
+
+    expect(user).toBeTruthy();
+  });
+
+  it("CurrentUser should be part of the team", () => {
+    component.leave();
+    const user = component.team.find(
+      t => t.userId == component.userState.userInformation.userId
+    );
+    expect(user).toBeFalsy();
   });
 });

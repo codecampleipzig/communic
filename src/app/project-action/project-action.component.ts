@@ -8,17 +8,8 @@ import { RouterModule, Routes, Router } from "@angular/router";
 })
 export class ProjectActionComponent implements OnInit {
   projectName = "";
-  plusIconSource = "./../../assets/plus.svg";
-  breadcrumbIconSource = "../../assets/breadcrumb.svg";
 
-  constructor(@Inject(Router) private router: Router) {}
+  constructor() {}
 
   ngOnInit() {}
-
-  navigateHome() {
-    this.router.navigate(["home"]);
-  }
-  createProject() {
-    this.router.navigate(["startnewproject"]);
-  }
 }

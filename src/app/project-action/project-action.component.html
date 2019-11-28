@@ -1,11 +1,9 @@
-<div class="projectActionWrapper">
-   <div class="projectNameWrapper" *ngIf='projectName'>
-      <img [src]="breadcrumbIconSource" alt=">" />
-      <span id="projectName" class="projectName">{{projectName}}</span>
+   <div id="project-name" class="breadcrumb" *ngIf='projectName'>
+      <i class="fas fa-angle-right"></i>
+      <span class="item">{{projectName}}</span>
    </div>
-   <button id="startProjectButton" class="startProjectButton" (click)="createProject()" *ngIf='!projectName'>
+   
+   <a id="start-project-button" class="button outlined caption-mobile-hidden" routerLink="/startnewproject" *ngIf='!projectName'>
       <i class="fa fa-plus"></i>
-      <span class="mobhide">Start a new project</span>
-      
-   </button>
-</div>
+      <span class="mobile-hidden">Start a new project</span>
+   </a>

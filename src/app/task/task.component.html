@@ -1,19 +1,27 @@
 <div class="task-header">
-   <button class="task-checkbox checkbox" (click)="toggleStatus()" [disabled]="!joined()"><i class="fas fa-check"></i></button>
+   <button class="task-checkbox checkbox" (click)="toggleTaskStatus()" [disabled]="!joined('task')"><i class="fas fa-check"></i></button>
    <h4>{{task.taskTitle}}</h4>
 </div>
 
-<button *ngIf="joined()" class="top-right-icon task-delete">
+<button *ngIf="joined('project')" class="top-right-icon task-delete">
    <i *ngIf="task.taskStatus == 'open'" class="fas fa-trash-alt" (click)="delete()"></i> 
    <i *ngIf="task.taskStatus == 'deleted'" class="fas fa-trash-restore" (click)="restore()"></i>
 </button>
 
-<!--
-   Task List Item's Team-element
-   - [ ] get the userIDs & status with the store.service with task.id
-   see: /src/app/task-list-item-team/
--->
-<app-task-list-item-team [task]="task"></app-task-list-item-team>
+<!-- Replaced Subcomponent TaskListItemTeam -->
+<div class="task-team">
+   <div *ngFor="let user of task.taskTeam" class="user-image">
+      <img *ngIf="user.userImageUrl" [src]="user.userImageUrl" alt="">
+      <i *ngIf="!user.userImageUrl" class="fas fa-user"></i>
+   </div>
+   
+   <button *ngIf="task.taskStatus == 'open' && this.joined('project') && !this.joined('task')" class="button taskTeamJoin outlined round" (click)="join()">
+      <i class="fas fa-plus"></i><span>Join</span>
+   </button>
+   <button *ngIf="task.taskStatus == 'open' && this.joined('task')" class="button taskTeamJoin outlined round" (click)="leave()">
+      <i class="fas fa-times"></i><span>Leave</span>
+   </button>
+</div>
 
 <!--
    Task Description (only one paragraph possible).

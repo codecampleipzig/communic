@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { StoreService } from "../store.service";
 import { Project } from "../datatypes/Project";
+import { User } from "../datatypes/User";
 
 @Component({
   selector: "app-project-page",
@@ -19,7 +20,6 @@ export class ProjectPageComponent implements OnInit {
      * Subscribe to id param in the ActivatedRoute
      * and get project's object from store.service
      */
-
     route.params.subscribe((params: Params) => {
       this.store.retrieveProject(params.id);
       this.store.project$.subscribe(project => (this.project = project));
