@@ -3,7 +3,7 @@ import { Task } from "../datatypes/Task";
 import { Project } from "../datatypes/Project";
 import { User } from "../datatypes/User";
 
-@Component({ 
+@Component({
   selector: "app-task-list",
   templateUrl: "./task-list.component.html",
   styleUrls: ["./task-list.component.css"]
@@ -15,7 +15,7 @@ export class TaskListComponent implements OnInit {
   @Input() public project: Project;
   @Input() public currentUser: User;
   public tasks: Task[] = [];
- 
+
 
   constructor() {}
 

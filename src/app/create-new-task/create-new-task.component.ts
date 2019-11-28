@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding, NgModule, Input } from "@angular/core";
-import { ReactiveFormsModule, FormGroup, FormBuilder } from "@angular/forms"; 
+import { ReactiveFormsModule, FormGroup, FormBuilder } from "@angular/forms";
 import { Task } from "../datatypes/Task";
 import { User } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
@@ -15,7 +15,7 @@ import { Project } from "../datatypes/Project";
 @Component({
   selector: "app-create-new-task",
   templateUrl: "./create-new-task.component.html",
-  styleUrls: ["./create-new-task.component.css"] 
+  styleUrls: ["./create-new-task.component.css"]
 })
 
 
@@ -36,9 +36,9 @@ export class CreateNewTaskComponent implements OnInit {
 
   constructor(fb: FormBuilder) {
     this.newTaskForm = fb.group({
-      'title': [''],
-      'description': ['']
-    })
+      title: [""],
+      description: [""]
+    });
   }
 
   /**
@@ -56,16 +56,15 @@ export class CreateNewTaskComponent implements OnInit {
     if (this.formVisible == true) {
       this.formVisible = false;
     } else {
-      return; 
+      return;
     }
   }
 
   onSubmit(value: any): void {
-    if (value.title == '' || value.description == '') {
+    if (value.title == "" || value.description == "") {
       return null;
-    };
-    const newTask: Task = 
-    {
+    }
+    const newTask: Task = {
       /**
        * Creates a newTask object of type Task using title and description from form, projectId and current user
        */
