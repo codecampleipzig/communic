@@ -1,8 +1,9 @@
-import { Component, OnInit, HostBinding, NgModule, Input } from "@angular/core";
+import { Component, OnInit, HostBinding, NgModule, Input, Inject } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { Task } from "../datatypes/Task";
-import { User } from "../datatypes/User";
+import { User, UserState } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
+import { StoreService } from "../store.service";
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { Project } from "../datatypes/Project";
 export class CreateNewTaskComponent implements OnInit {
   private formVisible: any = false;
   @Input() public project: Project;
-  @Input() public currentUser: User;
+  public userState: UserState;
   public tasks: Task[] = [];
 
   /**
@@ -31,7 +32,9 @@ export class CreateNewTaskComponent implements OnInit {
     return "card display-flex";
   }
 
-  constructor() {}
+  constructor(@Inject(StoreService) private store: StoreService) {
+    this.store.user$.subscribe(user => (this.userState = user));
+  }
 
   /**
    * Create a function for opening and closing a form to bind to objects in the HTML.
@@ -65,8 +68,8 @@ export class CreateNewTaskComponent implements OnInit {
       taskTitle: value.title,
       taskDescription: value.description,
       taskStatus: "open",
-      taskCreator: this.currentUser,
-      taskTeam: [this.currentUser],
+      taskCreator: this.userState.userInformation,
+      taskTeam: [this.userState.userInformation],
       menuSection: "starter"
     };
     /**
