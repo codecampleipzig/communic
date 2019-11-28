@@ -10,7 +10,7 @@ import { ProjectCategoryEnum } from "./../datatypes/enums/ProjectCategoryEnum";
 export class HomeComponent implements OnInit {
   category = ProjectCategoryEnum;
 
-  constructor(@Inject(StoreService) private store: StoreService) {}
+  constructor(@Inject(StoreService) public store: StoreService) {}
 
   ngOnInit() {
     this.store.retrieveYourProjects();

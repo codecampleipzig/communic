@@ -26,12 +26,14 @@ export class StoreService {
   yourProjects: BehaviorSubject<Array<Project>>;
   exploreProjects: BehaviorSubject<Array<Project>>;
   project: BehaviorSubject<Project>;
+  toolbar: BehaviorSubject<any>;
 
   // Observable
   public user$: Observable<UserState>;
   public yourProjects$: Observable<Array<Project>>;
   public exploreProjects$: Observable<Array<Project>>;
   public project$: Observable<Project>;
+  public toolbar$: Observable<any>;
 
   constructor(
     @Inject(Router) private router: Router,
@@ -53,6 +55,9 @@ export class StoreService {
 
     this.project = new BehaviorSubject<any>({});
     this.project$ = this.project.asObservable();
+
+    this.toolbar = new BehaviorSubject<any>("");
+    this.toolbar$ = this.toolbar.asObservable();
   }
 
   // Action
