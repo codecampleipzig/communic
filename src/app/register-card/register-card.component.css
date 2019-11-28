@@ -83,12 +83,6 @@ input.ng-untouched {
     border-left-width: 5px;
 }
 
-.form-rule {
-    color: var(--warningRed);
-    text-align: start;
-    display: block;
-}
-
 button[type="submit"] {
     width: 100%
 }
