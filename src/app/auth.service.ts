@@ -12,11 +12,13 @@ export class AuthService {
     userEmail: string,
     password: string
   ): Promise<any> {
-    try {
-      const response = await axios.post("http://localhost:3001/api/register");
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
+    return new Promise<any>((resolve, reject) => {
+      resolve({
+        userName,
+        userEmail,
+        ImageUrl: "",
+        userId: 1234
+      });
+    });
   }
 }

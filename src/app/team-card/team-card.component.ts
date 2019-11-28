@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
-import { User } from "../datatypes/User";
+import { User, UserState } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
+import { StoreService } from "../store.service";
 
 @Component({
   selector: "app-team-card",
@@ -12,24 +13,49 @@ export class TeamCardComponent implements OnInit {
    * Get project's object by parent component app-project-page
    */
   @Input() public project: Project;
-  @Input() newUser: string;
-  alreadyJoined = false;
-  public team: User[];
 
-  constructor() {}
+  public team: User[];
+  public userState: UserState;
+
+  constructor(@Inject(StoreService) private store: StoreService) {
+    this.store.user$.subscribe(user => (this.userState = user));
+  }
 
   ngOnInit() {
-    /**
-     * Get projectTeam from project Object
-     */
     this.team = this.project.projectTeam;
   }
+
   /**
-   * function that makes the button disapear when joined,
-   * - [ ] needs to compare if user already member
-   * - [ ] needs to add the user when button is clicked
+   * Function that adds the user to the ProjectTeam
    */
-  private join(): void {
-    this.alreadyJoined = true;
+  join(): void {
+    if (!this.joined()) {
+      this.store.joinProjectTeam(
+        this.project.projectId,
+        this.userState.userInformation.userId
+      );
+    }
+  }
+  /**
+   * Function that deletes the user from the ProjectTeam
+   */
+  leave(): void {
+    if (this.joined()) {
+      this.store.leaveProjectTeam(
+        this.project.projectId,
+        this.userState.userInformation.userId
+      );
+    }
+  }
+
+  /**
+   * Check if userState is part of the project
+   */
+  joined(): boolean {
+    return Boolean(
+      this.team.find(
+        team => team.userId == this.userState.userInformation.userId
+      )
+    );
   }
 }

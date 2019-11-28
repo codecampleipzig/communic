@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Project } from "./datatypes/Project";
 import * as Mock from "./mockdata";
 import axios from "axios";
+import { environment } from "../environments/environment";
 
 @Injectable({
   providedIn: "root"
@@ -9,26 +10,17 @@ import axios from "axios";
 export class ProjectsService {
   constructor() {}
 
-  async retrieveYourProjects(userId: number): Promise<any> {
-    try {
-      // Assumption: When the user creates a project, they are automatically a member in it (projects.authorID is not checked)
-      const response = await axios.get(
-        `http://localhost:3001/api/myprojects/ ${userId}`
-      );
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
+  retrieveYourProjects(userId: number): Promise<Project[]> {
+    return axios.get(`${environment.api_url}/myprojects/1`).then(response => {
+      return response.data.projects;
+    });
   }
 
-  async retrieveExploreProjects(userId: number): Promise<any> {
-    try {
-      const response = await axios.get(
-        `http://localhost:3001/api/exploreprojects/ ${userId}`
-      );
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
+  retrieveExploreProjects(userId: number): Promise<Project[]> {
+    return axios
+      .get(`${environment.api_url}/exploreprojects/1`)
+      .then(response => {
+        return response.data.projects;
+      });
   }
 }

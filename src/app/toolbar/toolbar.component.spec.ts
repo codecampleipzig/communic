@@ -45,7 +45,7 @@ describe("ToolbarComponent", () => {
   // verify home button is present
   it("should have home icon in a button tag", () => {
     const htmlElement: HTMLElement = fixture.nativeElement;
-    expect(htmlElement.querySelector(".home-icon")).toBeTruthy();
+    expect(htmlElement.querySelector(".home")).toBeTruthy();
   });
 
   // TODO: verify home is clickable
