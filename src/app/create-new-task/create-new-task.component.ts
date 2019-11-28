@@ -72,13 +72,14 @@ export class CreateNewTaskComponent implements OnInit {
       taskDescription: value.description,
       taskStatus: "open",
       taskCreator: this.currentUser,
-      taskTeam: [],
+      taskTeam: [this.currentUser],
       menuSection: "starter"
     };
     /**
      * Pushes newTask to projectTasks and closes the form
      */
     this.project.projectTasks.push(newTask);
+    console.log (newTask);
     this.closeForm();
   }
 
