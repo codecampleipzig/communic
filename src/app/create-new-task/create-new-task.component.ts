@@ -61,6 +61,9 @@ export class CreateNewTaskComponent implements OnInit {
   }
 
   onSubmit(value: any): void {
+    if (value.title == '' || value.description == '') {
+      return null;
+    };
     const newTask: Task = 
     {
       /**
