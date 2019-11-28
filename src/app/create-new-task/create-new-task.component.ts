@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding, NgModule, Input, Inject } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
 import { Task } from "../datatypes/Task";
-import { User, UserState } from "../datatypes/User";
+import { UserState } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
 import { StoreService } from "../store.service";
 
@@ -23,7 +23,6 @@ export class CreateNewTaskComponent implements OnInit {
   @Input() public project: Project;
   public userState: UserState;
   public tasks: Task[] = [];
-  public team: User[];
 
   /**
    * Add Task .card Class to :host Element
@@ -81,18 +80,5 @@ export class CreateNewTaskComponent implements OnInit {
     this.closeForm();
   }
 
-   /**
-    * Check if userState is part of the project
-    */
-  joined(): boolean {
-    return Boolean(
-      this.team.find(
-        team => team.userId == this.userState.userInformation.userId
-      )
-    );
-  }
-
-  ngOnInit() {
-    this.team = this.project.projectTeam;
-  }
+  ngOnInit() {}
 }

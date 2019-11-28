@@ -1,4 +1,3 @@
-<div *ngIf="joined()">
 <!--
 Close item x displayed in the create task form.
 //-->
@@ -24,5 +23,3 @@ Input Fields/Textarea reflecting the individual tasks style and made editable.
 name ="description" ngModel>
       </textarea>  
 <button *ngIf="formVisible" class="button" type="submit">Add task</button></form>
-</div>
-<div *ngIf="!joined()"  class="task-header"><h4>Join this project to add tasks</h4></div>
