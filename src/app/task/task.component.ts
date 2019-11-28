@@ -49,6 +49,9 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * toggleTaskStatus to done or open if it's not deleted and CurrentUser is joined to task and project
+   */
   toggleTaskStatus(): void | boolean {
     const status = this.task.taskStatus;
 
@@ -97,6 +100,10 @@ export class TaskComponent implements OnInit {
     }
   }
 
+  /**
+   * Check if CurrentUser joined task, project, both or one of them.
+   * @param ask 'task', 'project', 'both' or empty to check if joined one or the other
+   */
   joined(ask?: taskOrProject): boolean {
     const joinedProject = Boolean(
       this.project.projectTeam.find(
