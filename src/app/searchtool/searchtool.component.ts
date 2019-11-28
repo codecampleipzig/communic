@@ -29,8 +29,8 @@ export class SearchtoolComponent {
   onSubmit() {
     const searchString = this.searchInput.value;
     this.route.navigate(["/searchresults"], { queryParams: searchString.value });
-    //dependency injection for the router
-    //Get query parameters from input
-    //router.navigate([newUrl])
+    // dependency injection for the router
+    // Get query parameters from input
+    // router.navigate([newUrl])
   }
 }
