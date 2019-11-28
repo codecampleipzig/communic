@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 
 import * as Mock from "./mockdata";
+import axios from "axios";
+import { environment } from "../environments/environment";
+import { Project } from "./datatypes/Project";
 
 @Injectable({
   providedIn: "root"
@@ -12,9 +15,9 @@ export class ProjectService {
    * Poseing GET request, returning project by id.
    * @returns new Promise
    */
-  getProject(id: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      resolve(Mock.projects.find(project => project.projectId == id));
+  getProject(id: number): Promise<Project> {
+    return axios.get(`${environment.api_url}/project/${id}`).then(response => {
+      return response.data.project;
     });
   }
 
