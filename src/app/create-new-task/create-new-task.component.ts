@@ -1,13 +1,11 @@
 import { Component, OnInit, HostBinding, NgModule, Input } from "@angular/core";
-import { ReactiveFormsModule, FormGroup, FormBuilder } from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
 import { Task } from "../datatypes/Task";
 import { User } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
 
 @NgModule({
   imports: [
-    ReactiveFormsModule,
-    FormGroup,
     FormBuilder
   ]
 })
@@ -21,7 +19,6 @@ import { Project } from "../datatypes/Project";
 
 export class CreateNewTaskComponent implements OnInit {
   private formVisible: any = false;
-  newTaskForm: FormGroup;
   @Input() public project: Project;
   @Input() public currentUser: User;
   public tasks: Task[] = [];
@@ -34,12 +31,7 @@ export class CreateNewTaskComponent implements OnInit {
     return "card display-flex";
   }
 
-  constructor(fb: FormBuilder) {
-    this.newTaskForm = fb.group({
-      title: [""],
-      description: [""]
-    });
-  }
+  constructor() {}
 
   /**
    * Create a function for opening and closing a form to bind to objects in the HTML.
