@@ -193,10 +193,38 @@ export class StoreService {
   }
 
   /**
-   * triggers projectService.joinProjectTeam and resolves its GET request to pass newProject into project observable.
+   * triggers projectService.leaveProjectTeam and resolves its GET request to pass newProject into project observable.
    */
   leaveProjectTeam(projectId: number, userId: number) {
     const promise = this.projectService.leaveProjectTeam(projectId, userId);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+    });
+  }
+
+  /**
+   * triggers projectService.joinTaskTeam and resolves its GET request to pass newProject into project observable.
+   */
+  joinTaskTeam(projectId: number, taskId: number, userId: number) {
+    const promise = this.projectService.joinTaskTeam(projectId, taskId, userId);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+    });
+  }
+
+  /**
+   * triggers projectService.leaveTaskTeam and resolves its GET request to pass newProject into project observable.
+   */
+  leaveTaskTeam(projectId: number, taskId: number, userId: number) {
+    const promise = this.projectService.leaveTaskTeam(
+      projectId,
+      taskId,
+      userId
+    );
 
     promise.then(newProject => {
       // Put value into observable

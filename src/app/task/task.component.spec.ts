@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { TaskComponent } from "./task.component";
-import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item-team.component";
 import { StoreService } from "../store.service";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
+import * as Mock from "../mockdata";
 
 describe("Task Component", () => {
   let component: TaskComponent;
@@ -10,7 +10,7 @@ describe("Task Component", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TaskComponent, TaskListItemTeamComponent],
+      declarations: [TaskComponent],
       providers: [
         {
           provide: StoreService,
@@ -24,35 +24,9 @@ describe("Task Component", () => {
     fixture = TestBed.createComponent(TaskComponent);
     component = fixture.componentInstance;
 
-    /* Give it some mock data for a task */
-    component.task = {
-      taskId: 3,
-      projectId: 2,
-      taskTitle: "A really important task",
-      taskDescription: "Not sure how important this task really is.",
-      taskStatus: "done",
-      taskCreator: {
-        userId: 13,
-        userName: "Iko",
-        userEmail: "caretaker3000@gmail.com",
-        userImageUrl: "../assets/user_avatar.png"
-      },
-      taskTeam: [
-        {
-          userId: 2,
-          userName: "Iko",
-          userEmail: "caretaker3000@gmail.com",
-          userImageUrl: "../assets/user_avatar.png"
-        },
-        {
-          userId: 14,
-          userName: "Iko",
-          userEmail: "caretaker3000@gmail.com",
-          userImageUrl: "../assets/user_avatar.png"
-        }
-      ],
-      menuSection: "main"
-    };
+    /* Give it some mock data */
+    component.project = Mock.projects[0];
+    component.task = Mock.tasks[0];
 
     fixture.detectChanges();
   });
