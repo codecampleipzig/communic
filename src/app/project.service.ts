@@ -29,4 +29,34 @@ export class ProjectService {
       resolve(newState);
     });
   }
+
+  /**
+   * Poseing POST request, returning newState of the project after user was added by userId.
+   * @returns new Promise
+   */
+  joinProjectTeam(projectId: number, userId: number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      const newState = [...Mock.projects];
+      const project = newState.find(p => p.projectId == projectId);
+      const user = Mock.users.find(u => u.userId == userId);
+
+      project.projectTeam.push(user);
+      resolve(project);
+    });
+  }
+
+  /**
+   * Poseing POST request, returning newState of the project after user was removed by userId.
+   * @returns new Promise
+   */
+  leaveProjectTeam(projectId: number, userId: number): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      const newState = [...Mock.projects];
+      const project = newState.find(p => p.projectId == projectId);
+      const userIndex = project.projectTeam.findIndex(u => u.userId == userId);
+
+      project.projectTeam.splice(userIndex, 1);
+      resolve(project);
+    });
+  }
 }

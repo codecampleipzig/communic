@@ -4,5 +4,6 @@
     <p>{{project.projectDescription}}</p>
     <h3>Goal</h3>
     <p>{{project.projectGoal}}</p>
-    <button class="button">Join</button>
+    <button class="button" (click)="join()" *ngIf="!joined()">Join</button>
+    <button class="button" (click)="leave()" *ngIf="joined()">Leave</button>
 </div>
