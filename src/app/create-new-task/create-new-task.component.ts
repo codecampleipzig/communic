@@ -23,6 +23,7 @@ export class CreateNewTaskComponent implements OnInit {
   @Input() public project: Project;
   public userState: UserState;
   public tasks: Task[] = [];
+  public team: User[];
 
   /**
    * Add Task .card Class to :host Element
@@ -80,5 +81,18 @@ export class CreateNewTaskComponent implements OnInit {
     this.closeForm();
   }
 
-  ngOnInit() {}
+   /**
+   * Check if userState is part of the project
+   */
+  joined(): boolean {
+    return Boolean(
+      this.team.find(
+        team => team.userId == this.userState.userInformation.userId
+      )
+    );
+  }
+
+  ngOnInit() {
+    this.team = this.project.projectTeam;
+  }
 }
