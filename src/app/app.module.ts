@@ -21,6 +21,8 @@ import { RegisterCardComponent } from "./register-card/register-card.component";
 import { RouterModule } from "@angular/router";
 import { SearchtoolComponent } from "./searchtool/searchtool.component";
 import { IconComponent } from "./icon/icon.component";
+import { SearchresultsComponent } from "./searchresults/searchresults.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -42,8 +44,9 @@ import { IconComponent } from "./icon/icon.component";
     RegisterCardComponent,
     SearchtoolComponent,
     IconComponent,
+    SearchresultsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

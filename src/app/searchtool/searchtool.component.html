@@ -1,6 +1,19 @@
 <div>
-  <form [ngClass]="{ show: active }" class="columns">
+  <form [ngClass]="{ show: active }" class="columns" (ngSubmit)="onSubmit()">
     <app-icon type="search" label="Search"></app-icon>
-    <input placeholder="yourprojecthere" (click)="active = !active" />
+    <input placeholder="Looking for a project?" (click)="active = !active" list="results" [formControl]="searchInput" />
   </form>
+  <div class="dropdown" *ngIf="active">
+    <ul (click)="active = !active">
+      <li *ngFor="let p of projects">
+        <a [routerLink]="['/project', p.projectId]"> {{ p.projectTitle }} </a
+        ><app-icon type="user" label="User Avatar"></app-icon>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a [routerLink]="['/searchresults']" [queryParams]="{ searchString: searchInput.value }"> See all results</a>
+      </li>
+    </ul>
+  </div>
 </div>

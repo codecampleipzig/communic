@@ -1,0 +1,16 @@
+<app-toolbar></app-toolbar>
+
+<div [ngSwitch]="state.type">
+  <p *ngSwitchCase="'loading'">results are loading</p>
+
+  <p *ngSwitchCase="'invalid'">maybe your search term is incorrect?</p>
+
+  <p *ngSwitchCase="'error'">there was a problem with the backend</p>
+
+  <div *ngSwitchCase="'success'">
+    <div *ngIf="state.result.projects.length">
+      <app-project-list [title]="'Search Results'" [projects]="state.result.projects"></app-project-list>
+    </div>
+    <div *ngIf="!state.result.projects.length">booo, no result</div>
+  </div>
+</div>

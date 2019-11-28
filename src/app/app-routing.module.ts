@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { ProjectPageComponent } from "./project-page/project-page.component";
 import { HomeComponent } from "./home/home.component";
 import { RegisterCardComponent } from "./register-card/register-card.component";
+import { SearchresultsComponent } from "./searchresults/searchresults.component";
 
 const routes: Routes = [
   { path: "project/:id", component: ProjectPageComponent },
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: "", redirectTo: "register", pathMatch: "full" },
   { path: "register", component: RegisterCardComponent },
   { path: "login", component: RegisterCardComponent },
+  { path: "searchresults", component: SearchresultsComponent },
 ];
 
 @NgModule({

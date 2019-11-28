@@ -1,27 +1,23 @@
 <div class="projectCard">
-
-    <a class="picture-wrapper">   
-        <div (click)="openProject(project.projectId)" class="projectPicture">
-            <img [src]="project.projectImageURL">
- 
-        </div>
-    </a>
-
-    <div class="projectName">
-        {{project.projectTitle}}
+  <a class="picture-wrapper">
+    <div (click)="openProject(project.projectId)" class="projectPicture">
+      <img [src]="project.projectImageURL" />
     </div>
+  </a>
+  <div class="projectName">
+    {{ project.projectTitle }}
+  </div>
 
-    <div class="projectDate">
-        {{project.projectDate}}
-    </div>
+  <div class="projectDate">
+    {{ project.projectDate }}
+  </div>
 
-    <div class="projectDescription">
-        {{project.projectDescription}}
-    </div>
-    <div>
+  <div class="projectDescription">
+    {{ project.projectDescription }}
+  </div>
+  <div>
     <a class="readMore" (click)="openProject(project.projectId)">
-        <span>Read More</span>
+      <span>Read More</span>
     </a>
-    </div>
-
+  </div>
 </div>
