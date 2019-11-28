@@ -2,6 +2,7 @@ import { Component, OnInit, Input, HostBinding, Inject } from "@angular/core";
 import { Task } from "../datatypes/Task";
 import { StoreService } from "../store.service";
 import { UserState } from "../datatypes/User";
+import { Project } from "../datatypes/Project";
 
 @Component({
   selector: "app-task",
@@ -15,6 +16,7 @@ export class TaskComponent implements OnInit {
    * Import task object
    */
   @Input() task: Task;
+  @Input() project: Project;
 
   /**
    * Add Task Status as Class to the host Element
@@ -68,10 +70,16 @@ export class TaskComponent implements OnInit {
   }
 
   joined(): boolean {
-    return Boolean(
+    const joinedTask = Boolean(
       this.task.taskTeam.find(
         taskTeam => taskTeam.userId == this.userState.userInformation.userId
       )
     );
+    const joinedProject = Boolean(
+      this.project.projectTeam.find(
+        team => team.userId == this.userState.userInformation.userId
+      )
+    );
+    return joinedTask && joinedProject;
   }
 }
