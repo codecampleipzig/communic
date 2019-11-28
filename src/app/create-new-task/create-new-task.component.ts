@@ -82,8 +82,8 @@ export class CreateNewTaskComponent implements OnInit {
   }
 
    /**
-   * Check if userState is part of the project
-   */
+    * Check if userState is part of the project
+    */
   joined(): boolean {
     return Boolean(
       this.team.find(
