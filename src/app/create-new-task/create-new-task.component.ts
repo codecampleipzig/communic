@@ -76,7 +76,6 @@ export class CreateNewTaskComponent implements OnInit {
      * Pushes newTask to projectTasks and closes the form
      */
     this.project.projectTasks.push(newTask);
-    console.log (newTask);
     this.closeForm();
   }
 
