@@ -31,7 +31,7 @@ export class TestingStoreService {
     this.exploreProjects = new BehaviorSubject<Array<Project>>([]);
     this.exploreProjects$ = this.exploreProjects.asObservable();
 
-    this.project = new BehaviorSubject<any>({});
+    this.project = new BehaviorSubject<any>(null);
     this.project$ = this.project.asObservable();
 
     /* Mock Current User. Replace with login Action */

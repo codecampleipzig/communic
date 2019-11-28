@@ -53,7 +53,7 @@ export class StoreService {
     this.exploreProjects = new BehaviorSubject<Array<Project>>([]);
     this.exploreProjects$ = this.exploreProjects.asObservable();
 
-    this.project = new BehaviorSubject<any>({});
+    this.project = new BehaviorSubject<any>(null);
     this.project$ = this.project.asObservable();
 
     this.toolbar = new BehaviorSubject<any>("");
@@ -160,6 +160,10 @@ export class StoreService {
       // Put value into observable
       this.project.next(project);
     });
+  }
+
+  unloadProject(): void {
+    this.project.next(null);
   }
 
   /**
