@@ -12,7 +12,7 @@ export class ProjectService {
   constructor() {}
 
   /**
-   * Poseing GET request, returning project by id.
+   * GET full project object from backend
    * @returns new Promise
    */
   getProject(projectId: number): Promise<Project> {
@@ -36,7 +36,7 @@ export class ProjectService {
   }
 
   /**
-   * Poseing POST request, returning newState of the project after user was added by userId.
+   * join userId to projectId and get new project object from backend.
    * @returns new Promise
    */
   joinProjectTeam(projectId: number, userId: number): Promise<any> {

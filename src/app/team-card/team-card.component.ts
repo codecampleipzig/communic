@@ -14,16 +14,13 @@ export class TeamCardComponent implements OnInit {
    */
   @Input() public project: Project;
 
-  public team: User[];
   public userState: UserState;
 
   constructor(@Inject(StoreService) private store: StoreService) {
     this.store.user$.subscribe(user => (this.userState = user));
   }
 
-  ngOnInit() {
-    this.team = this.project.projectTeam;
-  }
+  ngOnInit() {}
 
   /**
    * Function that adds the user to the ProjectTeam
@@ -53,7 +50,7 @@ export class TeamCardComponent implements OnInit {
    */
   joined(): boolean {
     return Boolean(
-      this.team.find(
+      this.project.projectTeam.find(
         team => team.userId == this.userState.userInformation.userId
       )
     );

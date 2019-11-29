@@ -35,14 +35,14 @@ describe("TeamCardComponent", () => {
 
   it("CurrentUser should not have joined the task yet", () => {
     // empty the team
-    component.team = [];
+    component.project.projectTeam = [];
     fixture.detectChanges();
     expect(component.joined()).toBeFalsy();
   });
 
   it("CurrentUser should not be part of the team", () => {
     component.join();
-    const user = component.team.find(
+    const user = component.project.projectTeam.find(
       t => t.userId == component.userState.userInformation.userId
     );
 
@@ -51,7 +51,7 @@ describe("TeamCardComponent", () => {
 
   it("CurrentUser should be part of the team", () => {
     component.leave();
-    const user = component.team.find(
+    const user = component.project.projectTeam.find(
       t => t.userId == component.userState.userInformation.userId
     );
     expect(user).toBeFalsy();

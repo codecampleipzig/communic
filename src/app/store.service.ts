@@ -163,6 +163,13 @@ export class StoreService {
   }
 
   /**
+   * Destroy project
+   */
+  unloadProject(): void {
+    this.project.next(null);
+  }
+
+  /**
    * triggers projectService.updateTaskStatus and resolves its GET request to pass newTasks via newProject into project observable.
    */
   updateTaskStatus(projectId: number, taskId: number, status: string) {

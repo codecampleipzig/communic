@@ -6,7 +6,7 @@
    User list shows a list of User that belong to the team 
 -->
 <ul class="unstyled-list" id="user-list">
-   <li *ngFor="let member of team">
+   <li *ngFor="let member of project.projectTeam">
       <app-team-member [user]="member"></app-team-member>
    </li>
 </ul>
