@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { User } from "communic/src/app/datatypes/User";
-import { Project } from "communic/src/app/datatypes/Project";
-import { ProjectCategoryEnum } from "communic/src/app/datatypes/enums/ProjectCategoryEnum";
+import { User } from "./../datatypes/User";
+import { Project } from "./../datatypes/Project";
+import { ProjectCategoryEnum } from "./../datatypes/enums/ProjectCategoryEnum";
 import { SearchService, SearchResult } from "../search.service";
 import { ActivatedRoute } from "@angular/router";
+
 
 interface LoadingState {
   type: "loading";

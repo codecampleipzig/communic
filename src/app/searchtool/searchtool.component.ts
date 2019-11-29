@@ -1,9 +1,11 @@
-import { Component, Injectable } from "@angular/core";
-import { Project } from "communic/src/app/datatypes/Project";
-import { ProjectsService } from "communic/src/app/projects.service";
-import { projects } from "communic/src/app/mockdata";
+import { Component, Injectable, OnInit } from "@angular/core";
+import { Project } from "./../datatypes/Project";
+import { ProjectsService } from "./../projects.service";
+import { projects } from "./../mockdata";
 import { FormControl } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
+import { SearchService } from './../search.service';
+import { switchMap, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 // technical debt, because the real Project type is outdated
 export interface SearchProject {
@@ -19,18 +21,25 @@ export interface SearchProject {
 @Injectable({
   providedIn: Router,
 })
-export class SearchtoolComponent {
+export class SearchtoolComponent implements OnInit {
   active = false;
-  searchInput = new FormControl("");
+  searchInput: FormControl = new FormControl("");
+  projects: SearchProject[];
 
-  projects: SearchProject[] = [];
-  constructor(public route: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute, private search: SearchService) { }
+
+  ngOnInit() {
+    this.searchInput.valueChanges
+      .pipe(
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap(searchInput => this.search.getResults(searchInput))
+      )
+      .subscribe(projects => this.projects = projects.projects);
+  }
 
   onSubmit() {
     const searchString = this.searchInput.value;
-    this.route.navigate(["/searchresults"], { queryParams: searchString.value });
-    // dependency injection for the router
-    // Get query parameters from input
-    // router.navigate([newUrl])
+    this.router.navigate(["/searchresults"], { queryParams: { searchString: searchString } });
   }
 }
