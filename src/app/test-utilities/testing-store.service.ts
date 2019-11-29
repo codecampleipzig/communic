@@ -131,4 +131,33 @@ export class TestingStoreService {
     project.projectTeam.splice(userIndex, 1);
     this.project.next(project);
   }
+
+  /**
+   * triggers projectService.joinTaskTeam and resolves its GET request to pass newProject into project observable.
+   */
+  joinTaskTeam(projectId: number, taskId: number, userId: number) {
+    const newState = [...Mock.projects];
+    const project = newState.find(p => p.projectId == projectId);
+    const user = Mock.users.find(u => u.userId == userId);
+
+    project.projectTasks.find(t => t.taskId == taskId).taskTeam.push(user);
+    this.project.next(project);
+  }
+
+  /**
+   * triggers projectService.leaveTaskTeam and resolves its GET request to pass newProject into project observable.
+   */
+  leaveTaskTeam(projectId: number, taskId: number, userId: number) {
+    const newState = [...Mock.projects];
+    const project = newState.find(p => p.projectId == projectId);
+    const userIndex = project.projectTasks
+      .find(t => t.taskId == taskId)
+      .taskTeam.findIndex(u => u.userId == userId);
+
+    project.projectTasks
+      .find(t => t.taskId == taskId)
+      .taskTeam.splice(userIndex, 1);
+
+    this.project.next(project);
+  }
 }

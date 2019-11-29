@@ -163,7 +163,10 @@ export class StoreService {
   }
 
   /**
-   * triggers projectService.updateTaskStatus and resolves its GET request to pass newTasks via newProject into project observable.
+   * resolves GET request and passes newTasks via newProject into project observable.
+   * @param projectId ID of the project the task belongs to
+   * @param taskId ID of the task whose status is to be updated
+   * @param status The new status of the task that is updated
    */
   updateTaskStatus(projectId: number, taskId: number, status: string) {
     const promise = this.projectService.updateTaskStatus(taskId, status);
@@ -193,10 +196,38 @@ export class StoreService {
   }
 
   /**
-   * triggers projectService.joinProjectTeam and resolves its GET request to pass newProject into project observable.
+   * triggers projectService.leaveProjectTeam and resolves its GET request to pass newProject into project observable.
    */
   leaveProjectTeam(projectId: number, userId: number) {
     const promise = this.projectService.leaveProjectTeam(projectId, userId);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+    });
+  }
+
+  /**
+   * triggers projectService.joinTaskTeam and resolves its GET request to pass newProject into project observable.
+   */
+  joinTaskTeam(projectId: number, taskId: number, userId: number) {
+    const promise = this.projectService.joinTaskTeam(projectId, taskId, userId);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+    });
+  }
+
+  /**
+   * triggers projectService.leaveTaskTeam and resolves its GET request to pass newProject into project observable.
+   */
+  leaveTaskTeam(projectId: number, taskId: number, userId: number) {
+    const promise = this.projectService.leaveTaskTeam(
+      projectId,
+      taskId,
+      userId
+    );
 
     promise.then(newProject => {
       // Put value into observable

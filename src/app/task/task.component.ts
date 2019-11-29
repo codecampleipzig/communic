@@ -2,6 +2,9 @@ import { Component, OnInit, Input, HostBinding, Inject } from "@angular/core";
 import { Task } from "../datatypes/Task";
 import { StoreService } from "../store.service";
 import { UserState } from "../datatypes/User";
+import { Project } from "../datatypes/Project";
+
+type taskOrProject = "task" | "project" | "both";
 
 @Component({
   selector: "app-task",
@@ -15,6 +18,7 @@ export class TaskComponent implements OnInit {
    * Import task object
    */
   @Input() task: Task;
+  @Input() project: Project;
 
   /**
    * Add Task Status as Class to the host Element
@@ -24,7 +28,7 @@ export class TaskComponent implements OnInit {
   get hostClasses(): string {
     return (
       (this.task ? "status-" + this.task.taskStatus : "") +
-      (this.joined() ? " joined" : "")
+      (this.joined("task") ? " joined" : "")
     );
   }
 
@@ -45,10 +49,14 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() {}
 
-  toggleStatus(): void | boolean {
+  /**
+   * toggleTaskStatus to done or open if it's not deleted and CurrentUser is joined to task and project
+   */
+  toggleTaskStatus(): void | boolean {
     const status = this.task.taskStatus;
 
-    if (!this.joined() || status == "deleted") {
+    if (!this.joined("both") || status == "deleted") {
+      console.log("not allowed");
       return false;
     }
 
@@ -67,11 +75,56 @@ export class TaskComponent implements OnInit {
     }
   }
 
-  joined(): boolean {
-    return Boolean(
+  /**
+   * Function that adds the user to the ProjectTeam
+   */
+  join(): void {
+    if (!this.joined("project")) {
+      this.store.joinTaskTeam(
+        this.task.projectId,
+        this.task.taskId,
+        this.userState.userInformation.userId
+      );
+    }
+  }
+  /**
+   * Function that deletes the user from the ProjectTeam
+   */
+  leave(): void {
+    if (this.joined("project")) {
+      this.store.leaveTaskTeam(
+        this.task.projectId,
+        this.task.taskId,
+        this.userState.userInformation.userId
+      );
+    }
+  }
+
+  /**
+   * Check if CurrentUser joined task, project, both or one of them.
+   * @param ask 'task', 'project', 'both' or empty to check if joined one or the other
+   */
+  joined(ask?: taskOrProject): boolean {
+    const joinedProject = Boolean(
+      this.project.projectTeam.find(
+        team => team.userId == this.userState.userInformation.userId
+      )
+    );
+    const joinedTask = Boolean(
       this.task.taskTeam.find(
         taskTeam => taskTeam.userId == this.userState.userInformation.userId
       )
     );
+
+    if (ask == "task") {
+      return joinedTask;
+    }
+    if (ask == "project") {
+      return joinedProject;
+    }
+    if (ask == "both") {
+      return joinedTask && joinedProject;
+    }
+    return joinedTask || joinedProject;
   }
 }
