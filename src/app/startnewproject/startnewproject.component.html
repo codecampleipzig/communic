@@ -1,12 +1,6 @@
 <app-toolbar></app-toolbar>
-<div class="container">
-  <input
-    class="h1"
-    [(ngModel)]="projectTitle"
-    size="35"
-    type="text"
-    name="Project Title"
-  />
+<div *ngIf="projectTitle" class="container">
+  <input class="h1" [(ngModel)]="projectTitle" size="35" type="text" name="Project Title" />
 </div>
 
 <form class="card container">
@@ -14,15 +8,11 @@
     <i (click)="navigateHome()" class="fas fa-trash-alt"></i>
   </div>
   <div class="title"><h3>Give your project a heart-warming title:</h3></div>
-  <input
-    [(ngModel)]="projectTitle"
-    size="20"
-    type="text"
-    name="Project Title"
-  />
+  <input [(ngModel)]="projectTitle" size="20" type="text" name="Project Title" />
   <div class="project-image">
-    <input type="file" id="myFileInput" accept="image/*" />
+    <input *ngIf="!imgURL" type="file" id="myFileInput" accept="image/*" (change)="onSelectFile($event)" />
     <button
+      *ngIf="!imgURL"
       class="button"
       onclick="document.getElementById('myFileInput').click()"
       value="Select a File"
