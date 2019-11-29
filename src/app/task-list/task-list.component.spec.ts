@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { TaskListComponent } from "./task-list.component";
 import { TaskComponent } from "../task/task.component";
 import { CreateNewTaskComponent } from "../create-new-task/create-new-task.component";

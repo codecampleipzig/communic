@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { CreateNewTaskComponent } from "./create-new-task.component";
+import { RouterTestingModule } from "@angular/router/testing";
 
 describe("CreateNewTaskComponent", () => {
   let component: CreateNewTaskComponent;
@@ -8,7 +8,12 @@ describe("CreateNewTaskComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CreateNewTaskComponent]
+      imports: [
+        RouterTestingModule.withRoutes([]),
+      ],
+      declarations: [
+      CreateNewTaskComponent,
+      ]
     }).compileComponents();
   }));
 

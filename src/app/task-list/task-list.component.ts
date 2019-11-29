@@ -16,7 +16,6 @@ export class TaskListComponent implements OnInit {
    * Get project's object by parent component app-project-page
    */
   @Input() public project: Project;
-  @Input() public currentUser: User;
   public tasks: Task[] = [];
 
 

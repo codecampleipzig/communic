@@ -23,6 +23,8 @@ export class CreateNewTaskComponent implements OnInit {
   @Input() public project: Project;
   public userState: UserState;
   public tasks: Task[] = [];
+  public form: FormBuilder;
+  
 
   /**
    * Add Task .card Class to :host Element
