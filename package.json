@@ -12,7 +12,7 @@
     "test:coverage": "jest --coverage",
     "lint": "ng lint",
     "autofix": "ng lint --fix",
-    "compodoc": "npx compodoc -p tsconfig.app.json --coverageTest 70 --coverageMinimumPerFile 20 --coverageTestThresholdFail false"
+    "compodoc": "npx compodoc -p tsconfig.app.json --coverageTest 70 --coverageMinimumPerFile 20 --coverageTestThresholdFail false --coverageTestShowOnlyFailed"
   },
   "husky": {
     "hooks": {
@@ -24,9 +24,9 @@
       "prettier --write '**/*.{ts,json}'",
       "git add"
     ],
-    "linters": {
-      "*.ts": ["compodoc --coverageTest 70 --coverageMinimumPerFile 20 --coverageTestThresholdFail true"]
-    }
+    "*.ts": [
+      "compodoc --coverageTest 70 --coverageMinimumPerFile 20 --coverageTestThresholdFail true --coverageTestShowOnlyFailed"
+    ]
   },
   "private": true,
   "main": "main.js",
