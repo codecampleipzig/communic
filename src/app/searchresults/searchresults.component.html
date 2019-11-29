@@ -1,0 +1,17 @@
+<app-toolbar></app-toolbar>
+
+<div [ngSwitch]="state.type">
+  <div class="container" *ngSwitchCase="'loading'"><h2>Results are loading</h2></div>
+  <div class="container" *ngSwitchCase="'invalid'"><h2>Maybe your search term is incorrect?</h2></div>
+  <div class="container" *ngSwitchCase="'error'"><h2>There was a problem with the backend</h2></div>
+
+  <div *ngSwitchCase="'success'">
+    <div *ngIf="searchResults.projects.length != 0">
+      <app-project-list
+        [title]="'Search Results for ' + searchString"
+        [projects]="searchResults.projects"
+      ></app-project-list>
+    </div>
+    <div class="container" *ngIf="searchResults.projects.length == 0"><h2>Sorry, no projects found.</h2></div>
+  </div>
+</div>

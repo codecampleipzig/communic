@@ -7,6 +7,7 @@ import { CreateNewTaskComponent } from "../create-new-task/create-new-task.compo
 import * as Mock from "../mockdata";
 import { StoreService } from "../store.service";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
+import { FormsModule } from "@angular/forms";
 
 describe("TaskListComponent", () => {
   let component: TaskListComponent;
@@ -18,9 +19,10 @@ describe("TaskListComponent", () => {
       providers: [
         {
           provide: StoreService,
-          useClass: TestingStoreService
-        }
-      ]
+          useClass: TestingStoreService,
+        },
+      ],
+      imports: [FormsModule],
     }).compileComponents();
   }));
 

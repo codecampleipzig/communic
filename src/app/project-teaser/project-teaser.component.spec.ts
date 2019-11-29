@@ -8,7 +8,7 @@ xdescribe("ProjectTeaserComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectTeaserComponent]
+      declarations: [ProjectTeaserComponent],
     }).compileComponents();
   }));
 

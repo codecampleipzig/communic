@@ -6,7 +6,7 @@ import { StoreService } from "../store.service";
 @Component({
   selector: "app-startnewproject",
   templateUrl: "./startnewproject.component.html",
-  styleUrls: ["./startnewproject.component.css"]
+  styleUrls: ["./startnewproject.component.css"],
 })
 export class StartnewprojectComponent implements OnInit {
   public projectTitle = "FRIES 4 PEACE PROJECT";
@@ -34,10 +34,7 @@ export class StartnewprojectComponent implements OnInit {
     };
   }
 
-  constructor(
-    @Inject(Router) private router: Router,
-    @Inject(StoreService) private store: StoreService
-  ) {
+  constructor(@Inject(Router) private router: Router, @Inject(StoreService) private store: StoreService) {
     this.store.toolbar.next(this.projectTitle);
   }
 

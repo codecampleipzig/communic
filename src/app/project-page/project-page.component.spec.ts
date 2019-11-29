@@ -12,10 +12,11 @@ import { TeamMemberComponent } from "../team-member/team-member.component";
 import { TaskComponent } from "../task/task.component";
 import { Component } from "@angular/core";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-toolbar",
-  template: ""
+  template: "",
 })
 class ToolbarTestComponent {}
 
@@ -33,26 +34,27 @@ describe("ProjectPageComponent", () => {
         CreateNewTaskComponent,
         TeamMemberComponent,
         TaskComponent,
-        ToolbarTestComponent
+        ToolbarTestComponent,
       ],
       providers: [
         {
           provide: StoreService,
-          useClass: TestingStoreService
+          useClass: TestingStoreService,
         },
         {
           provide: Router,
           useClass: class {
             navigate() {}
-          }
+          },
         },
         {
           provide: ActivatedRoute,
           useClass: class {
             params = new BehaviorSubject<any>({ id: 1 }).asObservable();
-          }
-        }
-      ]
+          },
+        },
+      ],
+      imports: [FormsModule],
     }).compileComponents();
   }));
 

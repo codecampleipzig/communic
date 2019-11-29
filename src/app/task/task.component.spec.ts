@@ -14,9 +14,9 @@ describe("Task Component", () => {
       providers: [
         {
           provide: StoreService,
-          useClass: TestingStoreService
-        }
-      ]
+          useClass: TestingStoreService,
+        },
+      ],
     }).compileComponents();
   }));
 
