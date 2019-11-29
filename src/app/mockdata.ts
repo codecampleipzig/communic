@@ -214,11 +214,11 @@ export const projects: Project[] = [
     projectCreator: users[5],
     projectTeam: [users[5], users[6], users[8], users[10]],
     projectTasks: [tasks[2]]
-  }
+  },
   {
     projectId: 4,
     projectTitle: "Hackolaus: A Hackathon for Social Good",
-    projectImageUrl: "./../assets/project-default.png",
+    projectImageUrl: "./../assets/hackolaus-twitter-share.jpg",
     projectDescription:
     "Many NGOs, associations and individuals also work hard to give to social, environmental or other sustainability causes. Attendees will form teams to build solutions for the non profit of their choice.",    projectGoal: "Please our stakeholders.",
     projectStatus: "open",
