@@ -135,6 +135,39 @@ export const tasks: Task[] = [
     taskTeam: [],
     menuSection: "main"
   }
+  {
+    taskId: 6,
+    projectId: 4,
+    taskTitle: "Research NGOs",
+    taskDescription:
+      "We need to find NGOs that have a certain tech-related problem that participants can solve. It doesn't have to be pureley tech but somehow tech-related.",
+    taskStatus: "open",
+    taskCreator: users[6],
+    taskTeam: [users[6], users[8], users[10]],
+    menuSection: "main"
+  },
+  {
+    taskId: 7,
+    projectId: 4,
+    taskTitle: "Find Sponsors",
+    taskDescription:
+      "We need sponsors to give us money for paying the venue and get some prizes for the winners of certain categories. They also should have a strong connection to either Leipzig dev community or social",
+    taskStatus: "open",
+    taskCreator: users[6],
+    taskTeam: [users[6], users[8], users[10]],
+    menuSection: "main"
+  },
+  {
+    taskId: 8,
+    projectId: 4,
+    taskTitle: "Find a venue",
+    taskDescription:
+      "We need to find a venue where we can host our Hackathon, possibilities would be Basislager, Urbn Jungle and Social Impact Lab. Venue should also be involved in Leipzig dev community",
+    taskStatus: "open",
+    taskCreator: users[6],
+    taskTeam: [users[6], users[8], users[10]],
+    menuSection: "main"
+  }
 ];
 
 export const projects: Project[] = [
