@@ -39,6 +39,11 @@
   margin: 0;
 }
 
+input[type="file"] {
+  height: 0px;
+  visibility: hidden;
+}
+
 .register-card h3 {
   margin-top: 0;
 }

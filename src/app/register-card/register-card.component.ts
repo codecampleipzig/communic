@@ -14,6 +14,7 @@ export class RegisterCardComponent implements OnInit {
   profileForm: FormGroup;
   authType: string;
   title: string;
+  url: any = null;
 
   /**
    * Add .container Class to the Host
@@ -64,5 +65,22 @@ export class RegisterCardComponent implements OnInit {
 
   onSubmit() {
     this.router.navigate(["home"]);
+  }
+
+  onSelectFile(event) {
+    console.log("onSelectedFile");
+    const eventTarget: any = event.target;
+    if (eventTarget.files && eventTarget.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = event => {
+        const eventTarget: any = event.target;
+
+        // called once readAsDataURL is completed
+        this.url = eventTarget.result;
+      };
+
+      reader.readAsDataURL(eventTarget.files[0]); // read file as data url
+    }
   }
 }
