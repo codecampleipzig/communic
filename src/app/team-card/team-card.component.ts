@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { User } from "../datatypes/User";
+import { Component, OnInit, Input, Inject } from "@angular/core";
+import { User, UserState } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
+import { StoreService } from "../store.service";
 
 @Component({
   selector: "app-team-card",
@@ -12,38 +13,39 @@ export class TeamCardComponent implements OnInit {
    * Get project's object by parent component app-project-page
    */
   @Input() public project: Project;
-  @Input() public currentUser: User;
-  public alreadyJoined = false;
-  public team: User[];
 
-  constructor() {}
+  public team: User[];
+  public userState: UserState;
+
+  constructor(@Inject(StoreService) private store: StoreService) {
+    this.store.user$.subscribe(user => (this.userState = user));
+  }
 
   ngOnInit() {
-    /**
-     * Get projectTeam from project Object
-     * - [ ] check if user is already part of the team
-     */
     this.team = this.project.projectTeam;
-    // Filter if team contains current user and set already joined to true if so
-    if (this.team && this.team != []) {
-      this.alreadyJoined = this.team.filter(() => this.currentUser) != [] ? true : false;
-    }
   }
 
   /**
    * Function that adds the user to the ProjectTeam
-   *  -[ ] need to comunicate with store
    */
   join(): void {
-    this.alreadyJoined = true;
-    this.team.push(this.currentUser);
+    if (!this.joined()) {
+      this.store.joinProjectTeam(this.project.projectId, this.userState.userInformation.userId);
+    }
   }
   /**
    * Function that deletes the user from the ProjectTeam
-   *  -[ ] need to comunicate with store
    */
   leave(): void {
-    this.alreadyJoined = false;
-    this.team = this.team.filter(x => x.userId !== this.currentUser.userId);
+    if (this.joined()) {
+      this.store.leaveProjectTeam(this.project.projectId, this.userState.userInformation.userId);
+    }
+  }
+
+  /**
+   * Check if userState is part of the project
+   */
+  joined(): boolean {
+    return Boolean(this.team.find(team => team.userId == this.userState.userInformation.userId));
   }
 }

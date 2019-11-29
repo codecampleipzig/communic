@@ -11,12 +11,6 @@ import { User } from "../datatypes/User";
 })
 export class ProjectPageComponent implements OnInit {
   public project: Project;
-  public currentUser: User = {
-    userId: 2,
-    userName: "Mariana",
-    userEmail: "BringMarianaBananaToSchool@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
-  };
 
   constructor(@Inject(ActivatedRoute) public route: ActivatedRoute, @Inject(StoreService) private store: StoreService) {
     /**
@@ -29,5 +23,5 @@ export class ProjectPageComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

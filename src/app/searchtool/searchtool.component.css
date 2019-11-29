@@ -1,6 +1,13 @@
+:host {
+  z-index: 100;
+  margin-left: 1em;
+}
 input {
   border: none;
   border-bottom: 1px var(--borderGrey) solid;
+  border-radius: 0px;
+  min-width: 160px;
+  outline: none;
 }
 
 ul {
@@ -30,6 +37,7 @@ ul {
 
 .show input {
   border-bottom: none;
+  outline: none;
 }
 
 .dropdown {
@@ -51,4 +59,13 @@ a {
 
 a:hover {
   color: var(--primaryColorHighlight);
+}
+
+@media (max-width: 615px) {
+  input {
+    display: none;
+  }
+  .show input {
+    display: initial;
+  }
 }

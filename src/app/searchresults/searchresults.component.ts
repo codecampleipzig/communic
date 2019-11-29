@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Inject } from "@angular/core";
 import { User } from "./../datatypes/User";
 import { Project } from "./../datatypes/Project";
 import { ProjectCategoryEnum } from "./../datatypes/enums/ProjectCategoryEnum";
 import { SearchService, SearchResult } from "../search.service";
 import { ActivatedRoute } from "@angular/router";
-
 
 interface LoadingState {
   type: "loading";
@@ -30,14 +29,23 @@ type ComponentState = LoadingState | ErrorState | SuccessState | InvalidState;
 })
 export class SearchresultsComponent implements OnInit {
   state: ComponentState = { type: "loading" };
+  searchString = "...";
 
-  constructor(public search: SearchService, public route: ActivatedRoute) {
+  constructor(
+    @Inject(SearchService) public search: SearchService,
+    @Inject(ActivatedRoute) public route: ActivatedRoute,
+  ) {
     this.route.queryParams.subscribe(() => this.ngOnInit());
   }
 
+  get searchResults(): SearchResult {
+    return (this.state as SuccessState).result;
+  }
+
   ngOnInit() {
-    if (this.route.snapshot.queryParams.searchString) {
-      this.search.getResults(this.route.snapshot.queryParams.searchString).subscribe(
+    this.searchString = this.route.snapshot.queryParams.searchString;
+    if (this.searchString) {
+      this.search.getResults(this.searchString).subscribe(
         result => (this.state = { type: "success", result }),
         error => (this.state = { type: "error", error }),
       );

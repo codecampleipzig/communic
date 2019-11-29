@@ -7,12 +7,11 @@ import { TaskListComponent } from "../task-list/task-list.component";
 import { CreateNewTaskComponent } from "../create-new-task/create-new-task.component";
 import { StoreService } from "../store.service";
 import { Router, ActivatedRoute } from "@angular/router";
-import { AuthService } from "../auth.service";
-import { Observable, BehaviorSubject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { TeamMemberComponent } from "../team-member/team-member.component";
 import { TaskComponent } from "../task/task.component";
 import { Component } from "@angular/core";
-import { TaskListItemTeamComponent } from "../task-list-item-team/task-list-item-team.component";
+import { TestingStoreService } from "../test-utilities/testing-store.service";
 
 @Component({
   selector: "app-toolbar",
@@ -35,17 +34,18 @@ describe("ProjectPageComponent", () => {
         TeamMemberComponent,
         TaskComponent,
         ToolbarTestComponent,
-        TaskListItemTeamComponent,
       ],
       providers: [
-        StoreService,
+        {
+          provide: StoreService,
+          useClass: TestingStoreService,
+        },
         {
           provide: Router,
           useClass: class {
             navigate() {}
           },
         },
-        AuthService,
         {
           provide: ActivatedRoute,
           useClass: class {

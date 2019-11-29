@@ -5,7 +5,6 @@ import { AppComponent } from "./app.component";
 import { ProjectPageComponent } from "./project-page/project-page.component";
 import { TaskListComponent } from "./task-list/task-list.component";
 import { TaskComponent } from "./task/task.component";
-import { TaskListItemTeamComponent } from "./task-list-item-team/task-list-item-team.component";
 import { CreateNewTaskComponent } from "./create-new-task/create-new-task.component";
 import { TeamCardComponent } from "./team-card/team-card.component";
 import { TeamMemberComponent } from "./team-member/team-member.component";
@@ -31,7 +30,6 @@ import { HttpClientModule } from "@angular/common/http";
     ProjectPageComponent,
     TaskListComponent,
     TaskComponent,
-    TaskListItemTeamComponent,
     CreateNewTaskComponent,
     TeamCardComponent,
     TeamMemberComponent,

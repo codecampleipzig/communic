@@ -1,11 +1,11 @@
-import { Component, Injectable, OnInit } from "@angular/core";
+import { Component, Injectable, OnInit, Inject, ViewChild } from "@angular/core";
 import { Project } from "./../datatypes/Project";
 import { ProjectsService } from "./../projects.service";
 import { projects } from "./../mockdata";
 import { FormControl } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
-import { SearchService } from './../search.service';
-import { switchMap, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { SearchService } from "./../search.service";
+import { switchMap, map, debounceTime, distinctUntilChanged } from "rxjs/operators";
 
 // technical debt, because the real Project type is outdated
 export interface SearchProject {
@@ -26,20 +26,35 @@ export class SearchtoolComponent implements OnInit {
   searchInput: FormControl = new FormControl("");
   projects: SearchProject[];
 
-  constructor(private router: Router, private route: ActivatedRoute, private search: SearchService) { }
+  constructor(
+    @Inject(Router) private router: Router,
+    @Inject(ActivatedRoute) private route: ActivatedRoute,
+    @Inject(SearchService) private search: SearchService,
+  ) {}
 
   ngOnInit() {
     this.searchInput.valueChanges
       .pipe(
         debounceTime(400),
         distinctUntilChanged(),
-        switchMap(searchInput => this.search.getResults(searchInput))
+        switchMap(searchInput => this.search.getResults(searchInput)),
       )
-      .subscribe(projects => this.projects = projects.projects);
+      .subscribe(results => (this.projects = results.projects));
   }
 
-  onSubmit() {
+  onSubmit(event) {
+    console.log(event);
     const searchString = this.searchInput.value;
-    this.router.navigate(["/searchresults"], { queryParams: { searchString: searchString } });
+    this.router.navigate(["/searchresults"], { queryParams: { searchString } });
+    this.active = false;
+  }
+
+  focusLost() {
+    setTimeout(() => {
+      this.active = false;
+    }, 200);
+  }
+  clearSearch() {
+    this.searchInput.reset();
   }
 }

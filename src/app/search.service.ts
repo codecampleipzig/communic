@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { SearchProject } from "./searchtool/searchtool.component";
 
@@ -10,7 +10,7 @@ export interface SearchResult {
   providedIn: "root",
 })
 export class SearchService {
-  constructor(private http: HttpClient) {}
+  constructor(@Inject(HttpClient) private http: HttpClient) {}
 
   getResults(searchString: string) {
     const params = new HttpParams().set("searchTerm", searchString);

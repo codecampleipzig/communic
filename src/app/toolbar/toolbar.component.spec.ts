@@ -3,7 +3,6 @@ import { ToolbarComponent } from "./toolbar.component";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { TestingRouter } from "../test-utilities/testing-router";
-import { SearchtoolComponent } from "../searchtool/searchtool.component";
 import { IconComponent } from "../icon/icon.component";
 
 // mock the child components
@@ -13,6 +12,10 @@ class UserActionStubComponent {}
 // mock the child components
 @Component({ selector: "app-project-action", template: "" })
 class ProjectActionStubComponent {}
+
+// mock the child components
+@Component({ selector: "app-searchtool", template: "" })
+class SearchToolStubComponent {}
 
 describe("ToolbarComponent", () => {
   let component: ToolbarComponent;
@@ -24,7 +27,7 @@ describe("ToolbarComponent", () => {
         ToolbarComponent,
         UserActionStubComponent,
         ProjectActionStubComponent,
-        SearchtoolComponent,
+        SearchToolStubComponent,
         IconComponent,
       ],
       providers: [

@@ -125,6 +125,16 @@ export const tasks: Task[] = [
     taskTeam: [users[6], users[8], users[10]],
     menuSection: "main",
   },
+  {
+    taskId: 5,
+    projectId: 1,
+    taskTitle: "Some Task",
+    taskDescription: "Not sure how important this task really is.",
+    taskStatus: "open",
+    taskCreator: users[6],
+    taskTeam: [],
+    menuSection: "main",
+  },
 ];
 
 export const projects: Project[] = [
@@ -138,7 +148,7 @@ export const projects: Project[] = [
     projectStatus: "done",
     projectCreator: users[1],
     projectTeam: [users[1], users[2], users[3], users[4], users[5], users[10], users[12]],
-    projectTasks: [tasks[0], tasks[1], tasks[2]],
+    projectTasks: [tasks[0], tasks[1], tasks[2], tasks[4]],
   },
   {
     projectId: 2,

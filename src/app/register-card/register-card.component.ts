@@ -23,7 +23,7 @@ export class RegisterCardComponent implements OnInit {
     return "container";
   }
 
-  constructor(private route: ActivatedRoute, @Inject(Router) private router: Router) {
+  constructor(@Inject(ActivatedRoute) private route: ActivatedRoute, @Inject(Router) private router: Router) {
     this.profileForm = new FormGroup({
       name: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required, Validators.email]),
