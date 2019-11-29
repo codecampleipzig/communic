@@ -50,7 +50,7 @@ describe("Task Component", () => {
     fixture.detectChanges();
     spyOn(component, "restore");
     const button = fixture.debugElement.nativeElement.querySelector(
-      ".task-delete i"
+      "#task-delete"
     );
     button.dispatchEvent(new Event("click"));
     expect(component.restore).toHaveBeenCalled();
@@ -61,7 +61,7 @@ describe("Task Component", () => {
     fixture.detectChanges();
     spyOn(component, "delete");
     const button = fixture.debugElement.nativeElement.querySelector(
-      ".task-delete i"
+      "#task-delete"
     );
     button.dispatchEvent(new Event("click"));
     expect(component.delete).toHaveBeenCalled();

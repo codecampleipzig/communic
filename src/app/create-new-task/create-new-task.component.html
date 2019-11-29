@@ -1,8 +1,8 @@
 <!--
 Close item x displayed in the create task form.
 //-->
-<div class="top-right-icon" *ngIf="formVisible" (click)="closeForm()">
-    <i class="fas fa-times"></i>
+<div class="top-right-icons">
+    <button *ngIf="formVisible" (click)="closeForm()"><i class="fas fa-times"></i></button>
 </div>
 <!--
 Opening up the form and just show a plus, whole area clickable to create a new task.
