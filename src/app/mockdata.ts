@@ -134,7 +134,7 @@ export const tasks: Task[] = [
     taskCreator: users[6],
     taskTeam: [],
     menuSection: "main"
-  }
+  },
   {
     taskId: 6,
     projectId: 4,
@@ -215,6 +215,25 @@ export const projects: Project[] = [
     projectTeam: [users[5], users[6], users[8], users[10]],
     projectTasks: [tasks[2]]
   }
+  {
+    projectId: 4,
+    projectTitle: "Hackolaus: A Hackathon for Social Good",
+    projectImageUrl: "./../assets/project-default.png",
+    projectDescription:
+    "Many NGOs, associations and individuals also work hard to give to social, environmental or other sustainability causes. Attendees will form teams to build solutions for the non profit of their choice.",    projectGoal: "Please our stakeholders.",
+    projectStatus: "open",
+    projectCreator: users[1],
+    projectTeam: [
+      users[1],
+      users[2],
+      users[3],
+      users[4],
+      users[5],
+      users[10],
+      users[12]
+    ],
+    projectTasks: [tasks[0], tasks[1], tasks[2], tasks[4]]
+  },
 ];
 
 // Class needed for testing, please do not remove
