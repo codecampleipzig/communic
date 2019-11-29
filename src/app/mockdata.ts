@@ -232,7 +232,7 @@ export const projects: Project[] = [
       users[10],
       users[12]
     ],
-    projectTasks: [tasks[0], tasks[1], tasks[2], tasks[4]]
+    projectTasks: [tasks[6], tasks[7], tasks[8]],
   },
 ];
 
