@@ -15,10 +15,12 @@ export class ProjectService {
    * Poseing GET request, returning project by id.
    * @returns new Promise
    */
-  getProject(id: number): Promise<Project> {
-    return axios.get(`${environment.api_url}/project/${id}`).then(response => {
-      return response.data.project;
-    });
+  getProject(projectId: number): Promise<Project> {
+    return axios
+      .get(`${environment.api_url}/project/${projectId}`)
+      .then(response => {
+        return response.data.project;
+      });
   }
 
   /**
@@ -38,14 +40,11 @@ export class ProjectService {
    * @returns new Promise
    */
   joinProjectTeam(projectId: number, userId: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const newState = [...Mock.projects];
-      const project = newState.find(p => p.projectId == projectId);
-      const user = Mock.users.find(u => u.userId == userId);
-
-      project.projectTeam.push(user);
-      resolve(project);
-    });
+    return axios
+      .put(`${environment.api_url}/projectTeam/${projectId}/member/${userId}`)
+      .then(response => {
+        return response.data.project;
+      });
   }
 
   /**

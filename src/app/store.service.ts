@@ -151,10 +151,10 @@ export class StoreService {
 
   /**
    * resolves GET request and passes project Data into project observable
-   * @param id: project ID
+   * @param projectId: project ID
    */
-  retrieveProject(id: number): void {
-    const promise = this.projectService.getProject(id);
+  retrieveProject(projectId: number): void {
+    const promise = this.projectService.getProject(projectId);
 
     promise.then(project => {
       // Put value into observable
