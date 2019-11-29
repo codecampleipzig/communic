@@ -34,24 +34,15 @@ html, body {
 
 /* Add Transition on everything */
 * {
-   transition: 
-      width .4s,
-      height .4s,
-      padding .4s,
-      margin .4s,
-      transform .4s,
-      opacity .4s,
-      box-shadow .4s,
-      border .4s,
-      background-color .4s,
-      color .4s;
+  transition: width 0.4s, height 0.4s, padding 0.4s, margin 0.4s, transform 0.4s, opacity 0.4s, box-shadow 0.4s,
+    border 0.4s, background-color 0.4s, color 0.4s;
 }
 
 body {
-   font-family: 'Montserrat', sans-serif;
-   font-weight: 300;
-   padding: 0 0 3em 0;
-   margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  padding: 0 0 3em 0;
+  margin: 0;
 }
 
 
@@ -60,41 +51,43 @@ body {
  */
 
 h2 {
-   color: var(--fontDarkGrey);
-   font-weight: 600;
+  color: var(--fontDarkGrey);
+  font-weight: 600;
 }
 
 h3 {
-   font-weight: 500;
+  font-weight: 500;
 }
 
 h4 {
-   margin: 0;
-   font-weight: 500;
-   font-size: 1.2rem;
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.2rem;
 }
 
 p {
-   line-height: 1.5;
+  line-height: 1.5;
 }
 
-a, button {
-   color: var(--primaryColor);
-   text-decoration: none;
+a,
+button {
+  color: var(--primaryColor);
+  text-decoration: none;
 }
 
-a:hover, button:hover {
-   color: var(--primaryColorHighlight);
-   text-decoration: underline;
+a:hover,
+button:hover {
+  color: var(--primaryColorHighlight);
+  text-decoration: underline;
 }
 
 img {
-   max-width: 100%;
+  max-width: 100%;
 }
 
 small,
 .small {
-   font-size: .9em;
+  font-size: 0.9em;
 }
 
 
@@ -104,47 +97,47 @@ small,
 
 /* Reset Button Styles */
 button {
-   background: transparent;
-   cursor: pointer;
-   border: 0 none;
-   padding: 0;
-   font-family: inherit;
-   font-size: 1em;
+  background: transparent;
+  cursor: pointer;
+  border: 0 none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 1em;
 }
 
 /* Fundamentals for Buttons, Input & Textareas */
 .button,
 input,
 textarea {
-   font-size: 1rem;
-   line-height: 1.5;
-   border-radius: 5px;
-   box-sizing: border-box;
-   font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: inherit;
 }
 
 .button {
-   cursor: pointer;
-   background-color: var(--primaryColor);
-   color: #fff;
-   border: 0 none;
-   min-width: 130px;
-   padding: .9em 1.5em;
-   appearance: none;
-   white-space: nowrap;
+  cursor: pointer;
+  background-color: var(--primaryColor);
+  color: #fff;
+  border: 0 none;
+  min-width: 130px;
+  padding: 0.9em 1.5em;
+  appearance: none;
+  white-space: nowrap;
 }
 
 .button:hover,
 .button:focus {
-   background-color: var(--primaryColorHighlight);
-   color: #fff;
-   outline: 0 none;
-   text-decoration: none;
+  background-color: var(--primaryColorHighlight);
+  color: #fff;
+  outline: 0 none;
+  text-decoration: none;
 }
 
 /* Margin to the right for every Icon inside a button. Caption needs to be placed in a span-Element then! */
 .button i:not(:last-child) {
-   margin-right: .5em;
+  margin-right: 0.5em;
 }
 
 /* Hide the caption and reset margin right for the icon. Caption needs to be in a span-Element */
@@ -159,32 +152,32 @@ textarea {
 
 /* Button Elements without background but border */
 .button.outlined {
-   border: 1px solid var(--primaryColor);
-   color: var(--primaryColor);
-   background-color: transparent;
-   padding: .5em 1em;
+  border: 1px solid var(--primaryColor);
+  color: var(--primaryColor);
+  background-color: transparent;
+  padding: 0.5em 1em;
 }
 
 .button.outlined:hover {
-   color: #fff;
-   background-color: var(--primaryColor);
+  color: #fff;
+  background-color: var(--primaryColor);
 }
 
 /* And make the border round */
 .button.round {
-   border-radius: 1.5em;
-   min-width: auto;
-   font-size: .9rem;
-   padding: .3em 1em;
+  border-radius: 1.5em;
+  min-width: auto;
+  font-size: 0.9rem;
+  padding: 0.3em 1em;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-   border: 1px solid var(--borderGrey);
-   width: 100%;
-   padding: .9em 1.5em;
+  border: 1px solid var(--borderGrey);
+  width: 100%;
+  padding: 0.9em 1.5em;
 }
 
 /* Change Fontcolor if theres no value yet. */
@@ -192,13 +185,13 @@ input[type="text"]:not(:focus):placeholder-shown,
 input[type="email"]:not(:focus):placeholder-shown,
 input[type="password"]:not(:focus):placeholder-shown,
 textarea:not(:focus):placeholder-shown {
-   color: var(--borderGrey);
+  color: var(--borderGrey);
 }
 
 /* Place form fields inside a label-element for spacing */
 label {
-   display:block;
-   margin-bottom: 1em;
+  display: block;
+  margin-bottom: 1em;
 }
 
 /* Error Messages next to input & textarea */ 
@@ -254,20 +247,20 @@ label {
 
 /* Adds background for different content sections. Usually inside or together with a .container */
 .card {
-   position: relative;
-   background: #FFFFFF;
-   box-shadow: var(--bigShadow);
-   border-radius: 10px;
-   padding: 1em 1.5em 2em; /* Space around the content of the cards */
-   margin: 1em auto 0; /* Margin to top and center with auto */
-   box-sizing: border-box; /* Calculate width with padding */
-   max-width: 450px;
+  position: relative;
+  background: #ffffff;
+  box-shadow: var(--bigShadow);
+  border-radius: 10px;
+  padding: 1em 1.5em 2em; /* Space around the content of the cards */
+  margin: 1em auto 0; /* Margin to top and center with auto */
+  box-sizing: border-box; /* Calculate width with padding */
+  max-width: 450px;
 }
 
-@media (min-height: 650px) and (min-width: 480px)  {
-   .card {
-      margin-top: 3em;
-   }
+@media (min-height: 650px) and (min-width: 480px) {
+  .card {
+    margin-top: 3em;
+  }
 }
 
 @media (min-width: 500px) {
@@ -279,13 +272,13 @@ label {
 
 /* Overrides for .card in the .cardList (e.g. Projects Overview) */
 .card-list > .card {
-   width: 100%;
-   padding: 1em;
-   margin: 0;
+  width: 100%;
+  padding: 1em;
+  margin: 0;
 }
 
 .card-list > .card:hover {
-   box-shadow: var(--biggerShadow);
+  box-shadow: var(--biggerShadow);
 }
 
 @media (min-width: 500px) {
@@ -296,30 +289,30 @@ label {
 
 /* .card in .card looks like a TaskListItem */
 .card .card {
-   background: var(--backgroundGrey);
-   box-shadow: var(--smallShadow);
-   color: var(--fontDarkGrey);
-   position: relative;
-   border-radius: 4px;
-   padding: .5em 1em;
-   margin: 0 0 1em 0;
-   max-width: 100%;
-   width: 100%;
+  background: var(--backgroundGrey);
+  box-shadow: var(--smallShadow);
+  color: var(--fontDarkGrey);
+  position: relative;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  margin: 0 0 1em 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 /* Position Content in the middle of the page with a maximum width */
 .container {
-   position: relative;
-   max-width: 1100px;
-   margin: 1em auto 0;
-   display: block;
-   width: calc(100% - 2em); /* Space around the card */
+  position: relative;
+  max-width: 1100px;
+  margin: 1em auto 0;
+  display: block;
+  width: calc(100% - 2em); /* Space around the card */
 }
 
-@media (min-height: 650px) and (min-width: 480px)  {
-   .container {
-      margin-top: 3em;
-   }
+@media (min-height: 650px) and (min-width: 480px) {
+  .container {
+    margin-top: 3em;
+  }
 }
 
 /**
@@ -328,33 +321,33 @@ label {
  * Or change height & width & change font-size to adjust placeholder-icon size
  */
 .user-image {
-   border: 1px solid var(--borderPlaceholderGrey);
-   border-radius: 50%;
-   color: var(--borderPlaceholderGrey);
-   height: 2em;
-   width: 2em;
-   font-size: 2rem;
-   display: inline-block;
-   overflow: hidden;
-   box-shadow: var(--smallShadow);
-   position: relative;
-   line-height: 1;
-   text-align: center;
+  border: 1px solid var(--borderPlaceholderGrey);
+  border-radius: 50%;
+  color: var(--borderPlaceholderGrey);
+  height: 2em;
+  width: 2em;
+  font-size: 2rem;
+  display: inline-block;
+  overflow: hidden;
+  box-shadow: var(--smallShadow);
+  position: relative;
+  line-height: 1;
+  text-align: center;
 }
 
 .user-image img {
-   object-fit: cover;
-   object-position: center;
-   width: 100%;
-   height: 100%;
-   position: relative;
-   z-index: 1
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .user-image i {
-   width: 1em;
-   height: 1em;
-   position: relative;
-   top: 50%;
-   transform: translateY(-50%);
+  width: 1em;
+  height: 1em;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }

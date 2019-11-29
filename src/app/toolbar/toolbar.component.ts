@@ -5,7 +5,7 @@ import { StoreService } from "../store.service";
 @Component({
   selector: "app-toolbar",
   templateUrl: "./toolbar.component.html",
-  styleUrls: ["./toolbar.component.css"]
+  styleUrls: ["./toolbar.component.css"],
 })
 export class ToolbarComponent implements OnInit {
   /**
@@ -18,10 +18,7 @@ export class ToolbarComponent implements OnInit {
 
   public projectTitle;
 
-  constructor(
-    @Inject(Router) private router: Router,
-    @Inject(StoreService) private store: StoreService
-  ) {
+  constructor(@Inject(Router) private router: Router, @Inject(StoreService) private store: StoreService) {
     /** Commented as it throws errors.
      * this.store.toolbar$.subscribe(title => (this.projectTitle = title));
      */

@@ -19,17 +19,13 @@ describe("HomeComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [
-        HomeComponent,
-        ToolbarStubComponent,
-        ProjectListStubComponent
-      ],
+      declarations: [HomeComponent, ToolbarStubComponent, ProjectListStubComponent],
       providers: [
         {
           provide: StoreService,
-          useClass: TestingStoreService
-        }
-      ]
+          useClass: TestingStoreService,
+        },
+      ],
     }).compileComponents();
   }));
 

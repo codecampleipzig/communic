@@ -6,20 +6,15 @@ import { Project } from "../datatypes/Project";
 import { StoreService } from "../store.service";
 
 @NgModule({
-  imports: [
-    FormBuilder
-  ]
+  imports: [FormBuilder],
 })
-
 @Component({
   selector: "app-create-new-task",
   templateUrl: "./create-new-task.component.html",
-  styleUrls: ["./create-new-task.component.css"]
+  styleUrls: ["./create-new-task.component.css"],
 })
-
-
 export class CreateNewTaskComponent implements OnInit {
-  private formVisible: any = false;
+  public formVisible: any = false;
   @Input() public project: Project;
   public userState: UserState;
   public tasks: Task[] = [];
@@ -70,7 +65,7 @@ export class CreateNewTaskComponent implements OnInit {
       taskStatus: "open",
       taskCreator: this.userState.userInformation,
       taskTeam: [this.userState.userInformation],
-      menuSection: "starter"
+      menuSection: "starter",
     };
     /**
      * Pushes newTask to projectTasks and closes the form

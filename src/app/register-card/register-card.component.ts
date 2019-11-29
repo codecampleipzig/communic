@@ -1,25 +1,14 @@
-import {
-  Component,
-  OnInit,
-  NgModule,
-  Inject,
-  HostBinding
-} from "@angular/core";
-import {
-  FormControl,
-  ReactiveFormsModule,
-  Validators,
-  FormGroup
-} from "@angular/forms";
+import { FormControl, ReactiveFormsModule, Validators, FormGroup } from "@angular/forms";
+import { Component, OnInit, NgModule, Inject, HostBinding } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @NgModule({
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule],
 })
 @Component({
   selector: "app-register-card",
   templateUrl: "./register-card.component.html",
-  styleUrls: ["./register-card.component.css"]
+  styleUrls: ["./register-card.component.css"],
 })
 export class RegisterCardComponent implements OnInit {
   profileForm: FormGroup;
@@ -34,10 +23,7 @@ export class RegisterCardComponent implements OnInit {
     return "container";
   }
 
-  constructor(
-    private route: ActivatedRoute,
-    @Inject(Router) private router: Router
-  ) {
+  constructor(@Inject(ActivatedRoute) private route: ActivatedRoute, @Inject(Router) private router: Router) {
     this.profileForm = new FormGroup({
       name: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required, Validators.email]),
@@ -45,11 +31,9 @@ export class RegisterCardComponent implements OnInit {
         "",
         Validators.compose([
           Validators.required,
-          Validators.pattern(
-            "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"
-          ) // this is for the letters (both uppercase and lowercase) and numbers validation
-        ])
-      )
+          Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"), // this is for the letters (both uppercase and lowercase) and numbers validation
+        ]),
+      ),
     });
   }
 
