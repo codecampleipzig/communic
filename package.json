@@ -25,9 +25,7 @@
       "git add"
     ],
     "linters": {
-      "*.ts": [
-        "compodoc --coverageTest 70 --coverageMinimumPerFile 20 --coverageTestThresholdFail false"
-      ]
+      "*.ts": ["compodoc --coverageTest 70 --coverageMinimumPerFile 20 --coverageTestThresholdFail true"]
     }
   },
   "private": true,
