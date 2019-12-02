@@ -52,14 +52,13 @@ export class ProjectService {
    * @returns new Promise
    */
   leaveProjectTeam(projectId: number, userId: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const newState = [...Mock.projects];
-      const project = newState.find(p => p.projectId == projectId);
-      const userIndex = project.projectTeam.findIndex(u => u.userId == userId);
-
-      project.projectTeam.splice(userIndex, 1);
-      resolve(project);
-    });
+    return axios
+      .delete(
+        `${environment.api_url}/projectTeam/${projectId}/member/${userId}`
+      )
+      .then(response => {
+        return response.data.project;
+      });
   }
 
   /**
