@@ -49,7 +49,7 @@ describe("Task Component", () => {
     component.task.taskStatus = "deleted";
     fixture.detectChanges();
     spyOn(component, "restore");
-    const button = fixture.debugElement.nativeElement.querySelector(".task-delete i");
+    const button = fixture.debugElement.nativeElement.querySelector("#task-delete");
     button.dispatchEvent(new Event("click"));
     expect(component.restore).toHaveBeenCalled();
   });
@@ -58,7 +58,7 @@ describe("Task Component", () => {
     component.task.taskStatus = "open";
     fixture.detectChanges();
     spyOn(component, "delete");
-    const button = fixture.debugElement.nativeElement.querySelector(".task-delete i");
+    const button = fixture.debugElement.nativeElement.querySelector("#task-delete");
     button.dispatchEvent(new Event("click"));
     expect(component.delete).toHaveBeenCalled();
   });

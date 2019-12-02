@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "dev": "ng serve",
+    "dev": "ng serve --aot",
     "build": "ng build --prod",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -16,7 +16,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run lint && npm build --prod && npm test"
+      "pre-commit": "lint-staged && npm run lint && npm run build --prod && npm test"
     }
   },
   "lint-staged": {

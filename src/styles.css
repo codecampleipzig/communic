@@ -228,8 +228,8 @@ label {
    text-align: center;
 }
 
-/* absolute positioned icon in the top right of .card. Should be a button Element with an i.fa-icon Element inside. Make sure the icon won't overlap content! */
-.top-right-icon {
+/* absolute positioned div for control icons in the top right of .card. There should be a button Elements inside with an i.fa-icon Element inside. Make sure the icons won't overlap content! */
+.top-right-icons {
    position: absolute;
    top: 1em;
    right: 1em;
@@ -237,7 +237,16 @@ label {
    color: var(--iconColor);
 }
 
-.top-right-icon:hover {
+.top-right-icons > * {
+   color: var(--iconColor);
+   margin-left: .75em;
+}
+
+.hover-green:hover {
+   color: var(--successGreen);
+}
+
+.hover-red:hover {
    color: var(--warningRed);
 }
 
