@@ -9,7 +9,7 @@ type taskOrProject = "task" | "project" | "both";
 @Component({
   selector: "app-task",
   templateUrl: "./task.component.html",
-  styleUrls: ["./task.component.css"]
+  styleUrls: ["./task.component.css"],
 })
 export class TaskComponent implements OnInit {
   public userState: UserState;
@@ -26,10 +26,7 @@ export class TaskComponent implements OnInit {
    */
   @HostBinding("class")
   get hostClasses(): string {
-    return (
-      (this.task ? "status-" + this.task.taskStatus : "") +
-      (this.joined("task") ? " joined" : "")
-    );
+    return (this.task ? "status-" + this.task.taskStatus : "") + (this.joined("task") ? " joined" : "");
   }
 
   constructor(@Inject(StoreService) private store: StoreService) {
@@ -61,17 +58,9 @@ export class TaskComponent implements OnInit {
     }
 
     if (status == "done") {
-      this.store.updateTaskStatus(
-        this.task.projectId,
-        this.task.taskId,
-        "open"
-      );
+      this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "open");
     } else if (status == "open") {
-      this.store.updateTaskStatus(
-        this.task.projectId,
-        this.task.taskId,
-        "done"
-      );
+      this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "done");
     }
   }
 
@@ -80,11 +69,7 @@ export class TaskComponent implements OnInit {
    */
   join(): void {
     if (!this.joined("project")) {
-      this.store.joinTaskTeam(
-        this.task.projectId,
-        this.task.taskId,
-        this.userState.userInformation.userId
-      );
+      this.store.joinTaskTeam(this.task.projectId, this.task.taskId, this.userState.userInformation.userId);
     }
   }
   /**
@@ -92,11 +77,7 @@ export class TaskComponent implements OnInit {
    */
   leave(): void {
     if (this.joined("project")) {
-      this.store.leaveTaskTeam(
-        this.task.projectId,
-        this.task.taskId,
-        this.userState.userInformation.userId
-      );
+      this.store.leaveTaskTeam(this.task.projectId, this.task.taskId, this.userState.userInformation.userId);
     }
   }
 
@@ -106,14 +87,10 @@ export class TaskComponent implements OnInit {
    */
   joined(ask?: taskOrProject): boolean {
     const joinedProject = Boolean(
-      this.project.projectTeam.find(
-        team => team.userId == this.userState.userInformation.userId
-      )
+      this.project.projectTeam.find(team => team.userId == this.userState.userInformation.userId),
     );
     const joinedTask = Boolean(
-      this.task.taskTeam.find(
-        taskTeam => taskTeam.userId == this.userState.userInformation.userId
-      )
+      this.task.taskTeam.find(taskTeam => taskTeam.userId == this.userState.userInformation.userId),
     );
 
     if (ask == "task") {

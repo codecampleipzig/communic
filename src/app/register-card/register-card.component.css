@@ -1,105 +1,110 @@
 :host {
-    display: flex;
-    height: 100vh;
-    box-sizing: border-box;
-    position: static;
+  display: flex;
+  height: 100vh;
+  box-sizing: border-box;
+  position: static;
 }
 
 :host > * {
-    margin: auto;
+  margin: auto;
 }
 
 .background {
-    position: static;
+  position: static;
 }
 
 .background::after {
-    content: "";
-    background-image: url("../../assets/backgroundimg.png");
-    opacity: 0.5;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;   
-    background-size: cover;
-    background-repeat: repeat;
+  content: "";
+  background-image: url("../../assets/backgroundimg.png");
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: repeat;
 }
 
 .register-card {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 .register-card h2 {
-    color: var(--primaryColor);
-    font-weight: 700;
-    font-size: 2em;
-    text-transform: uppercase;
-    margin: 0;
+  color: var(--primaryColor);
+  font-weight: 700;
+  font-size: 2em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+input[type="file"] {
+  height: 0px;
+  visibility: hidden;
 }
 
 .register-card h3 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .register-card .signIn {
-    display: flex;
-    text-align: center;
-    justify-content: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
 
 .register-card .forgotPassword {
-    display: flex;
-    text-align: center;
-    justify-content: center;
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
- 
+
 .avatar {
-    padding: 1em 0;
+  padding: 1em 0;
 }
 
 .avatar .user-image {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 .avatar + .button {
-    margin-bottom: 1.5em;
+  margin-bottom: 1.5em;
 }
 
-.ng-valid[required], .ng-valid.required  {
-    border-color: var(--successGreen);
-    border-left-width: 5px;
+.ng-valid[required],
+.ng-valid.required {
+  border-color: var(--successGreen);
+  border-left-width: 5px;
 }
 
 .ng-invalid:not(form) {
-    border-color: var(--warningRed);
-    border-left-width: 5px;
+  border-color: var(--warningRed);
+  border-left-width: 5px;
 }
 
 input.ng-untouched {
-    border-color: var(--borderGrey);
-    border-left-color: var(--borderMediumGrey);
-    border-left-width: 5px;
+  border-color: var(--borderGrey);
+  border-left-color: var(--borderMediumGrey);
+  border-left-width: 5px;
 }
 
 button[type="submit"] {
-    width: 100%
+  width: 100%;
 }
 
 @media (min-width: 400px) {
-    .register-card h2 {
-        font-size: 3rem;
-    }
+  .register-card h2 {
+    font-size: 3rem;
+  }
 }
 
 @media (min-height: 650px) and (min-width: 480px) {
+  .avatar {
+    margin-bottom: 0.5em;
+  }
 
-    .avatar {
-        margin-bottom: 0.5em
-    }
-
-    .avatar .user-image {
-        font-size: 5rem;
-    }
+  .avatar .user-image {
+    font-size: 5rem;
+  }
 }

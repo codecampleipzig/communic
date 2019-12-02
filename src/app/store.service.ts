@@ -18,7 +18,7 @@ import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class StoreService {
   // Internal State
@@ -39,11 +39,11 @@ export class StoreService {
     @Inject(Router) private router: Router,
     @Inject(AuthService) private authService: AuthService,
     @Inject(ProjectsService) private projectsService: ProjectsService,
-    @Inject(ProjectService) private projectService: ProjectService
+    @Inject(ProjectService) private projectService: ProjectService,
   ) {
     this.user = new BehaviorSubject<UserState>({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
     this.user$ = this.user.asObservable();
 
@@ -66,8 +66,8 @@ export class StoreService {
         userId: 2,
         userName: "TestUser",
         userEmail: "email@gmail.com",
-        userImageUrl: ""
-      }
+        userImageUrl: "",
+      },
     });
   }
 
@@ -81,7 +81,7 @@ export class StoreService {
       // Put value into observable
       this.user.next({
         status: { loggedIn: true },
-        userInformation: user
+        userInformation: user,
       });
 
       // Navigate to home page
@@ -93,7 +93,7 @@ export class StoreService {
     // Mutation
     this.user.next({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
     // Navigate to register page
     this.router.navigate(["register"]);
@@ -173,9 +173,7 @@ export class StoreService {
 
     promise.then(newTasks => {
       const newState = [...Mock.projects];
-      const newProject = newState.find(
-        project => project.projectId == projectId
-      );
+      const newProject = newState.find(project => project.projectId == projectId);
       newProject.projectTasks = newTasks;
 
       // Put value into observable
@@ -223,11 +221,7 @@ export class StoreService {
    * triggers projectService.leaveTaskTeam and resolves its GET request to pass newProject into project observable.
    */
   leaveTaskTeam(projectId: number, taskId: number, userId: number) {
-    const promise = this.projectService.leaveTaskTeam(
-      projectId,
-      taskId,
-      userId
-    );
+    const promise = this.projectService.leaveTaskTeam(projectId, taskId, userId);
 
     promise.then(newProject => {
       // Put value into observable

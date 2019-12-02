@@ -16,9 +16,9 @@ describe("TeamCardComponent", () => {
       providers: [
         {
           provide: StoreService,
-          useClass: TestingStoreService
-        }
-      ]
+          useClass: TestingStoreService,
+        },
+      ],
     }).compileComponents();
   }));
 
@@ -42,18 +42,14 @@ describe("TeamCardComponent", () => {
 
   it("CurrentUser should not be part of the team", () => {
     component.join();
-    const user = component.team.find(
-      t => t.userId == component.userState.userInformation.userId
-    );
+    const user = component.team.find(t => t.userId == component.userState.userInformation.userId);
 
     expect(user).toBeTruthy();
   });
 
   it("CurrentUser should be part of the team", () => {
     component.leave();
-    const user = component.team.find(
-      t => t.userId == component.userState.userInformation.userId
-    );
+    const user = component.team.find(t => t.userId == component.userState.userInformation.userId);
     expect(user).toBeFalsy();
   });
 });

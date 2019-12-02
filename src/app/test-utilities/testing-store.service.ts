@@ -21,7 +21,7 @@ export class TestingStoreService {
   constructor() {
     this.user = new BehaviorSubject<UserState>({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
     this.user$ = this.user.asObservable();
 
@@ -41,8 +41,8 @@ export class TestingStoreService {
         userId: 2,
         userName: "TestUser",
         userEmail: "email@gmail.com",
-        userImageUrl: ""
-      }
+        userImageUrl: "",
+      },
     });
   }
 
@@ -51,7 +51,7 @@ export class TestingStoreService {
     setTimeout(() => {
       this.user.next({
         status: { loggedIn: true },
-        userInformation: { userName, userEmail, userImageUrl: "", userId: 1234 }
+        userInformation: { userName, userEmail, userImageUrl: "", userId: 1234 },
       });
     });
   }
@@ -60,7 +60,7 @@ export class TestingStoreService {
     // Mutation
     this.user.next({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
   }
 
@@ -74,10 +74,8 @@ export class TestingStoreService {
 
     this.yourProjects.next(
       Mock.projects.filter(project =>
-        project.projectTeam.some(
-          user => user.userId == currentUserState.userInformation.userId
-        )
-      )
+        project.projectTeam.some(user => user.userId == currentUserState.userInformation.userId),
+      ),
     );
   }
 
@@ -150,13 +148,9 @@ export class TestingStoreService {
   leaveTaskTeam(projectId: number, taskId: number, userId: number) {
     const newState = [...Mock.projects];
     const project = newState.find(p => p.projectId == projectId);
-    const userIndex = project.projectTasks
-      .find(t => t.taskId == taskId)
-      .taskTeam.findIndex(u => u.userId == userId);
+    const userIndex = project.projectTasks.find(t => t.taskId == taskId).taskTeam.findIndex(u => u.userId == userId);
 
-    project.projectTasks
-      .find(t => t.taskId == taskId)
-      .taskTeam.splice(userIndex, 1);
+    project.projectTasks.find(t => t.taskId == taskId).taskTeam.splice(userIndex, 1);
 
     this.project.next(project);
   }

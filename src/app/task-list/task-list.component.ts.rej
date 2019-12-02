@@ -1,0 +1,19 @@
+diff a/src/app/task-list/task-list.component.ts b/src/app/task-list/task-list.component.ts	(rejected hunks)
+@@ -28,8 +27,4 @@ export class TaskListComponent implements OnInit {
+-    * Check if userState is part of the project
+-    */
+-   joined(): boolean {
+-    return Boolean(
+-      this.team.find(
+-        team => team.userId == this.userState.userInformation.userId
+-      )
+-    );
++   * Check if userState is part of the project
++   */
++  joined(): boolean {
++    return Boolean(this.team.find(team => team.userId == this.userState.userInformation.userId));
+@@ -40,2 +35,2 @@ export class TaskListComponent implements OnInit {
+-      * Get Tasks from project Object
+-      */
++     * Get Tasks from project Object
++     */

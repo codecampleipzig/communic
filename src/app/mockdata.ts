@@ -7,80 +7,80 @@ export const users: User[] = [
     userId: 1,
     userName: "Mautzi",
     userEmail: "MolleMorallo@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 2,
     userName: "Mariana",
     userEmail: "BringMarianaBananaToSchool@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 3,
     userName: "Lena",
     userEmail: "lenintheempress@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 4,
     userName: "Björn",
     userEmail: "thPObutNotTheRiver@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 5,
     userName: "Pauline",
     userEmail: "DelphineQueen@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 6,
     userName: "Nick",
     userEmail: "nickTheSwan@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 7,
     userName: "Nico",
     userEmail: "intelligentButBeautiful@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 8,
     userName: "Simona",
     userEmail: "deepBeutifulSea@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 9,
     userName: "Beatriz",
     userEmail: "womanWhoRockTheWorld@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 10,
     userName: "Anahita",
     userEmail: "bestBiologistInTheWorld@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 11,
     userName: "Kaab",
     userEmail: "theCricketEnthusiast@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 12,
     userName: "Andres",
     userEmail: "krawalloAndi@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
+    userImageUrl: "../assets/user_avatar.png",
   },
   {
     userId: 13,
     userName: "Iko",
     userEmail: "caretaker3000@gmail.com",
-    userImageUrl: "../assets/user_avatar.png"
-  }
+    userImageUrl: "../assets/user_avatar.png",
+  },
 ];
 
 export const tasks: Task[] = [
@@ -93,7 +93,7 @@ export const tasks: Task[] = [
     taskStatus: "open",
     taskCreator: users[1],
     taskTeam: [users[1], users[2], users[4]],
-    menuSection: "starter"
+    menuSection: "starter",
   },
   {
     taskId: 2,
@@ -103,7 +103,7 @@ export const tasks: Task[] = [
     taskStatus: "done",
     taskCreator: users[3],
     taskTeam: [users[3], users[5], users[12]],
-    menuSection: "main"
+    menuSection: "main",
   },
   {
     taskId: 3,
@@ -113,7 +113,7 @@ export const tasks: Task[] = [
     taskStatus: "deleted",
     taskCreator: users[6],
     taskTeam: [users[6], users[8], users[10]],
-    menuSection: "main"
+    menuSection: "main",
   },
   {
     taskId: 4,
@@ -123,7 +123,7 @@ export const tasks: Task[] = [
     taskStatus: "deleted",
     taskCreator: users[6],
     taskTeam: [users[6], users[8], users[10]],
-    menuSection: "main"
+    menuSection: "main",
   },
   {
     taskId: 5,
@@ -133,7 +133,7 @@ export const tasks: Task[] = [
     taskStatus: "open",
     taskCreator: users[6],
     taskTeam: [],
-    menuSection: "main"
+    menuSection: "main",
   },
   {
     taskId: 6,
@@ -144,7 +144,7 @@ export const tasks: Task[] = [
     taskStatus: "open",
     taskCreator: users[6],
     taskTeam: [users[6], users[8], users[10]],
-    menuSection: "main"
+    menuSection: "main",
   },
   {
     taskId: 7,
@@ -155,7 +155,7 @@ export const tasks: Task[] = [
     taskStatus: "open",
     taskCreator: users[6],
     taskTeam: [users[6], users[8], users[10]],
-    menuSection: "main"
+    menuSection: "main",
   },
   {
     taskId: 8,
@@ -166,8 +166,8 @@ export const tasks: Task[] = [
     taskStatus: "open",
     taskCreator: users[6],
     taskTeam: [users[6], users[8], users[10]],
-    menuSection: "main"
-  }
+    menuSection: "main",
+  },
 ];
 
 export const projects: Project[] = [
@@ -180,16 +180,8 @@ export const projects: Project[] = [
     projectGoal: "Please our stakeholders.",
     projectStatus: "done",
     projectCreator: users[1],
-    projectTeam: [
-      users[1],
-      users[2],
-      users[3],
-      users[4],
-      users[5],
-      users[10],
-      users[12]
-    ],
-    projectTasks: [tasks[0], tasks[1], tasks[2], tasks[4]]
+    projectTeam: [users[1], users[2], users[3], users[4], users[5], users[10], users[12]],
+    projectTasks: [tasks[0], tasks[1], tasks[2], tasks[4]],
   },
   {
     projectId: 2,
@@ -201,7 +193,7 @@ export const projects: Project[] = [
     projectStatus: "open",
     projectCreator: users[5],
     projectTeam: [users[5], users[6], users[8], users[10]],
-    projectTasks: [tasks[2]]
+    projectTasks: [tasks[2]],
   },
   {
     projectId: 3,
@@ -213,25 +205,18 @@ export const projects: Project[] = [
     projectStatus: "open",
     projectCreator: users[5],
     projectTeam: [users[5], users[6], users[8], users[10]],
-    projectTasks: [tasks[2]]
+    projectTasks: [tasks[2]],
   },
   {
     projectId: 4,
     projectTitle: "Hackolaus: A Hackathon for Social Good",
     projectImageUrl: "./../assets/hackolaus-twitter-share.jpg",
     projectDescription:
-    "Many NGOs, associations and individuals also work hard to give to social, environmental or other sustainability causes. Attendees will form teams to build solutions for the non profit of their choice.",    projectGoal: "Please our stakeholders.",
+      "Many NGOs, associations and individuals also work hard to give to social, environmental or other sustainability causes. Attendees will form teams to build solutions for the non profit of their choice.",
+    projectGoal: "Please our stakeholders.",
     projectStatus: "open",
     projectCreator: users[1],
-    projectTeam: [
-      users[1],
-      users[2],
-      users[3],
-      users[4],
-      users[5],
-      users[10],
-      users[12]
-    ],
+    projectTeam: [users[1], users[2], users[3], users[4], users[5], users[10], users[12]],
     projectTasks: [tasks[5], tasks[6], tasks[7]],
   },
 ];

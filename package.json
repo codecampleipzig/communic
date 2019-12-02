@@ -16,7 +16,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run lint && npm test"
+      "pre-commit": "lint-staged && npm run lint && npm build --prod && npm test"
     }
   },
   "lint-staged": {
@@ -39,6 +39,7 @@
     "@fortawesome/fontawesome-free": "^5.11.2",
     "axios": "^0.19.0",
     "express": "^4.17.1",
+    "normalize.css": "^8.0.1",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
