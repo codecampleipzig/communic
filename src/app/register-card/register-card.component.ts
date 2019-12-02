@@ -68,16 +68,13 @@ export class RegisterCardComponent implements OnInit {
   }
 
   onSelectFile(event) {
-    console.log("onSelectedFile");
     const eventTarget: any = event.target;
     if (eventTarget.files && eventTarget.files[0]) {
-      var reader = new FileReader();
+      const reader = new FileReader();
 
-      reader.onload = event => {
-        const eventTarget: any = event.target;
-
+      reader.onload = e => {
         // called once readAsDataURL is completed
-        this.url = eventTarget.result;
+        this.url = (e.target as any).result;
       };
 
       reader.readAsDataURL(eventTarget.files[0]); // read file as data url

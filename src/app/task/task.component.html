@@ -1,22 +1,31 @@
 <div class="task-header">
-   <button class="task-checkbox checkbox" (click)="toggleTaskStatus()" [disabled]="!joined('task')"><i class="fas fa-check"></i></button>
-   <h4>{{task.taskTitle}}</h4>
+  <button class="task-checkbox checkbox" (click)="toggleTaskStatus()" [disabled]="!joined('task')">
+    <i class="fas fa-check"></i>
+  </button>
+  <h4>{{ task.taskTitle }}</h4>
 
-   <!-- Replaced Subcomponent TaskListItemTeam -->
-   <div class="task-team">
-      <div *ngFor="let user of task.taskTeam" class="user-image">
-         <img *ngIf="user.userImageUrl" [src]="user.userImageUrl" alt="">
-         <i *ngIf="!user.userImageUrl" class="fas fa-user"></i>
-      </div>
-      
-      <button *ngIf="task.taskStatus == 'open' && this.joined('project') && !this.joined('task')" class="button taskTeamJoin outlined round" (click)="join()">
-         <i class="fas fa-plus"></i><span>Join</span>
-      </button>
-      <button *ngIf="task.taskStatus == 'open' && this.joined('task')" class="button taskTeamJoin outlined round" (click)="leave()">
-         <i class="fas fa-times"></i><span>Leave</span>
-      </button>
-   </div>
+  <!-- Replaced Subcomponent TaskListItemTeam -->
+  <div class="task-team">
+    <div *ngFor="let user of task.taskTeam" class="user-image">
+      <img *ngIf="user.userImageUrl" [src]="user.userImageUrl" alt="" />
+      <i *ngIf="!user.userImageUrl" class="fas fa-user"></i>
+    </div>
 
+    <button
+      *ngIf="task.taskStatus == 'open' && this.joined('project') && !this.joined('task')"
+      class="button taskTeamJoin outlined round"
+      (click)="join()"
+    >
+      <i class="fas fa-plus"></i><span>Join</span>
+    </button>
+    <button
+      *ngIf="task.taskStatus == 'open' && this.joined('task')"
+      class="button taskTeamJoin outlined round"
+      (click)="leave()"
+    >
+      <i class="fas fa-times"></i><span>Leave</span>
+    </button>
+  </div>
 </div>
 
 <!--
@@ -24,8 +33,12 @@
    #task-delete is needed for tests only
 -->
 <div *ngIf="joined('project')" class="top-right-icons">
-   <button *ngIf="task.taskStatus == 'open'" (click)="delete()" class="hover-red" id="task-delete"><i class="fas fa-trash-alt"></i></button>
-   <button *ngIf="task.taskStatus == 'deleted'" (click)="restore()" class="hover-green" id="task-delete"><i class="fas fa-trash-restore"></i></button>
+  <button *ngIf="task.taskStatus == 'open'" (click)="delete()" class="hover-red" id="task-delete">
+    <i class="fas fa-trash-alt"></i>
+  </button>
+  <button *ngIf="task.taskStatus == 'deleted'" (click)="restore()" class="hover-green" id="task-delete">
+    <i class="fas fa-trash-restore"></i>
+  </button>
 </div>
 
 <!--
@@ -33,6 +46,6 @@
    - [ ] Multi Paragraph Description needed?
 -->
 <p class="task-description">
-   {{task.taskDescription}}
-   <small class="task-author">created by {{task.taskCreator.userName}}</small>
+  {{ task.taskDescription }}
+  <small class="task-author">created by {{ task.taskCreator.userName }}</small>
 </p>
