@@ -1,50 +1,21 @@
-/* TODO: Apply styles on User Thumbnail such that the image will be properly rendered and shown in circle */
-
-.userActions {
+:host {
    display: flex;
+   align-items: center;
+   color: var(--fontDarkGrey);
+   text-align: right;
    justify-content: flex-end;
-   align-content: center;
-}
-.userDetails {
-   display: flex;
-   flex-direction: column;
-   margin-right: 1em;
-   text-align: right;
-   align-items: center;
 }
 
-.center-wrapper {
-   display: flex;
-   align-items: center;
+.user {
+   padding-right: 1em;
 }
 
-.userName {
-   font-size: 1em;
-   color: #3A3A3A;
+.user-name {
+   display: block;
+   font-weight: 600;
+   font-size: 1.2rem;
 }
 
-.thumbnail {
-  display: flex;
+.user-image {
+   font-size: 1.5rem;
 }
-
-.thumbnail > img {
-   width: 3em;
-   height: 3em;
-   border: 1px solid rgba(0, 0, 0, 0.1);
-   border-radius: 50%;
-}
-
-.logout {
-   font-weight: normal !important;
-   text-decoration: none;
-   font-size: 0.8em;
-   color: #655AF3;
-   cursor: pointer;
-   background-color: white;
-   padding: 0;
-   width: 50%;
-   align-self: flex-end;
-   text-align: right;
-   border: none;
- }
-

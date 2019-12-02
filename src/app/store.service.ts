@@ -18,7 +18,7 @@ import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class StoreService {
   // Internal State
@@ -39,11 +39,11 @@ export class StoreService {
     @Inject(Router) private router: Router,
     @Inject(AuthService) private authService: AuthService,
     @Inject(ProjectsService) private projectsService: ProjectsService,
-    @Inject(ProjectService) private projectService: ProjectService
+    @Inject(ProjectService) private projectService: ProjectService,
   ) {
     this.user = new BehaviorSubject<UserState>({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
     this.user$ = this.user.asObservable();
 
@@ -58,6 +58,17 @@ export class StoreService {
 
     this.toolbar = new BehaviorSubject<any>("");
     this.toolbar$ = this.toolbar.asObservable();
+
+    /* Mock Current User. Replace with login Action */
+    this.user.next({
+      status: { loggedIn: true },
+      userInformation: {
+        userId: 2,
+        userName: "TestUser",
+        userEmail: "email@gmail.com",
+        userImageUrl: "",
+      },
+    });
   }
 
   // Action
@@ -70,7 +81,7 @@ export class StoreService {
       // Put value into observable
       this.user.next({
         status: { loggedIn: true },
-        userInformation: user
+        userInformation: user,
       });
 
       // Navigate to home page
@@ -82,7 +93,7 @@ export class StoreService {
     // Mutation
     this.user.next({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
     // Navigate to register page
     this.router.navigate(["register"]);
@@ -142,7 +153,7 @@ export class StoreService {
    * resolves GET request and passes project Data into project observable
    * @param id: project ID
    */
-  retrieveProject(id: number) {
+  retrieveProject(id: number): void {
     const promise = this.projectService.getProject(id);
 
     promise.then(project => {
@@ -153,17 +164,66 @@ export class StoreService {
 
   /**
    * resolves GET request and passes newTasks via newProject into project observable.
+   * @param projectId ID of the project the task belongs to
+   * @param taskId ID of the task whose status is to be updated
+   * @param status The new status of the task that is updated
    */
   updateTaskStatus(projectId: number, taskId: number, status: string) {
     const promise = this.projectService.updateTaskStatus(taskId, status);
 
     promise.then(newTasks => {
       const newState = [...Mock.projects];
-      const newProject = newState.find(
-        project => project.projectId == projectId
-      );
+      const newProject = newState.find(project => project.projectId == projectId);
       newProject.projectTasks = newTasks;
 
+      // Put value into observable
+      this.project.next(newProject);
+    });
+  }
+
+  /**
+   * triggers projectService.joinProjectTeam and resolves its GET request to pass newProject into project observable.
+   */
+  joinProjectTeam(projectId: number, userId: number) {
+    const promise = this.projectService.joinProjectTeam(projectId, userId);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+    });
+  }
+
+  /**
+   * triggers projectService.leaveProjectTeam and resolves its GET request to pass newProject into project observable.
+   */
+  leaveProjectTeam(projectId: number, userId: number) {
+    const promise = this.projectService.leaveProjectTeam(projectId, userId);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+    });
+  }
+
+  /**
+   * triggers projectService.joinTaskTeam and resolves its GET request to pass newProject into project observable.
+   */
+  joinTaskTeam(projectId: number, taskId: number, userId: number) {
+    const promise = this.projectService.joinTaskTeam(projectId, taskId, userId);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+    });
+  }
+
+  /**
+   * triggers projectService.leaveTaskTeam and resolves its GET request to pass newProject into project observable.
+   */
+  leaveTaskTeam(projectId: number, taskId: number, userId: number) {
+    const promise = this.projectService.leaveTaskTeam(projectId, taskId, userId);
+
+    promise.then(newProject => {
       // Put value into observable
       this.project.next(newProject);
     });

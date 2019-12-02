@@ -5,7 +5,6 @@ import { AppComponent } from "./app.component";
 import { ProjectPageComponent } from "./project-page/project-page.component";
 import { TaskListComponent } from "./task-list/task-list.component";
 import { TaskComponent } from "./task/task.component";
-import { TaskListItemTeamComponent } from "./task-list-item-team/task-list-item-team.component";
 import { CreateNewTaskComponent } from "./create-new-task/create-new-task.component";
 import { TeamCardComponent } from "./team-card/team-card.component";
 import { TeamMemberComponent } from "./team-member/team-member.component";
@@ -20,6 +19,10 @@ import { AppRoutingModule } from "./app-routing.module";
 import { RegisterCardComponent } from "./register-card/register-card.component";
 import { StartnewprojectComponent } from "./startnewproject/startnewproject.component";
 import { RouterModule } from "@angular/router";
+import { SearchtoolComponent } from "./searchtool/searchtool.component";
+import { IconComponent } from "./icon/icon.component";
+import { SearchresultsComponent } from "./searchresults/searchresults.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -27,7 +30,6 @@ import { RouterModule } from "@angular/router";
     ProjectPageComponent,
     TaskListComponent,
     TaskComponent,
-    TaskListItemTeamComponent,
     CreateNewTaskComponent,
     TeamCardComponent,
     TeamMemberComponent,
@@ -39,10 +41,13 @@ import { RouterModule } from "@angular/router";
     ProjectListComponent,
     ProjectCardComponent,
     RegisterCardComponent,
-    StartnewprojectComponent
+    SearchtoolComponent,
+    IconComponent,
+    SearchresultsComponent,
+    StartnewprojectComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

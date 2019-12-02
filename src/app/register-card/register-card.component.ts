@@ -1,26 +1,30 @@
-import { Component, OnInit, NgModule } from "@angular/core";
-import {
-  FormControl,
-  ReactiveFormsModule,
-  Validators,
-  FormGroup
-} from "@angular/forms";
+import { FormControl, ReactiveFormsModule, Validators, FormGroup } from "@angular/forms";
+import { Component, OnInit, NgModule, Inject, HostBinding } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @NgModule({
-  imports: [ReactiveFormsModule]
+  imports: [ReactiveFormsModule],
 })
 @Component({
   selector: "app-register-card",
   templateUrl: "./register-card.component.html",
-  styleUrls: ["./register-card.component.css"]
+  styleUrls: ["./register-card.component.css"],
 })
 export class RegisterCardComponent implements OnInit {
   profileForm: FormGroup;
   authType: string;
   title: string;
+  url: any = null;
 
-  constructor(private route: ActivatedRoute) {
+  /**
+   * Add .container Class to the Host
+   */
+  @HostBinding("class")
+  get hostClasses(): string {
+    return "container";
+  }
+
+  constructor(@Inject(ActivatedRoute) private route: ActivatedRoute, @Inject(Router) private router: Router) {
     this.profileForm = new FormGroup({
       name: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required, Validators.email]),
@@ -28,11 +32,9 @@ export class RegisterCardComponent implements OnInit {
         "",
         Validators.compose([
           Validators.required,
-          Validators.pattern(
-            "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"
-          ) // this is for the letters (both uppercase and lowercase) and numbers validation
-        ])
-      )
+          Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"), // this is for the letters (both uppercase and lowercase) and numbers validation
+        ]),
+      ),
     });
   }
 
@@ -61,5 +63,21 @@ export class RegisterCardComponent implements OnInit {
     });
   }
 
-  onSubmit() {}
+  onSubmit() {
+    this.router.navigate(["home"]);
+  }
+
+  onSelectFile(event) {
+    const eventTarget: any = event.target;
+    if (eventTarget.files && eventTarget.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = e => {
+        // called once readAsDataURL is completed
+        this.url = (e.target as any).result;
+      };
+
+      reader.readAsDataURL(eventTarget.files[0]); // read file as data url
+    }
+  }
 }

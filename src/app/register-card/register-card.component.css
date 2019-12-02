@@ -1,180 +1,110 @@
- body {
-     width: 100%;
-     margin: 0;  
-     padding-top: 20px;
-     padding-bottom: 20px;   
- }
-
- .background{
-    position: relative;
-    height: 100vh;
- }
-
- .background::after {
-    content: "";
-    background-image: url("../../assets/backgroundimg.png");
-    opacity: 0.5;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;   
-    background-size: cover;
-    background-repeat: repeat;
-  }
-
- .mainContainer{
-     display: flex;
-     justify-content: center;
-     flex-direction: row;
-     flex-wrap: wrap;
-     align-items: center;
-     height: 100%;
- }
-
-
-.registerCard{
-    position: relative;
-    min-width: 3em;
-    max-width: 25em;
-    border: 2px;
-    padding: 15px 20px;
-    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    justify-content: center;
-    width: 40%;
-    background-color: #ffff;
+:host {
+  display: flex;
+  height: 100vh;
+  box-sizing: border-box;
+  position: static;
 }
 
-.registerCard h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    color: #655AF3;
-    text-align: center;
-    font-size: 3em;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    margin-top: 0px;
+:host > * {
+  margin: auto;
 }
 
-.registerCard h3{
-    display: flex;
-    font-family: 'Montserrat', sans-serif; 
-    text-align: center;
-    justify-content: center;
-    margin-top: 0px;
+.background {
+  position: static;
 }
 
-.registerCard .signIn {
-    display: flex;
-    text-align: center;
-    justify-content: center;
+.background::after {
+  content: "";
+  background-image: url("../../assets/backgroundimg.png");
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: repeat;
 }
 
-.registerCard .forgotPassword {
-    display: flex;
-    text-align: center;
-    justify-content: center;
+.register-card {
+  border-radius: 20px;
 }
- 
+
+.register-card h2 {
+  color: var(--primaryColor);
+  font-weight: 700;
+  font-size: 2em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+input[type="file"] {
+  height: 0px;
+  visibility: hidden;
+}
+
+.register-card h3 {
+  margin-top: 0;
+}
+
+.register-card .signIn {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.register-card .forgotPassword {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
 
 .avatar {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-
+  padding: 1em 0;
 }
 
-.avatar img {
-    width: 40%;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 50%;
-    margin-bottom: 10px;
+.avatar .user-image {
+  font-size: 3rem;
 }
 
-.avatar button {
-    display: flex;
-    margin-top: 15px;
-    line-height: 2rem;
-    background-color: #ffff;
-    border-radius: 5px;
-    border:1px solid #655af3;
-    justify-content: center;
-    color: #655af3;
-    padding: 0.3em 2em;
-    cursor: pointer;
-    margin-bottom: 20px;
+.avatar + .button {
+  margin-bottom: 1.5em;
 }
 
-@media (min-width:800px) {
-    .registerCard {
-       grid-template-columns: repeat(2, 1fr);
-       width: 90%;
-    }
- }
- @media (min-width:1200px) {
-    .registerCard {
-       grid-template-columns: repeat(3, 1fr);
-       width: 90%;
-    }
- }
- 
- input {
-    border: 1px solid #CECECE;
-    border-radius: 5px;
-    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
-    margin: 0 0 10px 0;
-    line-height: 2rem;
-    font-family: 'Montserrat', sans-serif;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 0.3em 2em; 
-
-}
-
-button {
-    margin-top: 10px;
-    line-height: 2rem;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #655AF3;
-    border-radius: 5px;
-    border:1px solid #655af3;
-    width: 100%;
-    text-align: center;
-    color: white;
-    padding: 0.3em 2em;
-    cursor: pointer;
-    align-self: stretch;
-}
-
-.ng-valid[required], .ng-valid.required  {
-    border-left: 5px solid #42A948;
+.ng-valid[required],
+.ng-valid.required {
+  border-color: var(--successGreen);
+  border-left-width: 5px;
 }
 
 .ng-invalid:not(form) {
-    border-left: 5px solid #a94442; 
+  border-color: var(--warningRed);
+  border-left-width: 5px;
 }
 
 input.ng-untouched {
-    border-left: 5px solid grey;
+  border-color: var(--borderGrey);
+  border-left-color: var(--borderMediumGrey);
+  border-left-width: 5px;
 }
 
-.formrule{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.8em;
-    font-weight: light;
-    color: #a94442;
-    text-align: start;
-    
+button[type="submit"] {
+  width: 100%;
 }
 
-.formrule p{
-    margin-top: 0;
+@media (min-width: 400px) {
+  .register-card h2 {
+    font-size: 3rem;
+  }
 }
 
-.link {
-    text-align: center;
+@media (min-height: 650px) and (min-width: 480px) {
+  .avatar {
+    margin-bottom: 0.5em;
+  }
+
+  .avatar .user-image {
+    font-size: 5rem;
+  }
 }

@@ -6,10 +6,10 @@ import { StoreService } from "../store.service";
 @Component({
   selector: "app-startnewproject",
   templateUrl: "./startnewproject.component.html",
-  styleUrls: ["./startnewproject.component.css"]
+  styleUrls: ["./startnewproject.component.css"],
 })
 export class StartnewprojectComponent implements OnInit {
-  public projectTitle = "FRIES 4 PEACE PROJECT";
+  public projectTitle = "";
 
   public imagePath;
   imgURL: any;
@@ -34,10 +34,7 @@ export class StartnewprojectComponent implements OnInit {
     };
   }
 
-  constructor(
-    @Inject(Router) private router: Router,
-    @Inject(StoreService) private store: StoreService
-  ) {
+  constructor(@Inject(Router) private router: Router, @Inject(StoreService) private store: StoreService) {
     this.store.toolbar.next(this.projectTitle);
   }
 
@@ -45,5 +42,19 @@ export class StartnewprojectComponent implements OnInit {
 
   navigateHome() {
     this.router.navigate(["home"]);
+  }
+
+  onSelectFile(event) {
+    const eventTarget: any = event.target;
+    if (eventTarget.files && eventTarget.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = e => {
+        // called once readAsDataURL is completed
+        this.imgURL = (e.target as any).result;
+      };
+
+      reader.readAsDataURL(eventTarget.files[0]); // read file as data url
+    }
   }
 }
