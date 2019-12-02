@@ -6,7 +6,7 @@ import { StoreService } from "../store.service";
 @Component({
   selector: "app-team-card",
   templateUrl: "./team-card.component.html",
-  styleUrls: ["./team-card.component.css"]
+  styleUrls: ["./team-card.component.css"],
 })
 export class TeamCardComponent implements OnInit {
   /**
@@ -27,10 +27,7 @@ export class TeamCardComponent implements OnInit {
    */
   join(): void {
     if (!this.joined()) {
-      this.store.joinProjectTeam(
-        this.project.projectId,
-        this.userState.userInformation.userId
-      );
+      this.store.joinProjectTeam(this.project.projectId, this.userState.userInformation.userId);
     }
   }
   /**
@@ -38,10 +35,7 @@ export class TeamCardComponent implements OnInit {
    */
   leave(): void {
     if (this.joined()) {
-      this.store.leaveProjectTeam(
-        this.project.projectId,
-        this.userState.userInformation.userId
-      );
+      this.store.leaveProjectTeam(this.project.projectId, this.userState.userInformation.userId);
     }
   }
 
@@ -49,10 +43,6 @@ export class TeamCardComponent implements OnInit {
    * Check if userState is part of the project
    */
   joined(): boolean {
-    return Boolean(
-      this.project.projectTeam.find(
-        team => team.userId == this.userState.userInformation.userId
-      )
-    );
+    return Boolean(this.project.projectTeam.find(team => team.userId == this.userState.userInformation.userId));
   }
 }

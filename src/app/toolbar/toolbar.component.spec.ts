@@ -3,6 +3,7 @@ import { ToolbarComponent } from "./toolbar.component";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { TestingRouter } from "../test-utilities/testing-router";
+import { IconComponent } from "../icon/icon.component";
 
 // mock the child components
 @Component({ selector: "app-user-action", template: "" })
@@ -11,6 +12,10 @@ class UserActionStubComponent {}
 // mock the child components
 @Component({ selector: "app-project-action", template: "" })
 class ProjectActionStubComponent {}
+
+// mock the child components
+@Component({ selector: "app-searchtool", template: "" })
+class SearchToolStubComponent {}
 
 describe("ToolbarComponent", () => {
   let component: ToolbarComponent;
@@ -21,14 +26,16 @@ describe("ToolbarComponent", () => {
       declarations: [
         ToolbarComponent,
         UserActionStubComponent,
-        ProjectActionStubComponent
+        ProjectActionStubComponent,
+        SearchToolStubComponent,
+        IconComponent,
       ],
       providers: [
         {
           provide: Router,
-          useClass: TestingRouter
-        }
-      ]
+          useClass: TestingRouter,
+        },
+      ],
     }).compileComponents();
   }));
 

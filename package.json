@@ -4,18 +4,19 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "dev": "ng serve",
+    "dev": "ng serve --aot",
     "build": "ng build --prod",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand",
     "test:coverage": "jest --coverage",
     "lint": "ng lint",
-    "autofix": "ng lint --fix"
+    "autofix": "ng lint --fix",
+    "compodoc": "npx compodoc -p tsconfig.app.json --coverageTest --coverageTestThresholdFail false"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run lint && npm test"
+      "pre-commit": "lint-staged && npm run lint && npm run build --prod && npm test"
     }
   },
   "lint-staged": {
@@ -38,6 +39,7 @@
     "@fortawesome/fontawesome-free": "^5.11.2",
     "axios": "^0.19.0",
     "express": "^4.17.1",
+    "normalize.css": "^8.0.1",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -47,6 +49,7 @@
     "@angular/cli": "^8.3.18",
     "@angular/compiler-cli": "~8.2.0",
     "@angular/language-service": "~8.2.0",
+    "@compodoc/compodoc": "^1.1.11",
     "@types/jest": "^24.0.21",
     "@types/node": "~8.9.4",
     "canvas": "^2.6.0",

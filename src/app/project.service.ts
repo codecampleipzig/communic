@@ -6,7 +6,7 @@ import { environment } from "../environments/environment";
 import { Project } from "./datatypes/Project";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ProjectService {
   constructor() {}
@@ -16,15 +16,15 @@ export class ProjectService {
    * @returns new Promise
    */
   getProject(projectId: number): Promise<Project> {
-    return axios
-      .get(`${environment.api_url}/project/${projectId}`)
-      .then(response => {
-        return response.data.project;
-      });
+    return axios.get(`${environment.api_url}/project/${projectId}`).then(response => {
+      return response.data.project;
+    });
   }
 
   /**
    * Poseing GET request, returning newState of the tasks after status was updated.
+   * @param taskId ID of the task
+   * @param status Status of the task to be updated
    * @returns new Promise
    */
   updateTaskStatus(taskId: number, status: string): Promise<any> {
@@ -40,11 +40,9 @@ export class ProjectService {
    * @returns new Promise
    */
   joinProjectTeam(projectId: number, userId: number): Promise<any> {
-    return axios
-      .put(`${environment.api_url}/projectTeam/${projectId}/member/${userId}`)
-      .then(response => {
-        return response.data.project;
-      });
+    return axios.put(`${environment.api_url}/projectTeam/${projectId}/member/${userId}`).then(response => {
+      return response.data.project;
+    });
   }
 
   /**
@@ -52,24 +50,16 @@ export class ProjectService {
    * @returns new Promise
    */
   leaveProjectTeam(projectId: number, userId: number): Promise<any> {
-    return axios
-      .delete(
-        `${environment.api_url}/projectTeam/${projectId}/member/${userId}`
-      )
-      .then(response => {
-        return response.data.project;
-      });
+    return axios.delete(`${environment.api_url}/projectTeam/${projectId}/member/${userId}`).then(response => {
+      return response.data.project;
+    });
   }
 
   /**
    * Poseing POST request, returning newState of the project after user was added to taskTeam by userId.
    * @returns new Promise
    */
-  joinTaskTeam(
-    projectId: number,
-    taskId: number,
-    userId: number
-  ): Promise<any> {
+  joinTaskTeam(projectId: number, taskId: number, userId: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       const newState = [...Mock.projects];
       const project = newState.find(p => p.projectId == projectId);
@@ -84,21 +74,13 @@ export class ProjectService {
    * Poseing POST request, returning newState of the project after user was removed of taskTeam by userId.
    * @returns new Promise
    */
-  leaveTaskTeam(
-    projectId: number,
-    taskId: number,
-    userId: number
-  ): Promise<any> {
+  leaveTaskTeam(projectId: number, taskId: number, userId: number): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       const newState = [...Mock.projects];
       const project = newState.find(p => p.projectId == projectId);
-      const userIndex = project.projectTasks
-        .find(t => t.taskId == taskId)
-        .taskTeam.findIndex(u => u.userId == userId);
+      const userIndex = project.projectTasks.find(t => t.taskId == taskId).taskTeam.findIndex(u => u.userId == userId);
 
-      project.projectTasks
-        .find(t => t.taskId == taskId)
-        .taskTeam.splice(userIndex, 1);
+      project.projectTasks.find(t => t.taskId == taskId).taskTeam.splice(userIndex, 1);
       resolve(project);
     });
   }

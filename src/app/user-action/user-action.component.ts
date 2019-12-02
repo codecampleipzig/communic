@@ -7,7 +7,7 @@ import { StoreService } from "../store.service";
 @Component({
   selector: "app-user-action",
   templateUrl: "./user-action.component.html",
-  styleUrls: ["./user-action.component.css"]
+  styleUrls: ["./user-action.component.css"],
 })
 export class UserActionComponent implements OnInit {
   public userName = "Username";

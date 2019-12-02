@@ -13,9 +13,9 @@ describe("ProjectActionComponent", () => {
       providers: [
         {
           provide: Router,
-          useClass: TestingRouter
-        }
-      ]
+          useClass: TestingRouter,
+        },
+      ],
     }).compileComponents();
   }));
 
@@ -41,9 +41,7 @@ describe("ProjectActionComponent", () => {
   it("should have correct project name", () => {
     if (component.projectName) {
       const htmlElement: HTMLElement = fixture.nativeElement;
-      expect(
-        htmlElement.querySelector("#project-name .item").textContent
-      ).toEqual(component.projectName);
+      expect(htmlElement.querySelector("#project-name .item").textContent).toEqual(component.projectName);
     }
   });
 
@@ -59,9 +57,7 @@ describe("ProjectActionComponent", () => {
   it("should have create project button", () => {
     if (!component.projectName) {
       const htmlElement: HTMLElement = fixture.nativeElement;
-      expect(
-        htmlElement.querySelector("#start-project-button span").textContent
-      ).toEqual("Start a new project");
+      expect(htmlElement.querySelector("#start-project-button span").textContent).toEqual("Start a new project");
     }
   });
 

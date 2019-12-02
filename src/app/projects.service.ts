@@ -5,7 +5,7 @@ import axios from "axios";
 import { environment } from "../environments/environment";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ProjectsService {
   constructor() {}
@@ -17,10 +17,8 @@ export class ProjectsService {
   }
 
   retrieveExploreProjects(userId: number): Promise<Project[]> {
-    return axios
-      .get(`${environment.api_url}/exploreprojects/1`)
-      .then(response => {
-        return response.data.projects;
-      });
+    return axios.get(`${environment.api_url}/exploreprojects/1`).then(response => {
+      return response.data.projects;
+    });
   }
 }

@@ -1,28 +1,28 @@
 :host {
-   display: flex;
-   align-items: center;
-   max-width: 1200px;
-   width: calc(100vw - 1em);
-   margin: 0.5em auto;
-   padding: .5em 1em
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  width: calc(100vw - 1em);
+  margin: 0.5em auto;
+  padding: .5em 1em
 }
 
 a.home {
-   font-size: 2rem;
-   color: var(--fontDarkGrey);
-   margin-right: .6em;
+  font-size: 2rem;
+  color: var(--fontDarkGrey);
+  margin-right: .6em;
 }
 
 a.home:hover {
-   color: var(--primaryColor);
+  color: var(--primaryColor);
 }
 
 app-user-action {
-   flex-grow: 1;
+  flex-grow: 1;
 }
 
 @media (min-width: 500px) {
-   :host {
-      padding: .75em 1.5em;
-   }
+  :host {
+    padding: .75em 1.5em;
+  }
 }

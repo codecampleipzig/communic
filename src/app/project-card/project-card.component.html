@@ -1,17 +1,17 @@
 <div class="project-picture">
-    <img [src]="project.projectImageUrl">
+  <img [src]="project.projectImageUrl" />
 </div>
 
 <h3 class="project-title">
-    {{project.projectTitle}}
+  {{ project.projectTitle }}
 </h3>
 
 <div class="project-date" *ngIf="project.projectDate">
-    {{project.projectDate}}
+  {{ project.projectDate }}
 </div>
 
 <p class="project-description">
-    {{project.projectDescription}}
+  {{ project.projectDescription }}
 </p>
 
 <button class="button outlined round">Read More <i class="fas fa-angle-right"></i></button>
