@@ -49,13 +49,9 @@ describe("Task Component", () => {
     component.task.taskStatus = "deleted";
     fixture.detectChanges();
     spyOn(component, "restore");
-<<<<<<< HEAD
     const button = fixture.debugElement.nativeElement.querySelector(
       "#task-delete"
     );
-=======
-    const button = fixture.debugElement.nativeElement.querySelector("#task-delete");
->>>>>>> b15436c6826f5821c40ef8b4d5d86f978a49cc82
     button.dispatchEvent(new Event("click"));
     expect(component.restore).toHaveBeenCalled();
   });
