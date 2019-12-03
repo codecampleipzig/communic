@@ -8,7 +8,7 @@ xdescribe("RegisterCardComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RegisterCardComponent]
+      declarations: [RegisterCardComponent],
     }).compileComponents();
   }));
 
