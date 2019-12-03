@@ -34,7 +34,7 @@ export class TaskComponent implements OnInit {
   }
 
   /**
-   * Change task object @status to deleted/open on click of delete/restore button
+   * Delete and restore tasks
    */
   public delete() {
     this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "deleted");
