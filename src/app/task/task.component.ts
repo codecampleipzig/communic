@@ -37,14 +37,14 @@ export class TaskComponent implements OnInit {
    * Change task object @status to deleted/open on click of delete/restore button
    */
   public delete() {
-    this.task.taskStatus = "deleted";
+    this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "deleted");
   }
 
   public restore() {
-    this.task.taskStatus = "open";
+    this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "open");
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   /**
    * toggleTaskStatus to done or open if it's not deleted and CurrentUser is joined to task and project
