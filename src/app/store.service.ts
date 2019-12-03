@@ -175,11 +175,7 @@ export class StoreService {
   updateTaskStatus(projectId: number, taskId: number, status: string) {
     const promise = this.projectService.updateTaskStatus(taskId, status);
 
-    promise.then(newTasks => {
-      const newState = [...Mock.projects];
-      const newProject = newState.find(project => project.projectId == projectId);
-      newProject.projectTasks = newTasks;
-
+    promise.then(newProject => {
       // Put value into observable
       this.project.next(newProject);
     });

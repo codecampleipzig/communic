@@ -22,21 +22,19 @@ export class ProjectService {
   }
 
   /**
-   * Poseing GET request, returning newState of the tasks after status was updated.
+   * Patch taskStatus, returning newState of the tasks after status was updated.
    * @param taskId ID of the task
    * @param status Status of the task to be updated
    * @returns new Promise
    */
   updateTaskStatus(taskId: number, status: string): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const newState = [...Mock.tasks];
-      newState.find(task => task.taskId == taskId).taskStatus = status;
-      resolve(newState);
+    return axios.patch(`${environment.api_url}/task/${taskId}`, { taskStatus: status }).then(response => {
+      return response.data.project;
     });
   }
 
   /**
-   * join userId to projectId and get new project object from backend.
+   * join userId to project and get new project object from backend.
    * @returns new Promise
    */
   joinProjectTeam(projectId: number, userId: number): Promise<any> {
@@ -46,7 +44,7 @@ export class ProjectService {
   }
 
   /**
-   * Poseing POST request, returning newState of the project after user was removed by userId.
+   * remove userId from project and get new project object from backend.
    * @returns new Promise
    */
   leaveProjectTeam(projectId: number, userId: number): Promise<any> {
@@ -56,7 +54,7 @@ export class ProjectService {
   }
 
   /**
-   * Poseing POST request, returning newState of the project after user was added to taskTeam by userId.
+   * join userId to task and get new project object from backend
    * @returns new Promise
    */
   joinTaskTeam(projectId: number, taskId: number, userId: number): Promise<any> {
@@ -67,7 +65,7 @@ export class ProjectService {
   }
 
   /**
-   * Poseing POST request, returning newState of the project after user was removed of taskTeam by userId.
+   * remove userId from task and get new project object from backend
    * @returns new Promise
    */
   leaveTaskTeam(projectId: number, taskId: number, userId: number): Promise<any> {
