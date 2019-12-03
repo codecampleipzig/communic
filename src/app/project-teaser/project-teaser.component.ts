@@ -14,7 +14,6 @@ export class ProjectTeaserComponent implements OnInit {
    */
   @Input() public project: Project;
 
-  public team: User[];
   public userState: UserState;
 
   constructor(@Inject(StoreService) private store: StoreService) {

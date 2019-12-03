@@ -68,7 +68,7 @@ export class TaskComponent implements OnInit {
    * Function that adds the user to the ProjectTeam
    */
   join(): void {
-    if (!this.joined("project")) {
+    if (this.joined("project")) {
       this.store.joinTaskTeam(this.task.projectId, this.task.taskId, this.userState.userInformation.userId);
     }
   }
@@ -76,9 +76,7 @@ export class TaskComponent implements OnInit {
    * Function that deletes the user from the ProjectTeam
    */
   leave(): void {
-    if (this.joined("project")) {
-      this.store.leaveTaskTeam(this.task.projectId, this.task.taskId, this.userState.userInformation.userId);
-    }
+    this.store.leaveTaskTeam(this.task.projectId, this.task.taskId, this.userState.userInformation.userId);
   }
 
   /**

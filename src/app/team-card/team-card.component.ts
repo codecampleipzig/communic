@@ -43,6 +43,9 @@ export class TeamCardComponent implements OnInit {
    * Check if userState is part of the project
    */
   joined(): boolean {
-    return Boolean(this.project.projectTeam.find(team => team.userId == this.userState.userInformation.userId));
+    return (
+      this.project.projectTeam &&
+      Boolean(this.project.projectTeam.find(team => team.userId == this.userState.userInformation.userId))
+    );
   }
 }

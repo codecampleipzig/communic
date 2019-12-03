@@ -60,13 +60,9 @@ export class ProjectService {
    * @returns new Promise
    */
   joinTaskTeam(projectId: number, taskId: number, userId: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const newState = [...Mock.projects];
-      const project = newState.find(p => p.projectId == projectId);
-      const user = Mock.users.find(u => u.userId == userId);
-
-      project.projectTasks.find(t => t.taskId == taskId).taskTeam.push(user);
-      resolve(project);
+    console.log("join go");
+    return axios.put(`${environment.api_url}/taskTeam/${taskId}/member/${userId}`).then(response => {
+      return response.data.project;
     });
   }
 
@@ -75,13 +71,8 @@ export class ProjectService {
    * @returns new Promise
    */
   leaveTaskTeam(projectId: number, taskId: number, userId: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const newState = [...Mock.projects];
-      const project = newState.find(p => p.projectId == projectId);
-      const userIndex = project.projectTasks.find(t => t.taskId == taskId).taskTeam.findIndex(u => u.userId == userId);
-
-      project.projectTasks.find(t => t.taskId == taskId).taskTeam.splice(userIndex, 1);
-      resolve(project);
+    return axios.delete(`${environment.api_url}/taskTeam/${taskId}/member/${userId}`).then(response => {
+      return response.data.project;
     });
   }
 }
