@@ -12,11 +12,13 @@ import { StoreService } from "../store.service";
 export class TaskListComponent implements OnInit {
   public userState: UserState;
   public team: User[];
+  public tasks: Task[] = [];
+
   /**
    * Get project's object by parent component app-project-page
    */
   @Input() public project: Project;
-  public tasks: Task[] = [];
+
   constructor(@Inject(StoreService) private store: StoreService) {
     this.store.user$.subscribe(user => (this.userState = user));
   }
@@ -25,14 +27,8 @@ export class TaskListComponent implements OnInit {
    * Check if userState is part of the project
    */
   joined(): boolean {
-    return Boolean(this.team.find(team => team.userId == this.userState.userInformation.userId));
+    return Boolean(this.project.projectTeam.find(team => team.userId == this.userState.userInformation.userId));
   }
 
-  ngOnInit() {
-    /**
-     * Get Tasks from project Object
-     */
-    this.tasks = this.project.projectTasks;
-    this.team = this.project.projectTeam;
-  }
+  ngOnInit() {}
 }

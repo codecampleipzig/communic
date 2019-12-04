@@ -1,5 +1,5 @@
 <ul class="tasks unstyled-list">
-   <li *ngFor="let task of tasks">
+   <li *ngFor="let task of project.projectTasks">
       <app-task [task]="task" [project]="project"></app-task>
    </li>
 </ul>
