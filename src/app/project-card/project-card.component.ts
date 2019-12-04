@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, HostListener } from "@angular/core";
 import { RouterModule, Routes, Router } from "@angular/router";
 
+
 @Component({
   selector: "app-project-card",
   templateUrl: "./project-card.component.html",
