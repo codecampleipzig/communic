@@ -12,6 +12,6 @@
   </div>
 </div> -->
 <a routerLink="/home" class="home"><i class="fas fa-home"></i></a>
-<app-project-action id="project-action"></app-project-action>
+<app-project-action id="project-action" [project]="store.project$ | async"></app-project-action>
 <app-searchtool></app-searchtool>
 <app-user-action id="user-action"></app-user-action>
