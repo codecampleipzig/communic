@@ -1,7 +1,7 @@
 <ul class="tasks unstyled-list">
-   <li *ngFor="let task of tasks">
-      <app-task [task]="task"></app-task>
+   <li *ngFor="let task of project.projectTasks">
+      <app-task [task]="task" [project]="project"></app-task>
    </li>
 </ul>
 
-<app-create-new-task></app-create-new-task>
+<app-create-new-task *ngIf="joined()" [project]="project"></app-create-new-task>

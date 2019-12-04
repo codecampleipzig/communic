@@ -16,13 +16,13 @@ describe("ProjectActionComponent", () => {
       providers: [
         {
           provide: Router,
-          useClass: TestingRouter
+          useClass: TestingRouter,
         },
         {
           provide: StoreService,
-          useClass: TestingStoreService
-        }
-      ]
+          useClass: TestingStoreService,
+        },
+      ],
     }).compileComponents();
   }));
 
@@ -52,9 +52,7 @@ describe("ProjectActionComponent", () => {
     fixture.detectChanges();
 
     const htmlElement: HTMLElement = fixture.nativeElement;
-    expect(htmlElement.querySelector("#project-name span").textContent).toEqual(
-      component.project.projectTitle
-    );
+    expect(htmlElement.querySelector("#project-name span").textContent).toEqual(component.project.projectTitle);
   });
 
   // verify create project button is present
@@ -69,9 +67,7 @@ describe("ProjectActionComponent", () => {
   it("should have create project button", () => {
     if (!component.project) {
       const htmlElement: HTMLElement = fixture.nativeElement;
-      expect(
-        htmlElement.querySelector("#start-project-button span").textContent
-      ).toEqual("Start a new project");
+      expect(htmlElement.querySelector("#start-project-button span").textContent).toEqual("Start a new project");
     }
   });
 

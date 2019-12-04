@@ -1,8 +1,8 @@
 <!--
 Close item x displayed in the create task form.
 //-->
-<div class="top-right-icon" *ngIf="formVisible" (click)="closeForm()">
-    <i class="fas fa-times"></i>
+<div class="top-right-icons">
+    <button *ngIf="formVisible" (click)="closeForm()"><i class="fas fa-times"></i></button>
 </div>
 <!--
 Opening up the form and just show a plus, whole area clickable to create a new task.
@@ -13,10 +13,13 @@ Opening up the form and just show a plus, whole area clickable to create a new t
 <!--
 Input Fields/Textarea reflecting the individual tasks style and made editable.
 //-->
-<div class="task-header" *ngIf="formVisible">
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)"><div class="task-header" *ngIf="formVisible">
     <div class="task-checkbox checkbox"></div>
-    <input class="task-title" placeholder="Task Name Please"/>
+  <label for ="title"></label>
+  <input class="task-title" placeholder="Task Name Please" name="title" ngModel> 
 </div>
-
-<textarea *ngIf="formVisible" class="task-description" placeholder="Please describe the task that needs doing.">
-</textarea>
+<label for ="description"></label>
+<textarea *ngIf="formVisible" class="task-description" placeholder="Please describe the task that needs doing."
+name ="description" ngModel>
+      </textarea>  
+<button *ngIf="formVisible" class="button" type="submit">Add task</button></form>

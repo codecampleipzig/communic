@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 
 @Component({
   selector: "app-toolbar",
-  template: ""
+  template: "",
 })
 class ToolbarStubComponent {}
 
@@ -23,9 +23,9 @@ describe("StartnewprojectComponent", () => {
       providers: [
         {
           provide: Router,
-          useClass: TestingRouter
-        }
-      ]
+          useClass: TestingRouter,
+        },
+      ],
     }).compileComponents();
   }));
 

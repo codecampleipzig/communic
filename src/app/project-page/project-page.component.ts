@@ -7,15 +7,12 @@ import { User } from "../datatypes/User";
 @Component({
   selector: "app-project-page",
   templateUrl: "./project-page.component.html",
-  styleUrls: ["./project-page.component.css"]
+  styleUrls: ["./project-page.component.css"],
 })
 export class ProjectPageComponent implements OnInit, OnDestroy {
-  public project: Project;
+  public project: Project | null = null;
 
-  constructor(
-    @Inject(ActivatedRoute) public route: ActivatedRoute,
-    @Inject(StoreService) private store: StoreService
-  ) {
+  constructor(@Inject(ActivatedRoute) public route: ActivatedRoute, @Inject(StoreService) private store: StoreService) {
     /**
      * Subscribe to id param in the ActivatedRoute
      * and get project's object from store.service

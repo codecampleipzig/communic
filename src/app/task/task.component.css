@@ -1,8 +1,3 @@
-/** 
- * Styling for the whole TaskListItem.
- * There are some more styles and Variables (like colors) defined in the /src/styles.css that I considered to be useful as global styles.
- */
-
 :host {
    background: var(--backgroundGrey);
    box-shadow: var(--smallShadow);
@@ -16,91 +11,105 @@
    align-items: center;
 }
 
-   :host > * {
-      margin-top: 0;
-      margin-bottom: 1em;
-   }
 
-
-/* Task Header with Checkbox and Title */
+/* Task Header with Checkbox, Title and TaskTeam */
 .task-header {
    display: flex;
    align-items: center;
    line-height: 2;
+   flex-wrap: wrap;
+   margin-right: 2em; /* Spacing for top-right-icons */
 }
 
-   .task-header > * {
-      margin-right: 1em;
-   }
+.task-header > * {
+   margin-bottom: .5em;
+}
 
-   .checkbox {
-      width: 1em;
-      height: 1em;
-      border: 2px solid var(--borderGrey);
-      border-radius: 2px;
-      font-size: 1.5em;
-      text-align: center;
-      line-height: 1.05;
-      color: var(--fontLightGrey);
-      background: transparent;
-      padding: 0;
-   }
+/* Checkbox */
+.checkbox {
+   width: 1em;
+   height: 1em;
+   border: 2px solid var(--borderGrey);
+   border-radius: 2px;
+   font-size: 1.5em;
+   text-align: center;
+   line-height: 1.05;
+   color: var(--fontLightGrey);
+   background: transparent;
+   padding: 0;
+   margin-right: .75em;
+}
 
-   .checkbox i {
-      transform: translate3d(0em, -.1em, 0);
-      font-size: .9em;
-      color: inherit;
-      opacity: .2;
-      transition: transform .2s, font-size .2s, color .2s, opacity .2s;
-   }
+.checkbox i {
+   transform: translate3d(0em, -.1em, 0);
+   font-size: .9em;
+   color: inherit;
+   opacity: .2;
+   transition: transform .2s, font-size .2s, color .2s, opacity .2s;
+}
 
-   /**
-    * CSS Interactions if task is .joined
-    */
-   .checkbox:not(:disabled) {
-      cursor: pointer;
-   }
+/** CSS Interactions for different states of the task */
+.checkbox:disabled {
+   cursor: default;
+}
 
-   .checkbox:not(:disabled):hover,
-   .checkbox:not(:disabled):focus {
-      color: var(--successGreen);
-   }
+.checkbox:not(:disabled):hover,
+.checkbox:not(:disabled):focus {
+   color: var(--successGreen);
+}
 
-   .checkbox:not(:disabled):focus {
-      outline: 1px dashed var(--borderGrey);
-      outline-offset: 2px;
-   }
+.checkbox:not(:disabled):focus {
+   outline: 1px dashed var(--borderGrey);
+   outline-offset: 2px;
+}
 
-   .checkbox:not(:disabled):hover i,
-   .checkbox:not(:disabled):focus i {
-      transform: translate3d(.05em, -.3em, 0);
-      font-size: 1.3em;
-      opacity: 1;
-   }
+.checkbox:not(:disabled):hover i,
+.checkbox:not(:disabled):focus i {
+   transform: translate3d(.05em, -.3em, 0);
+   font-size: 1.3em;
+   opacity: 1;
+}
 
-   .checkbox:not(:disabled):active {
-      border-color: var(--successGreen);
-   }
+.checkbox:not(:disabled):active {
+   border-color: var(--successGreen);
+}
 
-   /**
-    * CSS Interactions if task is .joined and ment to be undone.
-    *
-    * :host(.joined.status-done) .checkbox:hover,
-    * :host(.joined.status-done) .checkbox:focus {
-    *    color: var(--fontLightGrey);
-    * }
-    * 
-    * :host(.joined.status-done) .checkbox:hover i {
-    *    transform: translate3d(0, 0, 0);
-    *    font-size: .9em;
-    *    opacity: .5;
-    * } 
-    */
+  /**
+   * CSS Interactions if task is .joined and ment to be undone.
+   *
+   * :host(.joined.status-done) .checkbox:hover,
+   * :host(.joined.status-done) .checkbox:focus {
+   *    color: var(--fontLightGrey);
+   * }
+   * 
+   * :host(.joined.status-done) .checkbox:hover i {
+   *    transform: translate3d(0, 0, 0);
+   *    font-size: .9em;
+   *    opacity: .5;
+   * } 
+   */
 
-   :host(.joined.status-done) .checkbox:active {
-      border-color: var(--successGreen);
-   }
+:host(.joined.status-done) .checkbox:active {
+   border-color: var(--successGreen);
+}
 
+.task-team {
+   display: flex;
+   align-items: center;
+   line-height: 2;
+   margin-left: 1em;
+   flex-wrap: wrap;
+   margin-bottom: 0 !important;
+}
+
+.task-team > * {
+   margin-bottom: .5em;
+}
+
+.user-image {
+   font-size: 1em;
+   margin-right: .5em;
+}
    
 .task-description {
    margin-left: 1em;

@@ -6,7 +6,7 @@ import { UserState, User } from "../datatypes/User";
 @Component({
   selector: "app-project-teaser",
   templateUrl: "./project-teaser.component.html",
-  styleUrls: ["./project-teaser.component.css"]
+  styleUrls: ["./project-teaser.component.css"],
 })
 export class ProjectTeaserComponent implements OnInit {
   /**
@@ -14,7 +14,6 @@ export class ProjectTeaserComponent implements OnInit {
    */
   @Input() public project: Project;
 
-  public team: User[];
   public userState: UserState;
 
   constructor(@Inject(StoreService) private store: StoreService) {
@@ -28,10 +27,7 @@ export class ProjectTeaserComponent implements OnInit {
    */
   join(): void {
     if (!this.joined()) {
-      this.store.joinProjectTeam(
-        this.project.projectId,
-        this.userState.userInformation.userId
-      );
+      this.store.joinProjectTeam(this.project.projectId, this.userState.userInformation.userId);
     }
   }
   /**
@@ -39,10 +35,7 @@ export class ProjectTeaserComponent implements OnInit {
    */
   leave(): void {
     if (this.joined()) {
-      this.store.leaveProjectTeam(
-        this.project.projectId,
-        this.userState.userInformation.userId
-      );
+      this.store.leaveProjectTeam(this.project.projectId, this.userState.userInformation.userId);
     }
   }
 
@@ -50,10 +43,9 @@ export class ProjectTeaserComponent implements OnInit {
    * Check if userState is part of the project
    */
   joined(): boolean {
-    return Boolean(
-      this.project.projectTeam.find(
-        team => team.userId == this.userState.userInformation.userId
-      )
+    return (
+      this.project.projectTeam &&
+      Boolean(this.project.projectTeam.find(team => team.userId == this.userState.userInformation.userId))
     );
   }
 }

@@ -18,7 +18,7 @@ import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class StoreService {
   // Internal State
@@ -39,11 +39,11 @@ export class StoreService {
     @Inject(Router) private router: Router,
     @Inject(AuthService) private authService: AuthService,
     @Inject(ProjectsService) private projectsService: ProjectsService,
-    @Inject(ProjectService) private projectService: ProjectService
+    @Inject(ProjectService) private projectService: ProjectService,
   ) {
     this.user = new BehaviorSubject<UserState>({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
     this.user$ = this.user.asObservable();
 
@@ -66,8 +66,8 @@ export class StoreService {
         userId: 2,
         userName: "TestUser",
         userEmail: "email@gmail.com",
-        userImageUrl: ""
-      }
+        userImageUrl: "",
+      },
     });
   }
 
@@ -81,7 +81,7 @@ export class StoreService {
       // Put value into observable
       this.user.next({
         status: { loggedIn: true },
-        userInformation: user
+        userInformation: user,
       });
 
       // Navigate to home page
@@ -93,7 +93,7 @@ export class StoreService {
     // Mutation
     this.user.next({
       status: {},
-      userInformation: null
+      userInformation: null,
     });
     // Navigate to register page
     this.router.navigate(["register"]);
@@ -151,10 +151,10 @@ export class StoreService {
 
   /**
    * resolves GET request and passes project Data into project observable
-   * @param id: project ID
+   * @param projectId: project ID
    */
-  retrieveProject(id: number): void {
-    const promise = this.projectService.getProject(id);
+  retrieveProject(projectId: number): void {
+    const promise = this.projectService.getProject(projectId);
 
     promise.then(project => {
       // Put value into observable
@@ -162,6 +162,9 @@ export class StoreService {
     });
   }
 
+  /**
+   * Destroy project
+   */
   unloadProject(): void {
     this.project.next(null);
   }
@@ -172,13 +175,7 @@ export class StoreService {
   updateTaskStatus(projectId: number, taskId: number, status: string) {
     const promise = this.projectService.updateTaskStatus(taskId, status);
 
-    promise.then(newTasks => {
-      const newState = [...Mock.projects];
-      const newProject = newState.find(
-        project => project.projectId == projectId
-      );
-      newProject.projectTasks = newTasks;
-
+    promise.then(newProject => {
       // Put value into observable
       this.project.next(newProject);
     });
@@ -197,10 +194,34 @@ export class StoreService {
   }
 
   /**
-   * triggers projectService.joinProjectTeam and resolves its GET request to pass newProject into project observable.
+   * triggers projectService.leaveProjectTeam and resolves its GET request to pass newProject into project observable.
    */
   leaveProjectTeam(projectId: number, userId: number) {
     const promise = this.projectService.leaveProjectTeam(projectId, userId);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+    });
+  }
+
+  /**
+   * triggers projectService.joinTaskTeam and resolves its GET request to pass newProject into project observable.
+   */
+  joinTaskTeam(projectId: number, taskId: number, userId: number) {
+    const promise = this.projectService.joinTaskTeam(projectId, taskId, userId);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+    });
+  }
+
+  /**
+   * triggers projectService.leaveTaskTeam and resolves its GET request to pass newProject into project observable.
+   */
+  leaveTaskTeam(projectId: number, taskId: number, userId: number) {
+    const promise = this.projectService.leaveTaskTeam(projectId, taskId, userId);
 
     promise.then(newProject => {
       // Put value into observable

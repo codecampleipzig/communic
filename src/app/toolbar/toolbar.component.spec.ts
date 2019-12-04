@@ -4,6 +4,7 @@ import { Component, Input } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { TestingRouter } from "../test-utilities/testing-router";
 import { Project } from "../datatypes/Project";
+import { IconComponent } from "../icon/icon.component";
 
 // mock the child components
 @Component({ selector: "app-user-action", template: "" })
@@ -15,6 +16,10 @@ class ProjectActionStubComponent {
   @Input() project: Project;
 }
 
+// mock the child components
+@Component({ selector: "app-searchtool", template: "" })
+class SearchToolStubComponent {}
+
 describe("ToolbarComponent", () => {
   let component: ToolbarComponent;
   let fixture: ComponentFixture<ToolbarComponent>;
@@ -24,14 +29,16 @@ describe("ToolbarComponent", () => {
       declarations: [
         ToolbarComponent,
         UserActionStubComponent,
-        ProjectActionStubComponent
+        ProjectActionStubComponent,
+        SearchToolStubComponent,
+        IconComponent,
       ],
       providers: [
         {
           provide: Router,
-          useClass: TestingRouter
-        }
-      ]
+          useClass: TestingRouter,
+        },
+      ],
     }).compileComponents();
   }));
 
