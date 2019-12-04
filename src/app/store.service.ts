@@ -53,7 +53,7 @@ export class StoreService {
     this.exploreProjects = new BehaviorSubject<Array<Project>>([]);
     this.exploreProjects$ = this.exploreProjects.asObservable();
 
-    this.project = new BehaviorSubject<any>({});
+    this.project = new BehaviorSubject<any>(null);
     this.project$ = this.project.asObservable();
 
     this.toolbar = new BehaviorSubject<any>("");
@@ -151,10 +151,10 @@ export class StoreService {
 
   /**
    * resolves GET request and passes project Data into project observable
-   * @param id: project ID
+   * @param projectId: project ID
    */
-  retrieveProject(id: number): void {
-    const promise = this.projectService.getProject(id);
+  retrieveProject(projectId: number): void {
+    const promise = this.projectService.getProject(projectId);
 
     promise.then(project => {
       // Put value into observable
@@ -163,19 +163,19 @@ export class StoreService {
   }
 
   /**
-   * resolves GET request and passes newTasks via newProject into project observable.
-   * @param projectId ID of the project the task belongs to
-   * @param taskId ID of the task whose status is to be updated
-   * @param status The new status of the task that is updated
+   * Destroy project
+   */
+  unloadProject(): void {
+    this.project.next(null);
+  }
+
+  /**
+   * triggers projectService.updateTaskStatus and resolves its GET request to pass newTasks via newProject into project observable.
    */
   updateTaskStatus(projectId: number, taskId: number, status: string) {
     const promise = this.projectService.updateTaskStatus(taskId, status);
 
-    promise.then(newTasks => {
-      const newState = [...Mock.projects];
-      const newProject = newState.find(project => project.projectId == projectId);
-      newProject.projectTasks = newTasks;
-
+    promise.then(newProject => {
       // Put value into observable
       this.project.next(newProject);
     });
