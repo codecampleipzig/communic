@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, OnDestroy } from "@angular/core";
 import { ActivatedRoute, Params } from "@angular/router";
 import { StoreService } from "../store.service";
 import { Project } from "../datatypes/Project";
-import { User } from "../datatypes/User";
+import { UserState } from "../datatypes/User";
 
 @Component({
   selector: "app-project-page",
@@ -10,6 +10,7 @@ import { User } from "../datatypes/User";
   styleUrls: ["./project-page.component.css"],
 })
 export class ProjectPageComponent implements OnInit, OnDestroy {
+  public userState: UserState;
   public project: Project | null = null;
 
   constructor(@Inject(ActivatedRoute) public route: ActivatedRoute, @Inject(StoreService) private store: StoreService) {
@@ -21,11 +22,20 @@ export class ProjectPageComponent implements OnInit, OnDestroy {
     route.params.subscribe((params: Params) => {
       this.store.retrieveProject(params.id);
     });
+
+    this.store.user$.subscribe(user => (this.userState = user));
   }
 
   ngOnInit() {}
 
   ngOnDestroy() {
     this.store.unloadProject();
+  }
+
+  /**
+   * Check if userState is part of the project
+   */
+  joined(): boolean {
+    return Boolean(this.project.projectTeam.find(team => team.userId == this.userState.userInformation.userId));
   }
 }

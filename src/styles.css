@@ -136,7 +136,10 @@ textarea {
 }
 
 /* Margin to the right for every Icon inside a button. Caption needs to be placed in a span-Element then! */
-.button i:not(:last-child) {
+.button i:not(:last-child),
+.button app-icon:not(:last-child)
+button i:not(:last-child),
+button app-icon:not(:last-child) {
   margin-right: 0.5em;
 }
 
@@ -199,6 +202,13 @@ label {
    color: var(--warningRed);
    text-align: start;
    display: block;
+}
+.form-rule.positive {
+  color: var(--fontLightGrey);
+}
+
+.ng-valid + .form-rule.positive {
+  color: var(--successGreen);
 }
 
 
@@ -353,7 +363,8 @@ label {
   z-index: 1;
 }
 
-.user-image i {
+.user-image i,
+.user-image app-icon {
   width: 1em;
   height: 1em;
   position: relative;

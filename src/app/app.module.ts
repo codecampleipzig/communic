@@ -23,6 +23,7 @@ import { IconComponent } from "./icon/icon.component";
 import { SearchresultsComponent } from "./searchresults/searchresults.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ProjectSectionsComponent } from "./project-sections/project-sections.component";
+import { CreateSectionComponent } from "./create-section/create-section.component";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ProjectSectionsComponent } from "./project-sections/project-sections.co
     SearchresultsComponent,
     StartnewprojectComponent,
     ProjectSectionsComponent,
+    CreateSectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule, HttpClientModule],
   providers: [],
