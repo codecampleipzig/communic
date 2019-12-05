@@ -23,8 +23,11 @@
   </button>
 
   <label>
-    <input type="text" placeholder="Name" formControlName="name" required *ngIf="authType == 'register'" />
-    <span class="form-rule" *ngIf="(name.dirty || name.touched) && name.invalid && name.errors.required">
+    <input type="text" placeholder="Username" formControlName="username" required *ngIf="authType == 'register'" />
+    <span
+      class="form-rule"
+      *ngIf="(username.dirty || username.touched) && username.invalid && username.errors.required"
+    >
       No name, no fun.
     </span>
   </label>
@@ -52,6 +55,10 @@
     </span>
     <span class="form-rule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'login'">
       Forgot your password? Don't fret. You can reset it by clicking <a routerLink="">here</a>.
+    </span>
+    <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
+    <span *ngIf="(confirmPassword.dirty || confirmPassword.touched) && profileForm.errors">
+      Password doesn't match
     </span>
   </label>
 

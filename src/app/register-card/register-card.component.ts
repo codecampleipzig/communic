@@ -1,4 +1,11 @@
-import { FormControl, ReactiveFormsModule, Validators, FormGroup } from "@angular/forms";
+import {
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+  FormGroup,
+  AbstractControl,
+  ValidationErrors,
+} from "@angular/forms";
 import { Component, OnInit, NgModule, Inject, HostBinding } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
@@ -25,21 +32,32 @@ export class RegisterCardComponent implements OnInit {
   }
 
   constructor(@Inject(ActivatedRoute) private route: ActivatedRoute, @Inject(Router) private router: Router) {
-    this.profileForm = new FormGroup({
-      name: new FormControl("", [Validators.required]),
-      email: new FormControl("", [Validators.required, Validators.email]),
-      password: new FormControl(
-        "",
-        Validators.compose([
-          Validators.required,
-          Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"), // this is for the letters (both uppercase and lowercase) and numbers validation
-        ]),
-      ),
-    });
+    this.profileForm = new FormGroup(
+      {
+        username: new FormControl("", [Validators.required]),
+        email: new FormControl("", [Validators.required, Validators.email]),
+        password: new FormControl(
+          "",
+          Validators.compose([
+            Validators.required,
+            Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"), // this is for the letters (both uppercase and lowercase) and numbers validation
+          ]),
+        ),
+        confirmPassword: new FormControl("", [Validators.required]),
+      },
+      this.passwordConfirming,
+    );
   }
 
-  get name() {
-    return this.profileForm.get("name");
+  passwordConfirming(c: AbstractControl): ValidationErrors | null {
+    if (c.get("password").value !== c.get("confirmPassword").value) {
+      return { invalid: true };
+    }
+    return null;
+  }
+
+  get username() {
+    return this.profileForm.get("username");
   }
 
   get email() {
@@ -50,6 +68,10 @@ export class RegisterCardComponent implements OnInit {
     return this.profileForm.get("password");
   }
 
+  get confirmPassword() {
+    return this.profileForm.get("confirmPassword");
+  }
+
   ngOnInit() {
     this.route.url.subscribe(data => {
       // Get the last piece of the URL (it's either 'login' or 'register')
@@ -58,7 +80,7 @@ export class RegisterCardComponent implements OnInit {
       this.title = this.authType === "login" ? "Sign in" : "Sign up";
       // add form control for username if this is the register page
       if (this.authType === "register") {
-        this.profileForm.addControl("name", new FormControl());
+        this.profileForm.addControl("username", new FormControl());
       }
     });
   }
