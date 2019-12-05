@@ -43,7 +43,7 @@ export class RegisterCardComponent implements OnInit {
             Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"), // this is for the letters (both uppercase and lowercase) and numbers validation
           ]),
         ),
-        confirmPassword: new FormControl("", [Validators.required]),
+        confirmPassword: new FormControl("", [Validators.email]),
       },
       this.passwordConfirming,
     );

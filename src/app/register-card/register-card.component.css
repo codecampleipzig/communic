@@ -1,3 +1,6 @@
+:root {
+  --attentionYellow: rgb(221, 192, 28);
+}
 :host {
   display: flex;
   height: 100vh;
@@ -54,10 +57,27 @@ input[type="file"] {
   justify-content: center;
 }
 
+#confirm-password.ng-valid {
+  border-color: var(--successGreen);
+  border-left-width: 5px;
+}
+
+#confirm-password.ng-invalid {
+  border-color: var(--borderGrey);
+  border-left-color: var(--borderMediumGrey);
+  border-left-width: 5px;
+}
+
 .register-card .forgotPassword {
   display: flex;
   text-align: center;
   justify-content: center;
+}
+
+.form-rule {
+  color: var(--warningRed);
+  text-align: start;
+  display: block;
 }
 
 .avatar {

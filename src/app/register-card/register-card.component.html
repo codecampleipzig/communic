@@ -28,7 +28,7 @@
       class="form-rule"
       *ngIf="(username.dirty || username.touched) && username.invalid && username.errors.required"
     >
-      No name, no fun.
+      Please choose an username.
     </span>
   </label>
 
@@ -51,15 +51,19 @@
   <label>
     <input type="password" placeholder="Password" formControlName="password" required />
     <span class="form-rule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'register'">
-      Safety first! Your password must contain an uppercase, a lowercase, a special character and a number.
+      Your password should be at least 10 characters long.
     </span>
     <span class="form-rule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'login'">
-      Forgot your password? Don't fret. You can reset it by clicking <a routerLink="">here</a>.
+      Forgot your password? Reset it by clicking <a routerLink="">here</a>.
     </span>
-    <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
-    <span *ngIf="(confirmPassword.dirty || confirmPassword.touched) && profileForm.errors">
-      Password doesn't match
-    </span>
+    <input
+      id="confirm-password"
+      [ngClass]="{ 'ng-valid': !profileForm.errors, 'ng-invalid': profileForm.errors }"
+      type="password"
+      placeholder="Confirm Password"
+      formControlName="confirmPassword"
+      required
+    />
   </label>
 
   <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'register'" class="button">Join now!</button>
