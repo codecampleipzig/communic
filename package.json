@@ -69,7 +69,7 @@
     "url": "git+https://github.com/codecampleipzig/communic.git"
   },
   "author": "CCL",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/codecampleipzig/communic/issues"
   },

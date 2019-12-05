@@ -1,0 +1,10 @@
+<h2>{{section.sectionTitle}}</h2>
+<p>{{section.sectionDescription}}</p>
+
+<ul class="tasks unstyled-list">
+   <li *ngFor="let task of section.projectTasks">
+      <app-task [task]="task" [project]="project"></app-task>
+   </li>
+</ul>
+
+<app-create-new-task *ngIf="joined()" [project]="project" [sectionId]="section.sectionId"></app-create-new-task>
