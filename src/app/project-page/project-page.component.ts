@@ -18,7 +18,6 @@ export class ProjectPageComponent implements OnInit, OnDestroy {
      * and get project's object from store.service
      */
     this.store.project$.subscribe(project => (this.project = project));
-
     route.params.subscribe((params: Params) => {
       this.store.retrieveProject(params.id);
     });
