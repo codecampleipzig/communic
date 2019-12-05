@@ -101,7 +101,7 @@ export class TestingStoreService {
 
     const newState = [...Mock.projects];
     const newProject = newState.find(project => project.projectId == projectId);
-    newProject.projectTasks = newTasks;
+    newProject.projectSections[0].projectTasks = newTasks;
 
     // Put value into observable
     this.project.next(newProject);
@@ -138,7 +138,7 @@ export class TestingStoreService {
     const project = newState.find(p => p.projectId == projectId);
     const user = Mock.users.find(u => u.userId == userId);
 
-    project.projectTasks.find(t => t.taskId == taskId).taskTeam.push(user);
+    project.projectSections[0].projectTasks.find(t => t.taskId == taskId).taskTeam.push(user);
     this.project.next(project);
   }
 
@@ -148,9 +148,11 @@ export class TestingStoreService {
   leaveTaskTeam(projectId: number, taskId: number, userId: number) {
     const newState = [...Mock.projects];
     const project = newState.find(p => p.projectId == projectId);
-    const userIndex = project.projectTasks.find(t => t.taskId == taskId).taskTeam.findIndex(u => u.userId == userId);
+    const userIndex = project.projectSections[0].projectTasks
+      .find(t => t.taskId == taskId)
+      .taskTeam.findIndex(u => u.userId == userId);
 
-    project.projectTasks.find(t => t.taskId == taskId).taskTeam.splice(userIndex, 1);
+    project.projectSections[0].projectTasks.find(t => t.taskId == taskId).taskTeam.splice(userIndex, 1);
 
     this.project.next(project);
   }
