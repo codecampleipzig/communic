@@ -35,7 +35,7 @@ html, body {
 /* Add Transition on everything */
 * {
   transition: width 0.4s, height 0.4s, padding 0.4s, margin 0.4s, transform 0.4s, opacity 0.4s, box-shadow 0.4s,
-    border 0.4s, background-color 0.4s, color 0.4s;
+    border 0.4s, background-color 0.4s, color 0.6s;
 }
 
 body {
@@ -199,16 +199,20 @@ label {
 
 /* Error Messages next to input & textarea */ 
 .form-rule {
-   color: var(--warningRed);
-   text-align: start;
-   display: block;
+  color: var(--warningRed);
+  text-align: start;
+  display: block;
 }
-.form-rule.positive {
+.form-rule.show-rule {
   color: var(--fontLightGrey);
 }
 
-.ng-valid + .form-rule.positive {
+.ng-valid + .form-rule.show-rule {
   color: var(--successGreen);
+}
+
+.show-errors .ng-invalid + .form-rule.show-rule {
+  color: var(--warningRed);
 }
 
 
