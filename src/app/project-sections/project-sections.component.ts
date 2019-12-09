@@ -1,23 +1,19 @@
 import { Component, OnInit, Input, Inject } from "@angular/core";
-import { Task } from "../datatypes/Task";
 import { Project } from "../datatypes/Project";
-import { User, UserState } from "../datatypes/User";
+import { Section } from "../datatypes/Section";
 import { StoreService } from "../store.service";
+import { UserState } from "../datatypes/User";
 
 @Component({
-  selector: "app-task-list",
-  templateUrl: "./task-list.component.html",
-  styleUrls: ["./task-list.component.css"],
+  selector: "app-project-sections",
+  templateUrl: "./project-sections.component.html",
+  styleUrls: ["./project-sections.component.css"],
 })
-export class TaskListComponent implements OnInit {
+export class ProjectSectionsComponent implements OnInit {
   public userState: UserState;
-  public team: User[];
-  public tasks: Task[] = [];
-
-  /**
-   * Get project's object by parent component app-project-page
-   */
+  // Get project's object by parent component app-project-page
   @Input() public project: Project;
+  @Input() public section: Section;
 
   constructor(@Inject(StoreService) private store: StoreService) {
     this.store.user$.subscribe(user => (this.userState = user));

@@ -24,8 +24,8 @@ describe("ProjectsService", () => {
         projectCreator: Mock.users[0],
         projectTeam: [Mock.users[0], Mock.users[1], Mock.users[2], Mock.users[3]],
         projectImageUrl: "./../assets/project-default.png",
-        projectTasks: [],
         projectStatus: "open",
+        projectSections: [],
       },
       {
         projectId: 3,
@@ -37,8 +37,8 @@ describe("ProjectsService", () => {
         projectCreator: Mock.users[1],
         projectTeam: [Mock.users[1], Mock.users[2], Mock.users[3], Mock.users[4]],
         projectImageUrl: "./../assets/project-default.png",
-        projectTasks: [],
         projectStatus: "open",
+        projectSections: [],
       },
     ];
 
@@ -52,8 +52,8 @@ describe("ProjectsService", () => {
       projectCreator: Mock.users[3],
       projectTeam: [Mock.users[4], Mock.users[5], Mock.users[6]],
       projectImageUrl: "./../assets/project-default.png",
-      projectTasks: [],
       projectStatus: "open",
+      projectSections: [],
     };
 
     Mock.ExposeForTesting.projects = [];
@@ -80,8 +80,8 @@ describe("ProjectsService", () => {
         projectCreator: Mock.users[1],
         projectTeam: [Mock.users[1], Mock.users[2], Mock.users[3], Mock.users[4], Mock.users[5]],
         projectImageUrl: "./../assets/project-default.png",
-        projectTasks: [],
         projectStatus: "open",
+        projectSections: [],
       },
     ];
 
@@ -97,7 +97,7 @@ describe("ProjectsService", () => {
         projectTeam: [Mock.users[2], Mock.users[3], Mock.users[4]],
         projectImageUrl: "./../assets/project-default.png",
         projectStatus: "open",
-        projectTasks: [],
+        projectSections: [],
       },
       {
         projectId: 3,
@@ -109,7 +109,7 @@ describe("ProjectsService", () => {
         projectCreator: Mock.users[3],
         projectTeam: [Mock.users[2], Mock.users[4], Mock.users[5], Mock.users[6]],
         projectImageUrl: "./../assets/project-default.png",
-        projectTasks: [],
+        projectSections: [],
         projectStatus: "open",
       },
     ];
