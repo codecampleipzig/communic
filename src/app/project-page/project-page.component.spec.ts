@@ -11,7 +11,7 @@ import { TeamMemberComponent } from "../team-member/team-member.component";
 import { TaskComponent } from "../task/task.component";
 import { Component } from "@angular/core";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ProjectSectionsComponent } from "../project-sections/project-sections.component";
 import { CreateSectionComponent } from "../create-section/create-section.component";
 import { IconComponent } from "../icon/icon.component";
@@ -22,7 +22,7 @@ import { IconComponent } from "../icon/icon.component";
 })
 class ToolbarTestComponent {}
 
-xdescribe("ProjectPageComponent", () => {
+describe("ProjectPageComponent", () => {
   let component: ProjectPageComponent;
   let fixture: ComponentFixture<ProjectPageComponent>;
 
@@ -58,7 +58,7 @@ xdescribe("ProjectPageComponent", () => {
           },
         },
       ],
-      imports: [FormsModule],
+      imports: [FormsModule, ReactiveFormsModule],
     }).compileComponents();
   }));
 
