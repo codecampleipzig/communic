@@ -257,4 +257,22 @@ export class StoreService {
   updateStatus(value: object) {
     this.status.next({ ...this.status, ...value });
   }
+
+  createTask(
+    projectId: number,
+    taskTitle: string,
+    taskDescription: string,
+    taskStatus: string,
+    taskCreator: number,
+    menuSection: string
+  ) {
+    this.updateStatus({ taskCreationPending: true });
+    const promise = this.projectService.createTask(projectId, taskTitle, taskDescription, taskStatus, taskCreator, menuSection);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+      this.updateStatus({ taskCreationPending: false });
+    });
+  }
 }
