@@ -27,6 +27,7 @@ export class StoreService {
   exploreProjects: BehaviorSubject<Array<Project>>;
   project: BehaviorSubject<Project>;
   toolbar: BehaviorSubject<any>;
+  status: BehaviorSubject<any>;
 
   // Observable
   public user$: Observable<UserState>;
@@ -34,6 +35,7 @@ export class StoreService {
   public exploreProjects$: Observable<Array<Project>>;
   public project$: Observable<Project>;
   public toolbar$: Observable<any>;
+  public status$: Observable<any>;
 
   constructor(
     @Inject(Router) private router: Router,
@@ -58,6 +60,11 @@ export class StoreService {
 
     this.toolbar = new BehaviorSubject<any>("");
     this.toolbar$ = this.toolbar.asObservable();
+
+    this.status = new BehaviorSubject<any>({
+      sectionCreationPending: false,
+    });
+    this.status$ = this.status.asObservable();
 
     /* Mock Current User. Replace with login Action */
     this.user.next({
@@ -227,5 +234,27 @@ export class StoreService {
       // Put value into observable
       this.project.next(newProject);
     });
+  }
+
+  createNewSection(
+    projectId: number,
+    title: string,
+    description: string,
+    due: Date,
+    status: string,
+    creatorId: number,
+  ) {
+    this.updateStatus({ sectionCreationPending: true });
+    const promise = this.projectService.createNewSection(projectId, title, description, due, status, creatorId);
+
+    promise.then(newProject => {
+      // Put value into observable
+      this.project.next(newProject);
+      this.updateStatus({ sectionCreationPending: false });
+    });
+  }
+
+  updateStatus(value: object) {
+    this.status.next({ ...this.status, ...value });
   }
 }

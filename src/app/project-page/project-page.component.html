@@ -1,6 +1,7 @@
 <app-toolbar></app-toolbar>
 <app-project-teaser *ngIf="project" class="card container" [project]="project"></app-project-teaser>
 <app-team-card *ngIf="project" class="card container" [project]="project"></app-team-card>
+<app-create-section *ngIf="project && joined()" [project]="project"></app-create-section>
 <app-project-sections *ngFor="let section of project ? project.projectSections : []" class="card container"
   [section]="section" [project]="project">
 </app-project-sections>
