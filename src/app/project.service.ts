@@ -73,4 +73,25 @@ export class ProjectService {
       return response.data.project;
     });
   }
+
+  createNewSection(
+    projectId: number,
+    title: string,
+    description: string,
+    due: Date,
+    status: string,
+    creatorId: number,
+  ): Promise<any> {
+    const body = {
+      projectId,
+      title,
+      description,
+      due,
+      status,
+      creator: creatorId,
+    };
+    return axios.post(`${environment.api_url}/project/${projectId}/section`, body).then(response => {
+      return response.data.project;
+    });
+  }
 }
