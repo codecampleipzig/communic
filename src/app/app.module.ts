@@ -3,7 +3,6 @@ import { NgModule } from "@angular/core";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { ProjectPageComponent } from "./project-page/project-page.component";
-import { TaskListComponent } from "./task-list/task-list.component";
 import { TaskComponent } from "./task/task.component";
 import { CreateNewTaskComponent } from "./create-new-task/create-new-task.component";
 import { TeamCardComponent } from "./team-card/team-card.component";
@@ -23,12 +22,13 @@ import { SearchtoolComponent } from "./searchtool/searchtool.component";
 import { IconComponent } from "./icon/icon.component";
 import { SearchresultsComponent } from "./searchresults/searchresults.component";
 import { HttpClientModule } from "@angular/common/http";
+import { ProjectSectionsComponent } from "./project-sections/project-sections.component";
+import { CreateSectionComponent } from "./create-section/create-section.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     ProjectPageComponent,
-    TaskListComponent,
     TaskComponent,
     CreateNewTaskComponent,
     TeamCardComponent,
@@ -45,6 +45,8 @@ import { HttpClientModule } from "@angular/common/http";
     IconComponent,
     SearchresultsComponent,
     StartnewprojectComponent,
+    ProjectSectionsComponent,
+    CreateSectionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule, HttpClientModule],
   providers: [],

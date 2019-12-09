@@ -16,6 +16,7 @@ import { StoreService } from "../store.service";
 export class CreateNewTaskComponent implements OnInit {
   public formVisible: any = false;
   @Input() public project: Project;
+  @Input() public sectionId: number;
   public userState: UserState;
   public tasks: Task[] = [];
 
@@ -54,11 +55,13 @@ export class CreateNewTaskComponent implements OnInit {
     if (value.title == "" || value.description == "") {
       return null;
     }
+
     const newTask: Task = {
       /**
        * Creates a newTask object of type Task using title and description from form, projectId and current user
        */
       taskId: 1,
+      sectionId: this.sectionId,
       projectId: this.project.projectId,
       taskTitle: value.title,
       taskDescription: value.description,
@@ -70,7 +73,7 @@ export class CreateNewTaskComponent implements OnInit {
     /**
      * Pushes newTask to projectTasks and closes the form
      */
-    this.project.projectTasks.push(newTask);
+    this.project.projectSections.find(s => s.sectionId == newTask.sectionId).projectTasks.push(newTask);
     this.closeForm();
   }
 
