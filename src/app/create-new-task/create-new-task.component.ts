@@ -56,26 +56,16 @@ export class CreateNewTaskComponent implements OnInit {
       return null;
     }
 
-    const newTask: Task = {
-      /**
-       * Creates a newTask object of type Task using title and description from form, projectId and current user
-       */
-      taskId: 1,
-      sectionId: this.sectionId,
-      projectId: this.project.projectId,
-      taskTitle: value.title,
-      taskDescription: value.description,
-      taskStatus: "open",
-      taskCreator: this.userState.userInformation,
-      taskTeam: [this.userState.userInformation],
-      menuSection: "starter",
-    };
-    /**
-     * Pushes newTask to projectTasks and closes the form
-     */
-    this.project.projectSections.find(s => s.sectionId == newTask.sectionId).projectTasks.push(newTask);
+    this.store.createTask(
+      this.project.projectId,
+      value.title,
+      value.description,
+      "open",
+      this.userState.userInformation.userId,
+      "starter")
+
     this.closeForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }
