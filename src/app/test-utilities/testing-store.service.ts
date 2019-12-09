@@ -11,12 +11,16 @@ export class TestingStoreService {
   yourProjects: BehaviorSubject<Array<Project>>;
   exploreProjects: BehaviorSubject<Array<Project>>;
   project: BehaviorSubject<Project>;
+  toolbar: BehaviorSubject<any>;
+  status: BehaviorSubject<any>;
 
   // Observable
   public user$: Observable<UserState>;
   public yourProjects$: Observable<Array<Project>>;
   public exploreProjects$: Observable<Array<Project>>;
   public project$: Observable<Project>;
+  public toolbar$: Observable<any>;
+  public status$: Observable<any>;
 
   constructor() {
     this.user = new BehaviorSubject<UserState>({
@@ -44,6 +48,14 @@ export class TestingStoreService {
         userImageUrl: "",
       },
     });
+
+    this.toolbar = new BehaviorSubject<any>("");
+    this.toolbar$ = this.toolbar.asObservable();
+
+    this.status = new BehaviorSubject<any>({
+      sectionCreationPending: false,
+    });
+    this.status$ = this.status.asObservable();
   }
 
   // Action

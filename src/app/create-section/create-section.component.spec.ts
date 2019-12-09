@@ -5,9 +5,9 @@ import { IconComponent } from "../icon/icon.component";
 import * as Mock from "../mockdata";
 import { StoreService } from "../store.service";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
-import { FormsModule, FormGroup, FormControl } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-xdescribe("CreateSectionComponent", () => {
+describe("CreateSectionComponent", () => {
   let component: CreateSectionComponent;
   let fixture: ComponentFixture<CreateSectionComponent>;
 
@@ -20,7 +20,7 @@ xdescribe("CreateSectionComponent", () => {
           useClass: TestingStoreService,
         },
       ],
-      imports: [FormsModule, FormGroup, FormControl],
+      imports: [FormsModule, ReactiveFormsModule],
     }).compileComponents();
   }));
 
