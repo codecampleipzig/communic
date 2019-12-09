@@ -9,7 +9,7 @@ import { Project } from "./datatypes/Project";
   providedIn: "root",
 })
 export class ProjectService {
-  constructor() {}
+  constructor() { }
 
   /**
    * GET full project object from backend
@@ -31,7 +31,33 @@ export class ProjectService {
     return axios.patch(`${environment.api_url}/task/${taskId}`, { taskStatus: status }).then(response => {
       return response.data.project;
     });
-  }
+  };
+
+  /**
+ * createTask
+ * @returns new Promise
+ */
+  createTask(
+    projectId: number,
+    taskTitle: string,
+    taskDescription: string,
+    taskStatus: string,
+    taskCreator: number,
+    menuSection: string
+  ): Promise<any> {
+    const body = {
+      projectId,
+      taskTitle,
+      taskDescription,
+      taskStatus,
+      taskCreator,
+      menuSection
+    };
+    return axios.post(`${environment.api_url}/project/${projectId}/task`, body).then(response => {
+      return response.data.project;
+    });
+  };
+
 
   /**
    * join userId to project and get new project object from backend.
