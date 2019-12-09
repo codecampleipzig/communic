@@ -1,6 +1,7 @@
 import { User } from "./datatypes/User";
 import { Task } from "./datatypes/Task";
 import { Project } from "./datatypes/Project";
+import { Section } from "./datatypes/Section";
 
 export const users: User[] = [
   {
@@ -87,6 +88,7 @@ export const tasks: Task[] = [
   {
     taskId: 1,
     projectId: 1,
+    sectionId: 1,
     taskTitle: "Our first task",
     taskDescription:
       "Recruit some team members. And here some more, to fill up your page: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -98,6 +100,7 @@ export const tasks: Task[] = [
   {
     taskId: 2,
     projectId: 1,
+    sectionId: 1,
     taskTitle: "Our second task",
     taskDescription: "Get rid of half the team members.",
     taskStatus: "done",
@@ -108,6 +111,7 @@ export const tasks: Task[] = [
   {
     taskId: 3,
     projectId: 2,
+    sectionId: 1,
     taskTitle: "A really important task",
     taskDescription: "Not sure how important this task really is.",
     taskStatus: "deleted",
@@ -118,6 +122,7 @@ export const tasks: Task[] = [
   {
     taskId: 4,
     projectId: 1,
+    sectionId: 1,
     taskTitle: "Some Task",
     taskDescription: "Not sure how important this task really is.",
     taskStatus: "deleted",
@@ -128,6 +133,7 @@ export const tasks: Task[] = [
   {
     taskId: 5,
     projectId: 1,
+    sectionId: 1,
     taskTitle: "Some Task",
     taskDescription: "Not sure how important this task really is.",
     taskStatus: "open",
@@ -138,6 +144,7 @@ export const tasks: Task[] = [
   {
     taskId: 6,
     projectId: 4,
+    sectionId: 1,
     taskTitle: "Research NGOs",
     taskDescription:
       "We need to find NGOs that have a certain tech-related problem that participants can solve. It doesn't have to be pureley tech but somehow tech-related.",
@@ -149,6 +156,7 @@ export const tasks: Task[] = [
   {
     taskId: 7,
     projectId: 4,
+    sectionId: 1,
     taskTitle: "Find Sponsors",
     taskDescription:
       "We need sponsors to give us money for paying the venue and get some prizes for the winners of certain categories. They also should have a strong connection to either Leipzig dev community or social",
@@ -160,6 +168,7 @@ export const tasks: Task[] = [
   {
     taskId: 8,
     projectId: 4,
+    sectionId: 1,
     taskTitle: "Find a venue",
     taskDescription:
       "We need to find a venue where we can host our Hackathon, possibilities would be Basislager, Urbn Jungle and Social Impact Lab. Venue should also be involved in Leipzig dev community",
@@ -167,6 +176,20 @@ export const tasks: Task[] = [
     taskCreator: users[6],
     taskTeam: [users[6], users[8], users[10]],
     menuSection: "main",
+  },
+];
+
+export const sections: Section[] = [
+  {
+    sectionId: 1,
+    projectId: 2,
+    sectionTitle: "Kick Off",
+    sectionDescription:
+      "Let's get it started. Plan your first tasks and create a new section for furder steps! Keep it clear what the current walk is about.",
+    sectionDue: new Date("2019-12-12T23:00:00.000Z"),
+    sectionStatus: "open",
+    sectionCreator: users[1],
+    projectTasks: [tasks[0], tasks[1], tasks[2], tasks[4]],
   },
 ];
 
@@ -181,7 +204,7 @@ export const projects: Project[] = [
     projectStatus: "done",
     projectCreator: users[1],
     projectTeam: [users[1], users[2], users[3], users[4], users[5], users[10], users[12]],
-    projectTasks: [tasks[0], tasks[1], tasks[2], tasks[4]],
+    projectSections: [sections[0]],
   },
   {
     projectId: 2,
@@ -193,7 +216,7 @@ export const projects: Project[] = [
     projectStatus: "open",
     projectCreator: users[5],
     projectTeam: [users[5], users[6], users[8], users[10]],
-    projectTasks: [tasks[2]],
+    projectSections: [sections[0]],
   },
   {
     projectId: 3,
@@ -205,7 +228,7 @@ export const projects: Project[] = [
     projectStatus: "open",
     projectCreator: users[5],
     projectTeam: [users[5], users[6], users[8], users[10]],
-    projectTasks: [tasks[2]],
+    projectSections: [sections[0]],
   },
   {
     projectId: 4,
@@ -217,7 +240,7 @@ export const projects: Project[] = [
     projectStatus: "open",
     projectCreator: users[1],
     projectTeam: [users[1], users[2], users[3], users[4], users[5], users[10], users[12]],
-    projectTasks: [tasks[5], tasks[6], tasks[7]],
+    projectSections: [sections[0]],
   },
 ];
 

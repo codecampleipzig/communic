@@ -1,11 +1,7 @@
 <app-toolbar></app-toolbar>
-<div *ngIf="project" class="card container">
-  <app-project-teaser [project]="project"></app-project-teaser>
-</div>
-<div *ngIf="project" class="card container">
-  <app-team-card [project]="project"></app-team-card>
-</div>
-<div *ngIf="project" class="card container">
-  <h2>Starter</h2>
-  <app-task-list [project]="project"></app-task-list>
-</div>
+<app-project-teaser *ngIf="project" class="card container" [project]="project"></app-project-teaser>
+<app-team-card *ngIf="project" class="card container" [project]="project"></app-team-card>
+<app-create-section *ngIf="project && joined()" [project]="project"></app-create-section>
+<app-project-sections *ngFor="let section of project ? project.projectSections : []" class="card container"
+  [section]="section" [project]="project">
+</app-project-sections>

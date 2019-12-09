@@ -11,12 +11,16 @@ export class TestingStoreService {
   yourProjects: BehaviorSubject<Array<Project>>;
   exploreProjects: BehaviorSubject<Array<Project>>;
   project: BehaviorSubject<Project>;
+  toolbar: BehaviorSubject<any>;
+  status: BehaviorSubject<any>;
 
   // Observable
   public user$: Observable<UserState>;
   public yourProjects$: Observable<Array<Project>>;
   public exploreProjects$: Observable<Array<Project>>;
   public project$: Observable<Project>;
+  public toolbar$: Observable<any>;
+  public status$: Observable<any>;
 
   constructor() {
     this.user = new BehaviorSubject<UserState>({
@@ -44,6 +48,14 @@ export class TestingStoreService {
         userImageUrl: "",
       },
     });
+
+    this.toolbar = new BehaviorSubject<any>("");
+    this.toolbar$ = this.toolbar.asObservable();
+
+    this.status = new BehaviorSubject<any>({
+      sectionCreationPending: false,
+    });
+    this.status$ = this.status.asObservable();
   }
 
   // Action
@@ -101,7 +113,7 @@ export class TestingStoreService {
 
     const newState = [...Mock.projects];
     const newProject = newState.find(project => project.projectId == projectId);
-    newProject.projectTasks = newTasks;
+    newProject.projectSections[0].projectTasks = newTasks;
 
     // Put value into observable
     this.project.next(newProject);
@@ -138,7 +150,7 @@ export class TestingStoreService {
     const project = newState.find(p => p.projectId == projectId);
     const user = Mock.users.find(u => u.userId == userId);
 
-    project.projectTasks.find(t => t.taskId == taskId).taskTeam.push(user);
+    project.projectSections[0].projectTasks.find(t => t.taskId == taskId).taskTeam.push(user);
     this.project.next(project);
   }
 
@@ -148,9 +160,11 @@ export class TestingStoreService {
   leaveTaskTeam(projectId: number, taskId: number, userId: number) {
     const newState = [...Mock.projects];
     const project = newState.find(p => p.projectId == projectId);
-    const userIndex = project.projectTasks.find(t => t.taskId == taskId).taskTeam.findIndex(u => u.userId == userId);
+    const userIndex = project.projectSections[0].projectTasks
+      .find(t => t.taskId == taskId)
+      .taskTeam.findIndex(u => u.userId == userId);
 
-    project.projectTasks.find(t => t.taskId == taskId).taskTeam.splice(userIndex, 1);
+    project.projectSections[0].projectTasks.find(t => t.taskId == taskId).taskTeam.splice(userIndex, 1);
 
     this.project.next(project);
   }
