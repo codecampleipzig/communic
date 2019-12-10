@@ -26,6 +26,7 @@ export class TestingStoreService {
     this.user = new BehaviorSubject<UserState>({
       status: {},
       userInformation: null,
+      userToken: null
     });
     this.user$ = this.user.asObservable();
 
@@ -47,6 +48,7 @@ export class TestingStoreService {
         userEmail: "email@gmail.com",
         userImageUrl: "",
       },
+      userToken: ""
     });
 
     this.toolbar = new BehaviorSubject<any>("");
@@ -64,6 +66,7 @@ export class TestingStoreService {
       this.user.next({
         status: { loggedIn: true },
         userInformation: { userName, userEmail, userImageUrl: "", userId: 1234 },
+        userToken: ""
       });
     });
   }
@@ -73,6 +76,7 @@ export class TestingStoreService {
     this.user.next({
       status: {},
       userInformation: null,
+      userToken: null
     });
   }
 

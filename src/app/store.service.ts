@@ -46,6 +46,7 @@ export class StoreService {
     this.user = new BehaviorSubject<UserState>({
       status: {},
       userInformation: null,
+      userToken: null
     });
     this.user$ = this.user.asObservable();
 
@@ -73,8 +74,9 @@ export class StoreService {
         userId: 2,
         userName: "TestUser",
         userEmail: "email@gmail.com",
-        userImageUrl: "",
+        userImageUrl: ""
       },
+      userToken: ""
     });
   }
 
@@ -89,6 +91,7 @@ export class StoreService {
       this.user.next({
         status: { loggedIn: true },
         userInformation: user,
+        userToken: ""
       });
 
       // Navigate to home page
@@ -98,6 +101,8 @@ export class StoreService {
 
   login(userEmail: string, password: string) {
 
+    // Talk to Auth Service. It returns a promise of a User object
+    const promise = this.authService.login(userEmail, password);
   }
 
   logout() {
@@ -105,6 +110,7 @@ export class StoreService {
     this.user.next({
       status: {},
       userInformation: null,
+      userToken: null
     });
     // Navigate to register page
     this.router.navigate(["register"]);
