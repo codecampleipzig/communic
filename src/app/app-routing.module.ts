@@ -5,10 +5,11 @@ import { HomeComponent } from "./home/home.component";
 import { RegisterCardComponent } from "./register-card/register-card.component";
 import { SearchresultsComponent } from "./searchresults/searchresults.component";
 import { StartnewprojectComponent } from "./startnewproject/startnewproject.component";
+import { AuthGuardService } from "./auth-guard.service";
 
 const routes: Routes = [
   { path: "project/:id", component: ProjectPageComponent },
-  { path: "home", component: HomeComponent },
+  { path: "home", component: HomeComponent, canActivate: [AuthGuardService] },
   { path: "", redirectTo: "register", pathMatch: "full" },
   { path: "register", component: RegisterCardComponent },
   { path: "login", component: RegisterCardComponent },

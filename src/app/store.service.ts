@@ -68,7 +68,7 @@ export class StoreService {
 
     /* Mock Current User. Replace with login Action */
     this.user.next({
-      status: { loggedIn: true },
+      status: { loggedIn: false },
       userInformation: {
         userId: 2,
         userName: "TestUser",
@@ -94,11 +94,15 @@ export class StoreService {
       // Navigate to home page
       this.router.navigate(["home"]);
     });
+    promise.catch(error => {
+      this.user.next({
+        status: { error },
+        userInformation: null,
+      });
+    });
   }
 
-  login(userEmail: string, password: string) {
-
-  }
+  login(userEmail: string, password: string) {}
 
   logout() {
     // Mutation

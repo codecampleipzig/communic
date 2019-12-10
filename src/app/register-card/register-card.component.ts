@@ -1,6 +1,7 @@
 import { FormControl, ReactiveFormsModule, Validators, FormGroup } from "@angular/forms";
 import { Component, OnInit, NgModule, Inject, HostBinding } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { StoreService } from "../store.service";
 
 @NgModule({
   imports: [ReactiveFormsModule],
@@ -24,7 +25,11 @@ export class RegisterCardComponent implements OnInit {
     return "container";
   }
 
-  constructor(@Inject(ActivatedRoute) private route: ActivatedRoute, @Inject(Router) private router: Router) {
+  constructor(
+    @Inject(ActivatedRoute) private route: ActivatedRoute,
+    @Inject(Router) private router: Router,
+    @Inject(StoreService) private store: StoreService,
+  ) {
     this.profileForm = new FormGroup({
       name: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required, Validators.email]),
@@ -64,7 +69,11 @@ export class RegisterCardComponent implements OnInit {
   }
 
   onSubmit() {
-    this.router.navigate(["home"]);
+    if (this.authType == "register") {
+      this.store.register(this.name.value, this.email.value, this.password.value);
+    } else if (this.authType == "login") {
+      this.store.login(this.email.value, this.password.value);
+    }
   }
 
   onSelectFile(event) {
