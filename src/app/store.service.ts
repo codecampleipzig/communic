@@ -327,6 +327,11 @@ export class StoreService {
       // Put value into observable
       this.project.next(newProject);
       this.updateStatus({ taskCreationPending: false });
-    });
+      this.newMessage("confirm", "New task", "You've added a new task!", 3000);
+    })
+      .catch(error => {
+        console.error(error.response.data);
+        this.newMessage("error", "Something went wrong...", error.response.data.error);
+      });
   }
 }
