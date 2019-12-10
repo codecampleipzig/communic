@@ -56,15 +56,17 @@
     <span class="form-rule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'login'">
       Forgot your password? Reset it by clicking <a routerLink="">here</a>.
     </span>
-    <input
-      id="confirm-password"
-      [ngClass]="{ 'ng-valid': !profileForm.errors, 'ng-invalid': profileForm.errors }"
+  </label>
+  <label
+    ><input
       type="password"
+      id="confirm-password"
+      *ngIf="authType == 'register'"
+      [ngClass]="{ 'ng-valid': !profileForm.errors, 'ng-invalid': profileForm.errors }"
       placeholder="Confirm Password"
       formControlName="confirmPassword"
       required
-    />
-  </label>
+  /></label>
 
   <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'register'" class="button">Join now!</button>
   <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'login'" class="button">Login</button>
