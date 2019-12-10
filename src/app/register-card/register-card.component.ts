@@ -13,9 +13,9 @@ import { StoreService } from "../store.service";
 })
 export class RegisterCardComponent implements OnInit {
   profileForm: FormGroup;
-  authType: string;
   title: string;
   url: any = null;
+  authType: any;
 
   /**
    * Add .container Class to the Host
@@ -59,12 +59,6 @@ export class RegisterCardComponent implements OnInit {
     this.route.url.subscribe(data => {
       // Get the last piece of the URL (it's either 'login' or 'register')
       this.authType = data[data.length - 1].path;
-      // Set a title for the page accordingly
-      this.title = this.authType === "login" ? "Sign in" : "Sign up";
-      // add form control for username if this is the register page
-      if (this.authType === "register") {
-        this.profileForm.addControl("name", new FormControl());
-      }
     });
   }
 
@@ -73,6 +67,10 @@ export class RegisterCardComponent implements OnInit {
       this.store.register(this.name.value, this.email.value, this.password.value);
     } else if (this.authType == "login") {
       this.store.login(this.email.value, this.password.value);
+    } else if (this.authType == "reset-password") {
+      this.store.resetPassword(this.email.value);
+    } else if (this.authType == "change-password") {
+      this.store.changePassword(this.password.value);
     }
   }
 

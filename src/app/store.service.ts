@@ -114,8 +114,17 @@ export class StoreService {
     this.router.navigate(["register"]);
   }
 
-  // Action - retrieve projects based on userId
+  // After requesting a password reset email you will be redirected to the login screen.
+  resetPassword(userEmail: string) {
+    this.router.navigate(["login"]);
+  }
 
+  // After clicking the link in the email to reset your password you will be redirected to the login screen.
+  changePassword(password: string) {
+    this.router.navigate(["login"]);
+  }
+
+  // Action - retrieve projects based on userId
   retrieveYourProjects() {
     let userId: number;
     if (!this.user.getValue().userInformation) {

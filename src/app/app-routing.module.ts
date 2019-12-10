@@ -13,6 +13,8 @@ const routes: Routes = [
   { path: "", redirectTo: "register", pathMatch: "full" },
   { path: "register", component: RegisterCardComponent },
   { path: "login", component: RegisterCardComponent },
+  { path: "reset-password", component: RegisterCardComponent },
+  { path: "change-password", component: RegisterCardComponent },
   { path: "searchresults", component: SearchresultsComponent },
   { path: "startnewproject", component: StartnewprojectComponent },
   { path: "login", component: RegisterCardComponent },
