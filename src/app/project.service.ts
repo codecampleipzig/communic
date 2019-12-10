@@ -97,7 +97,7 @@ export class ProjectService {
   }
 
   /**
-* createTask
+* create new task and get new promise object from backend
 * @returns new Promise
 */
   createTask(

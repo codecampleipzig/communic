@@ -309,6 +309,9 @@ export class StoreService {
     this.messages.next(newState);
   }
 
+  /**
+   * Creates a new task
+   */
   createTask(
     projectId: number,
     taskTitle: string,
