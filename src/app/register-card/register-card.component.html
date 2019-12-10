@@ -21,8 +21,9 @@
   </button>
 
   <label>
-    <input type="text" placeholder="Name" formControlName="name" required *ngIf="authType == 'register'" />
-    <span class="form-rule" *ngIf="(name.dirty || name.touched) && name.invalid && name.errors.required">
+    <input type="text" placeholder="Name" formControlName="userName" required *ngIf="authType == 'register'" />
+    <span class="form-rule"
+      *ngIf="(userName.dirty || userName.touched) && userName.invalid && userName.errors.required">
       No name, no fun.
     </span>
   </label>
@@ -57,10 +58,13 @@
   </label>
 
   <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'register'" class="button">Join now!</button>
-  <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'login'" class="button">Login</button>
-  <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'reset-password'" class="button">Reset
+  <button type="submit" [disabled]="!(profileForm.get('email').valid && profileForm.get('password').valid)"
+    *ngIf="authType == 'login'" class="button">Login</button>
+  <button type="submit" [disabled]="!profileForm.get('email').valid" *ngIf="authType == 'reset-password'"
+    class="button">Reset
     password</button>
-  <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'change-password'" class="button">Set new
+  <button type="submit" [disabled]="!profileForm.get('password').valid" *ngIf="authType == 'change-password'"
+    class="button">Set new
     password</button>
 
   <p *ngIf="authType == 'register'">Already have an account? <a [routerLink]="['/login']">Login here</a></p>

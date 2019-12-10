@@ -117,11 +117,13 @@ export class StoreService {
   // After requesting a password reset email you will be redirected to the login screen.
   resetPassword(userEmail: string) {
     this.router.navigate(["login"]);
+    console.log("reset password");
   }
 
   // After clicking the link in the email to reset your password you will be redirected to the login screen.
   changePassword(password: string) {
     this.router.navigate(["login"]);
+    console.log("change password");
   }
 
   // Action - retrieve projects based on userId

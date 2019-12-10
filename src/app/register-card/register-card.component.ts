@@ -31,7 +31,7 @@ export class RegisterCardComponent implements OnInit {
     @Inject(StoreService) private store: StoreService,
   ) {
     this.profileForm = new FormGroup({
-      name: new FormControl("", [Validators.required]),
+      userName: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl(
         "",
@@ -43,8 +43,8 @@ export class RegisterCardComponent implements OnInit {
     });
   }
 
-  get name() {
-    return this.profileForm.get("name");
+  get userName() {
+    return this.profileForm.get("userName");
   }
 
   get email() {
@@ -64,7 +64,7 @@ export class RegisterCardComponent implements OnInit {
 
   onSubmit() {
     if (this.authType == "register") {
-      this.store.register(this.name.value, this.email.value, this.password.value);
+      this.store.register(this.userName.value, this.email.value, this.password.value);
     } else if (this.authType == "login") {
       this.store.login(this.email.value, this.password.value);
     } else if (this.authType == "reset-password") {
