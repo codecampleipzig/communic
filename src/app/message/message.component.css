@@ -27,11 +27,11 @@
 
 h3, p {margin: 0;}
 
-.error app-icon {
+.error > app-icon {
    color: var(--warningRed);
 }
 
-.confirm app-icon {
+.confirm > app-icon {
    color: var(--successGreen);
 }
 

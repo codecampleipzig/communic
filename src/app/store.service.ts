@@ -190,6 +190,9 @@ export class StoreService {
     promise.then(newProject => {
       // Put value into observable
       this.project.next(newProject);
+      if (status == "done") {
+        this.newMessage("confirm", "Great job!", "You did it! You are great!", 3000);
+      }
     });
   }
 
@@ -241,6 +244,9 @@ export class StoreService {
     });
   }
 
+  /**
+   * Create a new Section
+   */
   createNewSection(
     projectId: number,
     title: string,
@@ -253,18 +259,22 @@ export class StoreService {
     const promise = this.projectService.createNewSection(projectId, title, description, due, status, creatorId);
 
     promise
-      .then(newProject => {
+      .then(response => {
         // Put value into observable
-        this.project.next(newProject);
+        this.project.next(response.data.project);
         this.updateStatus({ sectionCreationPending: false });
         this.newMessage("confirm", "Something great happend!", "Your new section was created successfully!", 3000);
       })
       .catch(error => {
-        console.error(error);
-        this.newMessage("error", "Something went wrong..", "Your new section couldn't be created.");
+        console.error(error.response.data);
+        this.newMessage("error", "Something went wrong..", error.response.data.error);
       });
   }
 
+  /**
+   * Update Values in the Status Observable
+   * @param value Object of values that should be updated
+   */
   updateStatus(value: object) {
     this.status.next({ ...this.status.getValue(), ...value });
   }
@@ -291,7 +301,7 @@ export class StoreService {
   }
 
   /**
-   * Close the message by id!
+   * Close the message by id
    * @param id the Message ID
    */
   closeMessage(id: number) {
