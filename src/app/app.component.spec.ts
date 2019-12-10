@@ -2,12 +2,14 @@ import { DebugElement } from "@angular/core";
 import { async, TestBed, ComponentFixture } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppComponent } from "./app.component";
+import { MessageComponent } from "./message/message.component";
+import { IconComponent } from "./icon/icon.component";
 
 describe("AppComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [AppComponent],
+      declarations: [AppComponent, MessageComponent, IconComponent],
     }).compileComponents();
   }));
 
