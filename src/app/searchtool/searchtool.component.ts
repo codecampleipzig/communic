@@ -6,7 +6,6 @@ import { FormControl } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { SearchService } from "./../search.service";
 import { switchMap, map, debounceTime, distinctUntilChanged, mergeMap } from "rxjs/operators";
-import { from } from "rxjs";
 
 // technical debt, because the real Project type is outdated
 export interface SearchProject {
@@ -38,10 +37,7 @@ export class SearchtoolComponent implements OnInit {
       .pipe(
         debounceTime(400),
         distinctUntilChanged(),
-        switchMap(searchInput => this.search.getResults(searchInput)),
-        // switchMap(searchInput => from(this.search.getResults(searchInput))),
-        // mergeMap(searchInput => from(this.search.getResults(searchInput))),
-        // mergeMap(searchInput => this.search.getResults(searchInput)),
+        switchMap(searchInput => this.search.getResults(searchInput))
       )
       .subscribe(results => (this.projects = results.projects));
   }

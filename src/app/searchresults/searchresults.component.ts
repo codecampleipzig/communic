@@ -47,7 +47,6 @@ export class SearchresultsComponent implements OnInit {
     if (this.searchString) {
       this.search.getResults(this.searchString)
         .subscribe(
-          // .then(
           result => (this.state = { type: "success", result }),
           error => (this.state = { type: "error", error }),
         );

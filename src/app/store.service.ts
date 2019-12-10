@@ -81,7 +81,14 @@ export class StoreService {
     });
   }
 
-  // Action
+  /**
+   * Triggers authService.register and resolves its POST request to pass registerUserData into user observable and sets userToken
+   * 
+   * @param userName Name provided on the Register form
+   * @param userEmail Email provided on the Register form
+   * @param password Password provided on the Register form
+   * @param userImageUrl Image uploaded on the Register form
+   */
   register(userName: string, userEmail: string, password: string, userImageUrl: string = "") {
     // Talk to Auth Service. It returns a promise of a User object
     const promise = this.authService.register(userName, userEmail, password, userImageUrl);
@@ -95,6 +102,7 @@ export class StoreService {
         userToken: user.token
       });
 
+      // Set userToken as value for the header Authorization to be sent in each subsequent request
       // TODO: localStorage.setItem(token)
       axiosInstance.defaults.headers.common['Authorization'] = user.token;
 
@@ -111,12 +119,37 @@ export class StoreService {
 
   }
 
+  /**
+   * Triggers authService.register and resolves its POST request to pass loginUserData into user observable and sets userToken
+   * @param userEmail Email provided on the Login form
+   * @param password Password provided on the Login form
+   */
   login(userEmail: string, password: string) {
 
     // Talk to Auth Service. It returns a promise of a User object
     const promise = this.authService.login(userEmail, password);
+
+    // When Promise is resolved successfully, then:
+    promise.then(user => {
+      // Put value into observable
+      this.user.next({
+        status: { loggedIn: true },
+        userInformation: user,
+        userToken: user.token
+      });
+
+      // Set userToken as value for the header Authorization to be sent in each subsequent request
+      // TODO: localStorage.setItem(token)
+      axiosInstance.defaults.headers.common['Authorization'] = user.token;
+
+      // Navigate to home page
+      this.router.navigate(["home"])
+    })
   }
 
+  /**
+   * Logout user - set userToken to null and delete Authorization header that is sent in each subsequent request for authorized users
+   */
   logout() {
     // Mutation
     this.user.next({
@@ -125,14 +158,16 @@ export class StoreService {
       userToken: null
     });
 
+    // Delete userToken and the Authorization header
     delete axiosInstance.defaults.headers.common['Authorization'];
 
     // Navigate to register page
     this.router.navigate(["register"]);
   }
 
-  // Action - retrieve projects based on userId
-
+  /**
+   * Retrieve projects where current user is member to fill the "Your Projects" section on Home page
+   */
   retrieveYourProjects() {
     let userId: number;
     if (!this.user.getValue().userInformation) {
@@ -149,7 +184,9 @@ export class StoreService {
       })
       .catch();
   }
-
+  /**
+   * Retrieve projects where current user is NOT member to fill the "Explore Projects" section on Home page
+   */
   retrieveExploreProjects() {
     let userId: number;
     if (!this.user.getValue().userInformation) {

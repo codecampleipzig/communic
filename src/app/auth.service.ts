@@ -7,10 +7,11 @@ import { axiosInstance } from "./axios-instance";
 export class AuthService {
   constructor() { }
   /**
-   * Register user
-   * @param userName 
-   * @param userEmail 
-   * @param password 
+   * Post registerUserData, returning user data and token for logging-in the user
+   * @param userName Name provided on the Register form
+   * @param userEmail Email provided on the Register form
+   * @param password Password provided on the Register form
+   * @param userImageUrl Image uploaded on the Register form
    */
   register(userName: string, userEmail: string, password: string, userImageUrl: string): Promise<any> {
     const registerUserData = {
@@ -27,9 +28,9 @@ export class AuthService {
   }
 
   /**
-   * Login user 
-   * @param userEmail
-   * @param password 
+   * Post loginUserData, returning user data and token for logging-in the user 
+   * @param userEmail Email provided on the Login form
+   * @param password Password provided on the Login form
    */
   login(userEmail: string, password: string): Promise<any> {
     const loginUserData = {
@@ -42,10 +43,4 @@ export class AuthService {
         console.log(response.data);
       })
   }
-
-  /**
-   * We would need to send the auth token on each subsequent request after successful login/registration until logout
-   * https://www.npmjs.com/package/axios#response-schema
-   * instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-   */
 }
