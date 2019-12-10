@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import axios from "axios";
-import { environment } from "./../environments/environment";
+import { axiosInstance } from "./axios-instance";
 
 @Injectable({
   providedIn: "root",
@@ -13,30 +12,18 @@ export class AuthService {
    * @param userEmail 
    * @param password 
    */
-  register(userName: string, userEmail: string, password: string): Promise<any> {
-    // return new Promise<any>((resolve, reject) => {
-    //   resolve({
-    //     userName,
-    //     userEmail,
-    //     ImageUrl: "",
-    //     userId: 1234,
-    //   });
-    // });
-    // we need to send userName, userEmail, password - need to put them in user object
+  register(userName: string, userEmail: string, password: string, userImageUrl: string): Promise<any> {
     const registerUserData = {
       userName,
       userEmail,
-      password
+      password,
+      userImageUrl
     }
-    return axios.post(`${environment.api_url}/register`, registerUserData)
+    return axiosInstance.post(`/register`, registerUserData)
       .then(response => {
-        // return response.data
-        console.log(response.data);
+        return response.data
+        // console.log(response.data);
       })
-      .catch(error => {
-        // return error
-        console.log(error);
-      });
   }
 
   /**
@@ -49,14 +36,16 @@ export class AuthService {
       userEmail,
       password
     }
-    return axios.post(`${environment.api_url}/login`, loginUserData)
+    return axiosInstance.post(`/login`, loginUserData)
       .then(response => {
         // return response.data
         console.log(response.data);
       })
-      .catch(error => {
-        // return error
-        console.log(error);
-      })
   }
+
+  /**
+   * We would need to send the auth token on each subsequent request after successful login/registration until logout
+   * https://www.npmjs.com/package/axios#response-schema
+   * instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+   */
 }

@@ -16,6 +16,7 @@ import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
+import { axiosInstance } from './axios-instance';
 
 @Injectable({
   providedIn: "root",
@@ -81,9 +82,9 @@ export class StoreService {
   }
 
   // Action
-  register(userName: string, userEmail: string, password: string) {
+  register(userName: string, userEmail: string, password: string, userImageUrl: string = "") {
     // Talk to Auth Service. It returns a promise of a User object
-    const promise = this.authService.register(userName, userEmail, password);
+    const promise = this.authService.register(userName, userEmail, password, userImageUrl);
 
     // When Promise is resolved successfully, then:
     promise.then(user => {
@@ -91,12 +92,23 @@ export class StoreService {
       this.user.next({
         status: { loggedIn: true },
         userInformation: user,
-        userToken: ""
+        userToken: user.token
       });
+
+      // TODO: localStorage.setItem(token)
+      axiosInstance.defaults.headers.common['Authorization'] = user.token;
 
       // Navigate to home page
       this.router.navigate(["home"]);
     });
+    promise.catch(error => {
+      this.user.next({
+        status: { error: error.response.data.error },
+        userInformation: null,
+        userToken: null
+      });
+    })
+
   }
 
   login(userEmail: string, password: string) {
@@ -112,6 +124,9 @@ export class StoreService {
       userInformation: null,
       userToken: null
     });
+
+    delete axiosInstance.defaults.headers.common['Authorization'];
+
     // Navigate to register page
     this.router.navigate(["register"]);
   }

@@ -45,10 +45,12 @@ export class SearchresultsComponent implements OnInit {
   ngOnInit() {
     this.searchString = this.route.snapshot.queryParams.searchString;
     if (this.searchString) {
-      this.search.getResults(this.searchString).subscribe(
-        result => (this.state = { type: "success", result }),
-        error => (this.state = { type: "error", error }),
-      );
+      this.search.getResults(this.searchString)
+        .subscribe(
+          // .then(
+          result => (this.state = { type: "success", result }),
+          error => (this.state = { type: "error", error }),
+        );
     } else {
       this.state = { type: "invalid" };
     }
