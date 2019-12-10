@@ -264,7 +264,7 @@ export class StoreService {
     taskDescription: string,
     taskStatus: string,
     taskCreator: number,
-    menuSection: string
+    menuSection: number
   ) {
     this.updateStatus({ taskCreationPending: true });
     const promise = this.projectService.createTask(projectId, taskTitle, taskDescription, taskStatus, taskCreator, menuSection);

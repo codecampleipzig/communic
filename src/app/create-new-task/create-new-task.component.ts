@@ -62,7 +62,7 @@ export class CreateNewTaskComponent implements OnInit {
       value.description,
       "open",
       this.userState.userInformation.userId,
-      "starter")
+      this.sectionId)
 
     this.closeForm();
   }
