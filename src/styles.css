@@ -3,24 +3,29 @@
  */
 
 :root {
-   --primaryColor: #655AF3;
-   --primaryColorHighlight: #667ee7;
-   --warningRed: #a94442;
-   --successGreen: #42A948;
-   --fontDarkGrey: #3A3A3A;
-   --fontMediumGrey: #7A7A7A;
-   --fontLightGrey: #AFAFAF;
-   --iconColor: #878787; /* Used for the trash Icon in the Tasklist */
+   --primaryColor: #6A6DEB;
+   --primaryLight: #9DA0FF;
+   --primaryColorDark: #040785;
+   --primaryColorHighlight: #8487FF;
+   --secondaryColorGreen: #33CCA7;
+   --secondaryColorOrange: #FF8633;
+   --secondaryColorOrangeLight: #FFB966;
+   --warningRed: #A02000;
+   --successGreen: #009974;
+   --fontDarkGrey: #7a7a7a;
+   --fontMediumGrey:#a5a5b1;
+   --fontLightGrey: #e4e4eb;
+   --iconColor: #9DA0FF; /* Used for the trash Icon in the Tasklist */
    --placeholderGrey: #F8F8F8; /* Used for placeholder Picture Backgrounds */
-   --backgroundGrey: #FCFCFC; /* Used for the TaskListIcons */
-   --borderGrey: #CECECE; /* Used for the Checkbox */
-   --borderMediumGrey: #adadad;
+   --backgroundGrey: #8487FF; /* Used for the TaskListIcons */
+   --borderGrey: #e4e4eb; /* Used for the Checkbox */
+   --borderMediumGrey: #a5a5b1;
    --borderPlaceholderGrey: #d8d8d8;
 
    /* Dropshadows to use box-shadow: var(--smallShadow); */
-   --smallShadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
-   --bigShadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
-   --biggerShadow: 0px 4px 30px 10px rgba(0, 0, 0, 0.1);
+   --smallShadow: 0px 1px 2px rgba(228, 228, 235, 1);
+   --bigShadow: 0px 2px 24px rgba(228, 228, 235, 1);
+   --biggerShadow: 0px 2px 24px 8px rgba(228, 228, 235, 1);
 }
 
 
@@ -30,6 +35,7 @@
 
 html, body {
    font-size: 14px;
+   line-height: 20px;
 }
 
 /* Add Transition on everything */
@@ -39,9 +45,8 @@ html, body {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
-  padding: 0 0 3em 0;
   margin: 0;
 }
 
@@ -51,17 +56,19 @@ body {
  */
 
 h2 {
-  color: var(--fontDarkGrey);
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
 }
 
 h3 {
-  font-weight: 500;
+  color: var(--secondaryColorGreen);
+  font-weight: 400;
+  line-height: 20px;
 }
 
 h4 {
   margin: 0;
-  font-weight: 500;
+  font-weight: 300;
   font-size: 1.2rem;
 }
 
@@ -130,7 +137,7 @@ textarea {
 
 .button:hover,
 .button:focus {
-  background-color: var(--primaryColorHighlight);
+  background-color: var(--secondaryColorGreen);
   color: #fff;
   outline: 0 none;
   text-decoration: none;
@@ -295,6 +302,12 @@ label {
 }
 
 /* Overrides for .card in the .cardList (e.g. Projects Overview) */
+.card img {
+  width: 500px;
+  height: 500px;
+  background-position: 50% 50%;
+  object-fit: contain;
+}
 .card-list > .card {
   width: 100%;
   padding: 1em;

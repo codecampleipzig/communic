@@ -1,7 +1,6 @@
 import { Component, OnInit, HostBinding, Inject } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { StoreService } from "../store.service";
-import { Project } from "../datatypes/Project";
 
 @Component({
   selector: "app-toolbar",

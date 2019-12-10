@@ -1,10 +1,16 @@
 :host {
   display: flex;
-  align-items: center;
+  /* position: fixed; */
+  left: 0;
+  right: 0;
+  top: 1em;
   max-width: 1200px;
   width: calc(100vw - 1em);
-  margin: 0.5em auto;
-  padding: .5em 1em
+  margin: auto;
+  padding: .5em 1em;
+  transition: top 0.3s;
+  z-index: 999;
+  align-items: center;
 }
 
 a.home {
