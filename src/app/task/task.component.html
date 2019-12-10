@@ -26,7 +26,7 @@
    Top-right-icons with task-delete button inside
    #task-delete is needed for tests only
 -->
-<div *ngIf="joined('project')" class="top-right-icons">
+<div *ngIf="joined('both')" class="top-right-icons">
   <button *ngIf="task.taskStatus == 'open'" (click)="delete()" class="hover-red" id="task-delete">
     <i class="fas fa-trash-alt"></i>
   </button>
