@@ -96,6 +96,10 @@ export class StoreService {
     });
   }
 
+  login(userEmail: string, password: string) {
+
+  }
+
   logout() {
     // Mutation
     this.user.next({
