@@ -23,6 +23,7 @@ text-align: start;
             "title image"
             "description image";
         grid-gap: 1rem;
+        grid-template-rows: auto 1fr;
     }
 
     h2 {

@@ -263,7 +263,7 @@ export class StoreService {
         // Put value into observable
         this.project.next(response.data.project);
         this.updateStatus({ sectionCreationPending: false });
-        this.newMessage("confirm", "Something great happend!", "Your new section was created successfully!", 3000);
+        this.newMessage("confirm", "Something great happened!", "Your new section was created successfully!", 3000);
       })
       .catch(error => {
         console.error(error.response.data);
