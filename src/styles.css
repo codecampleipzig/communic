@@ -36,6 +36,7 @@ html,
 body {
   font-size: 14px;
   line-height: 20px;
+  word-break: break-word;
 }
 
 /* Add Transition on everything */
@@ -145,9 +146,23 @@ textarea {
 
 /* Margin to the right for every Icon inside a button. Caption needs to be placed in a span-Element then! */
 .button i:not(:last-child),
-.button app-icon:not(:last-child) button i:not(:last-child),
-button app-icon:not(:last-child) {
+.button app-icon:not(:last-child),
+button i:not(:last-child),
+button app-icon:not(:last-child),
+a i:not(:last-child),
+a app-icon:not(:last-child) {
   margin-right: 0.5em;
+}
+
+.button i:last-child,
+.button app-icon:last-child,
+button i:last-child,
+button app-icon:last-child,
+a i:last-child,
+a app-icon:last-child {
+  margin-left: 0.4em;
+  bottom: -0.06em;
+  position: relative;
 }
 
 /* Hide the caption and reset margin right for the icon. Caption needs to be in a span-Element */

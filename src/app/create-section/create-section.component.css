@@ -4,3 +4,7 @@ button.new-section {
    position: relative;
    transform: translateX(-50%);
 }
+
+form {
+   margin-bottom: 3em;
+}
