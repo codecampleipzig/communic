@@ -13,17 +13,16 @@ export class AuthService {
    * @param password Password provided on the Register form
    * @param userImageUrl Image uploaded on the Register form
    */
-  register(userName: string, userEmail: string, password: string, userImageUrl: string): Promise<any> {
+  register(username: string, email: string, password: string, userImageUrl: string): Promise<any> {
     const registerUserData = {
-      userName,
-      userEmail,
+      username,
+      email,
       password,
       userImageUrl
     }
     return axiosInstance.post(`/register`, registerUserData)
       .then(response => {
         return response.data
-        // console.log(response.data);
       })
   }
 
@@ -32,15 +31,14 @@ export class AuthService {
    * @param userEmail Email provided on the Login form
    * @param password Password provided on the Login form
    */
-  login(userEmail: string, password: string): Promise<any> {
+  login(email: string, password: string): Promise<any> {
     const loginUserData = {
-      userEmail,
+      email,
       password
     }
     return axiosInstance.post(`/login`, loginUserData)
       .then(response => {
-        // return response.data
-        console.log(response.data);
+        return response.data
       })
   }
 }

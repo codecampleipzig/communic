@@ -94,17 +94,17 @@ export class StoreService {
     const promise = this.authService.register(userName, userEmail, password, userImageUrl);
 
     // When Promise is resolved successfully, then:
-    promise.then(user => {
+    promise.then(response => {
       // Put value into observable
       this.user.next({
         status: { loggedIn: true },
-        userInformation: user,
-        userToken: user.token
+        userInformation: response.user,
+        userToken: response.token
       });
 
       // Set userToken as value for the header Authorization to be sent in each subsequent request
       // TODO: localStorage.setItem(token)
-      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
+      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.token}`;
 
       // Navigate to home page
       this.router.navigate(["home"]);
@@ -115,6 +115,7 @@ export class StoreService {
         userInformation: null,
         userToken: null
       });
+      // TODO: Display message after merge from develop
     })
   }
 
@@ -129,17 +130,17 @@ export class StoreService {
     const promise = this.authService.login(userEmail, password);
 
     // When Promise is resolved successfully, then:
-    promise.then(user => {
+    promise.then(response => {
       // Put value into observable
       this.user.next({
         status: { loggedIn: true },
-        userInformation: user,
-        userToken: user.token
+        userInformation: response.user,
+        userToken: response.token
       });
 
       // Set userToken as value for the header Authorization to be sent in each subsequent request
       // TODO: localStorage.setItem(token)
-      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
+      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.token}`;
 
       // Navigate to home page
       this.router.navigate(["home"])
@@ -150,6 +151,7 @@ export class StoreService {
         userInformation: null,
         userToken: null
       });
+      // TODO: Display message after merge from develop
     })
   }
 
@@ -171,13 +173,21 @@ export class StoreService {
     this.router.navigate(["login"]);
   }
 
-  // After requesting a password reset email you will be redirected to the login screen.
+  /**
+   * After requesting a password reset email you will be redirected to the login screen.
+   * @param userEmail Email provided on the Login form
+   */
+  // TODO: Implement resetPassword
   resetPassword(userEmail: string) {
     this.router.navigate(["login"]);
     console.log("reset password");
   }
 
-  // After clicking the link in the email to reset your password you will be redirected to the login screen.
+  /**
+   * After clicking the link in the email to reset your password you will be redirected to the login screen.
+   * @param password 
+   */
+  // TODO: Implement changePassword
   changePassword(password: string) {
     this.router.navigate(["login"]);
     console.log("change password");
