@@ -1,6 +1,10 @@
+:host {
+   margin-bottom: 1em;
+}
 /**
  * User-List in mobile view will dispaly user in 1 column
  */
+
 #user-list {
    display : grid;
    grid-template-columns: repeat(1, 1fr);
