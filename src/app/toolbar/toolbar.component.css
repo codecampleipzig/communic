@@ -1,6 +1,6 @@
 :host {
   display: flex;
-  /* position: fixed; */
+  /* position: sticky; */
   left: 0;
   right: 0;
   top: 1em;
@@ -11,6 +11,9 @@
   transition: top 0.3s;
   z-index: 999;
   align-items: center;
+}
+.nav.hide-nav {
+  display: none;
 }
 
 a.home {
@@ -26,6 +29,8 @@ a.home:hover {
 app-user-action {
   flex-grow: 1;
 }
+
+
 
 @media (min-width: 500px) {
   :host {

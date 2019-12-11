@@ -1,6 +1,7 @@
-import { Component, OnInit, HostBinding, Inject } from "@angular/core";
+import { Component, OnInit, HostBinding, Inject, Input, AfterViewInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { StoreService } from "../store.service";
+import { Project } from "../datatypes/Project";
 
 @Component({
   selector: "app-toolbar",
@@ -8,6 +9,7 @@ import { StoreService } from "../store.service";
   styleUrls: ["./toolbar.component.css"],
 })
 export class ToolbarComponent implements OnInit {
+  @Input() public project: Project;
   /**
    * Add CSS Class .card to the Host
    */

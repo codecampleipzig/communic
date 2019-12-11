@@ -1,3 +1,11 @@
+:host {
+   display: flex;
+}
+
+.start-project-button {
+   display: flex;
+   justify-content: flex-end;
+}
 .breadcrumb {
    color: var(--fontDarkGrey);
    font-weight: 600;

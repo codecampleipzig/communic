@@ -9,7 +9,7 @@
    --primaryColorHighlight: #8487FF;
    --secondaryColorGreen: #33CCA7;
    --secondaryColorOrange: #FF8633;
-   --secondaryColorOrangeLight: #FFB966;
+   --secondaryColorOrangeLight: #FFB966;   
    --warningRed: #A02000;
    --successGreen: #009974;
    --fontDarkGrey: #7a7a7a;
@@ -162,6 +162,23 @@ button app-icon:not(:last-child) {
 }
 
 /* Button Elements without background but border */
+
+.button-leave {
+  border: 1px solid var(--warningRed);
+  color: var(--warningRed);
+  background-color: transparent;
+  padding: 0.5em 1em;
+  border-radius: 1.5em;
+  min-width: auto;
+  font-size: 0.9rem;
+  padding: 0.3em 1em;
+}
+
+.button-leave:hover {
+    color: #fff;
+    background-color: var(--warningRed);
+    border: 1px solid var(--warningRed);
+  }
 .button.outlined {
   border: 1px solid var(--primaryColor);
   color: var(--primaryColor);
