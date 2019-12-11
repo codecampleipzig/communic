@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding, NgModule, Input, Inject } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
 import { Task } from "../datatypes/Task";
 import { UserState } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
@@ -19,6 +19,7 @@ export class CreateNewTaskComponent implements OnInit {
   @Input() public sectionId: number;
   public userState: UserState;
   public tasks: Task[] = [];
+  public sectionForm: FormGroup;
 
   /**
    * Add Task .card Class to :host Element
@@ -62,8 +63,8 @@ export class CreateNewTaskComponent implements OnInit {
 
     this.store.createTask(
       this.project.projectId,
-      value.title,
-      value.description,
+      this.title.value,
+      this.description.value,
       "open",
       this.userState.userInformation.userId,
       this.sectionId)
@@ -71,5 +72,17 @@ export class CreateNewTaskComponent implements OnInit {
     this.closeForm();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.sectionForm = new FormGroup({
+      title: new FormControl("", [Validators.required]),
+      description: new FormControl("", [Validators.required, Validators.minLength(40)]),
+    });
+  }
+
+  get title() {
+    return this.sectionForm.get("title");
+  }
+  get description() {
+    return this.sectionForm.get("description");
+  }
 }

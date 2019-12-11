@@ -13,13 +13,15 @@ Opening up the form and just show a plus, whole area clickable to create a new t
 <!--
 Input Fields/Textarea reflecting the individual tasks style and made editable.
 //-->
-<form #f="ngForm" (ngSubmit)="onSubmit(f.value)"><div class="task-header" *ngIf="formVisible">
-    <div class="task-checkbox checkbox"></div>
-  <label for ="title"></label>
-  <input class="task-title" placeholder="Task Name Please" name="title" ngModel> 
-</div>
-<label for ="description"></label>
-<textarea *ngIf="formVisible" class="task-description" placeholder="Please describe the task that needs doing."
-name ="description" ngModel>
-      </textarea>  
-<button *ngIf="formVisible" class="button" type="submit">Add task</button></form>
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)" *ngIf="formVisible">
+    <div class="task-header">
+        <div class="task-checkbox checkbox"></div>
+        <label for="title"></label>
+        <input class="task-title" placeholder="Task Name Please" name="title" ngModel>
+    </div>
+    <label for="description"></label>
+    <textarea class="task-description" placeholder="Please describe the task that needs doing." name="description"
+        ngModel>
+      </textarea>
+    <button class="button" type="submit">Add task</button>
+</form>
