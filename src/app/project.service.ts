@@ -106,7 +106,7 @@ export class ProjectService {
       goal,
       creator: creatorId,
     };
-    return axios.post(`${environment.api_url}/project`, body).then(response => {
+    return axiosInstance.post(`/project`, body).then(response => {
       return response;
     });
   }
