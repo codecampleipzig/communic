@@ -36,6 +36,7 @@ html,
 body {
   font-size: 14px;
   line-height: 20px;
+  word-break: break-word;
 }
 
 /* Add Transition on everything */
@@ -160,7 +161,7 @@ button app-icon:last-child,
 a i:last-child,
 a app-icon:last-child {
   margin-left: 0.4em;
-  bottom: -.06em;
+  bottom: -0.06em;
   position: relative;
 }
 
