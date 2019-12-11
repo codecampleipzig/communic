@@ -7,7 +7,6 @@ import { SearchresultsComponent } from "./searchresults/searchresults.component"
 import { CreateProjectComponent } from "./create-project/create-project.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 
-
 const routes: Routes = [
   { path: "project/:id", component: ProjectPageComponent },
   { path: "home", component: HomeComponent, data: { title: "Home" } },
@@ -21,7 +20,6 @@ const routes: Routes = [
     component: NotFoundComponent,
     data: { title: "Page not Found" },
   },
-
 ];
 
 @NgModule({

@@ -10,6 +10,7 @@ h2 {
     font-weight: 300;
     padding: 1em 1em 1em 0;
     line-height: 1.2em;
+    word-wrap: normal;
 }
 
 
