@@ -20,6 +20,7 @@ export class CreateNewTaskComponent implements OnInit {
   public userState: UserState;
   public tasks: Task[] = [];
   public sectionForm: FormGroup;
+  public showErrors = false;
 
   /**
    * Add Task .card Class to :host Element
@@ -57,20 +58,20 @@ export class CreateNewTaskComponent implements OnInit {
  */
 
   onSubmit(value: any): void {
-    if (value.title == "" || value.description == "") {
-      return null;
+    if (this.sectionForm.valid) {
+      this.showErrors = false;
+      this.store.createTask(
+        this.project.projectId,
+        this.title.value,
+        this.description.value,
+        "open",
+        this.userState.userInformation.userId,
+        this.sectionId)
+      this.closeForm();
+    } else {
+      this.showErrors = true;
     }
-
-    this.store.createTask(
-      this.project.projectId,
-      this.title.value,
-      this.description.value,
-      "open",
-      this.userState.userInformation.userId,
-      this.sectionId)
-
-    this.closeForm();
-  }
+  };
 
   ngOnInit() {
     this.sectionForm = new FormGroup({
