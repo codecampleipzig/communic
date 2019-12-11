@@ -152,3 +152,14 @@
 :host(.status-deleted) > * {
    text-decoration:line-through;
 }
+
+:host(.status-deleted) p,
+:host(.status-deleted) .checkbox,
+:host(.status-deleted) .task-team {
+   display: none
+}
+
+:host(.status-deleted) h4 {
+   margin: 0;
+   font-size: 1em;
+}

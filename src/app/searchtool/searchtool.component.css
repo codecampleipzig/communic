@@ -2,11 +2,17 @@
   z-index: 100;
   margin-left: 1em;
 }
+
+/* Icons */
+app-icon {
+  font-size: 1rem;
+  color: var(--fontMediumGrey);
+}
 input {
   border: none;
-  border-bottom: 1px var(--borderGrey) solid;
+  border-bottom: 1px var(--fontMediumGrey) solid;
   border-radius: 0px;
-  min-width: 160px;
+  min-width: calc(35vw - 1em);
   outline: none;
 }
 
@@ -38,6 +44,7 @@ ul {
 .show input {
   border-bottom: none;
   outline: none;
+  border-radius: 0px;
 }
 
 .dropdown {

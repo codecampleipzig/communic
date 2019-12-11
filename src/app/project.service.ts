@@ -91,7 +91,26 @@ export class ProjectService {
       creator: creatorId,
     };
     return axios.post(`${environment.api_url}/project/${projectId}/section`, body).then(response => {
-      return response.data.project;
+      return response;
+    });
+  }
+
+  createNewProject(
+    title: string,
+    imageUrl: string,
+    description: string,
+    goal: string,
+    creatorId: number,
+  ): Promise<any> {
+    const body = {
+      title,
+      imageUrl,
+      description,
+      goal,
+      creator: creatorId,
+    };
+    return axios.post(`${environment.api_url}/project`, body).then(response => {
+      return response;
     });
   }
 }

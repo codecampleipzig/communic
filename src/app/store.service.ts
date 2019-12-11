@@ -28,6 +28,7 @@ export class StoreService {
   project: BehaviorSubject<Project>;
   toolbar: BehaviorSubject<any>;
   status: BehaviorSubject<any>;
+  messages: BehaviorSubject<any>;
 
   // Observable
   public user$: Observable<UserState>;
@@ -36,6 +37,7 @@ export class StoreService {
   public project$: Observable<Project>;
   public toolbar$: Observable<any>;
   public status$: Observable<any>;
+  public messages$: Observable<any>;
 
   constructor(
     @Inject(Router) private router: Router,
@@ -65,6 +67,9 @@ export class StoreService {
       sectionCreationPending: false,
     });
     this.status$ = this.status.asObservable();
+
+    this.messages = new BehaviorSubject<any[]>([]);
+    this.messages$ = this.messages.asObservable();
 
     /* Mock Current User. Replace with login Action */
     this.user.next({
@@ -185,6 +190,9 @@ export class StoreService {
     promise.then(newProject => {
       // Put value into observable
       this.project.next(newProject);
+      if (status == "done") {
+        this.newMessage("confirm", "Great job!", "You did it! You are great!", 3000);
+      }
     });
   }
 
@@ -236,6 +244,9 @@ export class StoreService {
     });
   }
 
+  /**
+   * Create a new Section
+   */
   createNewSection(
     projectId: number,
     title: string,
@@ -247,14 +258,64 @@ export class StoreService {
     this.updateStatus({ sectionCreationPending: true });
     const promise = this.projectService.createNewSection(projectId, title, description, due, status, creatorId);
 
-    promise.then(newProject => {
-      // Put value into observable
-      this.project.next(newProject);
-      this.updateStatus({ sectionCreationPending: false });
+    promise
+      .then(response => {
+        // Put value into observable
+        this.project.next(response.data.project);
+        this.updateStatus({ sectionCreationPending: false });
+        this.newMessage("confirm", "Something great happened!", "Your new section was created successfully!", 3000);
+      })
+      .catch(error => {
+        console.error(error.response.data);
+        this.newMessage("error", "Something went wrong..", error.response.data.error);
+      });
+  }
+  /**
+   * Create a new Project
+   */
+  createNewProject(title: string, imageUrl: string, description: string, goal: string, creatorId: number) {
+    const promise = this.projectService.createNewProject(title, imageUrl, description, goal, creatorId);
+
+    promise.then(response => {
+      this.router.navigate([`project/${response.data.projectId}`]);
     });
   }
 
+  /**
+   * Update Values in the Status Observable
+   * @param value Object of values that should be updated
+   */
   updateStatus(value: object) {
-    this.status.next({ ...this.status, ...value });
+    this.status.next({ ...this.status.getValue(), ...value });
+  }
+
+  /**
+   * newMessage adds a Message for Errors or other stuff to the Notifications-Stack in the Frontend.
+   * @param type error or confirm?
+   * @param title Give it a title!
+   * @param message Give it a short message
+   * @param autoClose in ms
+   * @param icon the Font Awesome icon type for the app-icon component. Get's set by type if not specified
+   */
+  newMessage(
+    type: "error" | "confirm",
+    title: string,
+    message?: string,
+    autoClose: number | boolean = false,
+    icon?: string,
+  ) {
+    const id = this.messages.getValue().length + 1;
+    const newMessage = { id, type, title, message, autoClose, icon };
+
+    this.messages.next([...this.messages.getValue(), newMessage]);
+  }
+
+  /**
+   * Close the message by id
+   * @param id the Message ID
+   */
+  closeMessage(id: number) {
+    const newState = this.messages.getValue().filter(m => m.id != id);
+    this.messages.next(newState);
   }
 }
