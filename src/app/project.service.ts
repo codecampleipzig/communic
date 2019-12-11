@@ -9,7 +9,7 @@ import { Project } from "./datatypes/Project";
   providedIn: "root",
 })
 export class ProjectService {
-  constructor() { }
+  constructor() {}
 
   /**
    * GET full project object from backend
@@ -32,7 +32,6 @@ export class ProjectService {
       return response.data.project;
     });
   }
-
 
   /**
    * join userId to project and get new project object from backend.
@@ -106,7 +105,7 @@ export class ProjectService {
     taskDescription: string,
     taskStatus: string,
     taskCreator: number,
-    sectionId: number
+    sectionId: number,
   ): Promise<any> {
     const body = {
       projectId,
@@ -114,7 +113,7 @@ export class ProjectService {
       taskDescription,
       taskStatus,
       taskCreator,
-      sectionId
+      sectionId,
     };
     return axios.post(`${environment.api_url}/project/${projectId}/task`, body).then(response => {
       return response.data.project;
