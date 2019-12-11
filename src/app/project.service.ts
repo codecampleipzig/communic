@@ -112,7 +112,7 @@ export class ProjectService {
       taskCreator,
       sectionId,
     };
-    return axios.post(`${environment.api_url}/project/${projectId}/task`, body).then(response => {
+    return axiosInstance.post(`/project/${projectId}/task`, body).then(response => {
       return response.data.project;
     });
   }
