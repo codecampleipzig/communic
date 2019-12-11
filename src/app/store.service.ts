@@ -272,12 +272,10 @@ export class StoreService {
   }
 
   createNewProject(title: string, imageUrl: string, description: string, goal: string, creatorId: number) {
-    this.updateStatus({ projectCreationPending: true });
     const promise = this.projectService.createNewProject(title, imageUrl, description, goal, creatorId);
 
     promise.then(response => {
-      console.log(response);
-      this.router.navigate([`project/${response}`]);
+      this.router.navigate([`project/${response.data.projectId}`]);
     });
   }
 
