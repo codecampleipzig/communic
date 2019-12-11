@@ -5,16 +5,23 @@ import { HomeComponent } from "./home/home.component";
 import { RegisterCardComponent } from "./register-card/register-card.component";
 import { SearchresultsComponent } from "./searchresults/searchresults.component";
 import { CreateProjectComponent } from "./create-project/create-project.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+
 
 const routes: Routes = [
   { path: "project/:id", component: ProjectPageComponent },
-  { path: "home", component: HomeComponent },
+  { path: "home", component: HomeComponent, data: { title: "Home" } },
   { path: "", redirectTo: "register", pathMatch: "full" },
-  { path: "register", component: RegisterCardComponent },
-  { path: "login", component: RegisterCardComponent },
-  { path: "searchresults", component: SearchresultsComponent },
-  { path: "createproject", component: CreateProjectComponent },
-  { path: "login", component: RegisterCardComponent },
+  { path: "register", component: RegisterCardComponent, data: { title: "Register" } },
+  { path: "login", component: RegisterCardComponent, data: { title: "Login" } },
+  { path: "searchresults", component: SearchresultsComponent, data: { title: "Search Results" } },
+  { path: "createproject", component: CreateProjectComponent, data: { title: "Create New Project" } },
+  {
+    path: "**",
+    component: NotFoundComponent,
+    data: { title: "Page not Found" },
+  },
+
 ];
 
 @NgModule({
