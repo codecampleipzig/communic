@@ -16,7 +16,7 @@ import { ProjectListComponent } from "./project-list/project-list.component";
 import { ProjectCardComponent } from "./project-card/project-card.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { RegisterCardComponent } from "./register-card/register-card.component";
-import { StartnewprojectComponent } from "./startnewproject/startnewproject.component";
+import { CreateProjectComponent } from "./create-project/create-project.component";
 import { RouterModule } from "@angular/router";
 import { SearchtoolComponent } from "./searchtool/searchtool.component";
 import { IconComponent } from "./icon/icon.component";
@@ -25,6 +25,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ProjectSectionsComponent } from "./project-sections/project-sections.component";
 import { CreateSectionComponent } from "./create-section/create-section.component";
 import { MessageComponent } from "./message/message.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 @NgModule({
   declarations: [
@@ -45,10 +46,11 @@ import { MessageComponent } from "./message/message.component";
     SearchtoolComponent,
     IconComponent,
     SearchresultsComponent,
-    StartnewprojectComponent,
+    CreateProjectComponent,
     ProjectSectionsComponent,
     CreateSectionComponent,
     MessageComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule, HttpClientModule],
   providers: [],
