@@ -4,8 +4,8 @@ import { ProjectPageComponent } from "./project-page/project-page.component";
 import { HomeComponent } from "./home/home.component";
 import { RegisterCardComponent } from "./register-card/register-card.component";
 import { SearchresultsComponent } from "./searchresults/searchresults.component";
-import { StartnewprojectComponent } from "./startnewproject/startnewproject.component";
 import { AuthGuardService } from "./auth-guard.service";
+import { CreateProjectComponent } from "./create-project/create-project.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 
 const routes: Routes = [
@@ -21,9 +21,9 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: "startnewproject",
-    component: StartnewprojectComponent,
-    data: { title: "Start New Project" },
+    path: "createproject",
+    component: CreateProjectComponent,
+    data: { title: "Create New Project" },
     canActivate: [AuthGuardService],
   },
   {
