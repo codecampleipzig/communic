@@ -1,0 +1,24 @@
+#error404 .card {
+   margin-bottom: 1em;
+   display: flex;
+   flex-flow: wrap;
+   align-items: center;
+   cursor: pointer;
+}
+
+#error404 .card > * {
+   margin: .5em;
+}
+
+small {
+   color: var(--fontLightGrey);
+   white-space: nowrap;
+}
+
+@media screen and (min-width: 1100px) {
+   #error404 {
+       display: grid;
+       grid-template-columns: repeat(2, 1fr);
+       grid-gap: 1rem;
+   }
+}
