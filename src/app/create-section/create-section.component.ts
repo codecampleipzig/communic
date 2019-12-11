@@ -14,7 +14,6 @@ export class CreateSectionComponent implements OnInit {
   public sectionForm: FormGroup;
   public toggleForm = false;
   public showErrors = false;
-  public firstSection = false;
   @Input() public project: Project;
 
   constructor(@Inject(StoreService) private store: StoreService) {
@@ -27,7 +26,6 @@ export class CreateSectionComponent implements OnInit {
       title: new FormControl("", [Validators.required]),
       description: new FormControl("", [Validators.required, Validators.minLength(40)]),
     });
-    this.firstSection = this.project.projectSections.length == 0;
   }
 
   get title() {
@@ -35,6 +33,10 @@ export class CreateSectionComponent implements OnInit {
   }
   get description() {
     return this.sectionForm.get("description");
+  }
+
+  firstSection() {
+    return this.project.projectSections.length == 0;
   }
 
   onSubmit() {
