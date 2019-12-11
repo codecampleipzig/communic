@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding, NgModule, Input, Inject } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
 import { Task } from "../datatypes/Task";
 import { UserState } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
@@ -19,6 +19,8 @@ export class CreateNewTaskComponent implements OnInit {
   @Input() public sectionId: number;
   public userState: UserState;
   public tasks: Task[] = [];
+  public sectionForm: FormGroup;
+  public showErrors = false;
 
   /**
    * Add Task .card Class to :host Element
@@ -51,31 +53,38 @@ export class CreateNewTaskComponent implements OnInit {
     }
   }
 
-  onSubmit(value: any): void {
-    if (value.title == "" || value.description == "") {
-      return null;
-    }
+  /**
+   * Function that creates a new task object and closes form
+   */
 
-    const newTask: Task = {
-      /**
-       * Creates a newTask object of type Task using title and description from form, projectId and current user
-       */
-      taskId: 1,
-      sectionId: this.sectionId,
-      projectId: this.project.projectId,
-      taskTitle: value.title,
-      taskDescription: value.description,
-      taskStatus: "open",
-      taskCreator: this.userState.userInformation,
-      taskTeam: [this.userState.userInformation],
-      menuSection: "starter",
-    };
-    /**
-     * Pushes newTask to projectTasks and closes the form
-     */
-    this.project.projectSections.find(s => s.sectionId == newTask.sectionId).projectTasks.push(newTask);
-    this.closeForm();
+  onSubmit(): void {
+    if (this.sectionForm.valid) {
+      this.showErrors = false;
+      this.store.createTask(
+        this.project.projectId,
+        this.title.value,
+        this.description.value,
+        "open",
+        this.userState.userInformation.userId,
+        this.sectionId,
+      );
+      this.closeForm();
+    } else {
+      this.showErrors = true;
+    }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.sectionForm = new FormGroup({
+      title: new FormControl("", [Validators.required]),
+      description: new FormControl("", [Validators.required, Validators.minLength(40)]),
+    });
+  }
+
+  get title() {
+    return this.sectionForm.get("title");
+  }
+  get description() {
+    return this.sectionForm.get("description");
+  }
 }

@@ -5,7 +5,7 @@ import { StoreService } from "../store.service";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
 import { TaskComponent } from "../task/task.component";
 import { CreateNewTaskComponent } from "../create-new-task/create-new-task.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import * as Mock from "../mockdata";
 
 describe("ProjectSectionsComponent", () => {
@@ -21,7 +21,7 @@ describe("ProjectSectionsComponent", () => {
           useClass: TestingStoreService,
         },
       ],
-      imports: [FormsModule],
+      imports: [FormsModule, ReactiveFormsModule],
     }).compileComponents();
   }));
 
