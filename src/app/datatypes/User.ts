@@ -8,4 +8,5 @@ export interface User {
 export interface UserState {
   status: any;
   userInformation: User | null;
+  userToken: string | null;
 }

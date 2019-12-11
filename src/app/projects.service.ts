@@ -1,8 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Project } from "./datatypes/Project";
-import * as Mock from "./mockdata";
-import axios from "axios";
-import { environment } from "../environments/environment";
+import { axiosInstance } from "./axios-instance";
 
 @Injectable({
   providedIn: "root",
@@ -10,14 +8,22 @@ import { environment } from "../environments/environment";
 export class ProjectsService {
   constructor() {}
 
+  /**
+   * Get projects where current user is member to fill the "Your Projects" section on Home page
+   * @param userId Id of the currently logged-in user
+   */
   retrieveYourProjects(userId: number): Promise<Project[]> {
-    return axios.get(`${environment.api_url}/myprojects/1`).then(response => {
+    return axiosInstance.get(`/myprojects/1`).then(response => {
       return response.data.projects;
     });
   }
 
+  /**
+   * Get projects where current user is NOT member to fill the "Explore Projects" section on Home page
+   * @param userId Id of the currently logged-in user
+   */
   retrieveExploreProjects(userId: number): Promise<Project[]> {
-    return axios.get(`${environment.api_url}/exploreprojects/1`).then(response => {
+    return axiosInstance.get(`/exploreprojects/1`).then(response => {
       return response.data.projects;
     });
   }
