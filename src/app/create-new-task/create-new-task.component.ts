@@ -54,7 +54,7 @@ export class CreateNewTaskComponent implements OnInit {
   }
 
   /**
- * Function that craetes a new task object and closes form 
+ * Function that creates a new task object and closes form 
  */
 
   onSubmit(value: any): void {

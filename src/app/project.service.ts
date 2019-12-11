@@ -4,6 +4,7 @@ import * as Mock from "./mockdata";
 import axios from "axios";
 import { environment } from "../environments/environment";
 import { Project } from "./datatypes/Project";
+import { User } from './datatypes/User';
 
 @Injectable({
   providedIn: "root",
@@ -106,7 +107,7 @@ export class ProjectService {
     taskDescription: string,
     taskStatus: string,
     taskCreator: number,
-    menuSection: number
+    sectionId: number
   ): Promise<any> {
     const body = {
       projectId,
@@ -114,7 +115,7 @@ export class ProjectService {
       taskDescription,
       taskStatus,
       taskCreator,
-      menuSection
+      sectionId
     };
     return axios.post(`${environment.api_url}/project/${projectId}/task`, body).then(response => {
       return response.data.project;

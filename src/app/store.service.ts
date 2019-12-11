@@ -318,10 +318,10 @@ export class StoreService {
     taskDescription: string,
     taskStatus: string,
     taskCreator: number,
-    menuSection: number
+    sectionId: number
   ) {
     this.updateStatus({ taskCreationPending: true });
-    const promise = this.projectService.createTask(projectId, taskTitle, taskDescription, taskStatus, taskCreator, menuSection);
+    const promise = this.projectService.createTask(projectId, taskTitle, taskDescription, taskStatus, taskCreator, sectionId);
 
     promise.then(newProject => {
       // Put value into observable

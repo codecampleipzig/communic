@@ -45,7 +45,7 @@ export class CreateSectionComponent implements OnInit {
         this.description.value,
         new Date(Date.now() + 12096e5),
         "open",
-        this.userState.userInformation.userId,
+        this.userState.userInformation,
       );
     } else {
       this.showErrors = true;
