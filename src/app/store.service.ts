@@ -116,7 +116,6 @@ export class StoreService {
         userToken: null
       });
     })
-
   }
 
   /**
@@ -144,6 +143,13 @@ export class StoreService {
 
       // Navigate to home page
       this.router.navigate(["home"])
+    })
+    promise.catch(error => {
+      this.user.next({
+        status: { error: error.response.data.error },
+        userInformation: null,
+        userToken: null
+      });
     })
   }
 
