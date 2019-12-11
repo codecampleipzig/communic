@@ -6,7 +6,7 @@ import { axiosInstance } from "./axios-instance";
   providedIn: "root",
 })
 export class ProjectsService {
-  constructor() { }
+  constructor() {}
 
   /**
    * Get projects where current user is member to fill the "Your Projects" section on Home page

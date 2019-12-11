@@ -5,7 +5,7 @@ import { axiosInstance } from "./axios-instance";
   providedIn: "root",
 })
 export class AuthService {
-  constructor() { }
+  constructor() {}
   /**
    * Post registerUserData, returning user data and token for logging-in the user
    * @param userName Name provided on the Register form
@@ -18,27 +18,25 @@ export class AuthService {
       username,
       email,
       password,
-      userImageUrl
-    }
-    return axiosInstance.post(`/register`, registerUserData)
-      .then(response => {
-        return response.data
-      })
+      userImageUrl,
+    };
+    return axiosInstance.post(`/register`, registerUserData).then(response => {
+      return response.data;
+    });
   }
 
   /**
-   * Post loginUserData, returning user data and token for logging-in the user 
+   * Post loginUserData, returning user data and token for logging-in the user
    * @param userEmail Email provided on the Login form
    * @param password Password provided on the Login form
    */
   login(email: string, password: string): Promise<any> {
     const loginUserData = {
       email,
-      password
-    }
-    return axiosInstance.post(`/login`, loginUserData)
-      .then(response => {
-        return response.data
-      })
+      password,
+    };
+    return axiosInstance.post(`/login`, loginUserData).then(response => {
+      return response.data;
+    });
   }
 }

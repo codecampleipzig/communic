@@ -30,14 +30,14 @@ export class SearchtoolComponent implements OnInit {
     @Inject(Router) private router: Router,
     @Inject(ActivatedRoute) private route: ActivatedRoute,
     @Inject(SearchService) private search: SearchService,
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.searchInput.valueChanges
       .pipe(
         debounceTime(400),
         distinctUntilChanged(),
-        switchMap(searchInput => this.search.getResults(searchInput))
+        switchMap(searchInput => this.search.getResults(searchInput)),
       )
       .subscribe(results => (this.projects = results.projects));
   }

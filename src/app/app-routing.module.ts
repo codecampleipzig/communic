@@ -16,11 +16,11 @@ const routes: Routes = [
   { path: "reset-password", component: RegisterCardComponent },
   { path: "change-password", component: RegisterCardComponent },
   { path: "searchresults", component: SearchresultsComponent, canActivate: [AuthGuardService] },
-  { path: "startnewproject", component: StartnewprojectComponent, canActivate: [AuthGuardService] }
+  { path: "startnewproject", component: StartnewprojectComponent, canActivate: [AuthGuardService] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "top" })],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

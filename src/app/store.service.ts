@@ -16,7 +16,7 @@ import { Router } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
-import { axiosInstance } from './axios-instance';
+import { axiosInstance } from "./axios-instance";
 
 @Injectable({
   providedIn: "root",
@@ -49,7 +49,7 @@ export class StoreService {
     this.user = new BehaviorSubject<UserState>({
       status: {},
       userInformation: null,
-      userToken: null
+      userToken: null,
     });
     this.user$ = this.user.asObservable();
 
@@ -80,15 +80,15 @@ export class StoreService {
         userId: 2,
         userName: "TestUser",
         userEmail: "email@gmail.com",
-        userImageUrl: ""
+        userImageUrl: "",
       },
-      userToken: ""
+      userToken: "",
     });
   }
 
   /**
    * Triggers authService.register and resolves its POST request to pass registerUserData into user observable and sets userToken
-   * 
+   *
    * @param userName Name provided on the Register form
    * @param userEmail Email provided on the Register form
    * @param password Password provided on the Register form
@@ -99,30 +99,31 @@ export class StoreService {
     const promise = this.authService.register(userName, userEmail, password, userImageUrl);
 
     // When Promise is resolved successfully, then:
-    promise.then(response => {
-      // Put value into observable
-      this.user.next({
-        status: { loggedIn: true },
-        userInformation: response.user,
-        userToken: response.token
-      });
+    promise
+      .then(response => {
+        // Put value into observable
+        this.user.next({
+          status: { loggedIn: true },
+          userInformation: response.user,
+          userToken: response.token,
+        });
 
-      // Set userToken as value for the header Authorization to be sent in each subsequent request
-      // TODO: localStorage.setItem(token)
-      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.token}`;
+        // Set userToken as value for the header Authorization to be sent in each subsequent request
+        // TODO: localStorage.setItem(token)
+        axiosInstance.defaults.headers.common.Authorization = `Bearer ${response.token}`;
 
-      // Navigate to home page
-      this.router.navigate(["home"]);
-    });
-    promise.catch(error => {
-      this.user.next({
-        status: { error: error.response.data.error },
-        userInformation: null,
-        userToken: null
+        // Navigate to home page
+        this.router.navigate(["home"]);
+      })
+      .catch(error => {
+        this.user.next({
+          status: { error: error.response.data.error },
+          userInformation: null,
+          userToken: null,
+        });
+        // TODO: Display message after merge from develop
+        this.newMessage("error", "Registration failed!", error.response.data.message, 5000);
       });
-      // TODO: Display message after merge from develop
-      this.newMessage("error", "Registration failed!", error.response.data.message, 5000)
-    })
   }
 
   /**
@@ -131,36 +132,35 @@ export class StoreService {
    * @param password Password provided on the Login form
    */
   login(userEmail: string, password: string) {
-
     // Talk to Auth Service. It returns a promise of a User object
     const promise = this.authService.login(userEmail, password);
 
     // When Promise is resolved successfully, then:
-    promise.then(response => {
-      // Put value into observable
-      this.user.next({
-        status: { loggedIn: true },
-        userInformation: response.user,
-        userToken: response.token
+    promise
+      .then(response => {
+        // Put value into observable
+        this.user.next({
+          status: { loggedIn: true },
+          userInformation: response.user,
+          userToken: response.token,
+        });
+
+        // Set userToken as value for the header Authorization to be sent in each subsequent request
+        // TODO: localStorage.setItem(token)
+        axiosInstance.defaults.headers.common.Authorization = `Bearer ${response.token}`;
+
+        // Navigate to home page
+        this.router.navigate(["home"]);
+      })
+      .catch(error => {
+        this.user.next({
+          status: { error: error.response.data.message },
+          userInformation: null,
+          userToken: null,
+        });
+
+        this.newMessage("error", "Login failed!", error.response.data.message, 5000);
       });
-
-      // Set userToken as value for the header Authorization to be sent in each subsequent request
-      // TODO: localStorage.setItem(token)
-      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.token}`;
-
-      // Navigate to home page
-      this.router.navigate(["home"])
-    })
-    promise.catch(error => {
-      this.user.next({
-        status: { error: error.response.data.message },
-        userInformation: null,
-        userToken: null
-      });
-
-      // TODO: Display message after merge from develop
-      this.newMessage("error", "Login failed!", error.response.data.message, 5000)
-    })
   }
 
   /**
@@ -171,11 +171,11 @@ export class StoreService {
     this.user.next({
       status: {},
       userInformation: null,
-      userToken: null
+      userToken: null,
     });
 
     // Delete userToken and the Authorization header
-    delete axiosInstance.defaults.headers.common['Authorization'];
+    delete axiosInstance.defaults.headers.common.Authorization;
 
     // Navigate to login page
     this.router.navigate(["login"]);
@@ -193,7 +193,6 @@ export class StoreService {
 
   /**
    * After clicking the link in the email to reset your password you will be redirected to the login screen.
-   * @param password 
    */
   // TODO: Implement changePassword
   changePassword(password: string) {
@@ -202,8 +201,8 @@ export class StoreService {
   }
 
   /**
-  * Retrieve projects where current user is member to fill the "Your Projects" section on Home page
-  */
+   * Retrieve projects where current user is member to fill the "Your Projects" section on Home page
+   */
   retrieveYourProjects() {
     let userId: number;
     if (!this.user.getValue().userInformation) {

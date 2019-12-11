@@ -6,7 +6,7 @@ import { Project } from "./datatypes/Project";
   providedIn: "root",
 })
 export class ProjectService {
-  constructor() { }
+  constructor() {}
 
   /**
    * GET full project object from backend
