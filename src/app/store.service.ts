@@ -121,6 +121,7 @@ export class StoreService {
         userToken: null
       });
       // TODO: Display message after merge from develop
+      this.newMessage("error", "Registration failed!", error.response.data.message, 5000)
     })
   }
 
@@ -152,11 +153,13 @@ export class StoreService {
     })
     promise.catch(error => {
       this.user.next({
-        status: { error: error.response.data.error },
+        status: { error: error.response.data.message },
         userInformation: null,
         userToken: null
       });
+
       // TODO: Display message after merge from develop
+      this.newMessage("error", "Login failed!", error.response.data.message, 5000)
     })
   }
 
