@@ -9,7 +9,7 @@ import { Project } from "../datatypes/Project";
   styleUrls: ["./toolbar.component.css"],
 })
 export class ToolbarComponent implements OnInit {
-  @Input() public project: Project;
+  public project: Project;
 
   /**
    * Add CSS Class .card to the Host
@@ -22,9 +22,7 @@ export class ToolbarComponent implements OnInit {
   public projectTitle;
 
   constructor(@Inject(Router) public router: Router, @Inject(StoreService) public store: StoreService) {
-    /** Commented as it throws errors.
-     * this.store.toolbar$.subscribe(title => (this.projectTitle = title));
-     */
+    store.project$.subscribe(project => (this.project = project));
   }
 
   ngOnInit() {}

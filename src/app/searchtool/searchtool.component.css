@@ -6,7 +6,7 @@
 /* Icons */
 app-icon {
   font-size: 1rem;
-  color: var(--fontMediumGrey)
+  color: var(--fontMediumGrey);
 }
 input {
   border: none;
@@ -15,7 +15,6 @@ input {
   min-width: calc(35vw - 1em);
   outline: none;
 }
-
 
 ul {
   list-style: none;
@@ -45,6 +44,7 @@ ul {
 .show input {
   border-bottom: none;
   outline: none;
+  border-radius: 0px;
 }
 
 .dropdown {

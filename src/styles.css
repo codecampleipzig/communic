@@ -3,39 +3,39 @@
  */
 
 :root {
-   --primaryColor: #6A6DEB;
-   --primaryLight: #9DA0FF;
-   --primaryColorDark: #040785;
-   --primaryColorHighlight: #8487FF;
-   --secondaryColorGreen: #33CCA7;
-   --secondaryColorOrange: #FF8633;
-   --secondaryColorOrangeLight: #FFB966;   
-   --warningRed: #A02000;
-   --successGreen: #009974;
-   --fontDarkGrey: #7a7a7a;
-   --fontMediumGrey:#a5a5b1;
-   --fontLightGrey: #e4e4eb;
-   --iconColor: #9DA0FF; /* Used for the trash Icon in the Tasklist */
-   --placeholderGrey: #F8F8F8; /* Used for placeholder Picture Backgrounds */
-   --backgroundGrey: #8487FF; /* Used for the TaskListIcons */
-   --borderGrey: #e4e4eb; /* Used for the Checkbox */
-   --borderMediumGrey: #a5a5b1;
-   --borderPlaceholderGrey: #d8d8d8;
+  --primaryColor: #6a6deb;
+  --primaryLight: #9da0ff;
+  --primaryColorDark: #040785;
+  --primaryColorHighlight: #8487ff;
+  --secondaryColorGreen: #33cca7;
+  --secondaryColorOrange: #ff8633;
+  --secondaryColorOrangeLight: #ffb966;
+  --warningRed: #a02000;
+  --successGreen: #009974;
+  --fontDarkGrey: #7a7a7a;
+  --fontMediumGrey: #a5a5b1;
+  --fontLightGrey: #e4e4eb;
+  --iconColor: #9da0ff; /* Used for the trash Icon in the Tasklist */
+  --placeholderGrey: #f8f8f8; /* Used for placeholder Picture Backgrounds */
+  --backgroundGrey: #fdfdfd; /* Used for the TaskListIcons */
+  --borderGrey: #e4e4eb; /* Used for the Checkbox */
+  --borderMediumGrey: #a5a5b1;
+  --borderPlaceholderGrey: #d8d8d8;
 
-   /* Dropshadows to use box-shadow: var(--smallShadow); */
-   --smallShadow: 0px 1px 2px rgba(228, 228, 235, 1);
-   --bigShadow: 0px 2px 24px rgba(228, 228, 235, 1);
-   --biggerShadow: 0px 2px 24px 8px rgba(228, 228, 235, 1);
+  /* Dropshadows to use box-shadow: var(--smallShadow); */
+  --smallShadow: 0px 1px 2px rgba(228, 228, 235, 1);
+  --bigShadow: 0px 2px 24px rgba(228, 228, 235, 1);
+  --biggerShadow: 0px 2px 24px 8px rgba(228, 228, 235, 1);
 }
-
 
 /**
  * Document & Body
  */
 
-html, body {
-   font-size: 14px;
-   line-height: 20px;
+html,
+body {
+  font-size: 14px;
+  line-height: 20px;
 }
 
 /* Add Transition on everything */
@@ -45,11 +45,10 @@ html, body {
 }
 
 body {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-weight: 300;
   margin: 0;
 }
-
 
 /**
  * Text, Headlines, Plain HTML Elements
@@ -100,7 +99,6 @@ small,
   font-size: 0.9em;
 }
 
-
 /**
  * Buttons & Forms
  */
@@ -147,23 +145,22 @@ textarea {
 
 /* Margin to the right for every Icon inside a button. Caption needs to be placed in a span-Element then! */
 .button i:not(:last-child),
-.button app-icon:not(:last-child)
-button i:not(:last-child),
+.button app-icon:not(:last-child) button i:not(:last-child),
 button app-icon:not(:last-child) {
   margin-right: 0.5em;
 }
 
 /* Hide the caption and reset margin right for the icon. Caption needs to be in a span-Element */
 @media (max-width: 480px) {
-   .caption-mobile-hidden i {
-      margin-right: 0 !important;
-   }
-   .caption-mobile-hidden  {
+  .caption-mobile-hidden i {
+    margin-right: 0 !important;
+  }
+  .caption-mobile-hidden {
     min-width: auto;
- } 
-   .caption-mobile-hidden span {
-      display: none;
-   } 
+  }
+  .caption-mobile-hidden span {
+    display: none;
+  }
 }
 
 /* Button Elements without background but border */
@@ -179,11 +176,12 @@ button app-icon:not(:last-child) {
   padding: 0.3em 1em;
 }
 
-.button-leave:hover {
-    color: #fff;
-    background-color: var(--warningRed);
-    border: 1px solid var(--warningRed);
-  }
+.button-leave:hover,
+.button-leave:focus {
+  color: #fff;
+  background-color: var(--warningRed);
+  border: 1px solid var(--warningRed);
+}
 .button.outlined {
   border: 1px solid var(--primaryColor);
   color: var(--primaryColor);
@@ -201,7 +199,7 @@ button app-icon:not(:last-child) {
   border-radius: 1.5em;
   min-width: auto;
   font-size: 0.9rem;
-  padding: 0.3em 1em;
+  padding: 0.42em 1em 0.3em 1em;
 }
 
 input[type="text"],
@@ -227,7 +225,7 @@ label {
   margin-bottom: 1em;
 }
 
-/* Error Messages next to input & textarea */ 
+/* Error Messages next to input & textarea */
 .form-rule {
   color: var(--warningRed);
   text-align: start;
@@ -245,53 +243,52 @@ label {
   color: var(--warningRed);
 }
 
-
 /**
  * Utilities
  */
 
 .unstyled-list {
-   list-style: none;
-   margin: 0;
-   padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.unstyled-list>li {
-   margin:0;
-   padding:0;
+.unstyled-list > li {
+  margin: 0;
+  padding: 0;
 }
 
 /* Make a fast flex-row with standard-behaviour `align-items: center` */
 .display-flex {
-   display: flex;
-   flex-flow: wrap;
-   align-items: center;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
 }
 
 .text-center {
-   text-align: center;
+  text-align: center;
 }
 
 /* absolute positioned div for control icons in the top right of .card. There should be a button Elements inside with an i.fa-icon Element inside. Make sure the icons won't overlap content! */
 .top-right-icons {
-   position: absolute;
-   top: 1em;
-   right: 1em;
-   cursor: pointer;
-   color: var(--iconColor);
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
+  color: var(--iconColor);
 }
 
 .top-right-icons > * {
-   color: var(--iconColor);
-   margin-left: .75em;
+  color: var(--iconColor);
+  margin-left: 0.75em;
 }
 
 .hover-green:hover {
-   color: var(--successGreen);
+  color: var(--successGreen);
 }
 
 .hover-red:hover {
-   color: var(--warningRed);
+  color: var(--warningRed);
 }
 
 /**
@@ -317,10 +314,10 @@ label {
 }
 
 @media (min-width: 500px) {
-   .card {
-      padding: 2em 3em; /* Increase space around content */
-      width: calc(100% - 4em);
-   }
+  .card {
+    padding: 2em 3em; /* Increase space around content */
+    width: calc(100% - 4em);
+  }
 }
 
 /* Overrides for .card in the .cardList (e.g. Projects Overview) */
@@ -341,9 +338,9 @@ label {
 }
 
 @media (min-width: 500px) {
-   .card-list > .card {
-      padding: 1.5em;
-   }
+  .card-list > .card {
+    padding: 1.5em;
+  }
 }
 
 /* .card in .card looks like a TaskListItem */

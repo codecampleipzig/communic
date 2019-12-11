@@ -11,12 +11,18 @@
       <i *ngIf="!user.userImageUrl" class="fas fa-user"></i>
     </div>
 
-    <button *ngIf="task.taskStatus == 'open' && this.joined('project') && !this.joined('task')"
-      class="button taskTeamJoin outlined round" (click)="join()">
+    <button
+      *ngIf="task.taskStatus == 'open' && this.joined('project') && !this.joined('task')"
+      class="button taskTeamJoin outlined round"
+      (click)="join()"
+    >
       <i class="fas fa-plus"></i><span>Join</span>
     </button>
-    <button *ngIf="task.taskStatus == 'open' && this.joined('task')" class="button taskTeamJoin outlined round"
-      (click)="leave()">
+    <button
+      *ngIf="task.taskStatus == 'open' && this.joined('task')"
+      class="button button-leave taskTeamJoin outline round"
+      (click)="leave()"
+    >
       <i class="fas fa-times"></i><span>Leave</span>
     </button>
   </div>
