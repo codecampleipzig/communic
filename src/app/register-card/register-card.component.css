@@ -9,34 +9,17 @@
   margin: auto;
 }
 
-.background {
-  position: static;
-}
-
-.background::after {
-  content: "";
-  background-image: url("../../assets/backgroundimg.png");
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-  background-size: cover;
-  background-repeat: repeat;
-}
-
 .register-card {
   border-radius: 20px;
 }
 
 .register-card h2 {
   color: var(--primaryColor);
-  font-weight: 700;
-  font-size: 2em;
+  font-weight: 400;
+  font-size: 1em;
   text-transform: uppercase;
   margin: 0;
+  justify-content: center;
 }
 
 input[type="file"] {
@@ -95,7 +78,7 @@ button[type="submit"] {
 
 @media (min-width: 400px) {
   .register-card h2 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 
