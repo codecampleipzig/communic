@@ -11,9 +11,7 @@
   transition: top 0.3s;
   z-index: 999;
   align-items: center;
-}
-.nav.hide-nav {
-  display: none;
+  flex-grow: 1;
 }
 
 a.home {
@@ -26,10 +24,19 @@ a.home:hover {
   color: var(--primaryColor);
 }
 
+.communic-text {
+  justify-content: center;
+  color: var(--primaryColor);
+  font-weight: 700;
+  font-size: 1em;
+  text-transform: uppercase;
+  margin-right: 1em;
+}
+
+
 app-user-action {
   flex-grow: 1;
 }
-
 
 
 @media (min-width: 500px) {

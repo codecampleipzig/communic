@@ -10,6 +10,7 @@ import { Project } from "../datatypes/Project";
 })
 export class ToolbarComponent implements OnInit {
   @Input() public project: Project;
+
   /**
    * Add CSS Class .card to the Host
    */

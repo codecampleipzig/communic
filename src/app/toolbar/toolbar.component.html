@@ -11,8 +11,11 @@
     <app-user-action id="user-action"></app-user-action>
   </div>
 </div> -->
-  
-   <a routerLink="/home" class="home"><i class="fas fa-home"></i></a>
-   <app-project-action id="project-action" [project]="store.project$ | async"></app-project-action>
-   <app-searchtool *ngIf="project == null"></app-searchtool>
-   <app-user-action id="user-action"></app-user-action>  
+
+<a routerLink="/home" class="home"><i class="fas fa-home"></i></a>
+<div class="communic-text">
+  <h2>COMMUNIC</h2>
+</div>
+<app-project-action id="project-action" [project]="store.project$ | async"></app-project-action>
+<app-searchtool *ngIf="store.project$ != null"></app-searchtool>
+<app-user-action id="user-action"></app-user-action>

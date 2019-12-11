@@ -19,3 +19,9 @@
 .user-image {
    font-size: 1.5rem;
 }
+
+@media (max-width: 760px) {
+   .user-image {
+      display: none;
+   }
+}

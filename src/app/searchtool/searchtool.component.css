@@ -5,16 +5,17 @@
 
 /* Icons */
 app-icon {
-  font-size: 1.5rem;
-  color: var(--fontDarkGrey)
+  font-size: 1rem;
+  color: var(--fontMediumGrey)
 }
 input {
   border: none;
-  border-bottom: 1px var(--borderGrey) solid;
+  border-bottom: 1px var(--fontMediumGrey) solid;
   border-radius: 0px;
-  min-width: 260px;
+  min-width: calc(35vw - 1em);
   outline: none;
 }
+
 
 ul {
   list-style: none;

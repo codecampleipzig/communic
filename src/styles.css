@@ -156,6 +156,9 @@ button app-icon:not(:last-child) {
    .caption-mobile-hidden i {
       margin-right: 0 !important;
    }
+   .caption-mobile-hidden  {
+    min-width: auto;
+ } 
    .caption-mobile-hidden span {
       display: none;
    } 
