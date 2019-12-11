@@ -322,8 +322,7 @@ label {
 
 /* Overrides for .card in the .cardList (e.g. Projects Overview) */
 .card img {
-  width: 500px;
-  height: 500px;
+  height: 400px;
   background-position: 50% 50%;
   object-fit: contain;
 }
