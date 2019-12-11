@@ -104,7 +104,7 @@ export class StoreService {
 
       // Set userToken as value for the header Authorization to be sent in each subsequent request
       // TODO: localStorage.setItem(token)
-      axiosInstance.defaults.headers.common['Authorization'] = user.token;
+      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
 
       // Navigate to home page
       this.router.navigate(["home"]);
@@ -139,7 +139,7 @@ export class StoreService {
 
       // Set userToken as value for the header Authorization to be sent in each subsequent request
       // TODO: localStorage.setItem(token)
-      axiosInstance.defaults.headers.common['Authorization'] = user.token;
+      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${user.token}`;
 
       // Navigate to home page
       this.router.navigate(["home"])
@@ -167,10 +167,9 @@ export class StoreService {
     // Delete userToken and the Authorization header
     delete axiosInstance.defaults.headers.common['Authorization'];
 
-    // Navigate to register page
-    this.router.navigate(["register"]);
+    // Navigate to login page
+    this.router.navigate(["login"]);
   }
-
 
   // After requesting a password reset email you will be redirected to the login screen.
   resetPassword(userEmail: string) {

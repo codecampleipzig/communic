@@ -8,20 +8,19 @@ import { StartnewprojectComponent } from "./startnewproject/startnewproject.comp
 import { AuthGuardService } from "./auth-guard.service";
 
 const routes: Routes = [
-  { path: "project/:id", component: ProjectPageComponent },
+  { path: "project/:id", component: ProjectPageComponent, canActivate: [AuthGuardService] },
   { path: "home", component: HomeComponent, canActivate: [AuthGuardService] },
   { path: "", redirectTo: "register", pathMatch: "full" },
   { path: "register", component: RegisterCardComponent },
   { path: "login", component: RegisterCardComponent },
   { path: "reset-password", component: RegisterCardComponent },
   { path: "change-password", component: RegisterCardComponent },
-  { path: "searchresults", component: SearchresultsComponent },
-  { path: "startnewproject", component: StartnewprojectComponent },
-  { path: "login", component: RegisterCardComponent },
+  { path: "searchresults", component: SearchresultsComponent, canActivate: [AuthGuardService] },
+  { path: "startnewproject", component: StartnewprojectComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "top" })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
