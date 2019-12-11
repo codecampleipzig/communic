@@ -6,17 +6,31 @@ import { RegisterCardComponent } from "./register-card/register-card.component";
 import { SearchresultsComponent } from "./searchresults/searchresults.component";
 import { StartnewprojectComponent } from "./startnewproject/startnewproject.component";
 import { AuthGuardService } from "./auth-guard.service";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 const routes: Routes = [
   { path: "project/:id", component: ProjectPageComponent, canActivate: [AuthGuardService] },
-  { path: "home", component: HomeComponent, canActivate: [AuthGuardService] },
+  { path: "home", component: HomeComponent, data: { title: "Home" }, canActivate: [AuthGuardService] },
   { path: "", redirectTo: "register", pathMatch: "full" },
-  { path: "register", component: RegisterCardComponent },
-  { path: "login", component: RegisterCardComponent },
-  { path: "reset-password", component: RegisterCardComponent },
-  { path: "change-password", component: RegisterCardComponent },
-  { path: "searchresults", component: SearchresultsComponent, canActivate: [AuthGuardService] },
-  { path: "startnewproject", component: StartnewprojectComponent, canActivate: [AuthGuardService] },
+  { path: "register", component: RegisterCardComponent, data: { title: "Register" } },
+  { path: "login", component: RegisterCardComponent, data: { title: "Login" } },
+  {
+    path: "searchresults",
+    component: SearchresultsComponent,
+    data: { title: "Search Results" },
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "startnewproject",
+    component: StartnewprojectComponent,
+    data: { title: "Start New Project" },
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "**",
+    component: NotFoundComponent,
+    data: { title: "Page not Found" },
+  },
 ];
 
 @NgModule({
