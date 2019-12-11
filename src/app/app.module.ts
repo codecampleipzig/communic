@@ -24,6 +24,7 @@ import { SearchresultsComponent } from "./searchresults/searchresults.component"
 import { HttpClientModule } from "@angular/common/http";
 import { ProjectSectionsComponent } from "./project-sections/project-sections.component";
 import { CreateSectionComponent } from "./create-section/create-section.component";
+import { MessageComponent } from "./message/message.component";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { CreateSectionComponent } from "./create-section/create-section.componen
     CreateProjectComponent,
     ProjectSectionsComponent,
     CreateSectionComponent,
+    MessageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule, HttpClientModule],
   providers: [],

@@ -34,14 +34,32 @@ export class TaskComponent implements OnInit {
   }
 
   /**
-   * Change task object @status to deleted/open on click of delete/restore button
+   * Delete and restore tasks
    */
   public delete() {
-    this.task.taskStatus = "deleted";
+    const status = this.task.taskStatus;
+    if (!this.joined("both") || status == "deleted") {
+      this.store.newMessage(
+        "error",
+        "Can't update task's status",
+        "This task can't be deleted. You have not been in the task's team or this task is already deleted.",
+      );
+      return false;
+    }
+    this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "deleted");
   }
 
   public restore() {
-    this.task.taskStatus = "open";
+    const status = this.task.taskStatus;
+    if (!this.joined("both") || status != "deleted") {
+      this.store.newMessage(
+        "error",
+        "Can't update task's status",
+        "This task can't be restored. You have not been in the task's team or this task is not deleted.",
+      );
+      return false;
+    }
+    this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "open");
   }
 
   ngOnInit() {}
@@ -53,7 +71,11 @@ export class TaskComponent implements OnInit {
     const status = this.task.taskStatus;
 
     if (!this.joined("both") || status == "deleted") {
-      console.log("not allowed");
+      this.store.newMessage(
+        "error",
+        "Can't update task's status",
+        "You need to join the project and the task's team in order to update the task status",
+      );
       return false;
     }
 

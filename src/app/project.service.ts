@@ -91,7 +91,7 @@ export class ProjectService {
       creator: creatorId,
     };
     return axios.post(`${environment.api_url}/project/${projectId}/section`, body).then(response => {
-      return response.data.project;
+      return response;
     });
   }
 
