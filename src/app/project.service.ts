@@ -92,6 +92,31 @@ export class ProjectService {
     });
   }
 
+  /**
+   * create new task and get new promise object from backend
+   * @returns new Promise
+   */
+  createTask(
+    projectId: number,
+    taskTitle: string,
+    taskDescription: string,
+    taskStatus: string,
+    taskCreator: number,
+    sectionId: number,
+  ): Promise<any> {
+    const body = {
+      projectId,
+      taskTitle,
+      taskDescription,
+      taskStatus,
+      taskCreator,
+      sectionId,
+    };
+    return axios.post(`${environment.api_url}/project/${projectId}/task`, body).then(response => {
+      return response.data.project;
+    });
+  }
+
   createNewProject(
     title: string,
     imageUrl: string,

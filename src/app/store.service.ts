@@ -410,4 +410,38 @@ export class StoreService {
     const newState = this.messages.getValue().filter(m => m.id != id);
     this.messages.next(newState);
   }
+
+  /**
+   * Creates a new task
+   */
+  createTask(
+    projectId: number,
+    taskTitle: string,
+    taskDescription: string,
+    taskStatus: string,
+    taskCreator: number,
+    sectionId: number,
+  ) {
+    this.updateStatus({ taskCreationPending: true });
+    const promise = this.projectService.createTask(
+      projectId,
+      taskTitle,
+      taskDescription,
+      taskStatus,
+      taskCreator,
+      sectionId,
+    );
+
+    promise
+      .then(newProject => {
+        // Put value into observable
+        this.project.next(newProject);
+        this.updateStatus({ taskCreationPending: false });
+        this.newMessage("confirm", "New task", "You've added a new task!", 3000);
+      })
+      .catch(error => {
+        console.error(error.response.data);
+        this.newMessage("error", "Something went wrong...", error.response.data.error);
+      });
+  }
 }
