@@ -1,9 +1,11 @@
 <h2>{{project.projectTitle}}</h2>
-<div class="project-image"></div>
+<div class="project-image" *ngIf="project.projectImageUrl">
+    <img src="{{project.projectImageUrl}}" alt="{{project.projectTitle}}">
+</div>
 <div class="project-description">
     <p>{{project.projectDescription}}</p>
     <h3>Goal</h3>
     <p>{{project.projectGoal}}</p>
     <button class="button" (click)="join()" *ngIf="!joined()">Join</button>
-    <button class="button" (click)="leave()" *ngIf="joined()">Leave</button>
+    <button class="button-leave" (click)="leave()" *ngIf="joined()">Leave</button>
 </div>
