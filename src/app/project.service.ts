@@ -88,7 +88,7 @@ export class ProjectService {
       creator: creatorId,
     };
     return axiosInstance.post(`/project/${projectId}/section`, body).then(response => {
-      return response.data.project;
+      return response;
     });
   }
 }

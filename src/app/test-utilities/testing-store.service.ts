@@ -13,6 +13,7 @@ export class TestingStoreService {
   project: BehaviorSubject<Project>;
   toolbar: BehaviorSubject<any>;
   status: BehaviorSubject<any>;
+  messages: BehaviorSubject<any>;
 
   // Observable
   public user$: Observable<UserState>;
@@ -21,6 +22,7 @@ export class TestingStoreService {
   public project$: Observable<Project>;
   public toolbar$: Observable<any>;
   public status$: Observable<any>;
+  public messages$: Observable<any>;
 
   constructor() {
     this.user = new BehaviorSubject<UserState>({
@@ -58,6 +60,11 @@ export class TestingStoreService {
       sectionCreationPending: false,
     });
     this.status$ = this.status.asObservable();
+
+    this.messages = new BehaviorSubject<any[]>([
+      { id: 0, type: "error", title: "Something happend", message: "test!" },
+    ]);
+    this.messages$ = this.messages.asObservable();
   }
 
   // Action
