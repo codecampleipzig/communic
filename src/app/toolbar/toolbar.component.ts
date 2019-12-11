@@ -2,13 +2,15 @@ import { Component, OnInit, HostBinding, Inject, Input, AfterViewInit } from "@a
 import { Router, ActivatedRoute } from "@angular/router";
 import { StoreService } from "../store.service";
 import { Project } from "../datatypes/Project";
+import { fromEvent } from "rxjs";
+import { throttleTime } from "rxjs/operators";
 
 @Component({
   selector: "app-toolbar",
   templateUrl: "./toolbar.component.html",
   styleUrls: ["./toolbar.component.css"],
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent implements OnInit, AfterViewInit {
   public project: Project;
 
   /**
@@ -26,4 +28,8 @@ export class ToolbarComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  ngAfterViewInit() {
+    const scroll$ = fromEvent(window, "scroll").pipe(throttleTime(10));
+  }
 }
