@@ -260,7 +260,7 @@ export class StoreService {
 
     promise.then(response => {
       console.log(response);
-      // this.router.navigate([`project/${response}`])
+      this.router.navigate([`project/${response}`]);
     });
   }
 

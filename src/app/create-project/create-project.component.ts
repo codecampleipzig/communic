@@ -13,8 +13,12 @@ export class CreateProjectComponent implements OnInit {
   public userState: UserState;
   public projectForm: FormGroup;
   public showErrors = false;
-  public projectTitle = "";
+  public projectTitle = ""; // to be already shown typed out on the screen
+  public projectId = ""; // should store the new projectId, when porject created, so it can be redirected
 
+  /**
+   * used to set up the image Upload
+   */
   public imagePath: string;
   public imgURL: any;
   public message: string;
@@ -79,6 +83,9 @@ export class CreateProjectComponent implements OnInit {
         this.goal.value,
         this.userState.userInformation.userId,
       );
+      // should be redirected to the new project page after the new
+      // project is created succesfully
+      // this.router.navigate([`"/project/" ${this.projectId}`]);
     } else {
       this.showErrors = true;
     }
@@ -89,7 +96,7 @@ export class CreateProjectComponent implements OnInit {
    * the user will be directed back to the home page
    */
   navigateHome() {
-    this.router.navigate(["home"]);
+    this.router.navigate(["/home"]);
   }
 
   /**

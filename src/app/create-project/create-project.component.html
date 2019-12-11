@@ -1,9 +1,14 @@
 <app-toolbar></app-toolbar>
 <div *ngIf="projectTitle" class="container">
-  <input class="h1" [(ngModel)]="projectTitle" size="35" type="text" name="Project Title" />
+  <input class="h1" size="35" type="text" name="Project Title" />
 </div>
 
-<form class="card container" ngClass="{'show-errors' : showErrors}" formGroup="projectForm" (ngSubmit)="onSubmit()">
+<form
+  class="card container"
+  [ngClass]="{ 'show-errors': showErrors }"
+  [formGroup]="projectForm"
+  (ngSubmit)="onSubmit()"
+>
   <div class="top-right-icons">
     <!-- Delete Button redirects to homepage-->
     <button (click)="navigateHome()"><i class="fas fa-trash-alt"></i></button>
@@ -11,7 +16,10 @@
 
   <label>
     <div class="title"><h3>Give your project a heart-warming title:</h3></div>
-    <input [(ngModel)]="projectTitle" size="20" type="text" name="title" formControlName="title" required />
+    <input size="20" type="text" name="title" formControlName="title" required />
+    <span class="form-rule" *ngIf="showErrors">
+      Please enter a warmhearted title.
+    </span>
   </label>
 
   <!-- Upload image information disapears, whith adding the onSubmit funciton to the form-->
@@ -41,6 +49,9 @@
       minlength="40"
       required
     ></textarea>
+    <span class="form-rule" *ngIf="showErrors">
+      Please enter a warmhearted description.
+    </span>
   </label>
 
   <label>
@@ -54,10 +65,12 @@
       minlength="60"
       required
     ></textarea>
+    <span class="form-rule" *ngIf="showErrors">
+      Please enter an inspiring goal.
+    </span>
   </label>
 
-  <button class="button" type="submit" routerLink="'/project', p.projectId">
-    <a href=""></a>
+  <button class="button" type="submit">
     <span>Get Startet</span>
   </button>
 </form>
