@@ -70,7 +70,7 @@ export class StoreService {
 
     /* Mock Current User. Replace with login Action */
     this.user.next({
-      status: { loggedIn: true },
+      status: { loggedIn: false },
       userInformation: {
         userId: 2,
         userName: "TestUser",
@@ -171,9 +171,22 @@ export class StoreService {
     this.router.navigate(["register"]);
   }
 
+
+  // After requesting a password reset email you will be redirected to the login screen.
+  resetPassword(userEmail: string) {
+    this.router.navigate(["login"]);
+    console.log("reset password");
+  }
+
+  // After clicking the link in the email to reset your password you will be redirected to the login screen.
+  changePassword(password: string) {
+    this.router.navigate(["login"]);
+    console.log("change password");
+  }
+
   /**
-   * Retrieve projects where current user is member to fill the "Your Projects" section on Home page
-   */
+  * Retrieve projects where current user is member to fill the "Your Projects" section on Home page
+  */
   retrieveYourProjects() {
     let userId: number;
     if (!this.user.getValue().userInformation) {
