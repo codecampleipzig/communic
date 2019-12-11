@@ -270,7 +270,9 @@ export class StoreService {
         this.newMessage("error", "Something went wrong..", error.response.data.error);
       });
   }
-
+  /**
+   * Create a new Project
+   */
   createNewProject(title: string, imageUrl: string, description: string, goal: string, creatorId: number) {
     const promise = this.projectService.createNewProject(title, imageUrl, description, goal, creatorId);
 

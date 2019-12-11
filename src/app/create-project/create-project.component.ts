@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { RouterModule, Routes, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { StoreService } from "../store.service";
 import { UserState } from "../datatypes/User";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
@@ -13,41 +13,14 @@ export class CreateProjectComponent implements OnInit {
   public userState: UserState;
   public projectForm: FormGroup;
   public showErrors = false;
-  public projectTitle = ""; // to be already shown typed out on the screen
-  public projectId = ""; // should store the new projectId, when porject created, so it can be redirected
 
-  /**
-   * used to set up the image Upload
-   */
+  // used to set up the image Upload
   public imagePath: string;
   public imgURL: any;
   public message: string;
 
-  /**
-   * Preview uploaded files
-   */
-  preview(files) {
-    if (files.length === 0) {
-      return;
-    }
-
-    const mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
-      return this.message;
-    }
-
-    const reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]);
-    reader.onload = event => {
-      this.imgURL = reader.result;
-    };
-  }
-
   constructor(@Inject(Router) private router: Router, @Inject(StoreService) private store: StoreService) {
     store.user$.subscribe(user => (this.userState = user));
-    this.store.toolbar.next(this.projectTitle);
   }
 
   ngOnInit() {
@@ -83,9 +56,6 @@ export class CreateProjectComponent implements OnInit {
         this.goal.value,
         this.userState.userInformation.userId,
       );
-      // should be redirected to the new project page after the new
-      // project is created succesfully
-      // this.router.navigate([`"/project/" ${this.projectId}`]);
     } else {
       this.showErrors = true;
     }
@@ -114,5 +84,27 @@ export class CreateProjectComponent implements OnInit {
 
       reader.readAsDataURL(eventTarget.files[0]); // read file as data url
     }
+  }
+
+  /**
+   * Preview uploaded files
+   */
+  preview(files) {
+    if (files.length === 0) {
+      return;
+    }
+
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return this.message;
+    }
+
+    const reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = event => {
+      this.imgURL = reader.result;
+    };
   }
 }

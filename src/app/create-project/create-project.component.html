@@ -1,7 +1,4 @@
 <app-toolbar></app-toolbar>
-<div *ngIf="projectTitle" class="container">
-  <input class="h1" size="35" type="text" name="Project Title" />
-</div>
 
 <form
   class="card container"
@@ -22,7 +19,7 @@
     </span>
   </label>
 
-  <!-- Upload image information disapears, whith adding the onSubmit funciton to the form-->
+  <!-- Upload Image -->
   <div class="project-image">
     <input *ngIf="!imgURL" type="file" id="myFileInput" accept="image/*" (change)="onSelectFile($event)" />
     <button

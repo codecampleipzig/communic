@@ -1,5 +1,7 @@
 <button class="new-section" *ngIf="!toggleForm" (click)="toggle()">
-   <app-icon type="plus" label="Add new Section"></app-icon> <span>Plan next section</span>
+   <app-icon type="plus" label="Add new Section"></app-icon> 
+   <span *ngIf="!firstSection" >Plan next section</span>
+   <span *ngIf="firstSection">Plan your first section</span>
 </button>
 
 <form *ngIf="toggleForm" class="container card" [ngClass]="{'show-errors': showErrors}" [formGroup]="sectionForm"
