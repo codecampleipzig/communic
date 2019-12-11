@@ -54,8 +54,8 @@ export class CreateNewTaskComponent implements OnInit {
   }
 
   /**
- * Function that creates a new task object and closes form 
- */
+   * Function that creates a new task object and closes form
+   */
 
   onSubmit(value: any): void {
     if (this.sectionForm.valid) {
@@ -66,12 +66,12 @@ export class CreateNewTaskComponent implements OnInit {
         this.description.value,
         "open",
         this.userState.userInformation.userId,
-        this.sectionId)
+        this.sectionId);
       this.closeForm();
     } else {
       this.showErrors = true;
     }
-  };
+  }
 
   ngOnInit() {
     this.sectionForm = new FormGroup({

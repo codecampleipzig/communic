@@ -4,7 +4,6 @@ import * as Mock from "./mockdata";
 import axios from "axios";
 import { environment } from "../environments/environment";
 import { Project } from "./datatypes/Project";
-import { User } from './datatypes/User';
 
 @Injectable({
   providedIn: "root",
@@ -32,7 +31,7 @@ export class ProjectService {
     return axios.patch(`${environment.api_url}/task/${taskId}`, { taskStatus: status }).then(response => {
       return response.data.project;
     });
-  };
+  }
 
 
   /**
@@ -98,9 +97,9 @@ export class ProjectService {
   }
 
   /**
-* create new task and get new promise object from backend
-* @returns new Promise
-*/
+   * create new task and get new promise object from backend
+   * @returns new Promise
+   */
   createTask(
     projectId: number,
     taskTitle: string,
@@ -120,5 +119,5 @@ export class ProjectService {
     return axios.post(`${environment.api_url}/project/${projectId}/task`, body).then(response => {
       return response.data.project;
     });
-  };
+  }
 }
