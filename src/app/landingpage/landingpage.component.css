@@ -48,7 +48,7 @@ h2 {
   margin: 1rem;
 }
 .create {
-  background-color: var(--highlightOrange);
+  background-color: var(--secondaryColorOrangeLight);
   margin: 1rem;
 }
 .right-side {
@@ -145,7 +145,6 @@ button {
     margin: 1rem;
   }
   .create {
-    background-color: var(--highlightOrange);
     margin: 1rem;
   }
   .right-side {
@@ -218,12 +217,11 @@ button {
     margin: 1rem;
   }
   .meet {
-    background-color: var(--primaryColor);
+    background-color: var(--secondaryColorOrangeLight);
     margin: 1rem;
   }
   .create {
-    background-color: var(--highlightOrange);
-    margin: 1rem;
+    margin: var(--secondaryColorOrangeLight) 1rem;
   }
   .right-side {
     background-color: var(--primaryColor);

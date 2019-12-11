@@ -25,6 +25,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ProjectSectionsComponent } from "./project-sections/project-sections.component";
 import { CreateSectionComponent } from "./create-section/create-section.component";
 import { LandingpageComponent } from "./landingpage/landingpage.component";
+import { MessageComponent } from "./message/message.component";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { LandingpageComponent } from "./landingpage/landingpage.component";
     ProjectSectionsComponent,
     CreateSectionComponent,
     LandingpageComponent,
+    MessageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule, HttpClientModule],
   providers: [],

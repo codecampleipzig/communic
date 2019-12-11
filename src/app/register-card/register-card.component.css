@@ -3,6 +3,8 @@
   height: 100vh;
   box-sizing: border-box;
   position: static;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 :host > * {
@@ -11,6 +13,7 @@
 
 .register-card {
   border-radius: 20px;
+  box-shadow: none;
 }
 
 .register-card h2 {
@@ -18,17 +21,12 @@
   font-weight: 400;
   font-size: 1em;
   text-transform: uppercase;
-  margin: 0;
-  justify-content: center;
+  margin: 1rem;
 }
 
 input[type="file"] {
   height: 0px;
   visibility: hidden;
-}
-
-.register-card h3 {
-  margin-top: 0;
 }
 
 .register-card .signIn {
