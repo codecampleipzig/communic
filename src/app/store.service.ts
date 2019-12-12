@@ -245,7 +245,11 @@ export class StoreService {
       .then(projects => {
         this.yourProjects.next(projects);
       })
-      .catch();
+    // .catch(error => {
+    //   this.yourProjects.next(error.response.data.message);
+
+    //   this.newMessage("error", "Loading your projects failed!", error.response.data.message, 5000);
+    // });
   }
   /**
    * Retrieve projects where current user is NOT member to fill the "Explore Projects" section on Home page
