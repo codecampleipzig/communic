@@ -76,21 +76,21 @@ export class StoreService {
     this.messages = new BehaviorSubject<any[]>([]);
     this.messages$ = this.messages.asObservable();
 
-    // if (!environment.production) {
-    //   const testToken =
-    //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIwLCJ1c2VyTmFtZSI6IlJlZzEiLCJ1c2VyRW1haWwiOiJyZWcxQHJlZy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2bjhOOUs4cHBxT3JqZFhsalNJcU8uVThoNmxuTDY5Ry80QzFXZi41U3RIMVNTd2xHTkU0VyIsInVzZXJJbWFnZVVybCI6bnVsbCwiam9pbkRhdGUiOiIyMDE5LTEyLTA0VDE0OjUxOjIwLjEwM1oiLCJsZWF2ZURhdGUiOm51bGwsImlhdCI6MTU3NTQ3NDkxOX0.nrHFu4PhmpNTShq909qNj8geVBACB5XWDhT2OSgkxlY";
-    //   this.user.next({
-    //     status: { loggedIn: true },
-    //     userInformation: {
-    //       userName: "Rick",
-    //       userId: 1,
-    //       userImageUrl: "",
-    //       userEmail: "rick@sanchez.com",
-    //     },
-    //     userToken: testToken,
-    //   });
-    //   axiosInstance.defaults.headers.common.Authorization = `Bearer ${testToken}`;
-    // }
+    if (!environment.production) {
+      const testToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIwLCJ1c2VyTmFtZSI6IlJlZzEiLCJ1c2VyRW1haWwiOiJyZWcxQHJlZy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2bjhOOUs4cHBxT3JqZFhsalNJcU8uVThoNmxuTDY5Ry80QzFXZi41U3RIMVNTd2xHTkU0VyIsInVzZXJJbWFnZVVybCI6bnVsbCwiam9pbkRhdGUiOiIyMDE5LTEyLTA0VDE0OjUxOjIwLjEwM1oiLCJsZWF2ZURhdGUiOm51bGwsImlhdCI6MTU3NTQ3NDkxOX0.nrHFu4PhmpNTShq909qNj8geVBACB5XWDhT2OSgkxlY";
+      this.user.next({
+        status: { loggedIn: true },
+        userInformation: {
+          userName: "Rick",
+          userId: 1,
+          userImageUrl: "",
+          userEmail: "rick@sanchez.com",
+        },
+        userToken: testToken,
+      });
+      axiosInstance.defaults.headers.common.Authorization = `Bearer ${testToken}`;
+    }
 
     // Auto reset loading on every route change
     this.router.events.subscribe(event => {
@@ -177,7 +177,6 @@ export class StoreService {
 
         localStorage.setItem("token", response.token);
 
-
         // Set userToken as value for the header Authorization to be sent in each subsequent request
         // TODO: localStorage.setItem(token)
         axiosInstance.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`;
@@ -255,7 +254,12 @@ export class StoreService {
         this.yourProjects.next(projects);
       })
       .catch(error => {
-        this.newMessage("error", "Loading your projects failed!", error.response ? error.response.data.message : "", 3000);
+        this.newMessage(
+          "error",
+          "Loading your projects failed!",
+          error.response ? error.response.data.message : "",
+          3000,
+        );
       });
   }
   /**
@@ -275,7 +279,12 @@ export class StoreService {
         this.exploreProjects.next(projects);
       })
       .catch(error => {
-        this.newMessage("error", "Loading explore projects failed!", error.response ? error.response.data.message : "", 3000);
+        this.newMessage(
+          "error",
+          "Loading explore projects failed!",
+          error.response ? error.response.data.message : "",
+          3000,
+        );
       });
   }
 
@@ -332,7 +341,12 @@ export class StoreService {
         }
       })
       .catch(error => {
-        this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
+        this.newMessage(
+          "error",
+          "Loading updated project failed!",
+          error.response ? error.response.data.message : "",
+          3000,
+        );
       });
   }
 
@@ -342,13 +356,19 @@ export class StoreService {
   joinProjectTeam(projectId: number, userId: number) {
     const promise = this.projectService.joinProjectTeam(projectId, userId);
 
-    promise.then(newProject => {
-      // Put value into observable
-      this.project.next(newProject);
-      this.newMessage("confirm", "Success!", "You joined the project successfully!", 3000);
-    })
+    promise
+      .then(newProject => {
+        // Put value into observable
+        this.project.next(newProject);
+        this.newMessage("confirm", "Success!", "You joined the project successfully!", 3000);
+      })
       .catch(error => {
-        this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
+        this.newMessage(
+          "error",
+          "Loading updated project failed!",
+          error.response ? error.response.data.message : "",
+          3000,
+        );
       });
   }
 
@@ -358,13 +378,19 @@ export class StoreService {
   leaveProjectTeam(projectId: number, userId: number) {
     const promise = this.projectService.leaveProjectTeam(projectId, userId);
 
-    promise.then(newProject => {
-      // Put value into observable
-      this.project.next(newProject);
-      this.newMessage("confirm", "Success!", "You left the project successfully!", 3000);
-    })
+    promise
+      .then(newProject => {
+        // Put value into observable
+        this.project.next(newProject);
+        this.newMessage("confirm", "Success!", "You left the project successfully!", 3000);
+      })
       .catch(error => {
-        this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
+        this.newMessage(
+          "error",
+          "Loading updated project failed!",
+          error.response ? error.response.data.message : "",
+          3000,
+        );
       });
   }
 
@@ -374,13 +400,19 @@ export class StoreService {
   joinTaskTeam(projectId: number, taskId: number, userId: number) {
     const promise = this.projectService.joinTaskTeam(projectId, taskId, userId);
 
-    promise.then(newProject => {
-      // Put value into observable
-      this.project.next(newProject);
-      this.newMessage("confirm", "Success!", "You joined the task successfully!", 3000);
-    })
+    promise
+      .then(newProject => {
+        // Put value into observable
+        this.project.next(newProject);
+        this.newMessage("confirm", "Success!", "You joined the task successfully!", 3000);
+      })
       .catch(error => {
-        this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
+        this.newMessage(
+          "error",
+          "Loading updated project failed!",
+          error.response ? error.response.data.message : "",
+          3000,
+        );
       });
   }
 
@@ -390,13 +422,19 @@ export class StoreService {
   leaveTaskTeam(projectId: number, taskId: number, userId: number) {
     const promise = this.projectService.leaveTaskTeam(projectId, taskId, userId);
 
-    promise.then(newProject => {
-      // Put value into observable
-      this.project.next(newProject);
-      this.newMessage("confirm", "Success!", "You left the task successfully!", 3000);
-    })
+    promise
+      .then(newProject => {
+        // Put value into observable
+        this.project.next(newProject);
+        this.newMessage("confirm", "Success!", "You left the task successfully!", 3000);
+      })
       .catch(error => {
-        this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
+        this.newMessage(
+          "error",
+          "Loading updated project failed!",
+          error.response ? error.response.data.message : "",
+          3000,
+        );
       });
   }
 
@@ -431,10 +469,11 @@ export class StoreService {
   createNewProject(title: string, imageUrl: string, description: string, goal: string, creatorId: number) {
     const promise = this.projectService.createNewProject(title, imageUrl, description, goal, creatorId);
 
-    promise.then(response => {
-      this.router.navigate([`project/${response.data.projectId}`]);
-      this.newMessage("confirm", "Project created successfully!", "Your new project was created successfully!", 3000);
-    })
+    promise
+      .then(response => {
+        this.router.navigate([`project/${response.data.projectId}`]);
+        this.newMessage("confirm", "Project created successfully!", "Your new project was created successfully!", 3000);
+      })
       .catch(error => {
         this.newMessage("error", "Project creation failed!", error.response ? error.response.data.message : "", 3000);
       });
