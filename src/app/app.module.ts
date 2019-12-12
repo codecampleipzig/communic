@@ -27,6 +27,7 @@ import { CreateSectionComponent } from "./create-section/create-section.componen
 import { MessageComponent } from "./message/message.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { LoadingIconComponent } from "./loading-icon/loading-icon.component";
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     CreateSectionComponent,
     MessageComponent,
     NotFoundComponent,
+    LoadingIconComponent,
   ],
   imports: [
     BrowserModule,

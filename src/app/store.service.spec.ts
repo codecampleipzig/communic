@@ -2,6 +2,7 @@ import { TestBed } from "@angular/core/testing";
 
 import { StoreService } from "./store.service";
 import { Router } from "@angular/router";
+import { TestingRouter } from "./test-utilities/testing-router";
 
 describe("StoreService", () => {
   beforeEach(() =>
@@ -9,9 +10,7 @@ describe("StoreService", () => {
       providers: [
         {
           provide: Router,
-          useClass: class {
-            navigate() {}
-          },
+          useClass: TestingRouter,
         },
       ],
     }),

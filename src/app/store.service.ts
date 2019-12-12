@@ -11,13 +11,14 @@ import { Project } from "./datatypes/Project";
 import { User, UserState } from "./datatypes/User";
 
 import * as Mock from "./mockdata";
-import { BehaviorSubject, Observable } from "rxjs";
-import { Router } from "@angular/router";
+import { BehaviorSubject, Observable, pipe } from "rxjs";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
 import { axiosInstance } from "./axios-instance";
 import { environment } from "src/environments/environment";
+import { filter, map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -89,6 +90,21 @@ export class StoreService {
       });
       axiosInstance.defaults.headers.common.Authorization = `Bearer ${testToken}`;
     }
+
+    // Auto reset loading on every route change
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.finishLoading();
+      }
+    });
+  }
+
+  startLoading() {
+    this.status.next({ ...this.status.getValue(), loading: true });
+  }
+
+  finishLoading() {
+    this.status.next({ ...this.status.getValue(), loading: false });
   }
 
   /**
@@ -100,6 +116,7 @@ export class StoreService {
    * @param userImageUrl Image uploaded on the Register form
    */
   register(userName: string, userEmail: string, password: string, userImageUrl: string = "") {
+    this.startLoading();
     // Talk to Auth Service. It returns a promise of a User object
     const promise = this.authService.register(userName, userEmail, password, userImageUrl);
 
@@ -128,6 +145,9 @@ export class StoreService {
         });
         // TODO: Display message after merge from develop
         this.newMessage("error", "Registration failed!", error.response.data.message, 5000);
+      })
+      .finally(() => {
+        this.finishLoading();
       });
   }
 
@@ -137,6 +157,7 @@ export class StoreService {
    * @param password Password provided on the Login form
    */
   login(userEmail: string, password: string) {
+    this.startLoading();
     // Talk to Auth Service. It returns a promise of a User object
     const promise = this.authService.login(userEmail, password);
 
@@ -165,6 +186,9 @@ export class StoreService {
         });
 
         this.newMessage("error", "Login failed!", error.response.data.message, 5000);
+      })
+      .finally(() => {
+        this.finishLoading();
       });
   }
 
