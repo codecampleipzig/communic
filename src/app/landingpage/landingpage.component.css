@@ -141,14 +141,44 @@ button {
 }
 
 .points-block p{
-  font-weight: 400;
+  font-size: 1.5em;
 }
-
 
 .point-circle {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
 }
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.zoomIn {
+  animation-name: zoomIn;
+}
+.point-1{
+  animation-duration: 7s;
+  animation-delay: 3s;
+  animation-iteration-count: infinite;
+}
+.point-2{
+  animation-duration: 7s;
+  animation-delay: 4.5s;
+  animation-iteration-count: infinite;
+}
+.point-3{
+  animation-duration: 7s;
+  animation-delay: 5.5s;
+  animation-iteration-count: infinite;
+}
+
 .text-box{
   background: var( --primaryColorDarker);
   text-align: center;
@@ -164,7 +194,7 @@ button {
 }
     
 .p-cookies i {
-   padding: 2em;
+   padding: 2.5em;
    margin-left: 1em;
 }
     
@@ -245,6 +275,7 @@ footer a:hover {
   .create {
     margin: 1rem;
   }
+
   h2 {
     margin: 0 auto;
     align-self: center;
@@ -253,6 +284,13 @@ footer a:hover {
   .nav {
     display: flex;
     justify-content: flex-end;
+  }
+  .points-block p{
+    font-size: 2em;
+  }
+  .point-circle {
+    height: 70px;
+    width: 70px;
   }
 }
 
@@ -300,5 +338,12 @@ footer a:hover {
     color: var(--fontDarkGrey);
     padding-left: 2rem;
   }
+  .points-block p{
+    font-size: 2.5em;
+  }
 
+  .point-circle {
+    height: 70px;
+    width: 70px;
+  }
 }
