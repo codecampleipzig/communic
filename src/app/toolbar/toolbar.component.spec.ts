@@ -5,7 +5,6 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { TestingRouter } from "../test-utilities/testing-router";
 import { Project } from "../datatypes/Project";
 import { IconComponent } from "../icon/icon.component";
-import { fromEvent } from "rxjs";
 import { throttleTime, map, pairwise, distinctUntilChanged, share, filter } from "rxjs/operators";
 import { trigger, state, transition, animate, style } from "@angular/animations";
 
@@ -35,7 +34,6 @@ describe("ToolbarComponent", () => {
         ProjectActionStubComponent,
         SearchToolStubComponent,
         IconComponent,
-        fromEvent,
         throttleTime,
         map,
         pairwise,

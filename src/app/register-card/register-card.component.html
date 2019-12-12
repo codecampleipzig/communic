@@ -5,6 +5,8 @@
   <h3 *ngIf="authType == 'reset-password'">Reset your password</h3>
   <h3 *ngIf="authType == 'change-password'">Create a new password</h3>
 
+  <app-loading-icon></app-loading-icon>
+
   <div class="avatar" *ngIf="authType == 'register'">
     <div *ngIf="url" class="user-image">
       <img [src]="url" />
@@ -48,7 +50,7 @@
 
   <label>
     <input type="password" placeholder="Password" formControlName="password"
-      *ngIf="(authType == 'register' || authType == 'login' || authType == 'change-password')" required />
+      *ngIf="authType == 'register' || authType == 'login' || authType == 'change-password'" required />
     <span class="form-rule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'register'">
       Safety first! Your password must be at least 8 characters and contain at least one number.
     </span>
@@ -57,15 +59,21 @@
     </span>
   </label>
 
-  <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'register'" class="button">Join now!</button>
+  <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'register'" class="button">
+    Join now!
+  </button>
   <button type="submit" [disabled]="!(profileForm.get('email').valid && profileForm.get('password').valid)"
-    *ngIf="authType == 'login'" class="button">Login</button>
+    *ngIf="authType == 'login'" class="button">
+    Login
+  </button>
   <button type="submit" [disabled]="!profileForm.get('email').valid" *ngIf="authType == 'reset-password'"
-    class="button">Reset
-    password</button>
+    class="button">
+    Reset password
+  </button>
   <button type="submit" [disabled]="!profileForm.get('password').valid" *ngIf="authType == 'change-password'"
-    class="button">Set new
-    password</button>
+    class="button">
+    Set new password
+  </button>
 
   <p *ngIf="authType == 'register'">Already have an account? <a [routerLink]="['/login']">Login here</a></p>
   <p *ngIf="authType == 'login'">Need an account? <a [routerLink]="['/register']">Register here</a></p>
