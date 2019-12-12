@@ -27,7 +27,6 @@ h3 {
   justify-content: center;
   display: flex;
   align-items: center;
-  margin-bottom: 2em;
 }
 
 .project-image button {
@@ -57,8 +56,6 @@ h3 {
   }
 
   input {
-    padding-top: 0;
-    margin-top: 0;
     grid-area: input;
   }
 
