@@ -1,6 +1,6 @@
-<h2>{{title}}</h2>
+<h2 *ngIf="projects.length">{{ title }}</h2>
 <ul class="list-wrapper card-list unstyled-list">
-    <li *ngFor="let project of projects" class="card">
-        <app-project-card [project]="project"></app-project-card>
-    </li>
+  <li *ngFor="let project of projects" class="card">
+    <app-project-card [project]="project"></app-project-card>
+  </li>
 </ul>
