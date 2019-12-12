@@ -10,5 +10,5 @@ install:
 script:
   - npm run build
   - npm run lint
-  - npm run test
+  - npm run test:coverage
   - npm run compodoc
