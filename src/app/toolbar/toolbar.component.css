@@ -1,6 +1,6 @@
 :host {
   display: flex;
-  /* position: sticky; */
+  position: fixed;
   left: 0;
   right: 0;
   top: 1em;
@@ -31,6 +31,7 @@ a.home:hover {
   font-size: 1em;
   text-transform: uppercase;
   margin-right: 1em;
+  word-break: normal;
 }
 
 

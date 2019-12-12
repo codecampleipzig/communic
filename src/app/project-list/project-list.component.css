@@ -10,6 +10,7 @@ h2 {
   font-weight: 300;
   padding: 0.8em 1em 0.3em 0;
   line-height: 1.2em;
+  word-wrap: normal;
 }
 
 @media (min-width: 450px) {
