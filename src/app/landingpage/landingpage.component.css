@@ -9,6 +9,7 @@
 
 .left-side {
   justify-content: center;
+  padding-bottom: 2rem;
 }
 
 /*.kreis {
@@ -333,6 +334,50 @@ footer a:hover {
   }
 }
 
+.bottom {
+  background-color: var(--placeholderGrey);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.infocontainer {
+  background-color: var(--placeholderGrey);
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.plus {
+  height: 20px;
+  width: 100%;
+}
+
+.column1,
+.column2 {
+  width: 50%;
+}
+
+.infocontainer h1 {
+  align-self: center;
+  height: 10px;
+  margin: 0;
+  padding: 2rem;
+}
+
+.bottom p {
+  padding: 0 2rem;
+  margin: 0;
+  display: inline;
+}
+.points-block p {
+  font-size: 2.5em;
+}
+
+.point-circle {
+  height: 70px;
+  width: 70px;
+}
+
 @media (min-width: 800px) {
   .flex {
     display: flex;
@@ -394,10 +439,7 @@ footer a:hover {
     height: 150px;
   }
 
-  .left-side {
-    flex-grow: 1;
-  }
-
+  .left-side,
   .right-side {
     flex-grow: 1;
   }
