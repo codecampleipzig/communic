@@ -1,18 +1,35 @@
+body {
+  display: none; /* Use Flexbox                    */
+  justify-content: center; /* Center Horizontally            */
+}
+
+h2 {
+  color: #fff;
+  align-self: center;
+}
+git 
+.flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.centered {
+  align-items: center;
+
+}
 .communic {
   background: url("../../assets/new-logo.svg");
   background-repeat: no-repeat;
-  display: flex;
-  margin: 2rem;
-  width: 100%;
+  margin-top: 2rem;
+  width: 80%;
   height: 70px;
+  margin-left: 25vw;
 }
 
 .tagline {
   color: var(--primaryColorDarker);
-}
-
-.flex {
-  display: none;
+  padding-bottom: 2rem;
+  background: var(--placeholderGrey);
 }
 
 .left-side {
@@ -20,22 +37,9 @@
   padding-bottom: 2rem;
 }
 
-/*.kreis {
-  border-radius: 50%;
-  width: 8em;
-  height: 8em;
-  text-align: center;
-  margin: 1em;
-} */
-
 .plus {
   height: 20px;
   width: 100%;
-}
-
-body {
-  display: flex; /* Use Flexbox                    */
-  justify-content: center; /* Center Horizontally            */
 }
 
 .kreis {
@@ -45,6 +49,7 @@ body {
   border-radius: 50%;
   animation-direction: alternate;
   animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  margin: 0.5em;
 }
 
 @keyframes bounce {
@@ -171,17 +176,6 @@ body {
   100% {
     transform: translateY(8px);
   }
-}
-.flex {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-h2 {
-  color: #fff;
-  align-self: center;
 }
 
 .join {
@@ -349,11 +343,19 @@ footer a:hover {
   justify-content: center;
 }
 
+.infocontainer {
+  padding: 5em;
+  background-color: var(--placeholderGrey);
+}
 .infocontainer h2 {
   background-color: var(--placeholderGrey);
   text-align: center;
-  padding-bottom: 2rem;
-  color: var(--primaryColorDarker);
+  padding-bottom: 1em;
+  color: var(--primaryColorDark);
+}
+
+.infocontainer > p {
+  text-align: left;
 }
 
 .plus {
@@ -366,18 +368,11 @@ footer a:hover {
   width: 50%;
 }
 
-.infocontainer h2 {
-  align-self: center;
-  height: 10px;
-  margin: 0;
-  padding: 2rem;
-  color: var(--primaryColorDarker);
-}
-
 .bottom p {
   padding: 0 2rem;
   margin: 0;
   display: inline;
+  text-align: justify;
 }
 .points-block p {
   font-size: 2.5em;
@@ -399,6 +394,7 @@ footer a:hover {
     background-position-x: center;
     background-position-y: center;
     margin: 1rem;
+    width: 100%;
   }
 
   .left-side {
@@ -476,13 +472,6 @@ footer a:hover {
     justify-content: center;
   }
 
-  .infocontainer h2 {
-    background-color: var(--placeholderGrey);
-    text-align: center;
-    padding-bottom: 2rem;
-    color: var(--primaryColorDarker);
-  }
-
   .plus {
     height: 20px;
     width: 100%;
@@ -491,14 +480,6 @@ footer a:hover {
   .column1,
   .column2 {
     width: 50%;
-  }
-
-  .infocontainer h2 {
-    align-self: center;
-    height: 10px;
-    margin: 0;
-    padding: 2rem;
-    color: var(--primaryColorDarker);
   }
 
   .bottom p {
