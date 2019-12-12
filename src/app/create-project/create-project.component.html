@@ -1,7 +1,11 @@
 <app-toolbar></app-toolbar>
 
-<form class="card container" [ngClass]="{ 'show-errors': showErrors }" [formGroup]="projectForm"
-  (ngSubmit)="onSubmit()">
+<form
+  class="card container"
+  [ngClass]="{ 'show-errors': showErrors }"
+  [formGroup]="projectForm"
+  (ngSubmit)="onSubmit()"
+>
   <div class="top-right-icons">
     <!-- Delete Button redirects to homepage-->
     <button (click)="navigateHome()"><i class="fas fa-trash-alt"></i></button>
@@ -19,12 +23,30 @@
 
   <!-- Upload Image -->
   <div class="project-image">
-    <input *ngIf="!imgURL" type="file" id="myFileInput" accept="image/*" (change)="onSelectFile($event)" />
-    <button *ngIf="!imgURL" class="button" onclick="document.getElementById('myFileInput').click()"
-      value="Select a File" (change)="preview([])">
+    <input type="file" id="myFileInput" accept="image/*" hidden (change)="onSelectFile($event)" />
+    <button
+      type="button"
+      class="button outlined"
+      *ngIf="!this.fileToUpload && this.uploadState != 'pending'"
+      onclick="document.getElementById('myFileInput').click()"
+    >
+      Choose Image
+    </button>
+
+    <button
+      type="button"
+      class="button outlined"
+      *ngIf="this.fileToUpload && this.uploadState != 'pending'"
+      (click)="this.uploadFile()"
+    >
       Upload Image
     </button>
-    <img [src]="imgURL" height="200" *ngIf="imgURL" />
+
+    <button type="button" class="button outlined" *ngIf="this.uploadState == 'pending'">
+      Uploading...
+    </button>
+
+    <img [src]="image" *ngIf="image" />
     <span style="color:red;" *ngIf="message">{{ message }}</span>
   </div>
 
@@ -32,8 +54,13 @@
     <h3>Now, explain what it's all about:</h3>
     <textarea
       placeholder="This is the best project of the world because it makes sure absolutely everybody gets free fries for dinner once a week."
-      rows="4" class="project-description" name="description" formControlName="description" minlength="40"
-      required></textarea>
+      rows="4"
+      class="project-description"
+      name="description"
+      formControlName="description"
+      minlength="40"
+      required
+    ></textarea>
     <span class="form-rule" *ngIf="showErrors">
       Please enter a warmhearted description.
     </span>
@@ -43,7 +70,13 @@
     <h3>Have you set any goals for it?</h3>
     <textarea
       placeholder="This is project is important for humankind because it is scientifically proven fries make people 2x happier than broccoli and spinach put together. In the long run, this project aims to achieve world peace by multiplying individual happiness through increased fries consumption."
-      rows="8" class="project-description" name="goal" formControlName="goal" minlength="60" required></textarea>
+      rows="8"
+      class="project-description"
+      name="goal"
+      formControlName="goal"
+      minlength="60"
+      required
+    ></textarea>
     <span class="form-rule" *ngIf="showErrors">
       Please enter an inspiring goal.
     </span>
