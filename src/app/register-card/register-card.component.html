@@ -1,13 +1,13 @@
 <form class="register-card card text-center background" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <h2 *ngIf="authType == 'register'">Join your community</h2>
-  <h2 *ngIf="authType == 'login'">Meet your community</h2>
+  <div *ngIf="authType == 'register'"><img src="../../assets/joincomm.svg" /></div>
+  <div *ngIf="authType == 'login'"><img src="../../assets/joincommunity.svg" /></div>
 
   <div class="avatar" *ngIf="authType == 'register'">
     <div *ngIf="url" class="user-image">
       <img [src]="url" />
     </div>
     <div *ngIf="!url" class="user-image">
-      <i class="fas fa-camera"></i>
+      <img src="../../assets/avatar.png" />
       <input type="file" id="myFileInput" accept="image/*" (change)="onSelectFile($event)" />
     </div>
   </div>

@@ -34,7 +34,7 @@ h2 {
   background-color: var(--primaryColorHighlight);
 }
 .meet {
-  background-color: var(--primaryColor);
+  background-color: var(--primaryColorDark);
 }
 .create {
   background-color: var(--secondaryColorOrangeLight);
@@ -42,11 +42,9 @@ h2 {
 .right-side {
   background-color: var(--primaryColor);
 }
-.first-half {
-  background-color: var(--primaryColor);
-}
-.second-half {
-  background-color: var(--primaryColorHighlight);
+
+.secondscreen h3 {
+  color: var(--fontDarkGrey);
 }
 
 .right-side {
@@ -112,7 +110,6 @@ footer a:hover {
   text-decoration: underline;
 }
 
-
 @media (min-width: 800px) {
   .flex {
     display: flex;
@@ -129,14 +126,14 @@ footer a:hover {
   .left-side {
     flex-grow: 1;
   }
-  
-    .right-side {
-      flex-grow: 1;
-    }
-  
+
+  .right-side {
+    flex-grow: 1;
+  }
+
   .kreis {
     width: 10rem;
-    height: 10rem
+    height: 10rem;
   }
 
   .join,
@@ -171,10 +168,10 @@ footer a:hover {
   .left-side {
     flex-grow: 1;
   }
-  
-    .right-side {
-      flex-grow: 1;
-    }
+
+  .right-side {
+    flex-grow: 1;
+  }
 
   .kreis {
     width: 15rem;

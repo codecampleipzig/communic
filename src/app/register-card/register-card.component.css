@@ -7,6 +7,10 @@
   margin-bottom: 0;
 }
 
+.card img {
+  height: 70px;
+}
+
 :host > * {
   margin: auto;
 }
@@ -41,12 +45,12 @@ input[type="file"] {
   justify-content: center;
 }
 
-.avatar {
-  padding: 1em 0;
-}
-
-.avatar .user-image {
-  font-size: 3rem;
+.user-image img {
+  font-size: 5rem;
+  padding-top: 1.2rem;
+  align-items: center;
+  width: 100%;
+  height: 100px;
 }
 
 .avatar + .button {
