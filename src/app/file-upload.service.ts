@@ -1,5 +1,6 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Inject } from "@angular/core";
 import { axiosInstance } from "./axios-instance";
+import Axios from "axios";
 
 @Injectable({
   providedIn: "root",
@@ -8,17 +9,12 @@ export class FileUploadService {
   constructor() {}
 
   uploadFile(file: File, filename: string): Promise<any> {
-    return this.getPutUrl(file, filename)
-      .then(response => {
-        return this.putFile(response.data.putURL, file).then(response2 => {
-          // Return final Url
-          return response2;
-        });
-      })
-      .catch(response => {
-        console.log("getPutUrl error");
-        console.log(response);
+    return this.getPutUrl(file, filename).then(response => {
+      return this.putFile(response.data.putURL, file).then(res => {
+        // Return final Url
+        return res;
       });
+    });
   }
 
   /**
@@ -47,8 +43,13 @@ export class FileUploadService {
         "Access-Control-Allow-Origin": "*",
       },
     };
-    return axiosInstance.put(putUrl, file, options).then(response => {
-      return response;
-    });
+    return Axios.put(putUrl, file, options)
+      .then(res => {
+        return res;
+      })
+      .catch(error => {
+        console.log("waa");
+        console.log(error);
+      });
   }
 }

@@ -67,12 +67,12 @@
   </label>
 
   <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'register'" class="button">Join now!</button>
-  <button type="submit" [disabled]="!(profileForm.get('emailField').valid && profileForm.get('passwordField').valid)"
+  <button type="submit" [disabled]="!(profileForm.get('email').valid && profileForm.get('passwordField').valid)"
     *ngIf="authType == 'login'" class="button">Login</button>
-  <button type="submit" [disabled]="!profileForm.get('emailField').valid" *ngIf="authType == 'reset-password'"
+  <button type="submit" [disabled]="!profileForm.get('email').valid" *ngIf="authType == 'reset-password'"
     class="button">Reset
     password</button>
-  <button type="submit" [disabled]="!profileForm.get('passwordField').valid" *ngIf="authType == 'change-password'"
+  <button type="submit" [disabled]="!profileForm.get('password').valid" *ngIf="authType == 'change-password'"
     class="button">Set new
     password</button>
 

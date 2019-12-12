@@ -36,7 +36,6 @@ export class RegisterCardComponent implements OnInit {
     @Inject(FileUploadService) private uploader: FileUploadService,
   ) {
     this.profileForm = new FormGroup({
-      image: new FormControl("<svg>"),
       userName: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl(
@@ -61,10 +60,6 @@ export class RegisterCardComponent implements OnInit {
     return this.profileForm.get("password");
   }
 
-  get imageField() {
-    return this.profileForm.get("image");
-  }
-
   ngOnInit() {
     this.route.url.subscribe(data => {
       // Get the last piece of the URL (it's either 'login' or 'register')
@@ -74,12 +69,7 @@ export class RegisterCardComponent implements OnInit {
 
   onSubmit() {
     if (this.authType == "register") {
-      this.store.register(
-        this.userNameField.value,
-        this.emailField.value,
-        this.passwordField.value,
-        this.imageField.value,
-      );
+      this.store.register(this.userNameField.value, this.emailField.value, this.passwordField.value, this.image);
     } else if (this.authType == "login") {
       this.store.login(this.emailField.value, this.passwordField.value);
     } else if (this.authType == "reset-password") {
@@ -114,17 +104,18 @@ export class RegisterCardComponent implements OnInit {
       const filename = "userpicture/" + uuid() + "." + this.fileToUpload.name.split(".").pop();
 
       this.uploader.uploadFile(this.fileToUpload, filename).then(
-        data => {
-          this.image = data.config.url.split("?")[0];
+        response => {
+          this.image = "https://testpicturestorage.s3.eu-central-1.amazonaws.com/" + filename;
+
           this.fileToUpload = null;
 
           this.store.newMessage("confirm", "Upload successful", "You look great!");
           this.uploadState = false;
 
           event.target.innerHTML = "Upload Image";
-          this.profileForm.get("image").setValue(this.image);
         },
         error => {
+          this.store.newMessage("error", "File upload failed", "Something should be different", 3000);
           console.log(error);
         },
       );
