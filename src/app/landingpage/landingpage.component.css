@@ -7,7 +7,7 @@ h2 {
   color: #fff;
   align-self: center;
 }
-git 
+
 .flex {
   display: flex;
   justify-content: center;
@@ -365,14 +365,13 @@ footer a:hover {
 
 .column1,
 .column2 {
-  width: 50%;
+  width: 100%;
 }
 
 .bottom p {
   padding: 0 2rem;
   margin: 0;
   display: inline;
-  text-align: justify;
 }
 .points-block p {
   font-size: 2.5em;
