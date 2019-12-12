@@ -5,7 +5,7 @@ import { axiosInstance } from "./axios-instance";
   providedIn: "root",
 })
 export class FileUploadService {
-  constructor() { }
+  constructor() {}
 
   uploadFile(file: File, filename: string): Promise<any> {
     return this.getPutUrl(file, filename)

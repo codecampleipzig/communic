@@ -12,6 +12,14 @@ This open source project has been initiated and started by the first class of th
 The backend for this project can be found under: https://github.com/codecampleipzig/communic-backend
 To run the app or the tests the backend has to be running on port localhost:4200.
 
+## Installation
+
+To get started, run "npm i" in your console. This will get you all the packages we are using for the project.
+To start the project and see it in the browser, run "npm run dev" to open the project on your localhost.
+
+- npm i (installs packages)
+- npm run dev (runs project on localhost)
+
 ## Development
 
 If you want to contribute by adding a feature, please contact the initiators and checkout the branches, to see on what features we are currently working on. Because the project is still a MVP, we try to only build high-value-low-effort features, to get the project running ASAP. The initiators can give you an overview of the development and what features need to be build and implemented next.
@@ -37,26 +45,16 @@ Please also checkout the testing guidelines, which you will find in the "github 
 
 Here you find the test commands:
 
-- npm test
-- npm test:watch
-- npm test:ci
-- npm test:coverage
+- npm test (run jest and all the tests)
+- npm test:watch (run tests related to changed files based on hg/git (uncommitted files) by default)
+- npm test:ci (runs all tests serially in the current process, rather than creating a worker pool of child processes that run tests)
+- npm test:coverage (indicates that test coverage information should be collected and reported in the output)
 
 ## tslint
-
-tslint
 
 - npm lint : runs lint and shows all minor errors
 - npm autofix : runs lint and fixes all the minor error
 
 ## Documentation
 
-We are using Compodoc, to assure that components are documented and understandable for everyone. It executes on every commit and does not let you commit, if the code is not documented well enough. The treshhold for documentation for a file is 20%. For code documentation we use "Typedoc", which uses the following structure:
-
-Inside your code:
-/\*\*
-
-- Here comes your documenatation
-  \*/
-
-If you need to write text documentation, create a new .md file in "docs".
+We are using Compodoc, to assure that components are documented and understandable for everyone. It executes on every commit and does not let you commit, if the code is not documented well enough. The treshhold for documentation for a file is 20%.

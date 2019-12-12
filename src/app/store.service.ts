@@ -11,12 +11,14 @@ import { Project } from "./datatypes/Project";
 import { User, UserState } from "./datatypes/User";
 
 import * as Mock from "./mockdata";
-import { BehaviorSubject, Observable } from "rxjs";
-import { Router } from "@angular/router";
+import { BehaviorSubject, Observable, pipe } from "rxjs";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { AuthService } from "./auth.service";
 import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
 import { axiosInstance } from "./axios-instance";
+import { environment } from "src/environments/environment";
+import { filter, map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -73,17 +75,36 @@ export class StoreService {
     this.messages = new BehaviorSubject<any[]>([]);
     this.messages$ = this.messages.asObservable();
 
-    /* Mock Current User. Replace with login Action */
-    this.user.next({
-      status: { loggedIn: false },
-      userInformation: {
-        userId: 2,
-        userName: "TestUser",
-        userEmail: "email@gmail.com",
-        userImageUrl: "",
-      },
-      userToken: "",
+    if (!environment.production) {
+      const testToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIwLCJ1c2VyTmFtZSI6IlJlZzEiLCJ1c2VyRW1haWwiOiJyZWcxQHJlZy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2bjhOOUs4cHBxT3JqZFhsalNJcU8uVThoNmxuTDY5Ry80QzFXZi41U3RIMVNTd2xHTkU0VyIsInVzZXJJbWFnZVVybCI6bnVsbCwiam9pbkRhdGUiOiIyMDE5LTEyLTA0VDE0OjUxOjIwLjEwM1oiLCJsZWF2ZURhdGUiOm51bGwsImlhdCI6MTU3NTQ3NDkxOX0.nrHFu4PhmpNTShq909qNj8geVBACB5XWDhT2OSgkxlY";
+      this.user.next({
+        status: { loggedIn: true },
+        userInformation: {
+          userName: "Rick",
+          userId: 1,
+          userImageUrl: "",
+          userEmail: "rick@sanchez.com",
+        },
+        userToken: testToken,
+      });
+      axiosInstance.defaults.headers.common.Authorization = `Bearer ${testToken}`;
+    }
+
+    // Auto reset loading on every route change
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.finishLoading();
+      }
     });
+  }
+
+  startLoading() {
+    this.status.next({ ...this.status.getValue(), loading: true });
+  }
+
+  finishLoading() {
+    this.status.next({ ...this.status.getValue(), loading: false });
   }
 
   /**
@@ -95,6 +116,7 @@ export class StoreService {
    * @param userImageUrl Image uploaded on the Register form
    */
   register(userName: string, userEmail: string, password: string, userImageUrl: string = "") {
+    this.startLoading();
     // Talk to Auth Service. It returns a promise of a User object
     const promise = this.authService.register(userName, userEmail, password, userImageUrl);
 
@@ -123,6 +145,9 @@ export class StoreService {
         });
         // TODO: Display message after merge from develop
         this.newMessage("error", "Registration failed!", error.response.data.message, 5000);
+      })
+      .finally(() => {
+        this.finishLoading();
       });
   }
 
@@ -132,6 +157,7 @@ export class StoreService {
    * @param password Password provided on the Login form
    */
   login(userEmail: string, password: string) {
+    this.startLoading();
     // Talk to Auth Service. It returns a promise of a User object
     const promise = this.authService.login(userEmail, password);
 
@@ -160,6 +186,9 @@ export class StoreService {
         });
 
         this.newMessage("error", "Login failed!", error.response.data.message, 5000);
+      })
+      .finally(() => {
+        this.finishLoading();
       });
   }
 
@@ -206,11 +235,10 @@ export class StoreService {
   retrieveYourProjects() {
     let userId: number;
     if (!this.user.getValue().userInformation) {
-      userId = 1; // TODO: Modify/remove this once we have auth in place
+      throw new Error("No user logged in");
     } else {
       userId = this.user.getValue().userInformation.userId;
     }
-    console.log(`Your Projects - userId: ${userId}`);
     const promise = this.projectsService.retrieveYourProjects(userId);
 
     promise
@@ -225,11 +253,10 @@ export class StoreService {
   retrieveExploreProjects() {
     let userId: number;
     if (!this.user.getValue().userInformation) {
-      userId = 1; // TODO: Modify/remove this once we have auth in place
+      throw new Error("No user logged in");
     } else {
       userId = this.user.getValue().userInformation.userId;
     }
-    console.log(`Explore Projects - userId: ${userId}`);
     const promise = this.projectsService.retrieveExploreProjects(userId);
 
     promise

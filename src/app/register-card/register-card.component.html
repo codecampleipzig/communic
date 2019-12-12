@@ -5,6 +5,8 @@
   <h3 *ngIf="authType == 'reset-password'">Reset your password</h3>
   <h3 *ngIf="authType == 'change-password'">Create a new password</h3>
 
+  <app-loading-icon></app-loading-icon>
+
   <div class="avatar" *ngIf="authType == 'register'">
 
     <input type="file" id="myFileInput" accept="image/*" hidden (change)="onSelectFile($event)" />

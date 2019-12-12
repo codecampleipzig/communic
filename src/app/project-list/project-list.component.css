@@ -1,27 +1,27 @@
 .list-wrapper {
-    display: grid;
-    grid-gap: 1em;
-    margin-bottom: 1em;
+  display: grid;
+  grid-gap: 1em;
+  margin-bottom: 1em;
 }
 
 h2 {
-    color: var(--secondaryColorOrange);
-    font-size: 3em;
-    font-weight: 300;
-    padding: 1em 1em 1em 0;
-    line-height: 1.2em;
+  color: var(--secondaryColorOrange);
+  font-size: 3em;
+  font-weight: 300;
+  padding: 0.6em 0em 0.3em 1em;
+  line-height: 1.2em;
+  word-wrap: normal;
 }
 
+@media (min-width: 450px) {
+  .list-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-@media (min-width:450px) {
-    .list-wrapper {
-        grid-template-columns: repeat(2, 1fr);
-    }
- }
-
- @media (min-width:900px) {
-    .list-wrapper {
-        grid-gap: 2em;
-        grid-template-columns: repeat(3, 1fr);
-    }
+@media (min-width: 900px) {
+  .list-wrapper {
+    grid-gap: 2em;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

@@ -1,13 +1,13 @@
 :host {
   display: flex;
-  /* position: sticky; */
+  position: fixed;
   left: 0;
   right: 0;
   top: 1em;
   max-width: 1200px;
   width: calc(100vw - 1em);
   margin: auto;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   transition: top 0.3s;
   z-index: 999;
   align-items: center;
@@ -17,7 +17,7 @@
 a.home {
   font-size: 2rem;
   color: var(--fontDarkGrey);
-  margin-right: .6em;
+  margin-right: 0.6em;
 }
 
 a.home:hover {
@@ -31,16 +31,15 @@ a.home:hover {
   font-size: 1em;
   text-transform: uppercase;
   margin-right: 1em;
+  word-break: normal;
 }
-
 
 app-user-action {
   flex-grow: 1;
 }
 
-
 @media (min-width: 500px) {
   :host {
-    padding: .75em 1.5em;
+    padding: 0.75em 1.5em;
   }
 }
