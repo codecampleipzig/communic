@@ -20,6 +20,7 @@ import { axiosInstance } from "./axios-instance";
 import { environment } from "src/environments/environment";
 import { filter, map } from "rxjs/operators";
 import { classMethod } from "@babel/types";
+import jwt from "jwt-decode";
 
 @Injectable({
   providedIn: "root",
@@ -92,6 +93,23 @@ export class StoreService {
     //   axiosInstance.defaults.headers.common.Authorization = `Bearer ${testToken}`;
     // }
 
+    const storedToken = localStorage.getItem('token');
+    try {
+      if (storedToken) {
+        const decodedUser = jwt(storedToken);
+        console.log(decodedUser);
+        this.user.next({
+          status: { loggedIn: true },
+          userInformation: decodedUser,
+          userToken: storedToken,
+        });
+        axiosInstance.defaults.headers.common.Authorization = `Bearer ${storedToken}`;
+      }
+
+    }
+    catch (error) {
+      console.log(error);
+    }
     // Auto reset loading on every route change
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
