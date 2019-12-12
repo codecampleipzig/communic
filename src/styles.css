@@ -148,6 +148,11 @@ button app-icon:not(:last-child) {
   margin-right: 0.5em;
 }
 
+/* Fix app-icon type="search" outline */
+[type="search"] {
+  -webkit-appearance: none;
+}
+
 /* Hide the caption and reset margin right for the icon. Caption needs to be in a span-Element */
 @media (max-width: 480px) {
   .caption-mobile-hidden i {
