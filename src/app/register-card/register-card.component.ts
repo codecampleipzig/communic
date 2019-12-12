@@ -2,6 +2,8 @@ import { FormControl, ReactiveFormsModule, Validators, FormGroup } from "@angula
 import { Component, OnInit, NgModule, Inject, HostBinding } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { StoreService } from "../store.service";
+import { FileUploadService } from "../file-upload.service";
+import { v4 as uuid } from "uuid";
 
 @NgModule({
   imports: [ReactiveFormsModule],
@@ -14,8 +16,10 @@ import { StoreService } from "../store.service";
 export class RegisterCardComponent implements OnInit {
   profileForm: FormGroup;
   title: string;
-  url: any = null;
+  image: any = null;
   authType: any;
+  uploadState: string | boolean = false;
+  fileToUpload: File = null;
 
   /**
    * Add .container Class to the Host
@@ -29,8 +33,10 @@ export class RegisterCardComponent implements OnInit {
     @Inject(ActivatedRoute) private route: ActivatedRoute,
     @Inject(Router) private router: Router,
     @Inject(StoreService) private store: StoreService,
+    @Inject(FileUploadService) private uploader: FileUploadService,
   ) {
     this.profileForm = new FormGroup({
+      image: new FormControl("<svg>"),
       userName: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl(
@@ -43,16 +49,20 @@ export class RegisterCardComponent implements OnInit {
     });
   }
 
-  get userName() {
+  get userNameField() {
     return this.profileForm.get("userName");
   }
 
-  get email() {
+  get emailField() {
     return this.profileForm.get("email");
   }
 
-  get password() {
+  get passwordField() {
     return this.profileForm.get("password");
+  }
+
+  get imageField() {
+    return this.profileForm.get("image");
   }
 
   ngOnInit() {
@@ -64,27 +74,64 @@ export class RegisterCardComponent implements OnInit {
 
   onSubmit() {
     if (this.authType == "register") {
-      this.store.register(this.userName.value, this.email.value, this.password.value);
+      this.store.register(
+        this.userNameField.value,
+        this.emailField.value,
+        this.passwordField.value,
+        this.imageField.value,
+      );
     } else if (this.authType == "login") {
-      this.store.login(this.email.value, this.password.value);
+      this.store.login(this.emailField.value, this.passwordField.value);
     } else if (this.authType == "reset-password") {
-      this.store.resetPassword(this.email.value);
+      this.store.resetPassword(this.emailField.value);
     } else if (this.authType == "change-password") {
-      this.store.changePassword(this.password.value);
+      this.store.changePassword(this.passwordField.value);
     }
   }
 
   onSelectFile(event) {
     const eventTarget: any = event.target;
+    this.fileToUpload = null;
     if (eventTarget.files && eventTarget.files[0]) {
+      this.fileToUpload = eventTarget.files[0];
       const reader = new FileReader();
 
       reader.onload = e => {
         // called once readAsDataURL is completed
-        this.url = (e.target as any).result;
+        this.image = (e.target as any).result;
       };
 
       reader.readAsDataURL(eventTarget.files[0]); // read file as data url
     }
+  }
+
+  uploadFile(event) {
+    if (!this.fileToUpload) {
+      this.store.newMessage("error", "No file to upload", "You need to choose a file to upload");
+    } else if (this.uploadState == false && this.fileToUpload) {
+      this.uploadState = "pending";
+      event.target.innerHTML = "Uploading...";
+      const filename = "userpicture/" + uuid() + "." + this.fileToUpload.name.split(".").pop();
+
+      this.uploader.uploadFile(this.fileToUpload, filename).then(
+        data => {
+          this.image = data.config.url.split("?")[0];
+          this.fileToUpload = null;
+
+          this.store.newMessage("confirm", "Upload successful", "You look great!");
+          this.uploadState = false;
+
+          event.target.innerHTML = "Upload Image";
+          this.profileForm.get("image").setValue(this.image);
+        },
+        error => {
+          console.log(error);
+        },
+      );
+    }
+  }
+
+  isString(val) {
+    return typeof val === "string";
   }
 }
