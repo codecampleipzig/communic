@@ -2,13 +2,13 @@
   background: url("../../assets/new-logo.svg");
   background-repeat: no-repeat;
   display: flex;
-  margin: 3.5rem;
-  width: 80vh;
+  margin: 2rem;
+  width: 100%;
   height: 70px;
 }
 
 .left-side {
-  padding-bottom: 2rem;
+  justify-content: center;
 }
 
 /*.kreis {
@@ -18,6 +18,11 @@
   text-align: center;
   margin: 1em;
 } */
+
+.plus {
+  height: 20px;
+  width: 100%;
+}
 
 body {
   display: flex; /* Use Flexbox                    */
