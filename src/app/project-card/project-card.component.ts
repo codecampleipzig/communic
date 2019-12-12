@@ -2,6 +2,7 @@ import { Component, OnInit, Input, HostListener } from "@angular/core";
 import { RouterModule, Routes, Router } from "@angular/router";
 import { projects } from "../mockdata";
 
+
 @Component({
   selector: "app-project-card",
   templateUrl: "./project-card.component.html",
