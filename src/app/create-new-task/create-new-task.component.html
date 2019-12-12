@@ -2,32 +2,38 @@
 Close item x displayed in the create task form.
 //-->
 <div class="top-right-icons">
-    <button *ngIf="formVisible" (click)="closeForm()"><i class="fas fa-times"></i></button>
+  <button *ngIf="formVisible" (click)="closeForm()"><i class="fas fa-times"></i></button>
 </div>
 <!--
 Opening up the form and just show a plus, whole area clickable to create a new task.
 //-->
 <div class="create-new-task" *ngIf="!formVisible" (click)="openForm()">
-    <i class="fas fa-plus"></i>
+  <i class="fas fa-plus"></i>
 </div>
 <!--
 Input Fields/Textarea reflecting the individual tasks style and made editable.
 //-->
-<form *ngIf="formVisible" [ngClass]="{'show-errors': showErrors}" [formGroup]="sectionForm" (ngSubmit)="onSubmit()">
-    <div class="task-header">
-    </div>
-    <label>
-        <input type="text" placeholder="Title" name="title" formControlName="title" required>
-        <span class="form-rule show-rule">
-            Give your task a name
-        </span>
-    </label>
-    <label>
-        <textarea placeholder="Description" name="description" formControlName="description" required
-            minlength="40"></textarea>
-        <span class="form-rule show-rule">
-            Please describe your task (+40 characters).
-        </span>
-    </label>
-    <button type="submit" class="button">Create task</button>
+<form *ngIf="formVisible" [ngClass]="{ 'show-errors': showErrors }" [formGroup]="sectionForm" (ngSubmit)="onSubmit()">
+  <h2>Plan A New Task</h2>
+
+  <div class="task-header"></div>
+  <label>
+    <input type="text" placeholder="Title" name="title" formControlName="title" required />
+    <span class="form-rule show-rule">
+      Give your task a name
+    </span>
+  </label>
+  <label>
+    <textarea
+      placeholder="Description"
+      name="description"
+      formControlName="description"
+      required
+      minlength="40"
+    ></textarea>
+    <span class="form-rule show-rule">
+      Please describe your task (+40 characters).
+    </span>
+  </label>
+  <button type="submit" class="button">Create task</button>
 </form>

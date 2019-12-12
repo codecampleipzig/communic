@@ -54,3 +54,7 @@ input.task-title:focus {
   outline: 0 none;
   box-shadow: var(--smallShadow);
 }
+
+form {
+  width: 100%;
+}
