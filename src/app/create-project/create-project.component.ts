@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { StoreService } from "../store.service";
 import { UserState } from "../datatypes/User";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FileUploadService } from "../file-upload.service";
+import { v4 as uuid } from "uuid";
 
 @Component({
   selector: "app-create-project",
@@ -14,12 +16,17 @@ export class CreateProjectComponent implements OnInit {
   public projectForm: FormGroup;
   public showErrors = false;
 
-  // used to set up the image Upload
-  public imagePath: string;
-  public imgURL: any;
   public message: string;
 
-  constructor(@Inject(Router) private router: Router, @Inject(StoreService) private store: StoreService) {
+  image: any = null;
+  uploadState: string | boolean = false;
+  fileToUpload: File = null;
+
+  constructor(
+    @Inject(Router) private router: Router,
+    @Inject(StoreService) private store: StoreService,
+    @Inject(FileUploadService) private uploader: FileUploadService,
+  ) {
     store.user$.subscribe(user => (this.userState = user));
   }
 
@@ -51,7 +58,7 @@ export class CreateProjectComponent implements OnInit {
 
       this.store.createNewProject(
         this.title.value,
-        "somestring",
+        this.image,
         this.description.value,
         this.goal.value,
         this.userState.userInformation.userId,
@@ -74,37 +81,48 @@ export class CreateProjectComponent implements OnInit {
    */
   onSelectFile(event) {
     const eventTarget: any = event.target;
+    this.fileToUpload = null;
     if (eventTarget.files && eventTarget.files[0]) {
+      this.fileToUpload = eventTarget.files[0];
       const reader = new FileReader();
 
       reader.onload = e => {
         // called once readAsDataURL is completed
-        this.imgURL = (e.target as any).result;
+        this.image = (e.target as any).result;
       };
 
       reader.readAsDataURL(eventTarget.files[0]); // read file as data url
     }
   }
 
-  /**
-   * Preview uploaded files
-   */
-  preview(files) {
-    if (files.length === 0) {
-      return;
-    }
+  uploadFile(event) {
+    if (!this.fileToUpload) {
+      this.store.newMessage("error", "No file to upload", "You need to choose a file to upload");
+    } else if (this.uploadState == false && this.fileToUpload) {
+      this.uploadState = "pending";
+      event.target.innerHTML = "Uploading...";
+      const filename = "projectpicture/" + uuid() + "." + this.fileToUpload.name.split(".").pop();
 
-    const mimeType = files[0].type;
-    if (mimeType.match(/image\/*/) == null) {
-      this.message = "Only images are supported.";
-      return this.message;
-    }
+      this.uploader.uploadFile(this.fileToUpload, filename).then(
+        response => {
+          this.image = "https://testpicturestorage.s3.eu-central-1.amazonaws.com/" + filename;
 
-    const reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]);
-    reader.onload = event => {
-      this.imgURL = reader.result;
-    };
+          this.fileToUpload = null;
+
+          this.store.newMessage("confirm", "Upload successful", "This looks great!");
+          this.uploadState = false;
+
+          event.target.innerHTML = "Upload Image";
+        },
+        error => {
+          this.store.newMessage("error", "File upload failed", "Something should be different", 3000);
+          console.log(error);
+        },
+      );
+    }
+  }
+
+  isString(val) {
+    return typeof val === "string";
   }
 }
