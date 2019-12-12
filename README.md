@@ -57,17 +57,4 @@ Here you find the test commands:
 
 ## Documentation
 
-We are using Compodoc, to assure that components are documented and understandable for everyone. It executes on every commit and does not let you commit, if the code is not documented well enough. The treshhold for documentation for a file is 20%. For code documentation we use "Typedoc", which uses the following structure:
-
-Inside your code:
-/\*\*
-
-<<<<<<< HEAD
-
-- Here comes your documenatation
-  \*/
-  =======
-  If you need to write text documentation, create a new ".md" file in "docs".
-  > > > > > > > c5aa1f468aed211c74814fcf0d9b90d06910336f
-
-If you need to write text documentation, create a new .md file in "docs".
+We are using Compodoc, to assure that components are documented and understandable for everyone. It executes on every commit and does not let you commit, if the code is not documented well enough. The treshhold for documentation for a file is 20%.
