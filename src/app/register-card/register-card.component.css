@@ -45,10 +45,15 @@ input[type="file"] {
   justify-content: center;
 }
 
-.user-image img {
+.avatar .user-image {
+  font-size: 4rem;
 }
 
-.avatar + .button {
+.avatar {
+  padding: 1em 0;
+}
+
+.button {
   margin-bottom: 1.5em;
 }
 
