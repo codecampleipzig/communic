@@ -78,6 +78,45 @@ button {
   padding-right: 3em;
 }
 
+footer {
+  background: var(--primaryColorDarker);
+  text-align: center;
+  color: #fff;
+}
+
+footer div {
+  background: var(--primaryColor);
+  border-top-left-radius: 1.5em;
+  border-top-right-radius: 1.5em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--primaryColorDark);
+  text-decoration: underline;
+}
+
+.dark-background-block {
+  background: var( --primaryColorDarker);
+  text-align: center;
+  padding: 1.5em;
+}
+
+.highlight-green {
+  color: var(--secondaryColorGreen);
+
+}
+
+.highlight-yellow {
+  color: var(--secondaryColorOrangeLight)
+}
+
 @media (min-width: 800px) {
   .flex {
     display: flex;
