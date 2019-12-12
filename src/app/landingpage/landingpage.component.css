@@ -28,7 +28,7 @@ h2 {
   background-color: var(--primaryColorHighlight);
 }
 .meet {
-  background-color: var(--primaryColor);
+  background-color: var(--primaryColorDark);
 }
 .create {
   background-color: var(--secondaryColorOrangeLight);
@@ -80,18 +80,17 @@ footer a:hover {
 }
 
 .dark-background-block {
-  background: var( --primaryColorDarker);
+  background: var(--primaryColorDarker);
   text-align: center;
   padding: 1.5em;
 }
 
 .highlight-green {
   color: var(--secondaryColorGreen);
-
 }
 
 .highlight-yellow {
-  color: var(--secondaryColorOrangeLight)
+  color: var(--secondaryColorOrangeLight);
 }
 
 @media (min-width: 800px) {
