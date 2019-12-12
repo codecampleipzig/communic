@@ -22,6 +22,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
 
 h2 {
@@ -48,6 +49,10 @@ h2 {
   background-color: var(--primaryColorHighlight);
 }
 
+.right-side {
+  width: 100%;
+}
+
 button {
   font-weight: bold;
   margin: 2rem;
@@ -60,20 +65,19 @@ button {
   display: none;
 }
 
-    .dark-background-block {
-      background: var( --primaryColorDarker);
-      text-align: center;
-      padding: 2em;
-    }
+.text-box{
+  background: var( --primaryColorDarker);
+  text-align: center;
+  padding: 5em;
+  }
     
-    .highlight-green {
-      color: var(--secondaryColorGreen);
+.highlight-green {
+  color: var(--secondaryColorGreen);  
+  }
     
-    }
-    
-    .highlight-yellow {
-      color: var(--secondaryColorOrangeLight)
-    }
+.highlight-yellow {
+    color: var(--secondaryColorOrangeLight)
+}
     
     .p-cookies i {
       padding: 2em;
