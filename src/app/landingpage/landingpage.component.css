@@ -16,12 +16,17 @@
   width: 8em;
   height: 8em;
   text-align: center;
-  margin: 0 auto;
+  margin: 1em;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 h2 {
   color: #fff;
-  padding-top: 2em;
+  align-self: center;
 }
 
 .join {
@@ -55,6 +60,30 @@ button {
   display: none;
 }
 
+    .dark-background-block {
+      background: var( --primaryColorDarker);
+      text-align: center;
+      padding: 2em;
+    }
+    
+    .highlight-green {
+      color: var(--secondaryColorGreen);
+    
+    }
+    
+    .highlight-yellow {
+      color: var(--secondaryColorOrangeLight)
+    }
+    
+    .p-cookies i {
+      padding: 2em;
+      margin-left: 1em;
+    }
+    
+    small {
+      color: #fff
+    }
+
 footer {
   background: var(--primaryColorDarker);
   text-align: center;
@@ -79,31 +108,31 @@ footer a:hover {
   text-decoration: underline;
 }
 
-.dark-background-block {
-  background: var( --primaryColorDarker);
-  text-align: center;
-  padding: 1.5em;
-}
-
-.highlight-green {
-  color: var(--secondaryColorGreen);
-
-}
-
-.highlight-yellow {
-  color: var(--secondaryColorOrangeLight)
-}
 
 @media (min-width: 800px) {
   .flex {
     display: flex;
     justify-content: center;
+    flex-direction: row;
   }
 
   .new-logo {
     background-position-x: center;
     background-position-y: center;
     margin: 1rem;
+  }
+
+  .left-side {
+    flex-grow: 1;
+  }
+  
+    .right-side {
+      flex-grow: 1;
+    }
+  
+  .kreis {
+    width: 10rem;
+    height: 10rem
   }
 
   .join,
@@ -113,6 +142,7 @@ footer a:hover {
   }
   h2 {
     margin: 0 auto;
+    align-self: center;
   }
 
   .nav {
@@ -122,6 +152,11 @@ footer a:hover {
 }
 
 @media (min-width: 1200px) {
+  .flex {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
   .new-logo {
     background-position-x: center;
     background-position-y: center;
@@ -132,6 +167,10 @@ footer a:hover {
   .left-side {
     flex-grow: 1;
   }
+  
+    .right-side {
+      flex-grow: 1;
+    }
 
   .kreis {
     width: 15rem;
@@ -141,11 +180,7 @@ footer a:hover {
   h2 {
     font-size: 50px;
     padding: 0;
-    margin-top: 1.5em;
-  }
-
-  .right-side {
-    flex-grow: 1;
+    align-self: center;
   }
 
   .nav {
