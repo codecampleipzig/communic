@@ -19,6 +19,7 @@ import { ProjectsService } from "./projects.service";
 import { axiosInstance } from "./axios-instance";
 import { environment } from "src/environments/environment";
 import { filter, map } from "rxjs/operators";
+import { classMethod } from '@babel/types';
 
 @Injectable({
   providedIn: "root",
@@ -144,7 +145,7 @@ export class StoreService {
           userToken: null,
         });
         // TODO: Display message after merge from develop
-        this.newMessage("error", "Registration failed!", error.response.data.message, 5000);
+        this.newMessage("error", "Registration failed!", error.response.data.message, 3000);
       })
       .finally(() => {
         this.finishLoading();
@@ -185,7 +186,7 @@ export class StoreService {
           userToken: null,
         });
 
-        this.newMessage("error", "Login failed!", error.response.data.message, 5000);
+        this.newMessage("error", "Login failed!", error.response.data.message, 3000);
       })
       .finally(() => {
         this.finishLoading();
@@ -245,11 +246,9 @@ export class StoreService {
       .then(projects => {
         this.yourProjects.next(projects);
       })
-    // .catch(error => {
-    //   this.yourProjects.next(error.response.data.message);
-
-    //   this.newMessage("error", "Loading your projects failed!", error.response.data.message, 5000);
-    // });
+      .catch(error => {
+        this.newMessage("error", "Loading your projects failed!", error.response ? error.response.data.message : "", 3000);
+      })
   }
   /**
    * Retrieve projects where current user is NOT member to fill the "Explore Projects" section on Home page
@@ -267,7 +266,9 @@ export class StoreService {
       .then(projects => {
         this.exploreProjects.next(projects);
       })
-      .catch();
+      .catch(error => {
+        this.newMessage("error", "Loading explore projects failed!", error.response ? error.response.data.message : "", 3000);
+      })
   }
 
   /**
@@ -291,10 +292,14 @@ export class StoreService {
   retrieveProject(projectId: number): void {
     const promise = this.projectService.getProject(projectId);
 
-    promise.then(project => {
-      // Put value into observable
-      this.project.next(project);
-    });
+    promise
+      .then(project => {
+        // Put value into observable
+        this.project.next(project);
+      })
+      .catch(error => {
+        this.newMessage("error", "Loading project failed!", error.response ? error.response.data.message : "", 3000);
+      })
   }
 
   /**
@@ -310,13 +315,17 @@ export class StoreService {
   updateTaskStatus(projectId: number, taskId: number, status: string) {
     const promise = this.projectService.updateTaskStatus(taskId, status);
 
-    promise.then(newProject => {
-      // Put value into observable
-      this.project.next(newProject);
-      if (status == "done") {
-        this.newMessage("confirm", "Great job!", "You did it! You are great!", 3000);
-      }
-    });
+    promise
+      .then(newProject => {
+        // Put value into observable
+        this.project.next(newProject);
+        if (status == "done") {
+          this.newMessage("confirm", "Great job!", "You did it! You are great!", 3000);
+        }
+      })
+      .catch(error => {
+        this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
+      })
   }
 
   /**
@@ -328,7 +337,11 @@ export class StoreService {
     promise.then(newProject => {
       // Put value into observable
       this.project.next(newProject);
-    });
+      this.newMessage("confirm", "Success!", "You joined the project successfully!", 3000);
+    })
+      .catch(error => {
+        this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
+      })
   }
 
   /**
@@ -340,7 +353,11 @@ export class StoreService {
     promise.then(newProject => {
       // Put value into observable
       this.project.next(newProject);
-    });
+      this.newMessage("confirm", "Success!", "You left the project successfully!", 3000);
+    })
+      .catch(error => {
+        this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
+      })
   }
 
   /**
@@ -352,7 +369,11 @@ export class StoreService {
     promise.then(newProject => {
       // Put value into observable
       this.project.next(newProject);
-    });
+      this.newMessage("confirm", "Success!", "You joined the task successfully!", 3000);
+    })
+      .catch(error => {
+        this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
+      })
   }
 
   /**
@@ -364,7 +385,11 @@ export class StoreService {
     promise.then(newProject => {
       // Put value into observable
       this.project.next(newProject);
-    });
+      this.newMessage("confirm", "Success!", "You left the task successfully!", 3000);
+    })
+      .catch(error => {
+        this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
+      })
   }
 
   /**
@@ -389,8 +414,7 @@ export class StoreService {
         this.newMessage("confirm", "Something great happened!", "Your new section was created successfully!", 3000);
       })
       .catch(error => {
-        console.error(error.response.data);
-        this.newMessage("error", "Something went wrong..", error.response.data.error);
+        this.newMessage("error", "Something went wrong..", error.response ? error.response.data.message : "", 3000);
       });
   }
   /**
@@ -401,7 +425,11 @@ export class StoreService {
 
     promise.then(response => {
       this.router.navigate([`project/${response.data.projectId}`]);
-    });
+      this.newMessage("confirm", "Project created successfully!", "Your new project was created successfully!", 3000);
+    })
+      .catch(error => {
+        this.newMessage("error", "Project creation failed!", error.response ? error.response.data.message : "", 3000);
+      })
   }
 
   /**
@@ -472,7 +500,7 @@ export class StoreService {
       })
       .catch(error => {
         console.error(error.response.data);
-        this.newMessage("error", "Something went wrong...", error.response.data.error);
+        this.newMessage("error", "Something went wrong...", error.response ? error.response.data.message : "", 3000);
       });
   }
 }
