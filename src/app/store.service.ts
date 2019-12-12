@@ -72,18 +72,6 @@ export class StoreService {
 
     this.messages = new BehaviorSubject<any[]>([]);
     this.messages$ = this.messages.asObservable();
-
-    /* Mock Current User. Replace with login Action */
-    this.user.next({
-      status: { loggedIn: false },
-      userInformation: {
-        userId: 2,
-        userName: "TestUser",
-        userEmail: "email@gmail.com",
-        userImageUrl: "",
-      },
-      userToken: "",
-    });
   }
 
   /**
