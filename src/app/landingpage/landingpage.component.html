@@ -1,128 +1,130 @@
-<div class="">
-  <div class="left-side">
-    <div class="communic"><img /></div>
-    <div class="flex">
-      <div class="kreis join flex">
-        <h2>join</h2>
-      </div>
-      <div class="kreis meet flex">
-        <h2>meet</h2>
-      </div>
-      <div class="kreis create flex">
-        <h2>create</h2>
+<div>
+  <div class="flex">
+    <div class="left-side">
+      <div class="communic"><img /></div>
+      <div class="flex">
+        <div class="kreis join flex">
+          <h2>join</h2>
+        </div>
+        <div class="kreis meet flex">
+          <h2>meet</h2>
+        </div>
+        <div class="kreis create flex">
+          <h2>create</h2>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="ball"></div>
-  <div class="right-side">
-    <div class="nav">
-      <button [routerLink]="['/login']">Log in</button>
-      <button [routerLink]="['/register']">Register</button>
+    <div class="ball"></div>
+    <div class="right-side">
+      <div class="nav">
+        <button [routerLink]="['/login']">Log in</button>
+        <button [routerLink]="['/register']">Register</button>
+      </div>
+      <app-register-card></app-register-card>
     </div>
-    <app-register-card></app-register-card>
   </div>
-</div>
-<div class="infocontainer">
-  <div class="tagline">
-    <h2>Meet people who do something.</h2>
-  </div>
-  <div class="bottom flex">
-    <div class="column1">
-      <div>
-        <h3>Find projects that inspire you, or create your own</h3>
-      </div>
-      <p>
-        After you sign up with just an email address and password, Communic lets you browse, search through and
-        contribute to a growing database of exciting projects initiated by our users.
-        <img (click)="show1 = !show1" *ngIf="show1" class="plus" src="../../assets/plus.svg" />
-      </p>
-      <br />
-      <p *ngIf="!show1">
-        By creating a project with a name, short description and an image, users make their ideas available for open
-        collaboration with our community.
-      </p>
-      <img (click)="show1 = !show1" *ngIf="!show1" class="plus" src="../../assets/close.svg" />
-      <div>
-        <h3>Get involved by taking on and adding tasks</h3>
-      </div>
-      <p>
-        Each project is structured in a way that invites anyone it inspires to find a way to contribute while offering a
-        clear and intuitive framework for bringing it to life.
-      </p>
+  <div class="infocontainer">
+    <div class="tagline">
+      <h2>Meet people who do something.</h2>
+    </div>
+    <div class="bottom flex">
+      <div class="column1">
+        <div>
+          <h3>Find projects that inspire you, or create your own</h3>
+        </div>
+        <p>
+          After you sign up with just an email address and password, Communic lets you browse, search through and
+          contribute to a growing database of exciting projects initiated by our users.
+          <img (click)="show1 = !show1" *ngIf="show1" class="plus" src="../../assets/plus.svg" />
+        </p>
+        <br />
+        <p *ngIf="!show1">
+          By creating a project with a name, short description and an image, users make their ideas available for open
+          collaboration with our community.
+        </p>
+        <img (click)="show1 = !show1" *ngIf="!show1" class="plus" src="../../assets/close.svg" />
+        <div>
+          <h3>Get involved by taking on and adding tasks</h3>
+        </div>
+        <p>
+          Each project is structured in a way that invites anyone it inspires to find a way to contribute while offering
+          a clear and intuitive framework for bringing it to life.
+        </p>
 
-      <div>
-        <img (click)="show2 = !show2" *ngIf="show2" class="plus" src="../../assets/plus.svg" />
-        <p *ngIf="!show2">
-          Projects are divided into sections defined by users, which are further broken down into a series of tasks,
-          with titles and descriptions. Once users have joined the project, they can review tasks, sign up to work on
-          them, and add their own.
+        <div>
+          <img (click)="show2 = !show2" *ngIf="show2" class="plus" src="../../assets/plus.svg" />
+          <p *ngIf="!show2">
+            Projects are divided into sections defined by users, which are further broken down into a series of tasks,
+            with titles and descriptions. Once users have joined the project, they can review tasks, sign up to work on
+            them, and add their own.
+          </p>
+          <img (click)="show2 = !show2" *ngIf="!show2" class="plus" src="../../assets/close.svg" />
+        </div>
+      </div>
+      <div class="column2">
+        <div>
+          <h3>Build your community</h3>
+        </div>
+        <p>
+          Communic is a springboard for connecting motivated creators and forming enduring teams around their shared
+          passions and diverse skillsets.
         </p>
-        <img (click)="show2 = !show2" *ngIf="!show2" class="plus" src="../../assets/close.svg" />
+        <div>
+          <img (click)="show3 = !show3" *ngIf="show3" class="plus" src="../../assets/plus.svg" />
+          <p *ngIf="!show3">
+            Our design focuses on who is working on a specific project or task, allowing you to communicate, collaborate
+            and meet up with other users who want to work on the same ideas, and to grow together by taking on new
+            challenges with your past teammates.
+          </p>
+          <img (click)="show3 = !show3" *ngIf="!show3" class="plus" src="../../assets/close.svg" />
+        </div>
+        <div>
+          <h3>Connect and bring ideas to life</h3>
+        </div>
+        <p>
+          Our transparent visual design maps the journey of a project as teams are formed and tasks are added, revised
+          and completed.
+        </p>
+        <div>
+          <img (click)="show4 = !show4" *ngIf="show4" class="plus" src="../../assets/plus.svg" />
+          <p *ngIf="!show4">
+            The project page shows the project team, its sections and the status of each task. Tasks which have been
+            completed or rethought are clearly distinguished, allowing everyone to easily and quickly understand what
+            work has been done on the project, how the project has refined, and what still needs to be done. Communic
+            offers a platform for sharing your vision and making it a reality.
+          </p>
+          <img (click)="show4 = !show4" *ngIf="!show4" class="plus" src="../../assets/close.svg" />
+        </div>
       </div>
     </div>
-    <div class="column2">
-      <div>
-        <h3>Build your community</h3>
-      </div>
-      <p>
-        Communic is a springboard for connecting motivated creators and forming enduring teams around their shared
-        passions and diverse skillsets.
-      </p>
-      <div>
-        <img (click)="show3 = !show3" *ngIf="show3" class="plus" src="../../assets/plus.svg" />
-        <p *ngIf="!show3">
-          Our design focuses on who is working on a specific project or task, allowing you to communicate, collaborate
-          and meet up with other users who want to work on the same ideas, and to grow together by taking on new
-          challenges with your past teammates.
-        </p>
-        <img (click)="show3 = !show3" *ngIf="!show3" class="plus" src="../../assets/close.svg" />
-      </div>
-      <div>
-        <h3>Connect and bring ideas to life</h3>
-      </div>
-      <p>
-        Our transparent visual design maps the journey of a project as teams are formed and tasks are added, revised and
-        completed.
-      </p>
-      <div>
-        <img (click)="show4 = !show4" *ngIf="show4" class="plus" src="../../assets/plus.svg" />
-        <p *ngIf="!show4">
-          The project page shows the project team, its sections and the status of each task. Tasks which have been
-          completed or rethought are clearly distinguished, allowing everyone to easily and quickly understand what work
-          has been done on the project, how the project has refined, and what still needs to be done. Communic offers a
-          platform for sharing your vision and making it a reality.
-        </p>
-        <img (click)="show4 = !show4" *ngIf="!show4" class="plus" src="../../assets/close.svg" />
-      </div>
+  </div>
+  <div class="points-block">
+    <h2>Does it sound nice to you? Get on with it!<br />It's easy as 1, 2, 3.</h2>
+    <div class="point-1 zoomIn">
+      <img class="point-circle bounceInLeft" src="../../assets/Circle1.svg" alt="Bullet Point 1" />
+      <p>Create an account</p>
+    </div>
+    <div class="point-2 zoomIn">
+      <img class="point-circle" src="../../assets/Circle2.svg" alt="Bullet Point 2" />
+      <p>Explore all the projects and join those you like</p>
+    </div>
+    <div class="point-3 zoomIn">
+      <img class="point-circle" src="../../assets/Circle3.svg" alt="Bullet Point 3" />
+      <p>Participate, contribute, do something!</p>
     </div>
   </div>
-</div>
-<div class="points-block">
-  <h2>Does it sound nice to you? Get on with it!<br />It's easy as 1, 2, 3.</h2>
-  <div class="point-1 zoomIn">
-    <img class="point-circle bounceInLeft" src="../../assets/Circle1.svg" alt="Bullet Point 1" />
-    <p>Create an account</p>
+  <div class="text-box">
+    <h2>
+      Join <span class="highlight-green">Communic</span> and impact the community around you. We have real
+      <span class="highlight-yellow">cookies</span> for everybody.
+    </h2>
+    <p class="p-cookies">
+      <i id="cookie1" class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i
+      ><i id="cookie2" class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i
+      ><i id="cookie3" class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i>
+    </p>
+    <small>* We don't use cookies in this website.</small>
   </div>
-  <div class="point-2 zoomIn">
-    <img class="point-circle" src="../../assets/Circle2.svg" alt="Bullet Point 2" />
-    <p>Explore all the projects and join those you like</p>
-  </div>
-  <div class="point-3 zoomIn">
-    <img class="point-circle" src="../../assets/Circle3.svg" alt="Bullet Point 3" />
-    <p>Participate, contribute, do something!</p>
-  </div>
-</div>
-<div class="text-box">
-  <h2>
-    Join <span class="highlight-green">Communic</span> and impact the community around you. We have real
-    <span class="highlight-yellow">cookies</span> for everybody.
-  </h2>
-  <p class="p-cookies">
-    <i id="cookie1" class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i
-    ><i id="cookie2" class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i
-    ><i id="cookie3" class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i>
-  </p>
-  <small>* We don't use cookies in this website.</small>
 </div>
 <footer>
   <div>
