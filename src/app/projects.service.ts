@@ -23,7 +23,7 @@ export class ProjectsService {
    * @param userId Id of the currently logged-in user
    */
   retrieveExploreProjects(userId: number): Promise<Project[]> {
-    return axiosInstance.get(`/exploreprojects/1`).then(response => {
+    return axiosInstance.get(`/exploreprojects/${userId}`).then(response => {
       return response.data.projects;
     });
   }

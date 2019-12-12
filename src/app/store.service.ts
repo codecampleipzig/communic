@@ -17,6 +17,7 @@ import { AuthService } from "./auth.service";
 import { ProjectService } from "./project.service";
 import { ProjectsService } from "./projects.service";
 import { axiosInstance } from "./axios-instance";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root",
@@ -72,6 +73,22 @@ export class StoreService {
 
     this.messages = new BehaviorSubject<any[]>([]);
     this.messages$ = this.messages.asObservable();
+
+    if (!environment.production) {
+      const testToken =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIwLCJ1c2VyTmFtZSI6IlJlZzEiLCJ1c2VyRW1haWwiOiJyZWcxQHJlZy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2bjhOOUs4cHBxT3JqZFhsalNJcU8uVThoNmxuTDY5Ry80QzFXZi41U3RIMVNTd2xHTkU0VyIsInVzZXJJbWFnZVVybCI6bnVsbCwiam9pbkRhdGUiOiIyMDE5LTEyLTA0VDE0OjUxOjIwLjEwM1oiLCJsZWF2ZURhdGUiOm51bGwsImlhdCI6MTU3NTQ3NDkxOX0.nrHFu4PhmpNTShq909qNj8geVBACB5XWDhT2OSgkxlY";
+      this.user.next({
+        status: { loggedIn: true },
+        userInformation: {
+          userName: "Rick",
+          userId: 1,
+          userImageUrl: "",
+          userEmail: "rick@sanchez.com",
+        },
+        userToken: testToken,
+      });
+      axiosInstance.defaults.headers.common.Authorization = `Bearer ${testToken}`;
+    }
   }
 
   /**
@@ -198,7 +215,6 @@ export class StoreService {
     } else {
       userId = this.user.getValue().userInformation.userId;
     }
-    console.log(`Your Projects - userId: ${userId}`);
     const promise = this.projectsService.retrieveYourProjects(userId);
 
     promise
@@ -213,11 +229,10 @@ export class StoreService {
   retrieveExploreProjects() {
     let userId: number;
     if (!this.user.getValue().userInformation) {
-      userId = 1; // TODO: Modify/remove this once we have auth in place
+      throw new Error("No user logged in");
     } else {
       userId = this.user.getValue().userInformation.userId;
     }
-    console.log(`Explore Projects - userId: ${userId}`);
     const promise = this.projectsService.retrieveExploreProjects(userId);
 
     promise
