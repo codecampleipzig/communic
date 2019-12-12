@@ -19,7 +19,7 @@ import { ProjectsService } from "./projects.service";
 import { axiosInstance } from "./axios-instance";
 import { environment } from "src/environments/environment";
 import { filter, map } from "rxjs/operators";
-import { classMethod } from '@babel/types';
+import { classMethod } from "@babel/types";
 
 @Injectable({
   providedIn: "root",
@@ -76,21 +76,21 @@ export class StoreService {
     this.messages = new BehaviorSubject<any[]>([]);
     this.messages$ = this.messages.asObservable();
 
-    if (!environment.production) {
-      const testToken =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIwLCJ1c2VyTmFtZSI6IlJlZzEiLCJ1c2VyRW1haWwiOiJyZWcxQHJlZy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2bjhOOUs4cHBxT3JqZFhsalNJcU8uVThoNmxuTDY5Ry80QzFXZi41U3RIMVNTd2xHTkU0VyIsInVzZXJJbWFnZVVybCI6bnVsbCwiam9pbkRhdGUiOiIyMDE5LTEyLTA0VDE0OjUxOjIwLjEwM1oiLCJsZWF2ZURhdGUiOm51bGwsImlhdCI6MTU3NTQ3NDkxOX0.nrHFu4PhmpNTShq909qNj8geVBACB5XWDhT2OSgkxlY";
-      this.user.next({
-        status: { loggedIn: true },
-        userInformation: {
-          userName: "Rick",
-          userId: 1,
-          userImageUrl: "",
-          userEmail: "rick@sanchez.com",
-        },
-        userToken: testToken,
-      });
-      axiosInstance.defaults.headers.common.Authorization = `Bearer ${testToken}`;
-    }
+    // if (!environment.production) {
+    //   const testToken =
+    //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIwLCJ1c2VyTmFtZSI6IlJlZzEiLCJ1c2VyRW1haWwiOiJyZWcxQHJlZy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2bjhOOUs4cHBxT3JqZFhsalNJcU8uVThoNmxuTDY5Ry80QzFXZi41U3RIMVNTd2xHTkU0VyIsInVzZXJJbWFnZVVybCI6bnVsbCwiam9pbkRhdGUiOiIyMDE5LTEyLTA0VDE0OjUxOjIwLjEwM1oiLCJsZWF2ZURhdGUiOm51bGwsImlhdCI6MTU3NTQ3NDkxOX0.nrHFu4PhmpNTShq909qNj8geVBACB5XWDhT2OSgkxlY";
+    //   this.user.next({
+    //     status: { loggedIn: true },
+    //     userInformation: {
+    //       userName: "Rick",
+    //       userId: 1,
+    //       userImageUrl: "",
+    //       userEmail: "rick@sanchez.com",
+    //     },
+    //     userToken: testToken,
+    //   });
+    //   axiosInstance.defaults.headers.common.Authorization = `Bearer ${testToken}`;
+    // }
 
     // Auto reset loading on every route change
     this.router.events.subscribe(event => {
@@ -131,9 +131,12 @@ export class StoreService {
           userToken: response.token,
         });
 
+        localStorage.setItem("token", response.token);
+
         // Set userToken as value for the header Authorization to be sent in each subsequent request
         // TODO: localStorage.setItem(token)
-        axiosInstance.defaults.headers.common.Authorization = `Bearer ${response.token}`;
+        axiosInstance.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`;
+        // axiosInstance.defaults.headers.common.Authorization = `Bearer ${response.token}`;
 
         // Navigate to home page
         this.router.navigate(["home"]);
@@ -172,9 +175,13 @@ export class StoreService {
           userToken: response.token,
         });
 
+        localStorage.setItem("token", response.token);
+
+
         // Set userToken as value for the header Authorization to be sent in each subsequent request
         // TODO: localStorage.setItem(token)
-        axiosInstance.defaults.headers.common.Authorization = `Bearer ${response.token}`;
+        axiosInstance.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem("token")}`;
+        // axiosInstance.defaults.headers.common.Authorization = `Bearer ${response.token}`;
 
         // Navigate to home page
         this.router.navigate(["home"]);
@@ -205,6 +212,7 @@ export class StoreService {
     });
 
     // Delete userToken and the Authorization header
+    localStorage.removeItem("token");
     delete axiosInstance.defaults.headers.common.Authorization;
 
     // Navigate to login page
@@ -248,7 +256,7 @@ export class StoreService {
       })
       .catch(error => {
         this.newMessage("error", "Loading your projects failed!", error.response ? error.response.data.message : "", 3000);
-      })
+      });
   }
   /**
    * Retrieve projects where current user is NOT member to fill the "Explore Projects" section on Home page
@@ -268,7 +276,7 @@ export class StoreService {
       })
       .catch(error => {
         this.newMessage("error", "Loading explore projects failed!", error.response ? error.response.data.message : "", 3000);
-      })
+      });
   }
 
   /**
@@ -299,7 +307,7 @@ export class StoreService {
       })
       .catch(error => {
         this.newMessage("error", "Loading project failed!", error.response ? error.response.data.message : "", 3000);
-      })
+      });
   }
 
   /**
@@ -325,7 +333,7 @@ export class StoreService {
       })
       .catch(error => {
         this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
-      })
+      });
   }
 
   /**
@@ -341,7 +349,7 @@ export class StoreService {
     })
       .catch(error => {
         this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
-      })
+      });
   }
 
   /**
@@ -357,7 +365,7 @@ export class StoreService {
     })
       .catch(error => {
         this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
-      })
+      });
   }
 
   /**
@@ -373,7 +381,7 @@ export class StoreService {
     })
       .catch(error => {
         this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
-      })
+      });
   }
 
   /**
@@ -389,7 +397,7 @@ export class StoreService {
     })
       .catch(error => {
         this.newMessage("error", "Loading updated project failed!", error.response ? error.response.data.message : "", 3000);
-      })
+      });
   }
 
   /**
@@ -429,7 +437,7 @@ export class StoreService {
     })
       .catch(error => {
         this.newMessage("error", "Project creation failed!", error.response ? error.response.data.message : "", 3000);
-      })
+      });
   }
 
   /**

@@ -34,7 +34,7 @@ export class RegisterCardComponent implements OnInit {
       userName: new FormControl("",
         Validators.compose([
           Validators.required,
-          Validators.pattern("^[^\\d\\s](\\S+ ){0,1}\\S+$") // this is for username validation on registration - no whitespace at the beginning and end, at least two characters and at most two words 
+          Validators.pattern("^[^\\d\\s](\\S+ ){0,1}\\S+$") // this is for username validation on registration - no whitespace at the beginning and end, at least two characters and at most two words
         ]),
       ),
       email: new FormControl("",
