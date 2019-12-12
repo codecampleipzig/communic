@@ -63,6 +63,25 @@ button {
   display: none;
 }
 
+.points-block {
+  padding: 5em;
+  text-align: center;
+}
+
+.points-block h2{
+  text-align: left;
+  color:var(--primaryColorDark);
+}
+
+.points-block p{
+  font-weight: 400;
+}
+
+
+.point-circle {
+  height: 40px;
+  width: 40px;
+}
 .text-box{
   background: var( --primaryColorDarker);
   text-align: center;
@@ -77,14 +96,14 @@ button {
     color: var(--secondaryColorOrangeLight)
 }
     
-    .p-cookies i {
-      padding: 2em;
-      margin-left: 1em;
-    }
+.p-cookies i {
+   padding: 2em;
+   margin-left: 1em;
+}
     
-    small {
-      color: #fff
-    }
+small {
+  color: #fff
+}
 
 footer {
   background: var(--primaryColorDarker);
