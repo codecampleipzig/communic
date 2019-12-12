@@ -195,6 +195,7 @@ footer a:hover {
   .infocontainer {
     background-color: var(--placeholderGrey);
     text-align: center;
+    padding-bottom: 2rem;
   }
 
   .plus {
