@@ -1,4 +1,4 @@
-.new-logo {
+.communic {
   background: url("../../assets/new-logo.svg");
   background-repeat: no-repeat;
   display: flex;
@@ -63,28 +63,28 @@ button {
   display: none;
 }
 
-.text-box{
-  background: var( --primaryColorDarker);
+.text-box {
+  background: var(--primaryColorDarker);
   text-align: center;
   padding: 5em;
-  }
-    
-.highlight-green {
-  color: var(--secondaryColorGreen);  
-  }
-    
-.highlight-yellow {
-    color: var(--secondaryColorOrangeLight)
 }
-    
-    .p-cookies i {
-      padding: 2em;
-      margin-left: 1em;
-    }
-    
-    small {
-      color: #fff
-    }
+
+.highlight-green {
+  color: var(--secondaryColorGreen);
+}
+
+.highlight-yellow {
+  color: var(--secondaryColorOrangeLight);
+}
+
+.p-cookies i {
+  padding: 2em;
+  margin-left: 1em;
+}
+
+small {
+  color: #fff;
+}
 
 footer {
   background: var(--primaryColorDarker);
@@ -117,7 +117,7 @@ footer a:hover {
     flex-direction: row;
   }
 
-  .new-logo {
+  .communic {
     background-position-x: center;
     background-position-y: center;
     margin: 1rem;
@@ -155,10 +155,8 @@ footer a:hover {
 @media (min-width: 1200px) {
   .flex {
     display: flex;
-    justify-content: center;
-    flex-direction: row;
   }
-  .new-logo {
+  .communic {
     background-position-x: center;
     background-position-y: center;
     width: 100%;
@@ -181,7 +179,6 @@ footer a:hover {
   h2 {
     font-size: 50px;
     padding: 0;
-    align-self: center;
   }
 
   .nav {
@@ -190,10 +187,36 @@ footer a:hover {
 
   .bottom {
     background-color: var(--placeholderGrey);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
 
-  .bottom h2 {
-    color: var(--fontDarkGrey);
-    padding-left: 2rem;
+  .infocontainer {
+    background-color: var(--placeholderGrey);
+    text-align: center;
+  }
+
+  .plus {
+    height: 20px;
+    width: 100%;
+  }
+
+  .column1,
+  .column2 {
+    width: 50%;
+  }
+
+  .infocontainer h1 {
+    align-self: center;
+    height: 10px;
+    margin: 0;
+    padding: 2rem;
+  }
+
+  .bottom p {
+    padding: 0 2rem;
+    margin: 0;
+    display: inline;
   }
 }
