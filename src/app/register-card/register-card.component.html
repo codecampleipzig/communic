@@ -24,19 +24,19 @@
     <input type="text" placeholder="Name" formControlName="userName" required *ngIf="authType == 'register'" />
     <span class="form-rule" *ngIf="(userName.dirty || userName.touched) && userName.invalid">
       <!-- *ngIf="(userName.dirty || userName.touched) && userName.invalid && userName.errors.required"> -->
-      No name, no fun. At least two characters please.
+      No name, no fun. At least two characters and at most two words please.
     </span>
   </label>
 
   <label>
     <input type="email" placeholder="Email" formControlName="email"
       *ngIf="authType == 'register' || authType == 'login' || authType == 'reset-password'" required />
-    <span class="form-rule"
-      *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required && authType == 'register'">
+    <span class="form-rule" *ngIf="(email.dirty || email.touched) && email.invalid && authType == 'register'">
+      <!-- *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required && authType == 'register'"> -->
       We promise not to spam you. Maybe.
     </span>
-    <span class="form-rule"
-      *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.required && authType == 'login'">
+    <span class="form-rule" *ngIf="(email.dirty || email.touched) && email.invalid && authType == 'login'">
+      <!-- <span class="form-rule" *ngIf="(email.dirty || email.touched) && email.errors.required && authType == 'login'"> -->
       Please use the e-mail you used to register your account.
     </span>
     <span class="form-rule"
@@ -50,7 +50,7 @@
     <input type="password" placeholder="Password" formControlName="password"
       *ngIf="(authType == 'register' || authType == 'login' || authType == 'change-password')" required />
     <span class="form-rule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'register'">
-      Safety first! Your password must be at least 8 characters and must have an uppercase, a lowercase and a number.
+      Safety first! Your password must be at least 8 characters and contain at least one number.
     </span>
     <span class="form-rule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'login'">
       Forgot your password? click <a [routerLink]="['/reset-password']">here</a>.

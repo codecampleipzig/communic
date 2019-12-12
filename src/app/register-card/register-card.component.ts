@@ -37,13 +37,20 @@ export class RegisterCardComponent implements OnInit {
           Validators.pattern("^[^\\d\\s](\\S+ ){0,1}\\S+$") // this is for username validation on registration - no whitespace at the beginning and end, at least two characters and at most two words 
         ]),
       ),
-      email: new FormControl("", [Validators.required, Validators.email]),
+      email: new FormControl("",
+        Validators.compose([
+          Validators.required,
+          // Validators.email
+          Validators.pattern("^(([^<>()\\[\\]\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")
+        ]),
+      ),
       password: new FormControl(
         "",
         Validators.compose([
           Validators.required,
           // Old password validator: ("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"), // this is for the letters (both uppercase and lowercase) and numbers validation
-          Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z].{8,}") // this is for the letters (both uppercase and lowercase) and numbers validation
+          // Validators.pattern(^(?=.*[A-Za-z])(?=.*\\d)[\\S]{8,}$) // Version 2: this is for password validation on registration - at least 8 characters, letters and at least one number. Special characters are allowed.
+          Validators.pattern("^(?=(.*[A-Za-z]){1,})(?=(.*[\\d]){1,})(?!.*\\s).{8,}$") // Version 1: this is for password validation on registration - at least 8 characters, letters and at least one number. Special characters are allowed.
         ]),
       ),
     });
