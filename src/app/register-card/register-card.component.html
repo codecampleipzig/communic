@@ -22,9 +22,9 @@
 
   <label>
     <input type="text" placeholder="Name" formControlName="userName" required *ngIf="authType == 'register'" />
-    <span class="form-rule"
-      *ngIf="(userName.dirty || userName.touched) && userName.invalid && userName.errors.required">
-      No name, no fun.
+    <span class="form-rule" *ngIf="(userName.dirty || userName.touched) && userName.invalid">
+      <!-- *ngIf="(userName.dirty || userName.touched) && userName.invalid && userName.errors.required"> -->
+      No name, no fun. At least two characters please.
     </span>
   </label>
 
