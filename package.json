@@ -12,17 +12,20 @@
     "test:coverage": "jest --coverage",
     "lint": "ng lint",
     "autofix": "ng lint --fix",
-    "compodoc": "npx compodoc -p tsconfig.app.json --coverageTest --coverageTestThresholdFail false"
+    "compodoc": "compodoc -p tsconfig.app.json --coverageTest 70 --coverageMinimumPerFile 20 --coverageTestThresholdFail false --coverageTestShowOnlyFailed"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run lint && npm run build --prod && npm test"
+      "pre-commit": "lint-staged && npm run lint && npm run build --prod && npm run test:coverage && npm run compodoc"
     }
   },
   "lint-staged": {
     "*.{ts,json}": [
       "prettier --write '**/*.{ts,json}'",
       "git add"
+    ],
+    "*.ts": [
+      "compodoc -p tsconfig.app.json --coverageTest 70 --coverageMinimumPerFile 20 --coverageTestThresholdFail false --coverageTestShowOnlyFailed"
     ]
   },
   "private": true,
@@ -39,6 +42,7 @@
     "@fortawesome/fontawesome-free": "^5.11.2",
     "axios": "^0.19.0",
     "express": "^4.17.1",
+    "jdenticon": "^2.2.0",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",

@@ -200,7 +200,7 @@ a app-icon:last-child {
 .button.outlined {
   border: 1px solid var(--primaryColor);
   color: var(--primaryColor);
-  background-color: transparent;
+  background-color: inherit;
   padding: 0.5em 1em;
 }
 
@@ -424,3 +424,9 @@ label {
   transform: translateY(-50%);
 }
 
+
+/* Fixes */
+
+app-toolbar + * {
+  margin-top: 3em !important
+}
