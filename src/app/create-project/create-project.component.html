@@ -20,13 +20,18 @@
   <!-- Upload Image -->
   <div class="project-image">
     <input type="file" id="myFileInput" accept="image/*" hidden (change)="onSelectFile($event)" />
-    <button type="button" class="button outlined" *ngIf="!this.fileToUpload"
+    <button type="button" class="button outlined" *ngIf="!this.fileToUpload && this.uploadState != 'pending'"
       onclick="document.getElementById('myFileInput').click()">
       Choose Image
     </button>
 
-    <button type="button" class="button outlined" *ngIf="this.fileToUpload" (click)="this.uploadFile($event)">
+    <button type="button" class="button outlined" *ngIf="this.fileToUpload && this.uploadState != 'pending'"
+      (click)="this.uploadFile()">
       Upload Image
+    </button>
+
+    <button type="button" class="button outlined" *ngIf="this.uploadState == 'pending'">
+      Uploading...
     </button>
 
     <img [src]="image" *ngIf="image" />

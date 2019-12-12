@@ -110,15 +110,16 @@ export class RegisterCardComponent implements OnInit {
       };
 
       reader.readAsDataURL(eventTarget.files[0]); // read file as data url
+
+      this.uploadFile();
     }
   }
 
-  uploadFile(event) {
+  uploadFile() {
     if (!this.fileToUpload) {
       this.store.newMessage("error", "No file to upload", "You need to choose a file to upload");
     } else if (this.uploadState == false && this.fileToUpload) {
       this.uploadState = "pending";
-      event.target.innerHTML = "Uploading...";
       const filename = "userpicture/" + uuid() + "." + this.fileToUpload.name.split(".").pop();
 
       this.uploader.uploadFile(this.fileToUpload, filename).then(
@@ -129,8 +130,6 @@ export class RegisterCardComponent implements OnInit {
 
           this.store.newMessage("confirm", "Upload successful", "You look great!");
           this.uploadState = false;
-
-          event.target.innerHTML = "Upload Image";
         },
         error => {
           this.store.newMessage("error", "File upload failed", "Something should be different", 3000);
