@@ -6,6 +6,10 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./landingpage.component.css"],
 })
 export class LandingpageComponent implements OnInit {
+  show1 = true;
+  show2 = true;
+  show3 = true;
+  show4 = true;
   constructor() {}
 
   ngOnInit() {}

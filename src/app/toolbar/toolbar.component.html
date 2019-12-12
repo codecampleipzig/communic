@@ -1,6 +1,7 @@
-<a routerLink="/home" class="home"><i class="fas fa-home"></i></a>
-<div class="communic-text">
-  <h2>COMMUNIC</h2>
+<div class="communic">
+  <a routerLink="/home" class="home">
+    <img src="../../assets/new-logo.svg" />
+  </a>
 </div>
 <app-project-action id="project-action" [project]="store.project$ | async"></app-project-action>
 <app-searchtool *ngIf="project == null"></app-searchtool>

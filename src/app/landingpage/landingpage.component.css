@@ -1,13 +1,22 @@
-.new-logo {
+.communic {
   background: url("../../assets/new-logo.svg");
   background-repeat: no-repeat;
   display: flex;
-  margin: 3.5rem;
-  width: 80vh;
+  margin: 2rem;
+  width: 100%;
   height: 70px;
 }
 
+.tagline {
+  color: var(--primaryColorDarker);
+}
+
+.flex {
+  display: none;
+}
+
 .left-side {
+  justify-content: center;
   padding-bottom: 2rem;
 }
 
@@ -19,66 +28,150 @@
   margin: 1em;
 } */
 
+.plus {
+  height: 20px;
+  width: 100%;
+}
+
 body {
-  display: flex;              /* Use Flexbox                    */
-  justify-content: center;    /* Center Horizontally            */
+  display: flex; /* Use Flexbox                    */
+  justify-content: center; /* Center Horizontally            */
 }
 
 .kreis {
   border-radius: 50%;
   width: 8em;
   height: 8em;
-  border-radius: 50%; 
+  border-radius: 50%;
   animation-direction: alternate;
-  animation-timing-function: cubic-bezier(.5,0.05,1,.5);
-  
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
 }
 
 @keyframes bounce {
-  0%   { transform: translateY(6px); }
-    5%   { transform: translateY(8px); }
-    10%  { transform: translateY(12px); }
-    15%  { transform: translateY(20px); }
-    20%  { transform: translateY(38px); }
-    25%  { transform: translateY(72px); }
-    30%  { transform: translateY(100px); }
-    35%  { transform: translateY(152px); }
-    40%  { transform: translateY(154px) scale(1.1, .9); }
-    50%  { transform: translateY(176px) scale(1.4, .6); }
-    55%  { transform: translateY(162px) scale(1.2, .8); }
-    60%  { transform: translateY(138px) scale(1.05, .95); }
-    65%  { transform: translateY(110px); }
-    70%  { transform: translateY(72px); }
-    75%  { transform: translateY(38px); }
-    80%  { transform: translateY(20px); }
-    85%  { transform: translateY(12px); }
-    90%  { transform: translateY(8px); }
-    95%  { transform: translateY(5px); }
-    100% { transform: translateY(5px); }
+  0% {
+    transform: translateY(6px);
   }
+  5% {
+    transform: translateY(8px);
+  }
+  10% {
+    transform: translateY(12px);
+  }
+  15% {
+    transform: translateY(20px);
+  }
+  20% {
+    transform: translateY(38px);
+  }
+  25% {
+    transform: translateY(72px);
+  }
+  30% {
+    transform: translateY(100px);
+  }
+  35% {
+    transform: translateY(152px);
+  }
+  40% {
+    transform: translateY(154px) scale(1.1, 0.9);
+  }
+  50% {
+    transform: translateY(176px) scale(1.4, 0.6);
+  }
+  55% {
+    transform: translateY(162px) scale(1.2, 0.8);
+  }
+  60% {
+    transform: translateY(138px) scale(1.05, 0.95);
+  }
+  65% {
+    transform: translateY(110px);
+  }
+  70% {
+    transform: translateY(72px);
+  }
+  75% {
+    transform: translateY(38px);
+  }
+  80% {
+    transform: translateY(20px);
+  }
+  85% {
+    transform: translateY(12px);
+  }
+  90% {
+    transform: translateY(8px);
+  }
+  95% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
+}
 
-  @keyframes bounce1 {
-    0%   { transform: translateY(8px); }
-      5%   { transform: translateY(12px); }
-      10%  { transform: translateY(20px); }
-      15%  { transform: translateY(38px); }
-      20%  { transform: translateY(72px); }
-      25%  { transform: translateY(100px); }
-      30%  { transform: translateY(152px); }
-      35%  { transform: translateY(154px); }
-      40%  { transform: translateY(176px) scale(1.1, .9); }
-      50%  { transform: translateY(162px) scale(1.4, .6); }
-      55%  { transform: translateY(138px) scale(1.2, .8); }
-      60%  { transform: translateY(110px) scale(1.05, .95); }
-      65%  { transform: translateY(72px); }
-      70%  { transform: translateY(38px); }
-      75%  { transform: translateY(20px); }
-      80%  { transform: translateY(12px); }
-      85%  { transform: translateY(8px); }
-      90%  { transform: translateY(5px); }
-      95%  { transform: translateY(5px); }
-      100% { transform: translateY(8px); }
-    }
+@keyframes bounce1 {
+  0% {
+    transform: translateY(8px);
+  }
+  5% {
+    transform: translateY(12px);
+  }
+  10% {
+    transform: translateY(20px);
+  }
+  15% {
+    transform: translateY(38px);
+  }
+  20% {
+    transform: translateY(72px);
+  }
+  25% {
+    transform: translateY(100px);
+  }
+  30% {
+    transform: translateY(152px);
+  }
+  35% {
+    transform: translateY(154px);
+  }
+  40% {
+    transform: translateY(176px) scale(1.1, 0.9);
+  }
+  50% {
+    transform: translateY(162px) scale(1.4, 0.6);
+  }
+  55% {
+    transform: translateY(138px) scale(1.2, 0.8);
+  }
+  60% {
+    transform: translateY(110px) scale(1.05, 0.95);
+  }
+  65% {
+    transform: translateY(72px);
+  }
+  70% {
+    transform: translateY(38px);
+  }
+  75% {
+    transform: translateY(20px);
+  }
+  80% {
+    transform: translateY(12px);
+  }
+  85% {
+    transform: translateY(8px);
+  }
+  90% {
+    transform: translateY(5px);
+  }
+  95% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(8px);
+  }
+}
 .flex {
   display: flex;
   justify-content: center;
@@ -130,17 +223,21 @@ button {
   display: none;
 }
 
+.text-box {
+  background: var(--primaryColorDarker);
+}
+
 .points-block {
   padding: 5em;
   text-align: center;
 }
 
-.points-block h2{
+.points-block h2 {
   text-align: left;
-  color:var(--primaryColorDark);
+  color: var(--primaryColorDark);
 }
 
-.points-block p{
+.points-block p {
   font-size: 1.5em;
 }
 
@@ -163,43 +260,43 @@ button {
 .zoomIn {
   animation-name: zoomIn;
 }
-.point-1{
+.point-1 {
   animation-duration: 7s;
   animation-delay: 3s;
   animation-iteration-count: infinite;
 }
-.point-2{
+.point-2 {
   animation-duration: 7s;
   animation-delay: 4.5s;
   animation-iteration-count: infinite;
 }
-.point-3{
+.point-3 {
   animation-duration: 7s;
   animation-delay: 5.5s;
   animation-iteration-count: infinite;
 }
 
-.text-box{
-  background: var( --primaryColorDarker);
+.text-box {
+  background: var(--primaryColorDarker);
   text-align: center;
   padding: 5em;
-  }
-    
+}
+
 .highlight-green {
-  color: var(--secondaryColorGreen);  
-  }
-    
+  color: var(--secondaryColorGreen);
+}
+
 .highlight-yellow {
-    color: var(--secondaryColorOrangeLight)
+  color: var(--secondaryColorOrangeLight);
 }
-    
+
 .p-cookies i {
-   padding: 2.5em;
-   margin-left: 1em;
+  padding: 2.5em;
+  margin-left: 1em;
 }
-    
+
 small {
-  color: #fff
+  color: #fff;
 }
 
 footer {
@@ -226,23 +323,70 @@ footer a:hover {
   text-decoration: underline;
 }
 
-
 #cookie1 {
-  animation:spin 7s linear infinite;
+  animation: spin 7s linear infinite;
 }
 
 #cookie2 {
-  animation:spin 6s linear infinite;
+  animation: spin 6s linear infinite;
 }
 
 #cookie3 {
-  animation:spin 5s linear infinite;
+  animation: spin 5s linear infinite;
 }
 
-@keyframes spin { 
-  100% { -webkit-transform: rotate(360deg); 
-    transform:rotate(360deg); } 
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
+}
+
+.bottom {
+  background-color: var(--placeholderGrey);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.infocontainer h2 {
+  background-color: var(--placeholderGrey);
+  text-align: center;
+  padding-bottom: 2rem;
+  color: var(--primaryColorDarker);
+}
+
+.plus {
+  height: 20px;
+  width: 100%;
+}
+
+.column1,
+.column2 {
+  width: 50%;
+}
+
+.infocontainer h2 {
+  align-self: center;
+  height: 10px;
+  margin: 0;
+  padding: 2rem;
+  color: var(--primaryColorDarker);
+}
+
+.bottom p {
+  padding: 0 2rem;
+  margin: 0;
+  display: inline;
+}
+.points-block p {
+  font-size: 2.5em;
+}
+
+.point-circle {
+  height: 70px;
+  width: 70px;
+}
 
 @media (min-width: 800px) {
   .flex {
@@ -251,7 +395,7 @@ footer a:hover {
     flex-direction: row;
   }
 
-  .new-logo {
+  .communic {
     background-position-x: center;
     background-position-y: center;
     margin: 1rem;
@@ -285,7 +429,7 @@ footer a:hover {
     display: flex;
     justify-content: flex-end;
   }
-  .points-block p{
+  .points-block p {
     font-size: 2em;
   }
   .point-circle {
@@ -297,20 +441,16 @@ footer a:hover {
 @media (min-width: 1200px) {
   .flex {
     display: flex;
-    justify-content: center;
     flex-direction: row;
   }
-  .new-logo {
+  .communic {
     background-position-x: center;
     background-position-y: center;
     width: 100%;
     height: 150px;
   }
 
-  .left-side {
-    flex-grow: 1;
-  }
-
+  .left-side,
   .right-side {
     flex-grow: 1;
   }
@@ -323,7 +463,6 @@ footer a:hover {
   h2 {
     font-size: 50px;
     padding: 0;
-    align-self: center;
   }
 
   .nav {
@@ -332,13 +471,42 @@ footer a:hover {
 
   .bottom {
     background-color: var(--placeholderGrey);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }
 
-  .bottom h2 {
-    color: var(--fontDarkGrey);
-    padding-left: 2rem;
+  .infocontainer h2 {
+    background-color: var(--placeholderGrey);
+    text-align: center;
+    padding-bottom: 2rem;
+    color: var(--primaryColorDarker);
   }
-  .points-block p{
+
+  .plus {
+    height: 20px;
+    width: 100%;
+  }
+
+  .column1,
+  .column2 {
+    width: 50%;
+  }
+
+  .infocontainer h2 {
+    align-self: center;
+    height: 10px;
+    margin: 0;
+    padding: 2rem;
+    color: var(--primaryColorDarker);
+  }
+
+  .bottom p {
+    padding: 0 2rem;
+    margin: 0;
+    display: inline;
+  }
+  .points-block p {
     font-size: 2.5em;
   }
 
