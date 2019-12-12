@@ -50,7 +50,7 @@
     <input type="password" placeholder="Password" formControlName="password"
       *ngIf="(authType == 'register' || authType == 'login' || authType == 'change-password')" required />
     <span class="form-rule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'register'">
-      Safety first! Your password must contain an uppercase, a lowercase, a special character and a number.
+      Safety first! Your password must contain an uppercase, a lowercase and a number.
     </span>
     <span class="form-rule" *ngIf="(password.dirty || password.touched) && password.invalid && authType == 'login'">
       Forgot your password? click <a [routerLink]="['/reset-password']">here</a>.

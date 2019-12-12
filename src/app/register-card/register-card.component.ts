@@ -37,7 +37,8 @@ export class RegisterCardComponent implements OnInit {
         "",
         Validators.compose([
           Validators.required,
-          Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"), // this is for the letters (both uppercase and lowercase) and numbers validation
+          // Old password validator: ("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}"), // this is for the letters (both uppercase and lowercase) and numbers validation
+          Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z].{8,}") // this is for the letters (both uppercase and lowercase) and numbers validation
         ]),
       ),
     });
