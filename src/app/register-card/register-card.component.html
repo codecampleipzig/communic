@@ -29,9 +29,9 @@
 
   <label>
     <input type="text" placeholder="Name" formControlName="userName" required *ngIf="authType == 'register'" />
-    <span class="form-rule"
-      *ngIf="(userNameField.dirty || userNameField.touched) && userNameField.invalid && userNameField.errors.required">
-      No name, no fun.
+    <span class="form-rule" *ngIf="(userNameField.dirty || userNameField.touched) && userNameField.invalid">
+      <!-- *ngIf="(userNameField.dirty || userNameField.touched) && userNameField.invalid && userNameField.errors.required"> -->
+      No name, no fun. At least two characters and at most two words please.
     </span>
   </label>
 
@@ -39,11 +39,13 @@
     <input type="email" placeholder="Email" formControlName="email"
       *ngIf="authType == 'register' || authType == 'login' || authType == 'reset-password'" required />
     <span class="form-rule"
-      *ngIf="(emailField.dirty || emailField.touched) && emailField.invalid && emailField.errors.required && authType == 'register'">
+      *ngIf="(emailField.dirty || emailField.touched) && emailField.invalid && authType == 'register'">
+      <!-- *ngIf="(emailField.dirty || emailField.touched) && emailField.invalid && emailField.errors.required && authType == 'register'"> -->
       We promise not to spam you. Maybe.
     </span>
     <span class="form-rule"
-      *ngIf="(emailField.dirty || emailField.touched) && emailField.invalid && emailField.errors.required && authType == 'login'">
+      *ngIf="(emailField.dirty || emailField.touched) && emailField.invalid && authType == 'login'">
+      <!-- <span class="form-rule" *ngIf="(emailField.dirty || emailField.touched) && emailField.errors.required && authType == 'login'"> -->
       Please use the e-mail you used to register your account.
     </span>
     <span class="form-rule"
@@ -55,10 +57,10 @@
 
   <label>
     <input type="password" placeholder="Password" formControlName="password"
-      *ngIf="(authType == 'register' || authType == 'login' || authType == 'change-password')" required />
+      *ngIf="authType == 'register' || authType == 'login' || authType == 'change-password'" required />
     <span class="form-rule"
       *ngIf="(passwordField.dirty || passwordField.touched) && passwordField.invalid && authType == 'register'">
-      Safety first! Your password must contain an uppercase, a lowercase, a special character and a number.
+      Safety first! Your password must be at least 8 characters and contain at least one number.
     </span>
     <span class="form-rule"
       *ngIf="(passwordField.dirty || passwordField.touched) && passwordField.invalid && authType == 'login'">
@@ -66,15 +68,21 @@
     </span>
   </label>
 
-  <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'register'" class="button">Join now!</button>
-  <button type="submit" [disabled]="!(profileForm.get('email').valid && profileForm.get('passwordField').valid)"
-    *ngIf="authType == 'login'" class="button">Login</button>
+  <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'register'" class="button">
+    Join now!
+  </button>
+  <button type="submit" [disabled]="!(profileForm.get('email').valid && profileForm.get('password').valid)"
+    *ngIf="authType == 'login'" class="button">
+    Login
+  </button>
   <button type="submit" [disabled]="!profileForm.get('email').valid" *ngIf="authType == 'reset-password'"
-    class="button">Reset
-    password</button>
+    class="button">
+    Reset password
+  </button>
   <button type="submit" [disabled]="!profileForm.get('password').valid" *ngIf="authType == 'change-password'"
-    class="button">Set new
-    password</button>
+    class="button">
+    Set new password
+  </button>
 
   <p *ngIf="authType == 'register'">Already have an account? <a [routerLink]="['/login']">Login here</a></p>
   <p *ngIf="authType == 'login'">Need an account? <a [routerLink]="['/register']">Register here</a></p>

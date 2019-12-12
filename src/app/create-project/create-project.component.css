@@ -27,6 +27,7 @@ h3 {
   justify-content: center;
   display: flex;
   align-items: center;
+  margin-bottom: 2em;
 }
 
 .project-image button {
