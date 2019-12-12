@@ -1,28 +1,46 @@
 :host {
-   display: flex;
-   align-items: center;
-   max-width: 1200px;
-   width: calc(100vw - 1em);
-   margin: 0.5em auto;
-   padding: .5em 1em
+  display: flex;
+  /* position: sticky; */
+  left: 0;
+  right: 0;
+  top: 1em;
+  max-width: 1200px;
+  width: calc(100vw - 1em);
+  margin: auto;
+  padding: .5em 1em;
+  transition: top 0.3s;
+  z-index: 999;
+  align-items: center;
+  flex-grow: 1;
 }
 
 a.home {
-   font-size: 2rem;
-   color: var(--fontDarkGrey);
-   margin-right: .6em;
+  font-size: 2rem;
+  color: var(--fontDarkGrey);
+  margin-right: .6em;
 }
 
 a.home:hover {
-   color: var(--primaryColor);
+  color: var(--primaryColor);
 }
+
+.communic-text {
+  justify-content: center;
+  color: var(--primaryColor);
+  font-weight: 700;
+  font-size: 1em;
+  text-transform: uppercase;
+  margin-right: 1em;
+}
+
 
 app-user-action {
-   flex-grow: 1;
+  flex-grow: 1;
 }
 
+
 @media (min-width: 500px) {
-   :host {
-      padding: .75em 1.5em;
-   }
+  :host {
+    padding: .75em 1.5em;
+  }
 }

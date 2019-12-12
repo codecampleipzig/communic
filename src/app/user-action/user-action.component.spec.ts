@@ -14,9 +14,9 @@ describe("UserActionComponent", () => {
       providers: [
         {
           provide: StoreService,
-          useClass: TestingStoreService
-        }
-      ]
+          useClass: TestingStoreService,
+        },
+      ],
     }).compileComponents();
   }));
 
@@ -39,9 +39,7 @@ describe("UserActionComponent", () => {
   // verify correct username is present
   it("should have correct username", () => {
     const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-    expect(htmlElement.querySelector(".user-name").textContent).toBe(
-      component.userName
-    );
+    expect(htmlElement.querySelector(".user-name").textContent).toBe(component.userName);
   });
 
   // verify user thumbnail is present
@@ -53,14 +51,10 @@ describe("UserActionComponent", () => {
   // verify correct thumbnail is present
   xit("should have correct username", () => {
     const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-    const imgElement: HTMLImageElement = htmlElement.querySelector(
-      ".user-image img"
-    );
+    const imgElement: HTMLImageElement = htmlElement.querySelector(".user-image img");
     // TODO: use regex or find another way (localhost is the problem)
     // should not be a problem with real url
-    const expectedValue = component.userThumbnail
-      .replace("../", "")
-      .replace("../", "");
+    const expectedValue = component.userThumbnail.replace("../", "").replace("../", "");
     expect(imgElement.src).toBe(`http://localhost/${expectedValue}`);
   });
 

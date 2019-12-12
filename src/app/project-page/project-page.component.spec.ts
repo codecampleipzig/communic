@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { ProjectPageComponent } from "./project-page.component";
 import { ProjectTeaserComponent } from "../project-teaser/project-teaser.component";
 import { TeamCardComponent } from "../team-card/team-card.component";
-import { TaskListComponent } from "../task-list/task-list.component";
 import { CreateNewTaskComponent } from "../create-new-task/create-new-task.component";
 import { StoreService } from "../store.service";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -12,10 +11,14 @@ import { TeamMemberComponent } from "../team-member/team-member.component";
 import { TaskComponent } from "../task/task.component";
 import { Component } from "@angular/core";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ProjectSectionsComponent } from "../project-sections/project-sections.component";
+import { CreateSectionComponent } from "../create-section/create-section.component";
+import { IconComponent } from "../icon/icon.component";
 
 @Component({
   selector: "app-toolbar",
-  template: ""
+  template: "",
 })
 class ToolbarTestComponent {}
 
@@ -29,30 +32,33 @@ describe("ProjectPageComponent", () => {
         ProjectPageComponent,
         ProjectTeaserComponent,
         TeamCardComponent,
-        TaskListComponent,
+        ProjectSectionsComponent,
+        CreateSectionComponent,
         CreateNewTaskComponent,
         TeamMemberComponent,
         TaskComponent,
-        ToolbarTestComponent
+        ToolbarTestComponent,
+        IconComponent,
       ],
       providers: [
         {
           provide: StoreService,
-          useClass: TestingStoreService
+          useClass: TestingStoreService,
         },
         {
           provide: Router,
           useClass: class {
             navigate() {}
-          }
+          },
         },
         {
           provide: ActivatedRoute,
           useClass: class {
             params = new BehaviorSubject<any>({ id: 1 }).asObservable();
-          }
-        }
-      ]
+          },
+        },
+      ],
+      imports: [FormsModule, ReactiveFormsModule],
     }).compileComponents();
   }));
 

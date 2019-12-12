@@ -1,36 +1,34 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TaskListComponent } from "./task-list.component";
-import { TaskComponent } from "../task/task.component";
-import { CreateNewTaskComponent } from "../create-new-task/create-new-task.component";
-
+import { CreateSectionComponent } from "./create-section.component";
+import { IconComponent } from "../icon/icon.component";
 import * as Mock from "../mockdata";
 import { StoreService } from "../store.service";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-describe("TaskListComponent", () => {
-  let component: TaskListComponent;
-  let fixture: ComponentFixture<TaskListComponent>;
+describe("CreateSectionComponent", () => {
+  let component: CreateSectionComponent;
+  let fixture: ComponentFixture<CreateSectionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TaskListComponent, TaskComponent, CreateNewTaskComponent],
+      declarations: [CreateSectionComponent, IconComponent],
       providers: [
         {
           provide: StoreService,
-          useClass: TestingStoreService
-        }
-      ]
+          useClass: TestingStoreService,
+        },
+      ],
+      imports: [FormsModule, ReactiveFormsModule],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TaskListComponent);
+    fixture = TestBed.createComponent(CreateSectionComponent);
     component = fixture.componentInstance;
 
-    /* Give it some mock data */
     component.project = Mock.projects[0];
-
     fixture.detectChanges();
   });
 

@@ -11,17 +11,24 @@ export class TestingStoreService {
   yourProjects: BehaviorSubject<Array<Project>>;
   exploreProjects: BehaviorSubject<Array<Project>>;
   project: BehaviorSubject<Project>;
+  toolbar: BehaviorSubject<any>;
+  status: BehaviorSubject<any>;
+  messages: BehaviorSubject<any>;
 
   // Observable
   public user$: Observable<UserState>;
   public yourProjects$: Observable<Array<Project>>;
   public exploreProjects$: Observable<Array<Project>>;
   public project$: Observable<Project>;
+  public toolbar$: Observable<any>;
+  public status$: Observable<any>;
+  public messages$: Observable<any>;
 
   constructor() {
     this.user = new BehaviorSubject<UserState>({
       status: {},
-      userInformation: null
+      userInformation: null,
+      userToken: null,
     });
     this.user$ = this.user.asObservable();
 
@@ -31,7 +38,7 @@ export class TestingStoreService {
     this.exploreProjects = new BehaviorSubject<Array<Project>>([]);
     this.exploreProjects$ = this.exploreProjects.asObservable();
 
-    this.project = new BehaviorSubject<any>({});
+    this.project = new BehaviorSubject<any>(null);
     this.project$ = this.project.asObservable();
 
     /* Mock Current User. Replace with login Action */
@@ -41,9 +48,24 @@ export class TestingStoreService {
         userId: 2,
         userName: "TestUser",
         userEmail: "email@gmail.com",
-        userImageUrl: ""
-      }
+        userImageUrl: "",
+      },
+      userToken:
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIwLCJ1c2VyTmFtZSI6IlJlZzEiLCJ1c2VyRW1haWwiOiJyZWcxQHJlZy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2bjhOOUs4cHBxT3JqZFhsalNJcU8uVThoNmxuTDY5Ry80QzFXZi41U3RIMVNTd2xHTkU0VyIsInVzZXJJbWFnZVVybCI6bnVsbCwiam9pbkRhdGUiOiIyMDE5LTEyLTA0VDE0OjUxOjIwLjEwM1oiLCJsZWF2ZURhdGUiOm51bGwsImlhdCI6MTU3NTQ3NDkxOX0.nrHFu4PhmpNTShq909qNj8geVBACB5XWDhT2OSgkxlY",
     });
+
+    this.toolbar = new BehaviorSubject<any>("");
+    this.toolbar$ = this.toolbar.asObservable();
+
+    this.status = new BehaviorSubject<any>({
+      sectionCreationPending: false,
+    });
+    this.status$ = this.status.asObservable();
+
+    this.messages = new BehaviorSubject<any[]>([
+      { id: 0, type: "error", title: "Something happend", message: "test!" },
+    ]);
+    this.messages$ = this.messages.asObservable();
   }
 
   // Action
@@ -51,7 +73,9 @@ export class TestingStoreService {
     setTimeout(() => {
       this.user.next({
         status: { loggedIn: true },
-        userInformation: { userName, userEmail, userImageUrl: "", userId: 1234 }
+        userInformation: { userName, userEmail, userImageUrl: "", userId: 1234 },
+        userToken:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIwLCJ1c2VyTmFtZSI6IlJlZzEiLCJ1c2VyRW1haWwiOiJyZWcxQHJlZy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2bjhOOUs4cHBxT3JqZFhsalNJcU8uVThoNmxuTDY5Ry80QzFXZi41U3RIMVNTd2xHTkU0VyIsInVzZXJJbWFnZVVybCI6bnVsbCwiam9pbkRhdGUiOiIyMDE5LTEyLTA0VDE0OjUxOjIwLjEwM1oiLCJsZWF2ZURhdGUiOm51bGwsImlhdCI6MTU3NTQ3NDkxOX0.nrHFu4PhmpNTShq909qNj8geVBACB5XWDhT2OSgkxlY",
       });
     });
   }
@@ -60,7 +84,8 @@ export class TestingStoreService {
     // Mutation
     this.user.next({
       status: {},
-      userInformation: null
+      userInformation: null,
+      userToken: null,
     });
   }
 
@@ -74,10 +99,8 @@ export class TestingStoreService {
 
     this.yourProjects.next(
       Mock.projects.filter(project =>
-        project.projectTeam.some(
-          user => user.userId == currentUserState.userInformation.userId
-        )
-      )
+        project.projectTeam.some(user => user.userId == currentUserState.userInformation.userId),
+      ),
     );
   }
 
@@ -103,7 +126,7 @@ export class TestingStoreService {
 
     const newState = [...Mock.projects];
     const newProject = newState.find(project => project.projectId == projectId);
-    newProject.projectTasks = newTasks;
+    newProject.projectSections[0].projectTasks = newTasks;
 
     // Put value into observable
     this.project.next(newProject);
@@ -140,7 +163,7 @@ export class TestingStoreService {
     const project = newState.find(p => p.projectId == projectId);
     const user = Mock.users.find(u => u.userId == userId);
 
-    project.projectTasks.find(t => t.taskId == taskId).taskTeam.push(user);
+    project.projectSections[0].projectTasks.find(t => t.taskId == taskId).taskTeam.push(user);
     this.project.next(project);
   }
 
@@ -150,13 +173,11 @@ export class TestingStoreService {
   leaveTaskTeam(projectId: number, taskId: number, userId: number) {
     const newState = [...Mock.projects];
     const project = newState.find(p => p.projectId == projectId);
-    const userIndex = project.projectTasks
+    const userIndex = project.projectSections[0].projectTasks
       .find(t => t.taskId == taskId)
       .taskTeam.findIndex(u => u.userId == userId);
 
-    project.projectTasks
-      .find(t => t.taskId == taskId)
-      .taskTeam.splice(userIndex, 1);
+    project.projectSections[0].projectTasks.find(t => t.taskId == taskId).taskTeam.splice(userIndex, 1);
 
     this.project.next(project);
   }

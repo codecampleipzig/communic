@@ -1,13 +1,16 @@
-import { Component, OnInit, HostBinding, Inject } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit, HostBinding, Inject, Input, AfterViewInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
 import { StoreService } from "../store.service";
+import { Project } from "../datatypes/Project";
 
 @Component({
   selector: "app-toolbar",
   templateUrl: "./toolbar.component.html",
-  styleUrls: ["./toolbar.component.css"]
+  styleUrls: ["./toolbar.component.css"],
 })
 export class ToolbarComponent implements OnInit {
+  public project: Project;
+
   /**
    * Add CSS Class .card to the Host
    */
@@ -18,13 +21,8 @@ export class ToolbarComponent implements OnInit {
 
   public projectTitle;
 
-  constructor(
-    @Inject(Router) private router: Router,
-    @Inject(StoreService) private store: StoreService
-  ) {
-    /** Commented as it throws errors.
-     * this.store.toolbar$.subscribe(title => (this.projectTitle = title));
-     */
+  constructor(@Inject(Router) public router: Router, @Inject(StoreService) public store: StoreService) {
+    store.project$.subscribe(project => (this.project = project));
   }
 
   ngOnInit() {}

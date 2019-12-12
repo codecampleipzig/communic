@@ -1,0 +1,59 @@
+:host {
+   position: fixed;
+   bottom: 0;
+   z-index: 999;
+   right: 0;
+   max-width: 380px;
+   width: 100%;
+   padding: .5rem;
+   box-sizing: border-box;
+   display: flex;
+   flex-flow: column-reverse;
+}
+
+.message {
+   display: flex;
+   padding: 1em;
+   align-items: center;
+   margin: 0;
+   width: 100%;
+   margin: .5em 0 0;
+}
+
+.message > app-icon {
+   font-size: 1.5rem;
+   margin: 0 .5em 0 .2em;
+}
+
+h3, p {margin: 0;}
+
+.error > app-icon {
+   color: var(--warningRed);
+}
+
+.confirm > app-icon {
+   color: var(--successGreen);
+}
+
+
+/* Possitioning Messages as a Stack */
+.message:not(:first-of-type) {
+   margin-bottom: -4.5em;
+}
+
+@media (min-width: 480px) {
+   .message {
+      margin-left: calc(-.5em * var(--index));
+   }
+}
+
+.message:nth-child(2) { --index: 1; }
+.message:nth-child(3) { --index: 2; }
+.message:nth-child(4) { --index: 3; }
+.message:nth-child(5) { --index: 4; }
+.message:nth-child(6) { --index: 5; }
+.message:nth-child(7) { --index: 6; }
+.message:nth-child(8) { --index: 7; }
+.message:nth-child(9) { --index: 8; }
+.message:nth-child(10) { --index: 9; }
+.message:nth-child(11) { --index: 10; }

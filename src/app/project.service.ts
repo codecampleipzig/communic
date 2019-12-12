@@ -1,107 +1,138 @@
 import { Injectable } from "@angular/core";
-
-import * as Mock from "./mockdata";
+import { axiosInstance } from "./axios-instance";
+import { Project } from "./datatypes/Project";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ProjectService {
   constructor() {}
 
   /**
-   * Poseing GET request, returning project by id.
-   * @param id ID of the project
+   * GET full project object from backend
    * @returns new Promise
    */
-  getProject(id: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      resolve(Mock.projects.find(project => project.projectId == id));
+  getProject(projectId: number): Promise<Project> {
+    return axiosInstance.get(`/project/${projectId}`).then(response => {
+      return response.data.project;
     });
   }
 
   /**
-   * Poseing GET request, returning newState of the tasks after status was updated.
+   * Patch taskStatus, returning newState of the tasks after status was updated.
    * @param taskId ID of the task
    * @param status Status of the task to be updated
    * @returns new Promise
    */
   updateTaskStatus(taskId: number, status: string): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const newState = [...Mock.tasks];
-      newState.find(task => task.taskId == taskId).taskStatus = status;
-      resolve(newState);
+    return axiosInstance.patch(`/task/${taskId}`, { taskStatus: status }).then(response => {
+      return response.data.project;
     });
   }
 
   /**
-   * Poseing POST request, returning newState of the project after user was added by userId.
+   * join userId to project and get new project object from backend.
    * @returns new Promise
    */
   joinProjectTeam(projectId: number, userId: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const newState = [...Mock.projects];
-      const project = newState.find(p => p.projectId == projectId);
-      const user = Mock.users.find(u => u.userId == userId);
-
-      project.projectTeam.push(user);
-      resolve(project);
+    return axiosInstance.put(`/projectTeam/${projectId}/member/${userId}`).then(response => {
+      return response.data.project;
     });
   }
 
   /**
-   * Poseing POST request, returning newState of the project after user was removed by userId.
+   * remove userId from project and get new project object from backend.
    * @returns new Promise
    */
   leaveProjectTeam(projectId: number, userId: number): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const newState = [...Mock.projects];
-      const project = newState.find(p => p.projectId == projectId);
-      const userIndex = project.projectTeam.findIndex(u => u.userId == userId);
-
-      project.projectTeam.splice(userIndex, 1);
-      resolve(project);
+    return axiosInstance.delete(`/projectTeam/${projectId}/member/${userId}`).then(response => {
+      return response.data.project;
     });
   }
 
   /**
-   * Poseing POST request, returning newState of the project after user was added to taskTeam by userId.
+   * join userId to task and get new project object from backend
    * @returns new Promise
    */
-  joinTaskTeam(
-    projectId: number,
-    taskId: number,
-    userId: number
-  ): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const newState = [...Mock.projects];
-      const project = newState.find(p => p.projectId == projectId);
-      const user = Mock.users.find(u => u.userId == userId);
-
-      project.projectTasks.find(t => t.taskId == taskId).taskTeam.push(user);
-      resolve(project);
+  joinTaskTeam(projectId: number, taskId: number, userId: number): Promise<any> {
+    console.log("join go");
+    return axiosInstance.put(`/taskTeam/${taskId}/member/${userId}`).then(response => {
+      return response.data.project;
     });
   }
 
   /**
-   * Poseing POST request, returning newState of the project after user was removed of taskTeam by userId.
+   * remove userId from task and get new project object from backend
    * @returns new Promise
    */
-  leaveTaskTeam(
-    projectId: number,
-    taskId: number,
-    userId: number
-  ): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
-      const newState = [...Mock.projects];
-      const project = newState.find(p => p.projectId == projectId);
-      const userIndex = project.projectTasks
-        .find(t => t.taskId == taskId)
-        .taskTeam.findIndex(u => u.userId == userId);
+  leaveTaskTeam(projectId: number, taskId: number, userId: number): Promise<any> {
+    return axiosInstance.delete(`/taskTeam/${taskId}/member/${userId}`).then(response => {
+      return response.data.project;
+    });
+  }
 
-      project.projectTasks
-        .find(t => t.taskId == taskId)
-        .taskTeam.splice(userIndex, 1);
-      resolve(project);
+  createNewSection(
+    projectId: number,
+    title: string,
+    description: string,
+    due: Date,
+    status: string,
+    creatorId: number,
+  ): Promise<any> {
+    const body = {
+      projectId,
+      title,
+      description,
+      due,
+      status,
+      creator: creatorId,
+    };
+    return axiosInstance.post(`/project/${projectId}/section`, body).then(response => {
+      return response;
+    });
+  }
+
+  /**
+   * create new task and get new promise object from backend
+   * @returns new Promise
+   */
+  createTask(
+    projectId: number,
+    taskTitle: string,
+    taskDescription: string,
+    taskStatus: string,
+    taskCreator: number,
+    sectionId: number,
+  ): Promise<any> {
+    const body = {
+      projectId,
+      taskTitle,
+      taskDescription,
+      taskStatus,
+      taskCreator,
+      sectionId,
+    };
+    return axiosInstance.post(`/project/${projectId}/task`, body).then(response => {
+      return response.data.project;
+    });
+  }
+
+  createNewProject(
+    title: string,
+    imageUrl: string,
+    description: string,
+    goal: string,
+    creatorId: number,
+  ): Promise<any> {
+    const body = {
+      title,
+      imageUrl,
+      description,
+      goal,
+      creator: creatorId,
+    };
+    return axiosInstance.post(`/project`, body).then(response => {
+      return response;
     });
   }
 }

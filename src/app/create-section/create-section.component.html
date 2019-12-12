@@ -1,0 +1,28 @@
+<button class="new-section" *ngIf="!toggleForm" (click)="toggle()">
+   <app-icon type="plus" label="Add new Section"></app-icon> 
+   <span *ngIf="!firstSection()" >Plan next section</span>
+   <span *ngIf="firstSection()">Plan your first section</span>
+</button>
+
+<form *ngIf="toggleForm" class="container card" [ngClass]="{'show-errors': showErrors}" [formGroup]="sectionForm"
+   (ngSubmit)="onSubmit()">
+   <div class="top-right-icons">
+      <app-icon type="times" label="Close" (click)="toggle()" class="hover-red"></app-icon>
+   </div>
+   <h2>Plan Your New Section</h2>
+   <p>Some HowTo</p>
+   <label>
+      <input type="text" placeholder="Title" name="title" formControlName="title" required>
+      <span class="form-rule show-rule">
+         Please give your section a good name!
+      </span>
+   </label>
+   <label>
+      <textarea placeholder="Describe your Section" name="description" formControlName="description" required
+         minlength="40"></textarea>
+      <span class="form-rule show-rule">
+         Please give your section a good description (+40 characters).
+      </span>
+   </label>
+   <button type="submit" class="button">Create Section</button>
+</form>

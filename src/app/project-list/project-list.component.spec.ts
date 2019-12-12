@@ -8,7 +8,7 @@ xdescribe("ProjectListComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ProjectListComponent, ProjectCardComponent]
+      declarations: [ProjectListComponent, ProjectCardComponent],
     }).compileComponents();
   }));
 

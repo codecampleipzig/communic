@@ -1,0 +1,17 @@
+<div *ngFor="let message of this.messages; let i = index" [attr.data-index]="i" class="card message"
+   [ngClass]="message.type">
+   <div class="top-right-icons">
+      <button (click)="store.closeMessage(message.id)">
+         <app-icon type="times"></app-icon>
+      </button>
+   </div>
+
+   <app-icon *ngIf="message.icon" type="message.icon"></app-icon>
+   <app-icon *ngIf="!message.icon && message.type == 'error'" type="exclamation-triangle"></app-icon>
+   <app-icon *ngIf="!message.icon && message.type == 'confirm'" type="cookie-bite"></app-icon>
+
+   <div class="content">
+      <h3>{{message.title}}</h3>
+      <p>{{message.message}}</p>
+   </div>
+</div>

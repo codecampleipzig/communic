@@ -9,7 +9,7 @@ describe("TeamMemberComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TeamMemberComponent, TeamCardComponent]
+      declarations: [TeamMemberComponent, TeamCardComponent],
     }).compileComponents();
   }));
 
@@ -22,7 +22,7 @@ describe("TeamMemberComponent", () => {
       userId: 1,
       userName: "Mautzi",
       userEmail: "MolleMorallo@gmail.com",
-      userImageUrl: "../assets/user_avatar.png"
+      userImageUrl: "../assets/user_avatar.png",
     };
 
     fixture.detectChanges();

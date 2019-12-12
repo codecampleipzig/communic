@@ -1,0 +1,10 @@
+button.new-section {
+   margin: 4em auto 2em;
+   left: 50%;
+   position: relative;
+   transform: translateX(-50%);
+}
+
+form {
+   margin-bottom: 3em;
+}

@@ -9,7 +9,7 @@ type taskOrProject = "task" | "project" | "both";
 @Component({
   selector: "app-task",
   templateUrl: "./task.component.html",
-  styleUrls: ["./task.component.css"]
+  styleUrls: ["./task.component.css"],
 })
 export class TaskComponent implements OnInit {
   public userState: UserState;
@@ -26,10 +26,7 @@ export class TaskComponent implements OnInit {
    */
   @HostBinding("class")
   get hostClasses(): string {
-    return (
-      (this.task ? "status-" + this.task.taskStatus : "") +
-      (this.joined("task") ? " joined" : "")
-    );
+    return (this.task ? "status-" + this.task.taskStatus : "") + (this.joined("task") ? " joined" : "");
   }
 
   constructor(@Inject(StoreService) private store: StoreService) {
@@ -37,14 +34,32 @@ export class TaskComponent implements OnInit {
   }
 
   /**
-   * Change task object @status to deleted/open on click of delete/restore button
+   * Delete and restore tasks
    */
   public delete() {
-    this.task.taskStatus = "deleted";
+    const status = this.task.taskStatus;
+    if (!this.joined("both") || status == "deleted") {
+      this.store.newMessage(
+        "error",
+        "Can't update task's status",
+        "This task can't be deleted. You have not been in the task's team or this task is already deleted.",
+      );
+      return false;
+    }
+    this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "deleted");
   }
 
   public restore() {
-    this.task.taskStatus = "open";
+    const status = this.task.taskStatus;
+    if (!this.joined("both") || status != "deleted") {
+      this.store.newMessage(
+        "error",
+        "Can't update task's status",
+        "This task can't be restored. You have not been in the task's team or this task is not deleted.",
+      );
+      return false;
+    }
+    this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "open");
   }
 
   ngOnInit() {}
@@ -56,22 +71,18 @@ export class TaskComponent implements OnInit {
     const status = this.task.taskStatus;
 
     if (!this.joined("both") || status == "deleted") {
-      console.log("not allowed");
+      this.store.newMessage(
+        "error",
+        "Can't update task's status",
+        "You need to join the project and the task's team in order to update the task status",
+      );
       return false;
     }
 
     if (status == "done") {
-      this.store.updateTaskStatus(
-        this.task.projectId,
-        this.task.taskId,
-        "open"
-      );
+      this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "open");
     } else if (status == "open") {
-      this.store.updateTaskStatus(
-        this.task.projectId,
-        this.task.taskId,
-        "done"
-      );
+      this.store.updateTaskStatus(this.task.projectId, this.task.taskId, "done");
     }
   }
 
@@ -79,25 +90,15 @@ export class TaskComponent implements OnInit {
    * Function that adds the user to the ProjectTeam
    */
   join(): void {
-    if (!this.joined("project")) {
-      this.store.joinTaskTeam(
-        this.task.projectId,
-        this.task.taskId,
-        this.userState.userInformation.userId
-      );
+    if (this.joined("project")) {
+      this.store.joinTaskTeam(this.task.projectId, this.task.taskId, this.userState.userInformation.userId);
     }
   }
   /**
    * Function that deletes the user from the ProjectTeam
    */
   leave(): void {
-    if (this.joined("project")) {
-      this.store.leaveTaskTeam(
-        this.task.projectId,
-        this.task.taskId,
-        this.userState.userInformation.userId
-      );
-    }
+    this.store.leaveTaskTeam(this.task.projectId, this.task.taskId, this.userState.userInformation.userId);
   }
 
   /**
@@ -106,14 +107,10 @@ export class TaskComponent implements OnInit {
    */
   joined(ask?: taskOrProject): boolean {
     const joinedProject = Boolean(
-      this.project.projectTeam.find(
-        team => team.userId == this.userState.userInformation.userId
-      )
+      this.project.projectTeam.find(team => team.userId == this.userState.userInformation.userId),
     );
     const joinedTask = Boolean(
-      this.task.taskTeam.find(
-        taskTeam => taskTeam.userId == this.userState.userInformation.userId
-      )
+      this.task.taskTeam.find(taskTeam => taskTeam.userId == this.userState.userInformation.userId),
     );
 
     if (ask == "task") {
