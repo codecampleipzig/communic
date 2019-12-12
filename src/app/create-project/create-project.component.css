@@ -10,10 +10,7 @@
 }
 
 input {
-  border-right: none;
-  border-top: none;
-  border-left: none;
-  border-bottom: 1px solid var(--borderGrey);
+  border: none;
   resize: none;
   font-size: 1.2em;
   font-family: inherit;
@@ -45,6 +42,7 @@ h3 {
   justify-content: center;
   display: flex;
   align-items: center;
+  margin-bottom: 2em;
 }
 
 .project-image button {
