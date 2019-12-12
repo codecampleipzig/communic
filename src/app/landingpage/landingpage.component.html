@@ -13,6 +13,7 @@
       </div>
     </div>
   </div>
+  <div class="ball"></div>
   <div class="right-side">
     <div class="nav">
       <button [routerLink]="['/login']">Log in</button>
@@ -23,7 +24,7 @@
 </div>
 <div class="infocontainer">
   <div class="tagline">
-    <h1>Meet people who do something.</h1>
+    <h2>Meet people who do something.</h2>
   </div>
   <div class="bottom flex">
     <div class="column1">
@@ -96,15 +97,30 @@
     </div>
   </div>
 </div>
+<div class="points-block">
+  <h2>Does it sound nice to you? Get on with it!<br />It's easy as 1, 2, 3.</h2>
+  <div class="point-1 zoomIn">
+    <img class="point-circle bounceInLeft" src="../../assets/Circle1.svg" alt="Bullet Point 1" />
+    <p>Create an account</p>
+  </div>
+  <div class="point-2 zoomIn">
+    <img class="point-circle" src="../../assets/Circle2.svg" alt="Bullet Point 2" />
+    <p>Explore all the projects and join those you like</p>
+  </div>
+  <div class="point-3 zoomIn">
+    <img class="point-circle" src="../../assets/Circle3.svg" alt="Bullet Point 3" />
+    <p>Participate, contribute, do something!</p>
+  </div>
+</div>
 <div class="text-box">
   <h2>
     Join <span class="highlight-green">Communic</span> and impact the community around you. We have real
     <span class="highlight-yellow">cookies</span> for everybody.
   </h2>
   <p class="p-cookies">
-    <i class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i
-    ><i class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i
-    ><i class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i>
+    <i id="cookie1" class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i
+    ><i id="cookie2" class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i
+    ><i id="cookie3" class="em-svg em-cookie" aria-role="presentation" aria-label="COOKIE"></i>
   </p>
   <small>* We don't use cookies in this website.</small>
 </div>
