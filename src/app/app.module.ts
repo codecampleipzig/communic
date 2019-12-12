@@ -28,6 +28,7 @@ import { MessageComponent } from "./message/message.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LoadingIconComponent } from "./loading-icon/loading-icon.component";
+import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.component";
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { LoadingIconComponent } from "./loading-icon/loading-icon.component";
     MessageComponent,
     NotFoundComponent,
     LoadingIconComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,
