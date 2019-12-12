@@ -194,7 +194,7 @@ export class StoreService {
   retrieveYourProjects() {
     let userId: number;
     if (!this.user.getValue().userInformation) {
-      userId = 1; // TODO: Modify/remove this once we have auth in place
+      throw new Error("No user logged in");
     } else {
       userId = this.user.getValue().userInformation.userId;
     }
