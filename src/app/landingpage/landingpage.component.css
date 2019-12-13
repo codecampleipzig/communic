@@ -195,15 +195,32 @@ h2 {
   background-color: var(--primaryColor);
 }
 
-.secondscreen h3 {
-  color: var(--fontDarkGrey);
-  font-size: 18px;
+.column1 h3 {
+  color: var(--secondaryColorGreen);
+  font-size: x-large;
+  text-align: left;
 }
-
-.secondscreen p {
+.column2 h3 {
+  color: var(--secondaryColorGreen);
+  font-size: x-large;
+  text-align: left;
+}
+.column3 h3 {
+  color: var(--secondaryColorGreen);
+  font-size: x-large;
+  text-align: left;
+}
+.column4 h3 {
+  color: var(--secondaryColorGreen);
+  font-size: x-large;
   text-align: left;
 }
 
+.grid p {
+  text-align: left;
+  color: var(--primaryColorDarker);
+  font-size: 1.3rem;
+}
 .right-side {
   width: 100%;
 }
@@ -232,6 +249,7 @@ button {
 .points-block h2 {
   text-align: center;
   color: var(--primaryColorDark);
+  margin-bottom: 1em;
 }
 
 .points-block p {
@@ -258,17 +276,17 @@ button {
   animation-name: zoomIn;
 }
 .point-1 {
-  animation-duration: 7s;
+  animation-duration: 3s;
   animation-delay: 3s;
   animation-iteration-count: infinite;
 }
 .point-2 {
-  animation-duration: 7s;
+  animation-duration: 3s;
   animation-delay: 4.5s;
   animation-iteration-count: infinite;
 }
 .point-3 {
-  animation-duration: 7s;
+  animation-duration: 3s;
   animation-delay: 5.5s;
   animation-iteration-count: infinite;
 }
@@ -362,15 +380,7 @@ footer a:hover {
 }
 
 .plus {
-  height: 20px;
-  width: 100%;
-  margin-top: 2rem;
-}
-
-.column1,
-.column2 {
-  width: 100%;
-  text-align: left;
+  align-self: end;
 }
 
 .points-block p {
@@ -472,14 +482,40 @@ footer a:hover {
   }
 
   .plus {
-    height: 20px;
-    width: 100%;
     cursor: pointer;
   }
 
-  .column1,
+  .grid {
+    display: grid;
+    grid-template-areas:
+      "column1 column3"
+      "column2 column4";
+    gap: 3rem;
+  }
+
+  .column1 {
+    grid-area: column1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
   .column2 {
-    width: 50%;
+    grid-area: column2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .column3 {
+    grid-area: column3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .column4 {
+    grid-area: column4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .bottom p {
