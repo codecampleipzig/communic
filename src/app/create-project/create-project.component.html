@@ -58,11 +58,12 @@
       class="project-description"
       name="description"
       formControlName="description"
-      minlength="40"
+      minlength="30"
       required
     ></textarea>
     <span class="form-rule" *ngIf="showErrors">
-      Please enter a warmhearted description.
+      Please enter a warmhearted description. Should be more than 30 characters - take your time and write what´s going
+      on in your mind.
     </span>
   </label>
 
@@ -74,11 +75,11 @@
       class="project-description"
       name="goal"
       formControlName="goal"
-      minlength="60"
+      minlength="30"
       required
     ></textarea>
     <span class="form-rule" *ngIf="showErrors">
-      Please enter an inspiring goal.
+      Please enter an inspiring goal. Should be more than 30 characters - let us know!
     </span>
   </label>
 
