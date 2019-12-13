@@ -5,11 +5,11 @@
   position: static;
   margin-top: 0;
   margin-bottom: 0;
-  padding:1em;
+  padding: 1em;
 }
 
-.card img {
-  height: 100px;
+.register-card-title img {
+  height: 4em;
 }
 
 :host > * {

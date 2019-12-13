@@ -1,8 +1,8 @@
 <form class="register-card card text-center background" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <div *ngIf="authType == 'register'"><img src="../../assets/joincomm.svg" /></div>
-  <div *ngIf="authType == 'login'"><img src="../../assets/joincommunity.svg" /></div>
-  <h3 *ngIf="authType == 'reset-password'">Reset your password</h3>
-  <h3 *ngIf="authType == 'change-password'">Create a new password</h3>
+  <div class="register-card-title" *ngIf="authType == 'register'"><img src="../../assets/joincomm.svg" /></div>
+  <div class="register-card-title" *ngIf="authType == 'login'"><img src="../../assets/joincommunity.svg" /></div>
+  <h3 class="register-card-title" *ngIf="authType == 'reset-password'">Reset your password</h3>
+  <h3 class="register-card-title" *ngIf="authType == 'change-password'">Create a new password</h3>
 
   <app-loading-icon></app-loading-icon>
 
