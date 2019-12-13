@@ -24,6 +24,7 @@ import { SearchresultsComponent } from "./searchresults/searchresults.component"
 import { HttpClientModule } from "@angular/common/http";
 import { ProjectSectionsComponent } from "./project-sections/project-sections.component";
 import { CreateSectionComponent } from "./create-section/create-section.component";
+import { LandingpageComponent } from "./landingpage/landingpage.component";
 import { MessageComponent } from "./message/message.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -52,6 +53,7 @@ import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.componen
     CreateProjectComponent,
     ProjectSectionsComponent,
     CreateSectionComponent,
+    LandingpageComponent,
     MessageComponent,
     NotFoundComponent,
     LoadingIconComponent,

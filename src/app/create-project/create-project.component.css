@@ -9,7 +9,8 @@
   font-size: 2em;
 }
 
-input, textarea {
+input,
+textarea {
   border: none;
   outline: none;
 }
