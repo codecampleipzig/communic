@@ -436,3 +436,14 @@ label {
 app-toolbar + * {
   margin-top: 3em !important;
 }
+
+
+/* TODO: Do this better */
+app-project-page,
+app-home,
+app-create-project,
+app-searchresults
+ {
+  margin-bottom: 150px;
+  display: block;
+}
