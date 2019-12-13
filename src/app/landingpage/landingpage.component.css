@@ -15,15 +15,13 @@ h2 {
 }
 .centered {
   align-items: center;
-
 }
 .communic {
   background: url("../../assets/new-logo.svg");
   background-repeat: no-repeat;
   margin-top: 2rem;
-  width: 80%;
   height: 70px;
-  margin-left: 25vw;
+  background-position: center;
 }
 
 .tagline {
@@ -199,6 +197,11 @@ h2 {
 
 .secondscreen h3 {
   color: var(--fontDarkGrey);
+  font-size: 18px;
+}
+
+.secondscreen p {
+  text-align: left;
 }
 
 .right-side {
@@ -227,7 +230,7 @@ button {
 }
 
 .points-block h2 {
-  text-align: left;
+  text-align: center;
   color: var(--primaryColorDark);
 }
 
@@ -361,18 +364,15 @@ footer a:hover {
 .plus {
   height: 20px;
   width: 100%;
+  margin-top: 2rem;
 }
 
 .column1,
 .column2 {
   width: 100%;
+  text-align: left;
 }
 
-.bottom p {
-  padding: 0 2rem;
-  margin: 0;
-  display: inline;
-}
 .points-block p {
   font-size: 2.5em;
 }
@@ -474,6 +474,7 @@ footer a:hover {
   .plus {
     height: 20px;
     width: 100%;
+    cursor: pointer;
   }
 
   .column1,
@@ -482,10 +483,9 @@ footer a:hover {
   }
 
   .bottom p {
-    padding: 0 2rem;
     margin: 0;
-    display: inline;
   }
+
   .points-block p {
     font-size: 2.5em;
   }
