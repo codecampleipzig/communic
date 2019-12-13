@@ -7,6 +7,7 @@ import { SearchresultsComponent } from "./searchresults/searchresults.component"
 import { AuthGuardService } from "./auth-guard.service";
 import { CreateProjectComponent } from "./create-project/create-project.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
+import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.component";
 
 const routes: Routes = [
   { path: "project/:id", component: ProjectPageComponent, canActivate: [AuthGuardService] },
@@ -25,6 +26,11 @@ const routes: Routes = [
     component: CreateProjectComponent,
     data: { title: "Create New Project" },
     canActivate: [AuthGuardService],
+  },
+  {
+    path: "privacy",
+    component: PrivacyPolicyComponent,
+    data: { title: "Privacy Policy" },
   },
   {
     path: "**",
