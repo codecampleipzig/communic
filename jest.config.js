@@ -1,39 +1,42 @@
 module.exports = {
-  "preset": "jest-preset-angular",
-  "setupFilesAfterEnv": [
-    "<rootDir>/setupJest.ts"
-  ],
-  "transform": {
-      "^.+\\.(ts|js|html)$": "ts-jest",
+  preset: "jest-preset-angular",
+  setupFilesAfterEnv: ["<rootDir>/setupJest.ts"],
+  transform: {
+    "^.+\\.(ts|js|html)$": "ts-jest",
   },
-  "moduleFileExtensions": ["ts", "html", "js", "json"],
-  "moduleNameMapper": {
+  moduleFileExtensions: ["ts", "html", "js", "json"],
+  moduleNameMapper: {
     "^src/(.*)$": "<rootDir>/src/$1",
     "^app/(.*)$": "<rootDir>/src/app/$1",
     "^assets/(.*)$": "<rootDir>/src/assets/$1",
     "^environments/(.*)$": "<rootDir>/src/environments/$1",
   },
-  "transformIgnorePatterns": [
-    "node_modules/(?!@ngrx|angular2-ui-switch|ng-dynamic)"
-  ],
-  "snapshotSerializers": [
+  transformIgnorePatterns: ["node_modules/(?!@ngrx|angular2-ui-switch|ng-dynamic)"],
+  snapshotSerializers: [
     "jest-preset-angular/build/AngularSnapshotSerializer.js",
     "jest-preset-angular/build/HTMLCommentSerializer.js",
   ],
-  "testPathIgnorePatterns": [
+  testPathIgnorePatterns: [
     "<rootDir>/node_modules/",
     "<rootDir>/dist",
     "<rootDir>/src/test.ts",
-    "<rootDir>/projects/nric/src/test.ts"
+    "<rootDir>/projects/nric/src/test.ts",
   ],
-  "globals": {
+  globals: {
     "ts-jest": {
-      "tsConfig": "<rootDir>/tsconfig.spec.json",
-      "stringifyContentPathRegex": "\\.html$",
-      "astTransformers": [
+      tsConfig: "<rootDir>/tsconfig.spec.json",
+      stringifyContentPathRegex: "\\.html$",
+      astTransformers: [
         "jest-preset-angular/build/InlineFilesTransformer",
-        "jest-preset-angular/build/StripStylesTransformer"
+        "jest-preset-angular/build/StripStylesTransformer",
       ],
-    }
-  }
+    },
+  },
+  coverageThreshold: {
+    global: {
+      branches: 20,
+      functions: 30,
+      lines: 40,
+    },
+  },
 };

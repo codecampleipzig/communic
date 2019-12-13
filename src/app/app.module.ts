@@ -24,10 +24,12 @@ import { SearchresultsComponent } from "./searchresults/searchresults.component"
 import { HttpClientModule } from "@angular/common/http";
 import { ProjectSectionsComponent } from "./project-sections/project-sections.component";
 import { CreateSectionComponent } from "./create-section/create-section.component";
+import { LandingpageComponent } from "./landingpage/landingpage.component";
 import { MessageComponent } from "./message/message.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { LoadingIconComponent } from "./loading-icon/loading-icon.component";
+import { PrivacyPolicyComponent } from "./privacy-policy/privacy-policy.component";
 
 @NgModule({
   declarations: [
@@ -51,9 +53,11 @@ import { LoadingIconComponent } from "./loading-icon/loading-icon.component";
     CreateProjectComponent,
     ProjectSectionsComponent,
     CreateSectionComponent,
+    LandingpageComponent,
     MessageComponent,
     NotFoundComponent,
     LoadingIconComponent,
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,

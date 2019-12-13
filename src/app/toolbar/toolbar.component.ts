@@ -67,20 +67,11 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
       share(),
     );
 
-    console.log(scroll$);
-
     const scrollUp$ = scroll$.pipe(filter(direction => direction === Directions.Up));
-
-    console.log(scrollUp$);
 
     const scrollDown = scroll$.pipe(filter(direction => direction === Directions.Down));
 
-    console.log(scrollDown);
-
     scrollUp$.subscribe(() => (this.isVisible = true));
     scrollDown.subscribe(() => (this.isVisible = false));
-
-    console.log(VisibilityState.Hidden);
-    console.log(VisibilityState.Visible);
   }
 }

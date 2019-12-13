@@ -6,6 +6,7 @@
   --primaryColor: #6a6deb;
   --primaryLight: #9da0ff;
   --primaryColorDark: #040785;
+  --primaryColorDarker: #000052;
   --primaryColorHighlight: #8487ff;
   --secondaryColorGreen: #33cca7;
   --secondaryColorOrange: #ff8633;
@@ -35,7 +36,7 @@
 html,
 body {
   font-size: 14px;
-  line-height: 20px;
+  line-height: 1.3;
   word-break: break-word;
 }
 
@@ -56,7 +57,6 @@ body {
  */
 
 h2 {
-  font-family: "Montserrat", sans-serif;
   font-weight: 600;
 }
 
@@ -120,7 +120,6 @@ input,
 textarea {
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 5px;
   box-sizing: border-box;
   font-family: inherit;
 }
@@ -152,6 +151,11 @@ button app-icon:not(:last-child),
 a i:not(:last-child),
 a app-icon:not(:last-child) {
   margin-right: 0.5em;
+}
+
+/* Fix app-icon type="search" outline */
+[type="search"] {
+  -webkit-appearance: none;
 }
 
 .button i:last-child,
@@ -200,7 +204,7 @@ a app-icon:last-child {
 .button.outlined {
   border: 1px solid var(--primaryColor);
   color: var(--primaryColor);
-  background-color: transparent;
+  background-color: inherit;
   padding: 0.5em 1em;
 }
 
@@ -221,7 +225,9 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-  border: 1px solid var(--borderGrey);
+  border-bottom: 1px solid var(--borderGrey);
+  border-right: 0;
+  border-top: 0;
   width: 100%;
   padding: 0.9em 1.5em;
 }
@@ -424,3 +430,8 @@ label {
   transform: translateY(-50%);
 }
 
+/* Fixes */
+
+app-toolbar + * {
+  margin-top: 3em !important;
+}
