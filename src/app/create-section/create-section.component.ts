@@ -35,6 +35,10 @@ export class CreateSectionComponent implements OnInit {
     return this.sectionForm.get("description");
   }
 
+  firstSection() {
+    return this.project.projectSections.length == 0;
+  }
+
   onSubmit() {
     if (this.sectionForm.valid) {
       this.showErrors = false;

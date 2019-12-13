@@ -1,0 +1,17 @@
+<app-toolbar></app-toolbar>
+<div class="card container" id="error404">
+   <div class="description">
+      <h2>Page not found <app-icon type="frown"></app-icon>
+      </h2>
+      <p>Damn it. This is not good. But the URL you entered is unknown... <small>Error 404</small></p>
+   </div>
+   <div class="recommends">
+      <h3>Did you mean</h3>
+      <div class="card" *ngFor="let path of this.paths | slice:0:3; let i=index" routerLink="/{{path.path}}">
+         <h4>{{path.data.title}}</h4>
+         <a routerLink="/{{path.path}}"><span>Go there</span>
+            <app-icon type="angle-right"></app-icon>
+         </a>
+      </div>
+   </div>
+</div>

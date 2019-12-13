@@ -5,7 +5,7 @@ import { projects } from "./../mockdata";
 import { FormControl } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { SearchService } from "./../search.service";
-import { switchMap, map, debounceTime, distinctUntilChanged } from "rxjs/operators";
+import { switchMap, map, debounceTime, distinctUntilChanged, mergeMap } from "rxjs/operators";
 
 // technical debt, because the real Project type is outdated
 export interface SearchProject {

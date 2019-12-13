@@ -1,6 +1,7 @@
-import { Component, OnInit, HostListener, Inject } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { StoreService } from "./../store.service";
 import { ProjectCategoryEnum } from "./../datatypes/enums/ProjectCategoryEnum";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @Component({
   selector: "app-home",

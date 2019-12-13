@@ -1,20 +1,14 @@
 <div>
   <form [ngClass]="{ show: active }" class="columns" (ngSubmit)="onSubmit($event)">
     <app-icon type="search" label="Search" (click)="active = !active"></app-icon>
-    <input
-      id="search-input"
-      placeholder="Looking for a project?"
-      (click)="active = true"
-      list="results"
-      [formControl]="searchInput"
-      (focusout)="focusLost()"
-    />
+    <input id="search-input" placeholder="Looking for a project?" (click)="active = true" list="results"
+      [formControl]="searchInput" (focusout)="focusLost()" />
   </form>
-  <div class="dropdown" *ngIf="active && projects.length">
+  <div class="dropdown" *ngIf="active && projects && projects.length">
     <ul>
       <li *ngFor="let p of projects">
-        <a (click)="clearSearch()" [routerLink]="['/project', p.projectId]"> {{ p.projectTitle }} </a
-        ><app-icon type="user" label="User Avatar"></app-icon>
+        <a (click)="clearSearch()" [routerLink]="['/project', p.projectId]"> {{ p.projectTitle }} </a>
+        <app-icon type="user" label="User Avatar"></app-icon>
       </li>
       <li *ngIf="projects.length > 20">
         <a [routerLink]="['/searchresults']" [queryParams]="{ searchString: searchInput.value }"> See all results</a>
