@@ -424,9 +424,8 @@ label {
   transform: translateY(-50%);
 }
 
-
 /* Fixes */
 
 app-toolbar + * {
-  margin-top: 3em !important
+  margin-top: 3em !important;
 }
