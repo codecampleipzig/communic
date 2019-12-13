@@ -412,7 +412,8 @@ label {
   text-align: center;
 }
 
-.user-image img {
+.user-image img,
+.user-image svg {
   object-fit: cover;
   object-position: center;
   width: 100%;

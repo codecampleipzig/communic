@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { StoreService } from "../store.service";
 import { FileUploadService } from "../file-upload.service";
 import { v4 as uuid } from "uuid";
+import jdenticon from "jdenticon";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
 
 @NgModule({
   imports: [ReactiveFormsModule],
@@ -16,7 +18,8 @@ import { v4 as uuid } from "uuid";
 export class RegisterCardComponent implements OnInit {
   profileForm: FormGroup;
   title: string;
-  image: any = null;
+  image: any = jdenticon.toSvg(uuid(), 100);
+  svg: SafeHtml;
   authType: any;
   uploadState: string | boolean = false;
   fileToUpload: File = null;
@@ -34,6 +37,7 @@ export class RegisterCardComponent implements OnInit {
     @Inject(Router) private router: Router,
     @Inject(StoreService) private store: StoreService,
     @Inject(FileUploadService) private uploader: FileUploadService,
+    private sanitizer: DomSanitizer,
   ) {
     this.profileForm = new FormGroup({
       userName: new FormControl(
@@ -83,6 +87,8 @@ export class RegisterCardComponent implements OnInit {
       // Get the last piece of the URL (it's either 'login' or 'register')
       this.authType = data[data.length - 1].path;
     });
+
+    this.svg = this.sanitizer.bypassSecurityTrustHtml(this.image);
   }
 
   onSubmit() {
@@ -141,5 +147,9 @@ export class RegisterCardComponent implements OnInit {
 
   isString(val) {
     return typeof val === "string";
+  }
+
+  imageString() {
+    return String(this.image);
   }
 }
