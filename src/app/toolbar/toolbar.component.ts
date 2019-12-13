@@ -61,8 +61,9 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
     const scroll$ = fromEvent(window, "scroll").pipe(
       throttleTime(10),
       map(() => window.pageYOffset),
+      filter(y => y >= 0),
       pairwise(),
-      map(([y1, y2]): Directions => (y2 < y1 ? Directions.Up : Directions.Down)),
+      map(([y1, y2]): Directions => (y2 <= y1 ? Directions.Up : Directions.Down)),
       distinctUntilChanged(),
       share(),
     );
@@ -72,6 +73,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
     const scrollDown = scroll$.pipe(filter(direction => direction === Directions.Down));
 
     scrollUp$.subscribe(() => (this.isVisible = true));
-    scrollDown.subscribe(() => (this.isVisible = false));
+    scrollDown.subscribe(() => {
+      this.isVisible = false;
+    });
   }
 }
