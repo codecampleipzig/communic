@@ -3,6 +3,7 @@ import { TaskComponent } from "./task.component";
 import { StoreService } from "../store.service";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
 import * as Mock from "../mockdata";
+import { DomSanitizer } from "@angular/platform-browser";
 
 describe("Task Component", () => {
   let component: TaskComponent;
@@ -15,6 +16,13 @@ describe("Task Component", () => {
         {
           provide: StoreService,
           useClass: TestingStoreService,
+        },
+        {
+          provide: DomSanitizer,
+          useClass: class {
+            bypassSecurityTrustHtml() {}
+            sanitize() {}
+          },
         },
       ],
     }).compileComponents();

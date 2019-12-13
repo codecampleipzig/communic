@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Inject } from "@angular/core";
 import { User } from "../datatypes/User";
+import { SafeHtml, DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "app-team-member",
@@ -8,8 +9,17 @@ import { User } from "../datatypes/User";
 })
 export class TeamMemberComponent implements OnInit {
   @Input() user: User;
+  image: string;
+  svg: SafeHtml;
 
-  constructor() {}
+  constructor(@Inject(DomSanitizer) public sanitizer: DomSanitizer) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.image = this.user.userImageUrl;
+    this.svg = this.sanitizer.bypassSecurityTrustHtml(this.image);
+  }
+
+  imageString() {
+    return String(this.image);
+  }
 }
