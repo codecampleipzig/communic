@@ -28,71 +28,69 @@
       <h2>Meet people who do something.</h2>
     </div>
     <div class="bottom flex">
-      <div class="column1">
-        <div>
-          <h3>Find projects that inspire you, or create your own</h3>
-        </div>
-        <p>
-          After you sign up with just an email address and password, Communic lets you browse, search through and
-          contribute to a growing database of exciting projects initiated by our users.
+      <div class="grid">
+        <div class="column1">
+          <div>
+            <h3>Find projects that inspire you, or create your own</h3>
+            <p>
+              After you sign up with just an email address and password, Communic lets you browse, search through and
+              contribute to a growing database of exciting projects initiated by our users.
+            </p>
+            <p *ngIf="!show1">
+              By creating a project with a name, short description and an image, users make their ideas available for
+              open collaboration with our community.
+            </p>
+          </div>
           <img (click)="show1 = !show1" *ngIf="show1" class="plus" src="../../assets/plus.svg" />
-        </p>
-        <br />
-        <p *ngIf="!show1">
-          By creating a project with a name, short description and an image, users make their ideas available for open
-          collaboration with our community.
-        </p>
-        <img (click)="show1 = !show1" *ngIf="!show1" class="plus" src="../../assets/close.svg" />
-        <div>
-          <h3>Get involved by taking on and adding tasks</h3>
+          <img (click)="show1 = !show1" *ngIf="!show1" class="plus" src="../../assets/close.svg" />
         </div>
-        <p>
-          Each project is structured in a way that invites anyone it inspires to find a way to contribute while offering
-          a clear and intuitive framework for bringing it to life.
-        </p>
-
-        <div>
+        <div class="column2">
+          <div>
+            <h3>Get involved by taking on and adding tasks</h3>
+            <p>
+              Each project is structured in a way that invites anyone it inspires to find a way to contribute while
+              offering a clear and intuitive framework for bringing it to life.
+            </p>
+            <p *ngIf="!show2">
+              Projects are divided into sections defined by users, which are further broken down into a series of tasks,
+              with titles and descriptions. Once users have joined the project, they can review tasks, sign up to work
+              on them, and add their own.
+            </p>
+          </div>
           <img (click)="show2 = !show2" *ngIf="show2" class="plus" src="../../assets/plus.svg" />
-          <p *ngIf="!show2">
-            Projects are divided into sections defined by users, which are further broken down into a series of tasks,
-            with titles and descriptions. Once users have joined the project, they can review tasks, sign up to work on
-            them, and add their own.
-          </p>
           <img (click)="show2 = !show2" *ngIf="!show2" class="plus" src="../../assets/close.svg" />
         </div>
-      </div>
-      <div class="column2">
-        <div>
-          <h3>Build your community</h3>
-        </div>
-        <p>
-          Communic is a springboard for connecting motivated creators and forming enduring teams around their shared
-          passions and diverse skillsets.
-        </p>
-        <div>
+        <div class="column3">
+          <div>
+            <h3>Build your community</h3>
+            <p>
+              Communic is a springboard for connecting motivated creators and forming enduring teams around their shared
+              passions and diverse skillsets.
+            </p>
+            <p *ngIf="!show3">
+              Our design focuses on who is working on a specific project or task, allowing you to communicate,
+              collaborate and meet up with other users who want to work on the same ideas, and to grow together by
+              taking on new challenges with your past teammates.
+            </p>
+          </div>
           <img (click)="show3 = !show3" *ngIf="show3" class="plus" src="../../assets/plus.svg" />
-          <p *ngIf="!show3">
-            Our design focuses on who is working on a specific project or task, allowing you to communicate, collaborate
-            and meet up with other users who want to work on the same ideas, and to grow together by taking on new
-            challenges with your past teammates.
-          </p>
           <img (click)="show3 = !show3" *ngIf="!show3" class="plus" src="../../assets/close.svg" />
         </div>
-        <div>
-          <h3>Connect and bring ideas to life</h3>
-        </div>
-        <p>
-          Our transparent visual design maps the journey of a project as teams are formed and tasks are added, revised
-          and completed.
-        </p>
-        <div>
+        <div class="column4">
+          <div>
+            <h3>Connect and bring ideas to life</h3>
+            <p>
+              Our transparent visual design maps the journey of a project as teams are formed and tasks are added,
+              revised and completed.
+            </p>
+            <p *ngIf="!show4">
+              The project page shows the project team, its sections and the status of each task. Tasks which have been
+              completed or rethought are clearly distinguished, allowing everyone to easily and quickly understand what
+              work has been done on the project, how the project has refined, and what still needs to be done. Communic
+              offers a platform for sharing your vision and making it a reality.
+            </p>
+          </div>
           <img (click)="show4 = !show4" *ngIf="show4" class="plus" src="../../assets/plus.svg" />
-          <p *ngIf="!show4">
-            The project page shows the project team, its sections and the status of each task. Tasks which have been
-            completed or rethought are clearly distinguished, allowing everyone to easily and quickly understand what
-            work has been done on the project, how the project has refined, and what still needs to be done. Communic
-            offers a platform for sharing your vision and making it a reality.
-          </p>
           <img (click)="show4 = !show4" *ngIf="!show4" class="plus" src="../../assets/close.svg" />
         </div>
       </div>
@@ -131,6 +129,9 @@
     <p>
       Made with <i class="fas fa-heart"></i> by
       <a target="_blank" href="https://codecampleipzig.de/">Code Camp Leipzig</a>
+    </p>
+    <p>
+      <a [routerLink]="['/privacy']">Check out our privacy Policy</a>
     </p>
   </div>
 </footer>
