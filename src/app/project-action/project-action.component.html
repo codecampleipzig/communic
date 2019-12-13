@@ -1,9 +1,9 @@
-<div id="project-name" class="breadcrumb" *ngIf="project">
-   <i class="fas fa-angle-right"></i>
-   <span class="item">{{project.projectTitle}}</span>
-</div>
-
-<a id="start-project-button" class="button outlined round caption-mobile-hidden" routerLink="/startnewproject" *ngIf="project == null">
-   <i class="fa fa-plus"></i>
-   <span>Start a new project</span>
-</a>
+   <div id="project-name" class="breadcrumb" *ngIf="project">
+      <i class="fas fa-angle-right"></i>
+      <span class="item">{{project.projectTitle}}</span>
+   </div>
+   
+   <a id="start-project-button" class="button outlined caption-mobile-hidden" routerLink="/createproject" *ngIf="project == null">
+      <i class="fa fa-plus"></i>
+      <span class="mobile-hidden">Start a new project</span>
+   </a>

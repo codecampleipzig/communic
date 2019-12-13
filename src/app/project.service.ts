@@ -1,8 +1,5 @@
 import { Injectable } from "@angular/core";
-
-import * as Mock from "./mockdata";
-import axios from "axios";
-import { environment } from "../environments/environment";
+import { axiosInstance } from "./axios-instance";
 import { Project } from "./datatypes/Project";
 
 @Injectable({
@@ -16,7 +13,7 @@ export class ProjectService {
    * @returns new Promise
    */
   getProject(projectId: number): Promise<Project> {
-    return axios.get(`${environment.api_url}/project/${projectId}`).then(response => {
+    return axiosInstance.get(`/project/${projectId}`).then(response => {
       return response.data.project;
     });
   }
@@ -28,7 +25,7 @@ export class ProjectService {
    * @returns new Promise
    */
   updateTaskStatus(taskId: number, status: string): Promise<any> {
-    return axios.patch(`${environment.api_url}/task/${taskId}`, { taskStatus: status }).then(response => {
+    return axiosInstance.patch(`/task/${taskId}`, { taskStatus: status }).then(response => {
       return response.data.project;
     });
   }
@@ -38,7 +35,7 @@ export class ProjectService {
    * @returns new Promise
    */
   joinProjectTeam(projectId: number, userId: number): Promise<any> {
-    return axios.put(`${environment.api_url}/projectTeam/${projectId}/member/${userId}`).then(response => {
+    return axiosInstance.put(`/projectTeam/${projectId}/member/${userId}`).then(response => {
       return response.data.project;
     });
   }
@@ -48,7 +45,7 @@ export class ProjectService {
    * @returns new Promise
    */
   leaveProjectTeam(projectId: number, userId: number): Promise<any> {
-    return axios.delete(`${environment.api_url}/projectTeam/${projectId}/member/${userId}`).then(response => {
+    return axiosInstance.delete(`/projectTeam/${projectId}/member/${userId}`).then(response => {
       return response.data.project;
     });
   }
@@ -59,7 +56,7 @@ export class ProjectService {
    */
   joinTaskTeam(projectId: number, taskId: number, userId: number): Promise<any> {
     console.log("join go");
-    return axios.put(`${environment.api_url}/taskTeam/${taskId}/member/${userId}`).then(response => {
+    return axiosInstance.put(`/taskTeam/${taskId}/member/${userId}`).then(response => {
       return response.data.project;
     });
   }
@@ -69,7 +66,7 @@ export class ProjectService {
    * @returns new Promise
    */
   leaveTaskTeam(projectId: number, taskId: number, userId: number): Promise<any> {
-    return axios.delete(`${environment.api_url}/taskTeam/${taskId}/member/${userId}`).then(response => {
+    return axiosInstance.delete(`/taskTeam/${taskId}/member/${userId}`).then(response => {
       return response.data.project;
     });
   }
@@ -90,7 +87,51 @@ export class ProjectService {
       status,
       creator: creatorId,
     };
-    return axios.post(`${environment.api_url}/project/${projectId}/section`, body).then(response => {
+    return axiosInstance.post(`/project/${projectId}/section`, body).then(response => {
+      return response;
+    });
+  }
+
+  /**
+   * create new task and get new promise object from backend
+   * @returns new Promise
+   */
+  createTask(
+    projectId: number,
+    taskTitle: string,
+    taskDescription: string,
+    taskStatus: string,
+    taskCreator: number,
+    sectionId: number,
+  ): Promise<any> {
+    const body = {
+      projectId,
+      taskTitle,
+      taskDescription,
+      taskStatus,
+      taskCreator,
+      sectionId,
+    };
+    return axiosInstance.post(`/project/${projectId}/task`, body).then(response => {
+      return response.data.project;
+    });
+  }
+
+  createNewProject(
+    title: string,
+    imageUrl: string,
+    description: string,
+    goal: string,
+    creatorId: number,
+  ): Promise<any> {
+    const body = {
+      title,
+      imageUrl,
+      description,
+      goal,
+      creator: creatorId,
+    };
+    return axiosInstance.post(`/project`, body).then(response => {
       return response;
     });
   }

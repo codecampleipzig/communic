@@ -1,10 +1,13 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { StartnewprojectComponent } from "./startnewproject.component";
+import { CreateProjectComponent } from "./create-project.component";
 import { Component } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import * as Mock from "../mockdata";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TestingRouter } from "../test-utilities/testing-router";
 import { Router } from "@angular/router";
+import { StoreService } from "../store.service";
+import { TestingStoreService } from "../test-utilities/testing-store.service";
 
 @Component({
   selector: "app-toolbar",
@@ -12,26 +15,29 @@ import { Router } from "@angular/router";
 })
 class ToolbarStubComponent {}
 
-describe("StartnewprojectComponent", () => {
-  let component: StartnewprojectComponent;
-  let fixture: ComponentFixture<StartnewprojectComponent>;
+describe("CreateProjectComponent", () => {
+  let component: CreateProjectComponent;
+  let fixture: ComponentFixture<CreateProjectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [StartnewprojectComponent, ToolbarStubComponent],
-      imports: [FormsModule],
+      declarations: [CreateProjectComponent, ToolbarStubComponent],
+      imports: [FormsModule, ReactiveFormsModule],
       providers: [
         {
           provide: Router,
+          StoreService,
           useClass: TestingRouter,
+          TestingStoreService,
         },
       ],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StartnewprojectComponent);
+    fixture = TestBed.createComponent(CreateProjectComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 

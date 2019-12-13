@@ -16,7 +16,7 @@ import { ProjectListComponent } from "./project-list/project-list.component";
 import { ProjectCardComponent } from "./project-card/project-card.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { RegisterCardComponent } from "./register-card/register-card.component";
-import { StartnewprojectComponent } from "./startnewproject/startnewproject.component";
+import { CreateProjectComponent } from "./create-project/create-project.component";
 import { RouterModule } from "@angular/router";
 import { SearchtoolComponent } from "./searchtool/searchtool.component";
 import { IconComponent } from "./icon/icon.component";
@@ -26,6 +26,9 @@ import { ProjectSectionsComponent } from "./project-sections/project-sections.co
 import { CreateSectionComponent } from "./create-section/create-section.component";
 import { LandingpageComponent } from "./landingpage/landingpage.component";
 import { MessageComponent } from "./message/message.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { LoadingIconComponent } from "./loading-icon/loading-icon.component";
 
 @NgModule({
   declarations: [
@@ -46,13 +49,22 @@ import { MessageComponent } from "./message/message.component";
     SearchtoolComponent,
     IconComponent,
     SearchresultsComponent,
-    StartnewprojectComponent,
+    CreateProjectComponent,
     ProjectSectionsComponent,
     CreateSectionComponent,
     LandingpageComponent,
     MessageComponent,
+    NotFoundComponent,
+    LoadingIconComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

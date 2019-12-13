@@ -1,10 +1,12 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
 button.new-section {
-   margin: 4em auto 2em;
-   left: 50%;
-   position: relative;
-   transform: translateX(-50%);
+  margin-top: 9em;
 }
 
 form {
-   margin-bottom: 3em;
+  margin-bottom: 3em;
 }

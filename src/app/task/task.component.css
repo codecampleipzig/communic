@@ -1,80 +1,80 @@
 :host {
-   background: var(--backgroundGrey);
-   box-shadow: var(--smallShadow);
-   color: var(--fontDarkGrey);
-   position: relative;
-   border-radius: 4px;
-   padding: .5em 1em;
-   margin-bottom: 1em;
-   display: flex;
-   flex-flow: wrap;
-   align-items: center;
+  background: var(--backgroundGrey);
+  box-shadow: var(--smallShadow);
+  color: var(--fontDarkGrey);
+  position: relative;
+  border-radius: 4px;
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
 }
-
 
 /* Task Header with Checkbox, Title and TaskTeam */
 .task-header {
-   display: flex;
-   align-items: center;
-   line-height: 2;
-   flex-wrap: wrap;
-   margin-right: 2em; /* Spacing for top-right-icons */
+  display: flex;
+  align-items: center;
+  line-height: 2;
+  flex-wrap: wrap;
+  margin-right: 2em; /* Spacing for top-right-icons */
 }
 
 .task-header > * {
-   margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 /* Checkbox */
 .checkbox {
-   width: 1em;
-   height: 1em;
-   border: 2px solid var(--borderGrey);
-   border-radius: 2px;
-   font-size: 1.5em;
-   text-align: center;
-   line-height: 1.05;
-   color: var(--fontLightGrey);
-   background: transparent;
-   padding: 0;
-   margin-right: .75em;
+  width: 1em;
+  height: 1em;
+  border: 2px solid var(--borderGrey);
+  border-radius: 2px;
+  font-size: 1.5em;
+  text-align: center;
+  line-height: 1.05;
+  color: var(--fontLightGrey);
+  background: transparent;
+  padding: 0;
+  margin-right: 0.75em;
 }
 
 .checkbox i {
-   transform: translate3d(0em, -.1em, 0);
-   font-size: .9em;
-   color: inherit;
-   opacity: .2;
-   transition: transform .2s, font-size .2s, color .2s, opacity .2s;
+  transform: translate3d(0em, -0.1em, 0);
+  font-size: 0.9em;
+  color: inherit;
+  opacity: 0.2;
+  margin-left: 0;
+  transition: transform 0.2s, font-size 0.2s, color 0.2s, opacity 0.2s;
 }
 
 /** CSS Interactions for different states of the task */
 .checkbox:disabled {
-   cursor: default;
+  cursor: default;
 }
 
 .checkbox:not(:disabled):hover,
 .checkbox:not(:disabled):focus {
-   color: var(--successGreen);
+  color: var(--successGreen);
 }
 
 .checkbox:not(:disabled):focus {
-   outline: 1px dashed var(--borderGrey);
-   outline-offset: 2px;
+  outline: 1px dashed var(--borderGrey);
+  outline-offset: 2px;
 }
 
 .checkbox:not(:disabled):hover i,
 .checkbox:not(:disabled):focus i {
-   transform: translate3d(.05em, -.3em, 0);
-   font-size: 1.3em;
-   opacity: 1;
+  transform: translate3d(0.05em, -0.3em, 0);
+  font-size: 1.3em;
+  opacity: 1;
 }
 
 .checkbox:not(:disabled):active {
-   border-color: var(--successGreen);
+  border-color: var(--successGreen);
 }
 
-  /**
+/**
    * CSS Interactions if task is .joined and ment to be undone.
    *
    * :host(.joined.status-done) .checkbox:hover,
@@ -90,76 +90,73 @@
    */
 
 :host(.joined.status-done) .checkbox:active {
-   border-color: var(--successGreen);
+  border-color: var(--successGreen);
 }
 
 .task-team {
-   display: flex;
-   align-items: center;
-   line-height: 2;
-   margin-left: 1em;
-   flex-wrap: wrap;
-   margin-bottom: 0 !important;
+  display: flex;
+  align-items: center;
+  line-height: 2;
+  margin-left: 1em;
+  flex-wrap: wrap;
+  margin-bottom: 0 !important;
 }
 
 .task-team > * {
-   margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
 .user-image {
-   font-size: 1em;
-   margin-right: .5em;
+  font-size: 1em;
+  margin-right: 0.5em;
 }
-   
+
 .task-description {
-   margin-left: 1em;
-   flex-basis: 100%;
-   font-size: .9rem;
+  margin-left: 1em;
+  flex-basis: 100%;
+  font-size: 0.9rem;
 }
 
 .task-author {
-   color: var(--fontLightGrey);
-   white-space: nowrap;
+  color: var(--fontLightGrey);
+  white-space: nowrap;
 }
 
-   
 /**
  * Styling the different status states of the Tasks
  * For example status-deleted with text-decoration: line-through
  */
 
-:host(.status-done),
 :host(.status-deleted) {
-   opacity: .4;
-   transition: opacity .8s;
+  opacity: 0.4;
+  transition: opacity 0.8s;
 }
 
-:host(.status-done):hover,
 :host(.status-deleted):hover {
-   opacity: .9
+  opacity: 0.9;
 }
 
 :host(.status-done) .checkbox {
-   color: var(--successGreen);
+  color: var(--successGreen);
 }
 
 :host(.status-done) .checkbox i {
-   opacity: 1;
-   transform: translate3d(.05em, -.3em, 0);
-   font-size: 1.3em;
+  opacity: 1;
+  transform: translate3d(0.05em, -0.3em, 0);
+  font-size: 1.3em;
 }
 
 :host(.status-deleted) > * {
-   text-decoration:line-through;
+  text-decoration: line-through;
 }
 
 :host(.status-deleted) p,
 :host(.status-deleted) .checkbox,
 :host(.status-deleted) .task-team {
-   display: none
+  display: none;
 }
 
 :host(.status-deleted) h4 {
-   margin: 0;
-   font-size: 1em;
+  margin: 0;
+  font-size: 1em;
 }
