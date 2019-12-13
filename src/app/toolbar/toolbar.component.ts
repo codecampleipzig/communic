@@ -61,7 +61,7 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
     const scroll$ = fromEvent(window, "scroll").pipe(
       throttleTime(10),
       map(() => window.pageYOffset),
-      filter(y => y >= 0),
+      filter(y => y >= 40),
       pairwise(),
       map(([y1, y2]): Directions => (y2 <= y1 ? Directions.Up : Directions.Down)),
       distinctUntilChanged(),
