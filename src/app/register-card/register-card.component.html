@@ -10,8 +10,10 @@
   <div class="avatar" *ngIf="authType == 'register'">
 
     <input type="file" id="myFileInput" accept="image/*" hidden (change)="onSelectFile($event)" />
-    <div *ngIf="image" class="user-image">
+    <div *ngIf="image && !imageString().startsWith('<svg')" class="user-image">
       <img [src]="image" />
+    </div>
+    <div *ngIf="image && imageString().startsWith('<svg')" class="user-image" [innerHTML]="this.svg">
     </div>
     <div *ngIf="!image" class="user-image">
       <i class="fas fa-camera"></i>
