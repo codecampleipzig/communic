@@ -3,7 +3,11 @@
    <button class="logout small" (click)="logout()">Logout</button>
 </div>
 
-<div class="user-image">
-   <img *ngIf="userThumbnail" [src]="userThumbnail" alt="User Thumbnail">
-   <i *ngIf="!userThumbnail" class="fas fa-user"></i>
+<div *ngIf="image && !imageString().startsWith('<svg')" class="user-image">
+   <img [src]="image" />
+</div>
+<div *ngIf="image && imageString().startsWith('<svg')" class="user-image" [innerHTML]="svg">
+</div>
+<div *ngIf="!image" class="user-image">
+   <i class="fas fa-user"></i>
 </div>

@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { TeamMemberComponent } from "./team-member.component";
 import { TeamCardComponent } from "../team-card/team-card.component";
+import { DomSanitizer } from "@angular/platform-browser";
 
 describe("TeamMemberComponent", () => {
   let component: TeamMemberComponent;
@@ -10,6 +11,15 @@ describe("TeamMemberComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TeamMemberComponent, TeamCardComponent],
+      providers: [
+        {
+          provide: DomSanitizer,
+          useClass: class {
+            bypassSecurityTrustHtml() {}
+            sanitize() {}
+          },
+        },
+      ],
     }).compileComponents();
   }));
 

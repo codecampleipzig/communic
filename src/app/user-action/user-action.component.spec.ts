@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { UserActionComponent } from "./user-action.component";
 import { StoreService } from "../store.service";
 import { TestingStoreService } from "../test-utilities/testing-store.service";
+import { DomSanitizer } from "@angular/platform-browser";
 
 describe("UserActionComponent", () => {
   let component: UserActionComponent;
@@ -15,6 +16,13 @@ describe("UserActionComponent", () => {
         {
           provide: StoreService,
           useClass: TestingStoreService,
+        },
+        {
+          provide: DomSanitizer,
+          useClass: class {
+            bypassSecurityTrustHtml() {}
+            sanitize() {}
+          },
         },
       ],
     }).compileComponents();
@@ -46,16 +54,6 @@ describe("UserActionComponent", () => {
   it("should have user thumbnail", () => {
     const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
     expect(htmlElement.querySelector(".user-image")).toBeTruthy();
-  });
-
-  // verify correct thumbnail is present
-  xit("should have correct username", () => {
-    const htmlElement: HTMLElement = fixture.debugElement.nativeElement;
-    const imgElement: HTMLImageElement = htmlElement.querySelector(".user-image img");
-    // TODO: use regex or find another way (localhost is the problem)
-    // should not be a problem with real url
-    const expectedValue = component.userThumbnail.replace("../", "").replace("../", "");
-    expect(imgElement.src).toBe(`http://localhost/${expectedValue}`);
   });
 
   // verify logout button is present

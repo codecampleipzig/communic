@@ -3,6 +3,7 @@ import { Task } from "../datatypes/Task";
 import { StoreService } from "../store.service";
 import { UserState } from "../datatypes/User";
 import { Project } from "../datatypes/Project";
+import { DomSanitizer } from "@angular/platform-browser";
 
 type taskOrProject = "task" | "project" | "both";
 
@@ -29,7 +30,7 @@ export class TaskComponent implements OnInit {
     return (this.task ? "status-" + this.task.taskStatus : "") + (this.joined("task") ? " joined" : "");
   }
 
-  constructor(@Inject(StoreService) private store: StoreService) {
+  constructor(@Inject(StoreService) private store: StoreService, @Inject(DomSanitizer) public sanitizer: DomSanitizer) {
     this.store.user$.subscribe(user => (this.userState = user));
   }
 
@@ -123,5 +124,13 @@ export class TaskComponent implements OnInit {
       return joinedTask && joinedProject;
     }
     return joinedTask || joinedProject;
+  }
+
+  svg(input) {
+    return this.sanitizer.bypassSecurityTrustHtml(input);
+  }
+
+  imageString(input) {
+    return String(input);
   }
 }

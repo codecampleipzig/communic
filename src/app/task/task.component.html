@@ -7,22 +7,20 @@
   <!-- Replaced Subcomponent TaskListItemTeam -->
   <div class="task-team">
     <div *ngFor="let user of task.taskTeam" class="user-image">
-      <img *ngIf="user.userImageUrl" [src]="user.userImageUrl" alt="" />
+      <img *ngIf="user.userImageUrl && !imageString(user.userImageUrl).startsWith('<svg')" [src]="user.userImageUrl"
+        alt="user.userName" />
+      <div *ngIf="user.userImageUrl && imageString(user.userImageUrl).startsWith('<svg')"
+        [innerHTML]="svg(user.userImageUrl)">
+      </div>
       <i *ngIf="!user.userImageUrl" class="fas fa-user"></i>
     </div>
 
-    <button
-      *ngIf="task.taskStatus == 'open' && this.joined('project') && !this.joined('task')"
-      class="button taskTeamJoin outlined round"
-      (click)="join()"
-    >
+    <button *ngIf="task.taskStatus == 'open' && this.joined('project') && !this.joined('task')"
+      class="button taskTeamJoin outlined round" (click)="join()">
       <i class="fas fa-plus"></i><span>Join</span>
     </button>
-    <button
-      *ngIf="task.taskStatus == 'open' && this.joined('task')"
-      class="button button-leave taskTeamJoin outline round"
-      (click)="leave()"
-    >
+    <button *ngIf="task.taskStatus == 'open' && this.joined('task')"
+      class="button button-leave taskTeamJoin outline round" (click)="leave()">
       <i class="fas fa-times"></i><span>Leave</span>
     </button>
   </div>

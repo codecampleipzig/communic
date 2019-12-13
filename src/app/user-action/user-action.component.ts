@@ -3,6 +3,7 @@ import { Component, OnInit, Inject } from "@angular/core";
  * We import the StoreService serives to import the logout method.
  */
 import { StoreService } from "../store.service";
+import { SafeHtml, DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "app-user-action",
@@ -11,9 +12,10 @@ import { StoreService } from "../store.service";
 })
 export class UserActionComponent implements OnInit {
   public userName = "Username";
-  public userThumbnail = "../../../assets/hpotter-512.png";
+  image: string;
+  svg: SafeHtml;
 
-  constructor(@Inject(StoreService) public store: StoreService) {}
+  constructor(@Inject(StoreService) public store: StoreService, @Inject(DomSanitizer) public sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.store.user$.subscribe(userState => {
@@ -21,8 +23,14 @@ export class UserActionComponent implements OnInit {
         return;
       }
       this.userName = userState.userInformation.userName;
-      this.userThumbnail = userState.userInformation.userImageUrl;
+      this.image = userState.userInformation.userImageUrl;
+
+      this.svg = this.sanitizer.bypassSecurityTrustHtml(this.image);
     });
+  }
+
+  imageString() {
+    return String(this.image);
   }
 
   /* Quick test calling register

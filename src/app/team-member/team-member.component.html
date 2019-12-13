@@ -1,9 +1,13 @@
-<div class="user-image">
-   <img *ngIf="user.userImageUrl" [src]="user.userImageUrl" alt="">
-   <i *ngIf="!user.userImageUrl" class="fas fa-user"></i>
+<div *ngIf="image && !imageString().startsWith('<svg')" class="user-image">
+   <img [src]="image" />
 </div>
+<div *ngIf="image && imageString().startsWith('<svg')" class="user-image" [innerHTML]="svg">
+</div>
+<div *ngIf="!image" class="user-image">
+   <i class="fas fa-user"></i>
+</div>
+
 <div class="user">
    <span class="user-name">{{user.userName}}</span>
    <a class="user-email" href="mailto:{{user.userEmail}}">{{user.userEmail}}</a>
 </div>
-
