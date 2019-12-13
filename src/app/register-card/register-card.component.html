@@ -11,9 +11,7 @@
     <div *ngIf="image && !imageString().startsWith('<svg')" class="user-image">
       <img [src]="image" />
     </div>
-    <div *ngIf="image && imageString().startsWith('<svg')" class="user-image" [innerHTML]="this.svg">
-    </div>
-    <div *ngIf="!image" class="user-image">
+    <div *ngIf="image && imageString().startsWith('<svg')" class="user-image">
       <img src="../../assets/avatar.png" />
     </div>
   </div>
