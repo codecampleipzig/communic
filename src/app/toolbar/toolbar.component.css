@@ -14,14 +14,14 @@
   flex-grow: 1;
 }
 
-a.home {
-  font-size: 2rem;
-  color: var(--fontDarkGrey);
-  margin-right: 0.6em;
+.communic img {
+  justify-content: space-around;
 }
 
-a.home:hover {
-  color: var(--primaryColor);
+img {
+  margin: 0;
+  padding: 0.5em 1em;
+  height: 30px;
 }
 
 .communic-text {

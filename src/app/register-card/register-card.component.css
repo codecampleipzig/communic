@@ -1,42 +1,30 @@
 :host {
   display: flex;
-  height: 100vh;
+  height: inherit;
   box-sizing: border-box;
   position: static;
   margin-top: 0;
   margin-bottom: 0;
+  padding: 1em;
+}
+
+.register-card-title img {
+  height: 4em;
 }
 
 :host > * {
   margin: auto;
 }
 
-.background {
-  position: static;
-}
-
-.background::after {
-  content: "";
-  background-image: url("../../assets/backgroundimg.png");
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
-  background-size: cover;
-  background-repeat: repeat;
-}
-
 .register-card {
   border-radius: 20px;
+  box-shadow: none;
 }
 
 .register-card h2 {
   color: var(--primaryColor);
-  font-weight: 700;
-  font-size: 2em;
+  font-weight: 400;
+  font-size: 1em;
   text-transform: uppercase;
   margin: 1rem;
 }
@@ -45,7 +33,6 @@ input[type="file"] {
   height: 0px;
   visibility: hidden;
 }
-
 
 .register-card .signIn {
   display: flex;
@@ -59,15 +46,15 @@ input[type="file"] {
   justify-content: center;
 }
 
+.avatar .user-image {
+  font-size: 4rem;
+}
+
 .avatar {
   padding: 1em 0;
 }
 
-.avatar .user-image {
-  font-size: 3rem;
-}
-
-.avatar + .button {
+.button {
   margin-bottom: 1.5em;
 }
 
@@ -94,7 +81,7 @@ button[type="submit"] {
 
 @media (min-width: 400px) {
   .register-card h2 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 

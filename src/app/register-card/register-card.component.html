@@ -1,14 +1,12 @@
 <form class="register-card card text-center background" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <h2>Communic.io</h2>
-  <h3 *ngIf="authType == 'register'">Join your community!</h3>
-  <h3 *ngIf="authType == 'login'">Meet your community!</h3>
-  <h3 *ngIf="authType == 'reset-password'">Reset your password</h3>
-  <h3 *ngIf="authType == 'change-password'">Create a new password</h3>
+  <div class="register-card-title" *ngIf="authType == 'register'"><img src="../../assets/joincomm.svg" /></div>
+  <div class="register-card-title" *ngIf="authType == 'login'"><img src="../../assets/joincommunity.svg" /></div>
+  <h3 class="register-card-title" *ngIf="authType == 'reset-password'">Reset your password</h3>
+  <h3 class="register-card-title" *ngIf="authType == 'change-password'">Create a new password</h3>
 
   <app-loading-icon></app-loading-icon>
 
   <div class="avatar" *ngIf="authType == 'register'">
-
     <input type="file" id="myFileInput" accept="image/*" hidden (change)="onSelectFile($event)" />
     <div *ngIf="image && !imageString().startsWith('<svg')" class="user-image">
       <img [src]="image" />
@@ -16,18 +14,25 @@
     <div *ngIf="image && imageString().startsWith('<svg')" class="user-image" [innerHTML]="this.svg">
     </div>
     <div *ngIf="!image" class="user-image">
-      <i class="fas fa-camera"></i>
+      <img src="../../assets/avatar.png" />
     </div>
   </div>
 
-  <button type="button" class="button outlined"
+  <button
+    type="button"
+    class="button outlined"
     *ngIf="authType == 'register' && !this.fileToUpload && this.uploadState != 'pending'"
-    onclick="document.getElementById('myFileInput').click()">
+    onclick="document.getElementById('myFileInput').click()"
+  >
     Choose Image
   </button>
 
-  <button type="button" class="button outlined" *ngIf="this.fileToUpload && this.uploadState != 'pending'"
-    (click)="this.uploadFile()">
+  <button
+    type="button"
+    class="button outlined"
+    *ngIf="this.fileToUpload && this.uploadState != 'pending'"
+    (click)="this.uploadFile()"
+  >
     Upload Image
   </button>
 
@@ -38,40 +43,66 @@
   <label>
     <input type="text" placeholder="Name" formControlName="userName" required *ngIf="authType == 'register'" />
     <span class="form-rule" *ngIf="(userNameField.dirty || userNameField.touched) && userNameField.invalid">
-      <!-- *ngIf="(userNameField.dirty || userNameField.touched) && userNameField.invalid && userNameField.errors.required"> -->
       No name, no fun. At least two characters and at most two words please.
     </span>
   </label>
 
   <label>
-    <input type="email" placeholder="Email" formControlName="email"
-      *ngIf="authType == 'register' || authType == 'login' || authType == 'reset-password'" required />
-    <span class="form-rule"
-      *ngIf="(emailField.dirty || emailField.touched) && emailField.invalid && authType == 'register'">
-      <!-- *ngIf="(emailField.dirty || emailField.touched) && emailField.invalid && emailField.errors.required && authType == 'register'"> -->
+    <input type="email" placeholder="Email" formControlName="email" required />
+    <span
+      class="form-rule"
+      *ngIf="
+        (emailField.dirty || emailField.touched) &&
+        emailField.invalid &&
+        emailField.errors.required &&
+        authType == 'register'
+      "
+    >
       We promise not to spam you. Maybe.
     </span>
-    <span class="form-rule"
-      *ngIf="(emailField.dirty || emailField.touched) && emailField.invalid && authType == 'login'">
-      <!-- <span class="form-rule" *ngIf="(emailField.dirty || emailField.touched) && emailField.errors.required && authType == 'login'"> -->
+    <span
+      class="form-rule"
+      *ngIf="
+        (emailField.dirty || emailField.touched) &&
+        emailField.invalid &&
+        emailField.errors.required &&
+        authType == 'login'
+      "
+    >
       Please use the e-mail you used to register your account.
     </span>
-    <span class="form-rule"
-      *ngIf="(emailField.dirty || emailField.touched) && emailField.invalid && emailField.errors.required && authType == 'reset-password'">
+    <span
+      class="form-rule"
+      *ngIf="
+        (emailField.dirty || emailField.touched) &&
+        emailField.invalid &&
+        emailField.errors.required &&
+        authType == 'reset-password'
+      "
+    >
       Please use the e-mail you used to register your account. We'll send you an email with a link to reset your
       password.
     </span>
   </label>
 
   <label>
-    <input type="password" placeholder="Password" formControlName="password"
-      *ngIf="authType == 'register' || authType == 'login' || authType == 'change-password'" required />
-    <span class="form-rule"
-      *ngIf="(passwordField.dirty || passwordField.touched) && passwordField.invalid && authType == 'register'">
+    <input
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+      *ngIf="authType == 'register' || authType == 'login' || authType == 'change-password'"
+      required
+    />
+    <span
+      class="form-rule"
+      *ngIf="(passwordField.dirty || passwordField.touched) && passwordField.invalid && authType == 'register'"
+    >
       Safety first! Your password must be at least 8 characters and contain at least one number.
     </span>
-    <span class="form-rule"
-      *ngIf="(passwordField.dirty || passwordField.touched) && passwordField.invalid && authType == 'login'">
+    <span
+      class="form-rule"
+      *ngIf="(passwordField.dirty || passwordField.touched) && passwordField.invalid && authType == 'login'"
+    >
       Forgot your password? click <a [routerLink]="['/reset-password']">here</a>.
     </span>
   </label>
@@ -79,16 +110,28 @@
   <button type="submit" [disabled]="!profileForm.valid" *ngIf="authType == 'register'" class="button">
     Join now!
   </button>
-  <button type="submit" [disabled]="!(profileForm.get('email').valid && profileForm.get('password').valid)"
-    *ngIf="authType == 'login'" class="button">
+  <button
+    type="submit"
+    [disabled]="!(profileForm.get('email').valid && profileForm.get('password').valid)"
+    *ngIf="authType == 'login'"
+    class="button"
+  >
     Login
   </button>
-  <button type="submit" [disabled]="!profileForm.get('email').valid" *ngIf="authType == 'reset-password'"
-    class="button">
+  <button
+    type="submit"
+    [disabled]="!profileForm.get('email').valid"
+    *ngIf="authType == 'reset-password'"
+    class="button"
+  >
     Reset password
   </button>
-  <button type="submit" [disabled]="!profileForm.get('password').valid" *ngIf="authType == 'change-password'"
-    class="button">
+  <button
+    type="submit"
+    [disabled]="!profileForm.get('password').valid"
+    *ngIf="authType == 'change-password'"
+    class="button"
+  >
     Set new password
   </button>
 
