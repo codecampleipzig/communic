@@ -2,14 +2,9 @@ const express = require("express");
 const app = express();
 
 const appFolder = __dirname + "/dist/communic";
+const { redirectToHTTPS } = require("express-http-to-https");
 
-app.use((req, res, next) => {
-  if (req.secure) {
-    next();
-  } else {
-    res.redirect("https://" + req.headers.host + req.url);
-  }
-});
+app.use(redirectToHTTPS([/localhost:8080/]));
 
 app.get("*.*", express.static(appFolder));
 
