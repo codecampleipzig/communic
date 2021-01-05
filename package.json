@@ -41,7 +41,7 @@
     "@angular/router": "~8.2.0",
     "@fortawesome/fontawesome-free": "^5.11.2",
     "animate.css": "^3.7.2",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "express-http-to-https": "^1.1.4",
     "jdenticon": "^2.2.0",
